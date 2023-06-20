@@ -1,0 +1,37 @@
+---
+title: Code Quality
+date: "Dec 19, 2022"
+description: Technologies to improve the code quality
+tags: ["setup", "tools"]
+---
+
+The repository includes a list of technologies to improve the code quality:
+
+- Static Analysis (TypeScript)
+- Linting (ESLint)
+- Formatting (Prettier)
+- Testing (Jest)
+
+Those 4 quality checks run on the CI as [GitHub Actions](../../.github/workflows/checks.yml), they will prevent us to merge code into the main branch if the checks don't pass.
+
+To improve this process, you can run those quality checks on your local:
+
+Static Analysis (TypeScript) with:
+
+    npm run tsc
+
+Linting (ESLint) with:
+
+    npm run lint
+
+Formatting (Prettier) with:
+
+    npm run prettier:check
+
+Testing (Jest) with:
+
+    npm run test
+
+In addition, this repository contains a couple tools to help us with this process. Husky (with the support of lint-staged) will run the quality checks when the code is being committed. The commit will be cancelled if any of those checks fail.
+
+Husky is installed on your local thought the script `prepare`, included in the `package.json` when you run `npm install`. However, it could not work depending on the OS or the git client (terminal FTW!) you are using. Therefore, please, make sure husky is working on your local to help yourself committing and pushing breaking code to the remote repository :)

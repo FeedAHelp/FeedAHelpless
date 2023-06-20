@@ -1,0 +1,26 @@
+---
+title: Encapsulate Dependencies
+date: "Dec 19, 2022"
+description: Reference the dependency only once in your project
+tags: ["reusability"]
+---
+
+When working with dependencies, like a React component imported from a library, it's recommended to reference the library only once in your project.
+
+## The component is not modified
+
+"elements/index.ts" (No need to create a folder for the component)
+
+    import ComponentFromLibrary from '@library'
+
+    export const Component = ComponentFromLibrary
+
+## The component is modified
+
+At "elements/Component/Component.tsx".
+
+    import ComponentFromLibrary from '@library'
+
+    export function Component() {
+      return <ComponentFromLibrary />
+    }
