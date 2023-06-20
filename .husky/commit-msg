@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+if ! head -1 "$1" | grep -qE "^(feat|fix|ci|chore|docs|test|style|refactor|perf|build|revert)(\(.+?\))?: .{1,}$"; then
+    echo "Aborting commit. Your commit message is invalid. আপনার প্রতিশ্রুতি বার্তা ঠিক করুন!!, মনজিল Phaarki???" >&2
+    exit 1
+fi
+if ! head -1 "$1" | grep -qE "^.{1,88}$"; then
+    echo "Aborting commit. Your commit message is too long. প্রতিশ্রুতি বার্তা খুব দীর্ঘ!!, মনজিল Phaarki???" >&2
+    exit 1
+fi

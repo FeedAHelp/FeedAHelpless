@@ -1,0 +1,44 @@
+name: feedahelp-CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      NEXTAUTH_SECRET: 'secreat'
+      DATABASE_URL: 'file:./db.sqlite'
+      NEXTAUTH_URL: 'http://localhost:3000'
+      DISCORD_CLIENT_ID: ''
+      DISCORD_CLIENT_SECRET: ''
+      NEXT_PUBLIC_SANITY_DATASET: 'development'
+      NEXT_PUBLIC_SANITY_PROJECT_ID: ''
+      NEXT_PUBLIC_SANITY_API_TOKEN: ''
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install pnpm
+        run: npm install -g pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - run: pnpm run build
+      - run: pnpm run lint
+      - name: Test
+        run: pnpm run test
+        env:
+          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+          TURBO_TEAM: emach
+          TURBO_REMOTE_ONLY: 'true'

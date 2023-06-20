@@ -1,0 +1,14 @@
+#!/bin/bash
+# Prevents force-pushing to master
+
+BRANCH=`git rev-parse --abbrev-ref HEAD`
+PUSH_COMMAND=`ps -ocommand= -p $PPID`
+PROTECTED_BRANCHES="^(master|main|develop|release-*|patch-*)"
+FORCE_PUSH="force|delete|-f"
+
+if [[ "$BRANCH" =~ $PROTECTED_BRANCHES ]]; then
+  echo "চু \"$BRANCH\" এ ধাক্কা দিতে পারে না, একটি শক্ত চড়!!তুমি আমার নিগ"
+  exit 1
+fi
+
+exit 0
