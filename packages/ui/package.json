@@ -6,15 +6,36 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint \"**/*.ts*\"",
-    "generate:component": "turbo gen react-component"
+    "generate:component": "turbo gen react-component",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "devDependencies": {
+    "@emotion/react": "^11.11.1",
+    "@types/jest": "^29.5.2",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.6",
+    "@typescript-eslint/parser": "^5.59.6",
     "eslint": "^7.32.0",
     "eslint-config-custom": "workspace:*",
+    "eslint-plugin-storybook": "^0.6.12",
     "react": "^17.0.2",
+    "react-dom": "18.2.0",
     "tsconfig": "workspace:*",
     "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "@emotion/styled": "^11.11.0",
+    "@jest/globals": "^29.5.0",
+    "@mui/core": "5.0.0-alpha.54",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.5",
+    "@mui/utils": "^5.13.1",
+    "framer-motion": "^10.12.16",
+    "lottie-web": "^5.12.2",
+    "next": "^13.4.2",
+    "recoil": "^0.7.7",
+    "styled-components": "6.0.0-rc.3"
   }
 }
