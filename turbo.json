@@ -4,9 +4,25 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": [
+        "NODE_ENV",
+        "VERCEL_URL",
+        "VERCEL",
+        "SKIP_ENV_VALIDATION",
+        "DATABASE_URL",
+        "JWT_SECRETE",
+        "NEXTAUTH_URL",
+        "NEXTAUTH_SECRET",
+        "DISCORD_CLIENT_ID",
+        "DISCORD_CLIENT_SECRET"
+      ]
     },
     "lint": {},
+    "test": {
+      "dependsOn": ["lint", "^build"],
+      "outputs": ["coverage/**"]
+    },
     "dev": {
       "cache": false,
       "persistent": true
