@@ -6,7 +6,12 @@
     "build": "next build",
     "dev": "next dev --port 3010",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest --coverage",
+    "test-sng": "jest",
+    "make-feat": "plop",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.3.1",
@@ -14,6 +19,7 @@
     "next-auth": "^4.22.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "ui": "*",
     "zod": "^3.21.4"
   },
   "devDependencies": {

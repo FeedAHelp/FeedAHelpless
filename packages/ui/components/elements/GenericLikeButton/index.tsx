@@ -1,0 +1,1 @@
+export { GenericLikeButton } from './GenericLikeButton'
