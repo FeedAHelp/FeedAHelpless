@@ -32,5 +32,9 @@
   },
   "dependencies": {
     "server": "^1.0.38"
+  },
+  "lint-staged": {
+    "**/*.js": ["eslint --fix", "git add"],
+    "**/*.css": ["stylelint --fix", "git add"]
   }
 }
