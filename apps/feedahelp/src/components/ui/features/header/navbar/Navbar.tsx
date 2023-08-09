@@ -1,8 +1,6 @@
-import { useRef, useState } from "react";
 import { Styled } from "./Navbar.styled";
 import MenuIcon from "@mui/icons-material/Menu";
 import { GenericButton } from "../../../../../../../../packages/ui/components/elements/Buttons/Button";
-import { useSession } from "next-auth/react";
 import router from "next/router";
 
 const NewNav = () => {
@@ -18,9 +16,9 @@ const NewNav = () => {
             avatar={"/assets/avatar.png"}
             className="img-rotate-button"
           >
-            <img className="outer ring" />
-            <img className="center ring" />
-            <img className="inner ring" />
+            <img className="outer ring" alt="" />
+            <img className="center ring" alt="" />
+            <img className="inner ring" alt="" />
           </Styled.Avatar>
           <GenericButton
             variant="shadow"
