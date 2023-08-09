@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
+    "@babel/preset-react": "^7.22.5",
     "@emotion/react": "^11.11.1",
     "@jest/globals": "^29.5.0",
     "@mui/icons-material": "^5.11.16",
