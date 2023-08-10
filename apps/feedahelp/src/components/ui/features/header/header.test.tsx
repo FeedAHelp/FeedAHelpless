@@ -1,9 +1,8 @@
 import React from "react";
-import { render } from "@testing-library/react";
-import { Header } from "./Header"; // Update the import path based on your project structure
-import { act } from "@testing-library/react";
+import { render, act } from "@testing-library/react"; // Import act from testing library
+import { Header } from "./Header";
 
-describe("Footer Component", () => {
+describe("Header Component", () => {
   it("renders without crashing", () => {
     act(() => {
       render(<Header />);
