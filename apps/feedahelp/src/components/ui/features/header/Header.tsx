@@ -1,8 +1,6 @@
 import dynamic from "next/dynamic";
 import { Styled } from "./Header.styled";
 import { memo } from "react";
-import { burgerMenuState } from "../../../../../../../packages/ui/components/utils/atoms/burgerMenuState";
-import { useRecoilState } from "recoil";
 import Navbar from "./navbar/Navbar";
 import Head from "next/head";
 
@@ -13,9 +11,7 @@ export const Header = () => {
   return (
     <Styled.Header>
       <Head>
-        <title>
-         FeedAhelp :: Feed one at a time. v1.0 
-        </title>
+        <title>FeedAhelp :: Feed one at a time. v1.0</title>
         <meta name="description" content="" />
         <meta name="keywords" content="" />
         <meta property="og:description" content="" />

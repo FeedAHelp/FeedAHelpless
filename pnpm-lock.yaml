@@ -111,6 +111,9 @@ importers:
       '@babel/core':
         specifier: ^7.22.9
         version: 7.22.9
+      '@babel/preset-react':
+        specifier: ^7.22.5
+        version: 7.22.5(@babel/core@7.22.9)
       '@emotion/react':
         specifier: ^11.11.1
         version: 11.11.1(@types/react@18.2.6)(react@18.2.0)
