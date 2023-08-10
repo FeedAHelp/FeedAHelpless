@@ -21,7 +21,7 @@ export const Header = () => {
         <meta property="og:description" content="" />
         <meta property="og:url" content="" />
         <meta property="og:type" content="" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/feedhelpfavicon.svg" />
       </Head>
       <MemoLogo />
       <Navbar />
