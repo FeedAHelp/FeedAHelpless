@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import { Layout } from "../components/Layouts";
+import { MainPage } from "../components/ui/features/main";
 
 const Header = dynamic(
   import("../components/ui/features/header").then((mod) => mod.Header)
@@ -16,7 +17,7 @@ const Index = () => {
       child={
         <>
           <div className="flex min-h-screen flex-col items-center justify-center text-fuchsia-600">
-            FeedAHelp
+            <MainPage />
           </div>
         </>
       }
