@@ -8,10 +8,6 @@ const NewNav = () => {
     <Styled.Navbar>
       <div className="nav-end">
         <div className="right-container">
-          <form className="search" role="search">
-            <input type="search" name="search" placeholder="Search" />
-            <i className="bx bx-search" aria-hidden="true" />
-          </form>
           <Styled.Avatar
             avatar={"/assets/avatar.png"}
             className="img-rotate-button"
@@ -20,17 +16,6 @@ const NewNav = () => {
             <img className="center ring" alt="" />
             <img className="inner ring" alt="" />
           </Styled.Avatar>
-          <GenericButton
-            variant="shadow"
-            backgroundcolor="yellow"
-            shadowcolor="gray"
-            activebgcolor="rgba(224, 138, 30, 1)"
-            textcolor="black"
-            width="auto"
-            onClick={() => router.push("/game-customization")}
-          >
-            Generic
-          </GenericButton>
         </div>
         <button
           id="hamburger"
