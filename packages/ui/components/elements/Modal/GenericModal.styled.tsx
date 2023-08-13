@@ -1,6 +1,5 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components'
 
-// Define keyframes
 export const unfoldIn = keyframes`
   0% {
     transform: scaleY(.005) scaleX(0);
@@ -11,7 +10,7 @@ export const unfoldIn = keyframes`
   100% {
     transform: scaleY(1) scaleX(1);
   }
-`;
+`
 
 export const unfoldOut = keyframes`
   0% {
@@ -23,7 +22,7 @@ export const unfoldOut = keyframes`
   100% {
     transform: scaleY(.005) scaleX(0);
   }
-`;
+`
 
 export const zoomIn = keyframes`
   0% {
@@ -32,7 +31,7 @@ export const zoomIn = keyframes`
   100% {
     transform: scale(1);
   }
-`;
+`
 
 export const zoomOut = keyframes`
   0% {
@@ -41,9 +40,7 @@ export const zoomOut = keyframes`
   100% {
     transform: scale(0);
   }
-`;
-
-// Styled Components for the modal
+`
 export const ModalContainer = styled.div`
   position: fixed;
   display: table;
@@ -61,8 +58,7 @@ export const ModalContainer = styled.div`
     .modal-background {
       .modal {
         transform: scale(0);
-        animation: ${zoomIn} 0.5s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1)
-          forwards;
+        animation: ${zoomIn} 0.5s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
       }
     }
   }
@@ -77,7 +73,7 @@ export const ModalContainer = styled.div`
       }
     }
   }
-`;
+`
 
 export const ModalBackground = styled.div`
   display: table-cell;
@@ -87,40 +83,24 @@ export const ModalBackground = styled.div`
 
   .modal {
     background: white;
-    padding: 50px;
+    padding: 3.125rem;
     display: inline-block;
-    border-radius: 3px;
+    border-radius: 0.1875rem;
     font-weight: 300;
     position: relative;
 
     h2 {
-      font-size: 25px;
-      line-height: 25px;
-      margin-bottom: 15px;
+      font-size: 1.5625rem;
+      line-height: 1.5625rem;
+      margin-bottom: 0.9375rem;
     }
 
     p {
-      font-size: 18px;
-      line-height: 22px;
-    }
-
-    .modal-svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      border-radius: 3px;
-
-      rect {
-        stroke: #fff;
-        stroke-width: 2px;
-        stroke-dasharray: 778;
-        stroke-dashoffset: 778;
-      }
+      font-size: 1.125rem;
+      line-height: 1.375rem;
     }
   }
-`;
+`
 
 export const ModalContent = styled.div`
   min-height: 100%;
@@ -130,14 +110,14 @@ export const ModalContent = styled.div`
   z-index: 0;
 
   h1 {
-    padding: 75px 0 30px 0;
+    padding: 4.6875rem 0 1.875rem 0;
     text-align: center;
-    font-size: 30px;
-    line-height: 30px;
+    font-size: 1.875rem;
+    line-height: 1.875rem;
   }
 
   .buttons {
-    max-width: 800px;
+    max-width: 50rem;
     margin: 0 auto;
     padding: 0;
     text-align: center;
@@ -145,13 +125,13 @@ export const ModalContent = styled.div`
     .button {
       display: inline-block;
       text-align: center;
-      padding: 10px 15px;
-      margin: 10px;
+      padding: 0.625rem 0.9375rem;
+      margin: 0.625rem;
       background: red;
-      font-size: 18px;
+      font-size: 1.125rem;
       background-color: #efefef;
-      border-radius: 3px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      border-radius: 0.1875rem;
+      box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.3);
       cursor: pointer;
 
       &:hover {
@@ -160,4 +140,4 @@ export const ModalContent = styled.div`
       }
     }
   }
-`;
+`

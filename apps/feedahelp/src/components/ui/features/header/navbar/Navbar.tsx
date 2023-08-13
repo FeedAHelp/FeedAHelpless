@@ -32,8 +32,7 @@ const NewNav = () => {
           aria-label="hamburger"
           aria-haspopup="true"
           aria-expanded="false"
-          className="hamburger"
-          onClick={() => setModalOpen(true)}
+          className="hamburger" 
         >
           <MenuIcon className="text-4xl" />
         </button>
