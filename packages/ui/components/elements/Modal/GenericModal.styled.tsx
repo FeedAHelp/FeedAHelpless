@@ -111,9 +111,7 @@ export const ModalBackground = styled.div`
   
 `
 
-export const ModalContent = styled.div`
-  min-height: 100%;
-  height: 100%;
+export const ModalContent = styled.div` 
   background: white;
   position: relative;
   z-index: 0;
