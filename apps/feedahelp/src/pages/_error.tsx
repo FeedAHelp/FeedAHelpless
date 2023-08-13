@@ -29,7 +29,7 @@ const Error = ({ statusCode,estimatedTime }:ErrorProps) => {
 
 // Define the getInitialProps function and its parameter type
 Error.getInitialProps = ({ res, err }: NextPageContext) => {
-    const statusCode = res ? res.statusCode : err ? err.statusCode : 500;
+    const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
     return { statusCode };
   };
 
