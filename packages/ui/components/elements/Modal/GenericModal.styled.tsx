@@ -84,10 +84,10 @@ export const ModalBackground = styled.div`
   .modal {
     background: white;
     padding: 3.125rem;
-    display: inline-block;
+    display: inline-block; 
     border-radius: 0.1875rem;
     font-weight: 300;
-    position: relative;
+    position: relative; 
 
     h2 {
       font-size: 1.5625rem;
@@ -99,7 +99,16 @@ export const ModalBackground = styled.div`
       font-size: 1.125rem;
       line-height: 1.375rem;
     }
+  } 
+  .close-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    cursor: pointer;
+    font-size: 1.25rem;
+    color: #333;
   }
+  
 `
 
 export const ModalContent = styled.div`
