@@ -2,8 +2,20 @@ import { Styled } from "./Navbar.styled";
 import MenuIcon from "@mui/icons-material/Menu";
 import { GenericButton } from "../../../../../../../../packages/ui/components/elements/Buttons/Button";
 import router from "next/router";
+import TranslationDropdown from "~/components/translationDropdown/TranslationDropdown";
+import { useState } from "react";
 
 const NewNav = () => {
+
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const dropdownItems = ['Item 1', 'Item 2', 'Item 3'];
+
+
   return (
     <Styled.Navbar>
       <div className="nav-end">
@@ -16,6 +28,10 @@ const NewNav = () => {
             <img className="center ring" alt="" />
             <img className="inner ring" alt="" />
           </Styled.Avatar>
+         
+          {/* Dropdown  langunage list*/}
+          <TranslationDropdown/>
+        
         </div>
         <button
           id="hamburger"
