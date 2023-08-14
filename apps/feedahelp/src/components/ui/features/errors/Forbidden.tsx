@@ -6,7 +6,7 @@ const Forbidden = () => {
     <div className='h-screen w-screen flex justify-center items-center text-center flex-col'>
         <h1 className='text-5xl text-slate-600 md:text-7xl duration-500'>No permission</h1>
 
-        <p className='text-sm md:text-2xl text-slate-600'>The page you're trying access has restricted access.<br/>Please Login First.</p>
+        <p className='text-sm md:text-2xl text-slate-600'>The page you are trying access has restricted access.<br/>Please Login First.</p>
 
         <Image src={'/errors/forbidden.gif'} height={500} width={500} alt='notFound-gif'/>
 
