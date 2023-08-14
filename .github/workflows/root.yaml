@@ -24,6 +24,11 @@ jobs:
         node-version: [18.x]
 
     steps:
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -40,5 +45,5 @@ jobs:
         run: pnpm run test
         env:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-          TURBO_TEAM: emach
+          TURBO_TEAM: feedahelp
           TURBO_REMOTE_ONLY: 'true'
