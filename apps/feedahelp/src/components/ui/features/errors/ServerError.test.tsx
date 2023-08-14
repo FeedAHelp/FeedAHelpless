@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect'; // For additional assertions
+import '@testing-library/jest-dom/extend-expect';
 import ServerError from './ServerError';
 
 describe('ServerError Component', () => {
@@ -19,16 +19,4 @@ describe('ServerError Component', () => {
     expect(backButton).toBeInTheDocument();
     expect(tryAgainButton).toBeInTheDocument();
   });
-
-//   test('clicking Try again button triggers reload', () => {
-//     const { getByText } = render(<ServerError />);
-//     const tryAgainButton = getByText("Try again");
-
-//     // Mock the reload function
-//     window.location.reload = jest.fn();
-
-//     fireEvent.click(tryAgainButton);
-
-//     expect(window.location.reload).toHaveBeenCalledTimes(1);
-//   });
 });

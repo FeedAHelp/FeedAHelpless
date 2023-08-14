@@ -6,7 +6,6 @@ import Unauthorized from '../components/ui/features/errors/Unauthorized'
 import ServiceUnavailable from '../components/ui/features/errors/ServiceUnavailable'
 import { FC } from 'react';
 
-// Define the prop types for the Error component
 type ErrorWithStatusCode = {
     statusCode: 403 | 401;
     estimatedTime?: number;
@@ -19,7 +18,6 @@ type ErrorWithStatusCodeAndTime = {
   
 type ErrorProps = ErrorWithStatusCode | ErrorWithStatusCodeAndTime 
 
-// Define the Error component using the NextPage interface and ErrorProps
 const Error = ({ statusCode,estimatedTime }:ErrorProps) => {
     const time=estimatedTime?estimatedTime:0
   return (
@@ -27,7 +25,6 @@ const Error = ({ statusCode,estimatedTime }:ErrorProps) => {
   );
 };
 
-// Define the getInitialProps function and its parameter type
 Error.getInitialProps = ({ res, err }: NextPageContext) => {
     const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
     return { statusCode };

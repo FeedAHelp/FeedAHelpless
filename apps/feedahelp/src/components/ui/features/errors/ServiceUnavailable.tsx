@@ -6,11 +6,9 @@ const ServiceUnavailable = ({estimatedTime}:{estimatedTime:number}) => {
     const Completions = () => <span>You are good to go!</span>;
 
     const renderer = ({ days ,hours, minutes, seconds, completed }:any) => {
-        // Render a completed state
+
         if (completed) return <Completions />;
 
-          // Render a countdown
-        //   return <span>{days}:{hours}:{minutes}:{seconds}</span>;
         return <div className='flex w-full md:w-3/6 justify-around text-center'>
             <ShowTime title="Days" time={days}/>
             <ShowTime title="Hours" time={hours}/>
