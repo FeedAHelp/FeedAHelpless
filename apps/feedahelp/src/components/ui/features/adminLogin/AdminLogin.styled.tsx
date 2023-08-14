@@ -11,17 +11,17 @@ const rotateBackground = keyframes`
 `;
 
 const FormContainer = styled.form`
-  width: 600px;
+  width: 37.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: rgb(255, 255, 255);
-  padding: 30px 30px 30px 30px;
-  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.062);
+  padding: 1.875rem;
+  box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.062);
   position: relative;
   overflow: hidden;
-  border: 1px solid rgb(209, 193, 255);
+  border: 0.053rem solid rgb(209, 193, 255);
   border-radius: 1rem;
 
   @media (max-width: 768px) {
@@ -29,25 +29,11 @@ const FormContainer = styled.form`
   }
 `;
 
-const RotatedBackground = styled.div`
-  position: absolute;
-  content: "";
-  width: 300px;
-  height: 300px;
-  background-color: rgb(209, 193, 255);
-  transform: rotate(45deg);
-  left: -180px;
-  bottom: 30px;
-  z-index: 1;
-  border-radius: 30px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.082);
-`;
-
 const Heading = styled.p`
   font-size: 3em;
   color: #2e2e2e;
   font-weight: 700;
-  margin: 5px 0 10px 0;
+  margin: 0.313rem 0 0.625rem 0;
   z-index: 2;
 `;
 
@@ -62,25 +48,27 @@ const InputContainer = styled.div`
 
 const InputIcon = styled.svg`
   position: absolute;
-  left: 3px;
+  left: 0.188rem;
+  width: 1.25rem;
+  height: 1.25rem;
 `;
 
 const InputField = styled.input`
   width: 100%;
-  height: 30px;
+  height: 1.875rem;
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid rgb(173, 173, 173);
-  margin: 10px 0;
+  border-bottom: 0.125rem solid rgb(173, 173, 173);
+  margin: 0.625rem 0;
   color: black;
   font-size: 0.8em;
   font-weight: 700;
   box-sizing: border-box;
-  padding-left: 30px;
+  padding-left: 1.875rem;
 
   &:focus {
     outline: none;
-    border-bottom: 2px solid rgb(199, 114, 255);
+    border-bottom: 0.125rem solid rgb(199, 114, 255);
   }
 
   &::placeholder {
@@ -96,12 +84,12 @@ const Button = styled.button`
   width: 100%;
   border: none;
   background-color: rgb(162, 104, 255);
-  height: 30px;
+  height: 1.875rem;
   color: white;
   font-size: 0.8em;
   font-weight: 500;
-  letter-spacing: 1px;
-  margin: 10px;
+  letter-spacing: 0.063rem;
+  margin: 0.625rem;
   cursor: pointer;
 
   &:hover {
@@ -111,7 +99,6 @@ const Button = styled.button`
 
 export const Styled = {
   FormContainer,
-  RotatedBackground,
   Heading,
   InputContainer,
   InputIcon,
