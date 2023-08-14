@@ -22,7 +22,7 @@ const TranslationDropdown: React.FC = () => {
                 isOpen && (
                     <div  className='bg-gray-300 top-20 flex flex-col items-start rounded-lg p-2  w-full absolute '> 
                         {language.map((item, i) => (
-                            <div className='p-2 hover:bg-slate-400 w-full flex cursor-pointer rounded-r-lg border-l-transparent hover:border-l-white border-l-4'>
+                            <div key={i} className='p-2 hover:bg-slate-400 w-full flex cursor-pointer rounded-r-lg border-l-transparent hover:border-l-white border-l-4'>
                                 <h3 className='font-bold '>{item?.language}</h3>
                             </div>
                         ))}
