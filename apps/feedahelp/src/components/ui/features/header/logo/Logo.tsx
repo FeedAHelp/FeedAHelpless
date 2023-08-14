@@ -6,7 +6,7 @@ const Logo = () => {
     <Styled.Logo>
       <Styled.Container>
         <Image
-          src="/FeedAHelpLogo.png"
+          src={"/static/images/feedahelp/logo.png"}
           width={300}
           height={100}
           alt={"feedahelpLogo"}
