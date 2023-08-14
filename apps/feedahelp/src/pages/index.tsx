@@ -16,7 +16,7 @@ const Index = () => {
       header={<Header />}
       child={
         <>
-          <div className="flex min-h-screen flex-col items-center justify-center text-fuchsia-600">
+          <div className=" min-h-screen  items-center justify-center text-fuchsia-600">
             <MainPage />
           </div>
         </>
