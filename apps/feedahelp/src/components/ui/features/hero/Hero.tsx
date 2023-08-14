@@ -13,6 +13,13 @@ const Hero = () => {
     }, 5000);
   };
 
+  const renderContent = () => {
+    if (isLoading) {
+      return <CustomSpinner isLoading={isLoading} />;
+    }
+    return <p>{fakeData}</p>;
+  };
+
   return (
     <div className="mt-28 h-72 w-full border border-red-600">
       This is the Hero section.
@@ -21,9 +28,7 @@ const Hero = () => {
           <p>Click me</p>
         </button>
       </div>
-      <CustomSpinner isLoading={isLoading}>
-        <p>{fakeData}</p>
-      </CustomSpinner>
+      {renderContent()}
     </div>
   );
 };
