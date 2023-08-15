@@ -3,11 +3,18 @@ import { Styled } from "./Navbar.styled";
 import MenuIcon from "@mui/icons-material/Menu";
 import Modal from "../../../../../../../../packages/ui/components/elements/Modal/GenericModal";
 import Image from "next/image";
+import LanguageSelections from "~/components/translationDropdown/LanguageSelections";
+
 
 const NewNav = () => {
+
   const [modalOpen, setModalOpen] = useState(false);
   const closeModal = (): void => {
     setModalOpen(false);
+  };
+
+  const openModal = (): void => {
+    setModalOpen(true);
   };
 
   return (
@@ -22,6 +29,8 @@ const NewNav = () => {
             <Image src="" className="center ring" alt="" />
             <Image src="" className="inner ring" alt="" />
           </Styled.Avatar>
+         
+        
         </div>
         <button
           id="hamburger"
@@ -38,6 +47,7 @@ const NewNav = () => {
           <button onClick={closeModal}>Close Modal</button>
         </Modal>
       </div>
+      <LanguageSelections/>
     </Styled.Navbar>
   );
 };
