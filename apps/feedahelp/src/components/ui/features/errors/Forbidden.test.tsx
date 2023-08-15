@@ -13,6 +13,7 @@ describe('Forbidden Component', () => {
     const link = getByText("Back to Home Page");
 
     expect(title).toBeInTheDocument();
+    expect(message).toBeInTheDocument();
     expect(image).toBeInTheDocument();
     expect(link).toBeInTheDocument();
   });

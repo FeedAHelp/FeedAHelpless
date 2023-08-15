@@ -1,11 +1,19 @@
 import Countdown from 'react-countdown';
 import Image from 'next/image';
 
+interface renderPropsType{
+    days:number
+    hours:number
+    minutes:number
+    seconds:number
+    completed:boolean
+}
+
 const ServiceUnavailable = ({estimatedTime}:{estimatedTime:number}) => {
 
     const Completions = () => <span>You are good to go!</span>;
 
-    const renderer = ({ days ,hours, minutes, seconds, completed }:any) => {
+    const renderer = ({ days ,hours, minutes, seconds, completed }:renderPropsType) => {
 
         if (completed) return <Completions />;
 
