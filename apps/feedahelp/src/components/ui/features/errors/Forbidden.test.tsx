@@ -8,11 +8,12 @@ describe('Forbidden Component', () => {
     const { getByText, getByAltText } = render(<Forbidden />);
     
     const title = getByText("No permission");
-    getByText(/The page you are trying access has restricted access.*Please Login First./);
+    const message = getByText(/The page you are trying access has restricted access.*Please Login First./);
     const image = getByAltText("notFound-gif");
     const link = getByText("Back to Home Page");
 
     expect(title).toBeInTheDocument();
+    expect(message).toBeInTheDocument();
     expect(image).toBeInTheDocument();
     expect(link).toBeInTheDocument();
   });
