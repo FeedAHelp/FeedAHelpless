@@ -4,7 +4,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { GenericButton } from "../../../../../../../../packages/ui/components/elements/Buttons/Button";
 import Modal from "../../../../../../../../packages/ui/components/elements/Modal/GenericModal";
 import router from "next/router";
-import TranslationDropdown from "~/components/translationDropdown/TranslationDropdown";
+import LanguageSelections from "~/components/translationDropdown/LanguageSelections";
 
 
 const NewNav = () => {
@@ -31,8 +31,6 @@ const NewNav = () => {
             <img className="inner ring" alt="" />
           </Styled.Avatar>
          
-          {/* Dropdown  langunage list*/}
-          <TranslationDropdown/>
         
         </div>
         <button
@@ -50,6 +48,7 @@ const NewNav = () => {
           <button onClick={closeModal}>Close Modal</button>
         </Modal>
       </div>
+      <LanguageSelections/>
     </Styled.Navbar>
   );
 };
