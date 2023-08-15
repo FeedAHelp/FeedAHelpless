@@ -1,10 +1,9 @@
-import { NextPageContext, } from 'next';
+import type { NextPageContext, } from 'next';
 import Notfound from '../components/ui/features/errors/NotFound'
 import ServerError from '../components/ui/features/errors/ServerError'
 import Forbidden from '../components/ui/features/errors/Forbidden'
 import Unauthorized from '../components/ui/features/errors/Unauthorized'
 import ServiceUnavailable from '../components/ui/features/errors/ServiceUnavailable'
-import { FC } from 'react';
 
 type ErrorWithStatusCode = {
     statusCode: 403 | 401;
