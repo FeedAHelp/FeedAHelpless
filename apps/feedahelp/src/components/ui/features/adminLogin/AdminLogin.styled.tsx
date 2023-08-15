@@ -1,14 +1,4 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
-
-const rotateBackground = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(45deg);
-  }
-`;
+import styled from "styled-components";
 
 const FormContainer = styled.form`
   width: 37.5rem;

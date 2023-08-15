@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
 import { Layout } from "../components/Layouts";
-import { MainPage } from "../components/ui/features/main";
 import AdminLogin from "~/components/ui/features/adminLogin/AdminLogin";
 
 const Header = dynamic(

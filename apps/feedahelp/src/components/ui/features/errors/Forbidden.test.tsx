@@ -8,7 +8,7 @@ describe('Forbidden Component', () => {
     const { getByText, getByAltText } = render(<Forbidden />);
     
     const title = getByText("No permission");
-    const message = getByText(/The page you are trying access has restricted access.*Please Login First./);
+    getByText(/The page you are trying access has restricted access.*Please Login First./);
     const image = getByAltText("notFound-gif");
     const link = getByText("Back to Home Page");
 

@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Styled } from "./Navbar.styled";
 import MenuIcon from "@mui/icons-material/Menu";
-import { GenericButton } from "../../../../../../../../packages/ui/components/elements/Buttons/Button";
 import Modal from "../../../../../../../../packages/ui/components/elements/Modal/GenericModal";
-import router from "next/router";
+import Image from "next/image";
 
 const NewNav = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -11,9 +10,6 @@ const NewNav = () => {
     setModalOpen(false);
   };
 
-  const openModal = (): void => {
-    setModalOpen(true);
-  };
   return (
     <Styled.Navbar>
       <div className="nav-end" onClick={() => setModalOpen(true)}>
@@ -22,9 +18,9 @@ const NewNav = () => {
             avatar={"/assets/avatar.png"}
             className="img-rotate-button"
           >
-            <img className="outer ring" alt="" />
-            <img className="center ring" alt="" />
-            <img className="inner ring" alt="" />
+            <Image src="" className="outer ring" alt="" />
+            <Image src="" className="center ring" alt="" />
+            <Image src="" className="inner ring" alt="" />
           </Styled.Avatar>
         </div>
         <button
