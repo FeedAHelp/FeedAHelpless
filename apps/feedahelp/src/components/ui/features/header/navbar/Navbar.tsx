@@ -13,10 +13,6 @@ const NewNav = () => {
     setModalOpen(false);
   };
 
-  const openModal = (): void => {
-    setModalOpen(true);
-  };
-
   return (
     <Styled.Navbar>
       <div className="nav-end" onClick={() => setModalOpen(true)}>
@@ -25,9 +21,9 @@ const NewNav = () => {
             avatar={"/assets/avatar.png"}
             className="img-rotate-button"
           >
-            <Image src="" className="outer ring" alt="" />
-            <Image src="" className="center ring" alt="" />
-            <Image src="" className="inner ring" alt="" />
+            <Image src="/assets/avatar.png" height={48} width={48} className="outer ring" alt="" />
+            <Image src="/assets/avatar.png" height={48} width={48} className="center ring" alt="" />
+            <Image src="/assets/avatar.png" height={48} width={48} className="inner ring" alt="" />
           </Styled.Avatar>
          
         
