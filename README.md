@@ -1,5 +1,10 @@
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![macOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 ![PNPM](https://img.shields.io/badge/pnpm-%234a4a4a.svg?style=for-the-badge&logo=pnpm&logoColor=f69220)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![React Query](https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white)
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
@@ -13,22 +18,24 @@
 ![Youtube Gaming](https://img.shields.io/badge/Youtube%20Gaming-FF0000?style=for-the-badge&logo=Youtubegaming&logoColor=white)
 ![Storybook](https://img.shields.io/badge/-Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white)
 ![Socket.io](https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101)
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
 # Turborepo starter
 
-This is an official starter Turborepo.
+Turborepo is a high-performance build system for JavaScript and TypeScript codebases. It is designed to be incrementally adopted, so you can add it to most codebases in a few minutes.
 
-## Using this example
+Turborepo leverages advanced build system techniques to speed up development, both on your local machine and your CI/CD. It does this by:
 
-Run the following command:
+- Using caching to avoid re-running tasks that have already been run.
+- Optimizing task pipelines to run as efficiently as possible.
+- Providing a unified interface for running tasks, regardless of the underlying build tool.
+- Turborepo can be used to build a wide variety of JavaScript and TypeScript projects, including:
 
-```sh
-npx create-turbo@latest
-```
-
-## What's inside?
-
-This Turborepo includes the following packages/apps:
+- Single-page applications (SPAs)
+- Serverless functions
+- Progressive web apps (PWAs)
+- Command-line tools
+- To use Turborepo, you first need to install it. You can do this with the following command:
 
 ### Apps and Packages
 
