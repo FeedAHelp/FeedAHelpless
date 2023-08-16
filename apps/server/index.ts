@@ -8,7 +8,7 @@ import authRouter from './routes/auth.router'
 import userRouter from './routes/user.router'
 
 const app = express()
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 3020
 
 dotenv.config()
 app.use(cors())
