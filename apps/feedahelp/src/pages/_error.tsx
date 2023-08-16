@@ -1,5 +1,3 @@
-import type { NextPageContext, } from 'next';
-import Notfound from '../components/ui/features/errors/NotFound'
 import ServerError from '../components/ui/features/errors/ServerError'
 import Forbidden from '../components/ui/features/errors/Forbidden'
 import Unauthorized from '../components/ui/features/errors/Unauthorized'
@@ -23,12 +21,6 @@ const Error = ({ statusCode,estimatedTime }:ErrorProps) => {
     statusCode? <RenderPages statusCode={statusCode} estimatedTime={time}/> : <ServerError/>
   );
 };
-
-Error.getInitialProps = ({ res, err }: NextPageContext) => {
-    const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
-    return { statusCode };
-  };
-
 export default Error;
 
 
@@ -37,8 +29,6 @@ const RenderPages=({statusCode,estimatedTime}:{statusCode:number,estimatedTime:n
     if(statusCode===401) return <Unauthorized/>
 
     if(statusCode===403) return <Forbidden/>
-
-    if(statusCode===404) return <Notfound/>
 
     if(statusCode===503) return <ServiceUnavailable estimatedTime={estimatedTime}/>
 
