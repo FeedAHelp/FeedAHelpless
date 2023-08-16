@@ -13,10 +13,6 @@ const NewNav = () => {
     setModalOpen(false);
   };
 
-  const openModal = (): void => {
-    setModalOpen(true);
-  };
-
   return (
     <Styled.Navbar>
       <div className="nav-end" onClick={() => setModalOpen(true)}>
