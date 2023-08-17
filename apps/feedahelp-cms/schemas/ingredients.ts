@@ -2,8 +2,8 @@ import {LemonIcon} from '@sanity/icons'
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'ingredient',
-  title: 'Ingredient',
+  name: 'ingredients',
+  title: 'Ingredients',
   type: 'document',
   icon: LemonIcon,
   fields: [
@@ -14,14 +14,14 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'ingredientNameBangla',
-      title: 'Ingredient Name Bangla',
+      name: 'banglaName',
+      title: 'Bangla Name',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-        name: 'ingredientImage',
-        title: 'Ingredient Image',
+        name: 'image',
+        title: 'Image',
         type: 'image',
         validation: (Rule) => Rule.required(),
     }),
@@ -30,6 +30,11 @@ export default defineType({
         title:'Price',
         type:'number',
         validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name:'measuringQuantity',
+      title:'Measur Quantity', 
+      type:'number',
     }),
     defineField({
         name: 'status',
@@ -42,6 +47,11 @@ export default defineType({
         title:'Country Of Origin',
         type:'string',
         validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name:'imageUrl',
+      title:'Image Url',
+      type:'string',
     }),
   ],
 })
