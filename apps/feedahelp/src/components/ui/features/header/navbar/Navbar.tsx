@@ -4,6 +4,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Modal from "../../../../../../../../packages/ui/components/elements/Modal/GenericModal";
 import Image from "next/image";
 import LanguageSelections from "~/components/translationDropdown/LanguageSelections";
+import CurrencyDropDown from "../CurrencyDropDown/CurrencyDropDown";
 
 
 const NewNav = () => {
@@ -44,6 +45,7 @@ const NewNav = () => {
         </Modal>
       </div>
       <LanguageSelections/>
+      <CurrencyDropDown/>
     </Styled.Navbar>
   );
 };

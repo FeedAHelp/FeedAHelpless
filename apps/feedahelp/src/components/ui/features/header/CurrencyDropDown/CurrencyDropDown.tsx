@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import language from "./language.json";
+import React, { useState } from 'react'
 import {ArrowDropDown,ArrowDropUp} from '@mui/icons-material'
 
+const CurrencyDropDown: React.FC = () => {
 
-const LanguageSelections: React.FC = () => {
+    const currency = ['USD', 'EUR', 'GBP', 'JPY','DKK','BDT']
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -18,17 +18,17 @@ const LanguageSelections: React.FC = () => {
                 className={`bg-gray-300 p-2 w-full flex items-center justify-center font-bold rounded-lg tracking-wider border-4 border-transparent active:border-white duration-300 ${isOpen ? 'active:text-white' : ''
                     }`}
             >
-                Languages
+                Currency
                 <p className='pl-2'>{isOpen ? <ArrowDropUp/> : <ArrowDropDown/>}</p>
             </button>
             {isOpen && (
                 <div className='bg-gray-300 top-20 flex flex-col items-start rounded-lg p-2 w-full absolute'>
-                    {language.map((item, i) => (
+                    {currency.map((item, i) => (
                         <div
                             key={i}
                             className='p-2 hover:bg-slate-400 w-full flex cursor-pointer rounded-r-lg border-l-transparent hover:border-l-white border-l-4'
                         >
-                            <h3 className='font-bold'>{item?.language}</h3>
+                            <h3 className='font-bold'>{item}</h3>
                         </div>
                     ))}
                 </div>
@@ -37,4 +37,4 @@ const LanguageSelections: React.FC = () => {
     );
 }
 
-export default LanguageSelections;
+export default CurrencyDropDown;
