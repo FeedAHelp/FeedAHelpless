@@ -4,6 +4,7 @@ import Hero from "../hero/Hero";
 import Avertisement from "../advertisement/Avertisement";
 import Ingredients from "../ingredients/Ingredients";
 import Menu from "../menu/Menu";
+import Sponsors from "../sponsors/Sponsors";
 
 export const MainPage = () => {
   return (
@@ -20,6 +21,9 @@ export const MainPage = () => {
         </Grid>
         <Grid item xs={12} md={8}>
           <Menu />
+        </Grid>
+        <Grid item xs={12} md={12}>
+          <Sponsors />
         </Grid>
       </Grid>
     </div>

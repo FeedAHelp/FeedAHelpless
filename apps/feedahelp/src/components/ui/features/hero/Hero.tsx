@@ -28,7 +28,7 @@ const Hero = () => {
           <p>Click me</p>
         </button>
       </div>
-      {renderContent()}
+      {renderContent()}     
     </div>
   );
 };
