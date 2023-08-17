@@ -21,8 +21,8 @@ const CurrencyDropDown: React.FC = () => {
         <Styled.HoverImage>
           <Image
             src="/icons/currencyIcon.png"
-            height={42}
-            width={42}
+            height={38}
+            width={38}
             alt="currency-icon"
           />
         </Styled.HoverImage>
