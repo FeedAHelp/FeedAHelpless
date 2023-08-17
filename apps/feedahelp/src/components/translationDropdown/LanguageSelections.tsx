@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import language from "./language.json";
 import {ArrowDropDown,ArrowDropUp} from '@mui/icons-material'
 import Image from 'next/image';
+import {Styled} from './LanguageSelection.styled'
 
 
 const LanguageSelections: React.FC = () => {
@@ -16,12 +17,15 @@ const LanguageSelections: React.FC = () => {
         <div className='relative flex flex-col items-center rounded-lg'>
             <button
                 onClick={toggleDropdown}
-                className={`bg-gray-300 w-full flex items-center justify-center font-bold rounded-lg tracking-wider border-4 border-transparent active:border-white duration-300 ${isOpen ? 'active:text-white' : ''
+                className={`w-full flex items-center justify-center font-bold rounded-lg tracking-wider border-4 border-transparent active:border-white duration-300 ${isOpen ? 'active:text-white' : ''
                     }`}
             >
-                <Image src='/icons/languageIcon.png' height={45} width={45} alt='language-icon'/>
-                
-                <p className='pl-2'>{isOpen ? <ArrowDropUp/> : <ArrowDropDown/>}</p>
+                <Styled.HoverImage>
+                    <Image src='/icons/languageIcon.png' height={50} width={50} alt='language-icon'/>
+                </Styled.HoverImage>
+
+                {isOpen ? <ArrowDropUp className='opacity-50'/> : <ArrowDropDown className='opacity-50'/>}
+
             </button>
             {isOpen && (
                 <div className='bg-gray-300 top-20 flex flex-col items-start rounded-lg p-2 w-full absolute'>
