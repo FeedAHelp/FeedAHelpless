@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {ArrowDropDown,ArrowDropUp} from '@mui/icons-material'
+import Image from 'next/image'
 
 const CurrencyDropDown: React.FC = () => {
 
@@ -15,10 +16,11 @@ const CurrencyDropDown: React.FC = () => {
         <div className='relative flex flex-col items-center rounded-lg'>
             <button
                 onClick={toggleDropdown}
-                className={`bg-gray-300 p-2 w-full flex items-center justify-center font-bold rounded-lg tracking-wider border-4 border-transparent active:border-white duration-300 ${isOpen ? 'active:text-white' : ''
+                className={`bg-gray-300 w-full flex items-center justify-center font-bold rounded-lg tracking-wider border-4 border-transparent active:border-white duration-300 ${isOpen ? 'active:text-white' : ''
                     }`}
             >
-                Currency
+                <Image src='/icons/currencyIcon.png' height={42} width={42} alt='currency-icon'/>
+                
                 <p className='pl-2'>{isOpen ? <ArrowDropUp/> : <ArrowDropDown/>}</p>
             </button>
             {isOpen && (

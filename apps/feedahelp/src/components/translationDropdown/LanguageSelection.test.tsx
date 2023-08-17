@@ -1,16 +1,16 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect'; 
-import LanguageSelections from './LanguageSelections'; 
+import { render, fireEvent, screen } from '@testing-library/react';
+import LanguageSelections from './LanguageSelections';
 
-describe('LanguageSelections Component', () => {
-  test('Dropdown toggles on button click', () => {
-    const { getByText, queryByText } = render(<LanguageSelections />);
-    const toggleButton = getByText('Languages');
-    expect(queryByText('English')).not.toBeInTheDocument(); 
-    fireEvent.click(toggleButton);
-    expect(queryByText('English')).toBeInTheDocument();
-    fireEvent.click(toggleButton);
-    expect(queryByText('English')).not.toBeInTheDocument();
-  });
+test('LanguageSelections component functionality', () => {
+  render(<LanguageSelections />);
+
+  const buttonElement = screen.getByAltText('language-icon');
+  expect(buttonElement).toBeInTheDocument();
+
+  fireEvent.click(buttonElement);
+  expect(screen.getByText('English')).toBeInTheDocument();
+
+  fireEvent.click(buttonElement);
+  expect(screen.queryByTestId('language-dropdown-content')).not.toBeInTheDocument();
 });
