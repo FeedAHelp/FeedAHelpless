@@ -8,8 +8,8 @@ export default defineType({
   icon: LemonIcon,
   fields: [
     defineField({
-      name: 'ingredientName',
-      title: 'Ingredient Name',
+      name: 'englishName',
+      title: 'English Name',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
