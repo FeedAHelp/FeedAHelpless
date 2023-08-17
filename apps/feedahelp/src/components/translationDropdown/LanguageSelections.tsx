@@ -14,11 +14,10 @@ const LanguageSelections: React.FC = () => {
     };
 
     return (
-        <div className='relative flex flex-col items-center rounded-lg'>
+        <div className='flex flex-col items-center'>
             <button
                 onClick={toggleDropdown}
-                className={`w-full flex items-center justify-center font-bold rounded-lg tracking-wider border-4 border-transparent active:border-white duration-300 ${isOpen ? 'active:text-white' : ''
-                    }`}
+                className={`flex items-center justify-center`}
             >
                 <Styled.HoverImage>
                     <Image src='/icons/languageIcon.png' height={50} width={50} alt='language-icon'/>
@@ -28,11 +27,11 @@ const LanguageSelections: React.FC = () => {
 
             </button>
             {isOpen && (
-                <div className='bg-gray-300 top-20 flex flex-col items-start rounded-lg p-2 w-full absolute'>
+                <div className='bg-gray-300 top-20 flex flex-col items-start rounded-lg p-2 w-28 absolute'>
                     {language.map((item, i) => (
                         <div
                             key={i}
-                            className='p-2 hover:bg-slate-400 w-full flex cursor-pointer rounded-r-lg border-l-transparent hover:border-l-white border-l-4'
+                            className='dropDownOption'
                         >
                             <h3 className='font-bold'>{item?.language}</h3>
                         </div>
