@@ -32,11 +32,10 @@ export default defineType({
       name: 'imgUrl',
       title: 'Image Url',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
         name:'price',
-        title:'Price',
+        title:'Price (BDT)/Per Unit',
         type:'number',
         validation: (Rule) => Rule.required(),
     }),
