@@ -3,7 +3,7 @@ import {TransferIcon} from '@sanity/icons'
 
 export default defineType({
     name: 'fahCounter',
-    title: 'FeedAHel Counters',
+    title: 'FeedAHelp Counters',
     type: 'document',
     icon: TransferIcon,
     fields: [
