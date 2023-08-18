@@ -3,9 +3,7 @@ import { size } from "../../../../../../../packages/ui/components/foundations/br
 
 const Header = styled.section`
   background: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0.25rem 1.875rem rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(0.475rem);
-  -webkit-backdrop-filter: blur(0.475rem);
+  background: transparent;
   position: fixed;
   z-index: 100;
   top: 0;
