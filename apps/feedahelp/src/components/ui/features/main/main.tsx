@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import React from "react";
 import Hero from "../hero/Hero";
-import Avertisement from "../advertisement/Avertisement";
+import FeedAHelpCounter from "../fahCounter/FAHCounter";
 import Ingredients from "../ingredients/Ingredients";
 import Menu from "../menu/Menu";
 import Sponsors from "../sponsors/Sponsors";
@@ -14,7 +14,7 @@ export const MainPage = () => {
           <Hero />
         </Grid>
         <Grid item xs={12} md={12}>
-          <Avertisement />
+          <FeedAHelpCounter />
         </Grid>
         <Grid item xs={12} md={4}>
           <Ingredients />
