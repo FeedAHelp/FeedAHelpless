@@ -4,7 +4,7 @@ import FAHCounter from "./FAHCounter";
 
 describe("FAHCounter Component", () => {
   it("renders the FAHCounterDisplay components with correct data", () => {
-    const { getByText, getByAltText } = render(<FAHCounter />);
+    const { getByText } = render(<FAHCounter />);
 
     // Check for the titles
     expect(getByText("TOTAL MONTHLY DONATIONS ($)")).toBeInTheDocument();
