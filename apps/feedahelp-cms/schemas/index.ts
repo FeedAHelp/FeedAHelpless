@@ -1,5 +1,3 @@
-import fahIngredients from './fahIngredients'
+import ingredients from './ingredients'
 
-export const schemaTypes = [
-    fahIngredients
-]
+export const schemaTypes = [ingredients]
