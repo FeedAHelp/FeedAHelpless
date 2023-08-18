@@ -1,9 +1,8 @@
 import Image from "next/image";
 import { Styled } from "./footer.styled";
 import { Grid } from "@mui/material";
-import EmailIcon from '@mui/icons-material/Email';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import YouTubeIcon from '@mui/icons-material/YouTube';
+import FooterDown from "./footerDown";
+import Data from "./footerData";
 
 export const Footer = () => {
   return (
@@ -21,151 +20,55 @@ export const Footer = () => {
           <Grid item xs={6} md={2}>
             <p className="pb-1 text-lg font-medium">Category</p>
             <ul>
-              <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-400"
-                >
-                  Link
-                </a>
-              </li>
-              <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-400"
-                >
-                  Link
-                </a>
-              </li>
-              <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-400"
-                >
-                  Link
-                </a>
-              </li>
-              <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-400"
-                >
-                  Link
-                </a>
-              </li>
-              <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-400"
-                >
-                  Link
-                </a>
-              </li>
+              {Data.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <a
+                      rel="noopener noreferrer"
+                      href={item.title}
+                      className="hover:dark:text-violet-400"
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </Grid>
           <Grid item xs={6} md={2}>
             <p className="pb-1 text-lg font-medium">Category</p>
             <ul>
-              <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-400"
-                >
-                  Link
-                </a>
-              </li>
-              <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-400"
-                >
-                  Link
-                </a>
-              </li>
-              <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-400"
-                >
-                  Link
-                </a>
-              </li>
-              <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-400"
-                >
-                  Link
-                </a>
-              </li>
-              <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-400"
-                >
-                  Link
-                </a>
-              </li>
+              {Data.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <a
+                      rel="noopener noreferrer"
+                      href={item.title}
+                      className="hover:dark:text-violet-400"
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </Grid>
           <Grid item xs={6} md={2}>
             <p className="pb-1 text-lg font-medium">Category</p>
             <ul>
-              <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-400"
-                >
-                  Link
-                </a>
-              </li>
-              <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-400"
-                >
-                  Link
-                </a>
-              </li>
-              <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-400"
-                >
-                  Link
-                </a>
-              </li>
-              <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-400"
-                >
-                  Link
-                </a>
-              </li>
-              <li>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:dark:text-violet-400"
-                >
-                  Link
-                </a>
-              </li>
+              {Data.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <a
+                      rel="noopener noreferrer"
+                      href={item.title}
+                      className="hover:dark:text-violet-400"
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </Grid>
           <Grid item xs={12} md={3}>
@@ -178,45 +81,7 @@ export const Footer = () => {
             </div>
           </Grid>
         </Grid>
-        <div className="grid justify-center pt-6 lg:justify-between">
-          <div className="flex flex-col self-center text-center text-sm md:block md:space-x-6 lg:col-start-1">
-            <span>
-              &copy; {new Date().getFullYear()} FeedAHelp. All rights reserved.
-            </span>
-            <a rel="noopener noreferrer" href="#">
-              <span>Privacy policy</span>
-            </a>
-            <a rel="noopener noreferrer" href="#">
-              <span>Terms of service</span>
-            </a>
-          </div>
-          <div className="flex justify-center space-x-4 pt-4 lg:col-end-13 lg:pt-0">
-            <a
-              rel="noopener noreferrer"
-              href="#"
-              title="Email"
-              className="flex h-10 w-10 items-center justify-center rounded-full dark:bg-violet-400 dark:text-gray-900"
-            >
-              <EmailIcon />
-            </a>
-            <a
-              rel="noopener noreferrer"
-              href="#"
-              title="Facebook"
-              className="flex h-10 w-10 items-center justify-center rounded-full dark:bg-violet-400 dark:text-gray-900"
-            >
-              <FacebookIcon />
-            </a>
-            <a
-              rel="noopener noreferrer"
-              href="#"
-              title="YouTube"
-              className="flex h-10 w-10 items-center justify-center rounded-full dark:bg-violet-400 dark:text-gray-900"
-            >
-              <YouTubeIcon />
-            </a>
-          </div>
-        </div>
+        <FooterDown />
       </div>
     </footer>
   );
