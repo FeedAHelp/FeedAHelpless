@@ -9,7 +9,7 @@ const Hero = () => {
           <span className="mb-5 inline-block">Your Recipe,</span> <br />
           <span className="mb-5 inline-block">Our Expertise</span>
           <br />
-          <span className="mb-5 inline-block">- We'll Bring </span>
+          <span className="mb-5 inline-block">- We&rsquo;ll Bring </span>
           <br />
           <span className="mb-5 inline-block">Smiles</span>
         </h1>
