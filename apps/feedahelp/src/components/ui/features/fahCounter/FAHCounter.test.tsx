@@ -8,7 +8,7 @@ describe("FAHCounter Component", () => {
 
     // Check for the titles
     expect(getByText("TOTAL MONTHLY DONATIONS ($)")).toBeInTheDocument();
-    expect(getByText("TOTAL CHEFT COOKING")).toBeInTheDocument();
+    expect(getByText("TOTAL CHEF COOKING")).toBeInTheDocument();
     expect(getByText("TOTAL FAMILY HELPED")).toBeInTheDocument();
     expect(getByText("TOTAL PEOPLE FEED")).toBeInTheDocument();
     expect(getByText("TOTAL OLD AGE HELPED")).toBeInTheDocument();
