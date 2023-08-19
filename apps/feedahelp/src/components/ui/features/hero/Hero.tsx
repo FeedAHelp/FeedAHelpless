@@ -1,4 +1,4 @@
-import backgroundImageUrl from "../../../../../public/assets/hero-cover.png";
+
 
 const Hero = () => {
   return (
@@ -14,8 +14,9 @@ const Hero = () => {
         </h1>
       </div>
       <div
+      data-testid="hero-background"
         className="relative w-full  bg-gradient-to-r from-neutral-50 to-transparent bg-cover bg-center bg-no-repeat p-4"
-        style={{ backgroundImage: `url(${backgroundImageUrl.src})` }}
+        style={{ backgroundImage: `url('/assets/hero-cover.png')` }}
       >
         <div className="absolute inset-0 w-1/3 bg-gradient-to-r from-neutral-50 to-transparent"></div>
       </div>
