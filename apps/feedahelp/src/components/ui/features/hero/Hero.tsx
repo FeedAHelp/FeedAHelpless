@@ -1,4 +1,4 @@
-
+import { Styled } from "./Hero.styled";
 
 const Hero = () => {
   return (
@@ -13,13 +13,8 @@ const Hero = () => {
           <span className="mb-5 inline-block">Smiles</span>
         </h1>
       </div>
-      <div
-      data-testid="hero-background"
-        className="relative w-full  bg-gradient-to-r from-neutral-50 to-transparent bg-cover bg-center bg-no-repeat p-4"
-        style={{ backgroundImage: `url('/assets/hero-cover.png')` }}
-      >
-        <div className="absolute inset-0 w-1/3 bg-gradient-to-r from-neutral-50 to-transparent"></div>
-      </div>
+      <Styled.Background data-testid="hero-background" ></Styled.Background>
+      
     </div>
   );
 };
