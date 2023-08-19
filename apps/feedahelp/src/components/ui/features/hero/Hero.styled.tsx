@@ -23,4 +23,3 @@ const Background = styled.div`
 export const Styled = {
    Background
   };
-  
