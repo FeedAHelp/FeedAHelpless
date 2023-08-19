@@ -31,7 +31,7 @@
   "dependencies": {
     "@emotion/styled": "^11.11.0",
     "@jest/globals": "^29.5.0",
-    "@mui/core": "5.0.0-alpha.54",
+    "@mui/base": "5.0.0-beta.11",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.5",
     "@mui/utils": "^5.13.1",
