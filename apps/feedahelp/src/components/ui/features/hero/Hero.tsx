@@ -1,34 +1,20 @@
-import React, { useState } from "react";
-import CustomSpinner from "./../../../../../../../packages/ui/components/elements/GenericSpinner/CustomSpinner";
+import { Styled } from "./Hero.styled";
 
 const Hero = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [fakeData, setFakeData] = useState("");
-
-  const fetchData = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setFakeData("This is Fake Data!!!");
-      setIsLoading(false);
-    }, 5000);
-  };
-
-  const renderContent = () => {
-    if (isLoading) {
-      return <CustomSpinner isLoading={isLoading} />;
-    }
-    return <p>{fakeData}</p>;
-  };
-
   return (
-    <div className="mt-28 h-72 w-full border border-red-600">
-      This is the Hero section.
-      <div className="w-20 border-2 bg-green-100">
-        <button className="h-auto w-20" onClick={fetchData}>
-          <p>Click me</p>
-        </button>
+    <div className="flex ">
+      <div className=" bg-neutral-50">
+        <h1 className="mt-16 w-32 py-10  ps-3 text-base font-semibold text-neutral-400 md:w-96 md:ps-14 md:text-3xl lg:text-5xl">
+          <span className="mb-5 inline-block">Your Recipe,</span> <br />
+          <span className="mb-5 inline-block">Our Expertise</span>
+          <br />
+          <span className="mb-5 inline-block">- We&rsquo;ll Bring </span>
+          <br />
+          <span className="mb-5 inline-block">Smiles</span>
+        </h1>
       </div>
-      {renderContent()}
+      <Styled.Background data-testid="hero-background" ></Styled.Background>
+      
     </div>
   );
 };
