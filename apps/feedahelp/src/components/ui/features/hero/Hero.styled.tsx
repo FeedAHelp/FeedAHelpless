@@ -8,13 +8,14 @@ const Background = styled.div`
   background-color: rgba(255, 255, 255, 1);
   position: relative;
   width: 100%;
-  padding: 1rem; /* Adjust the padding as needed */
+  height:416px;
+  padding: 1rem;
 
   &::before {
     content: "";
     position: absolute;
     inset: 0;
-    width: 33.3333%; /* Adjust the width as needed */
+    width: 33.3333%;
     background: linear-gradient(to right, rgba(250, 250, 250, 1), rgba(255, 255, 255, 0));
   }
 `;
