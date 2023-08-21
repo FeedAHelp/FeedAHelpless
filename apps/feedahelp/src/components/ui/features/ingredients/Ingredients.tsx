@@ -7,8 +7,8 @@ const Ingredients = () => {
       This is the Ingredients section.
 
       <div>
-      <p>hello this is for test the generic link: </p> <br />
-      <GenericLink color='red'  href="http://www.facebook.com" > Facebook</GenericLink>
+        <p>hello this is for test the generic link: </p> <br />
+        <GenericLink color='green' href="http://www.facebook.com" > Facebook</GenericLink>
       </div>
     </div>
   );
