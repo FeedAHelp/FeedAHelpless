@@ -4,6 +4,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Modal from "../../../../../../../../packages/ui/components/elements/Modal/GenericModal";
 import Image from "next/image";
 import LanguageSelections from "~/components/translationDropdown/LanguageSelections";
+import Login from "../auth/login/login";
 
 
 const NewNav = () => {
@@ -25,8 +26,7 @@ const NewNav = () => {
             <Image src="/assets/avatar.png" height={48} width={48} className="center ring" alt="" />
             <Image src="/assets/avatar.png" height={48} width={48} className="inner ring" alt="" />
           </Styled.Avatar>
-         
-        
+
         </div>
         <button
           id="hamburger"
@@ -38,9 +38,7 @@ const NewNav = () => {
           <MenuIcon className="text-4xl" />
         </button>
         <Modal isOpen={modalOpen} closeModal={closeModal}>
-          <h2>This is a modal!</h2>
-          <p>Modal content goes here.</p>
-          <button onClick={closeModal}>Close Modal</button>
+          <Login/>
         </Modal>
       </div>
       <LanguageSelections/>

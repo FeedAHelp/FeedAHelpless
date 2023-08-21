@@ -77,28 +77,17 @@ export const ModalContainer = styled.div`
 
 export const ModalBackground = styled.div`
   display: table-cell;
-  background: rgba(0, 0, 0, 0.8);
+  background: linear-gradient(135deg, #FF4D00 1.54%, #F5406E 49.48%, #DA4100 89.71%);
   text-align: center;
   vertical-align: middle;
 
   .modal {
     background: white;
-    padding: 3.125rem;
     display: inline-block; 
     border-radius: 0.1875rem;
     font-weight: 300;
     position: relative; 
-
-    h2 {
-      font-size: 1.5625rem;
-      line-height: 1.5625rem;
-      margin-bottom: 0.9375rem;
-    }
-
-    p {
-      font-size: 1.125rem;
-      line-height: 1.375rem;
-    }
+    width: 80%;
   } 
   .close-button {
     position: absolute;
@@ -107,6 +96,7 @@ export const ModalBackground = styled.div`
     cursor: pointer;
     font-size: 1.25rem;
     color: #333;
+    z-index: 10;
   }
   
 `
@@ -116,12 +106,6 @@ export const ModalContent = styled.div`
   position: relative;
   z-index: 0;
 
-  h1 {
-    padding: 4.6875rem 0 1.875rem 0;
-    text-align: center;
-    font-size: 1.875rem;
-    line-height: 1.875rem;
-  }
 
   .buttons {
     max-width: 50rem;
