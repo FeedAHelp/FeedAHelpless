@@ -2,19 +2,19 @@ import { Styled } from "./Hero.styled";
 
 const Hero = () => {
   return (
-    <div className="flex ">
-      <div className=" bg-neutral-50">
-        <h1 className="mt-16 w-32 py-10  ps-3 text-base font-semibold text-neutral-400 md:w-96 md:ps-14 md:text-3xl lg:text-5xl">
-          <span className="mb-5 inline-block">Your Recipe,</span> <br />
-          <span className="mb-5 inline-block">Our Expertise</span>
-          <br />
-          <span className="mb-5 inline-block">- We&rsquo;ll Bring </span>
-          <br />
-          <span className="mb-5 inline-block">Smiles</span>
+    <div className="flex flex-col-reverse md:flex-row">
+      <div className="heroTextWrapper">
+        <h1 className="heroText">
+          <span className="mb-5 inline">Your Recipe,</span>
+          <br className="hidden md:block" />
+          <span className="mb-5 inline">Our Expertise</span>
+          <br className="hidden md:block" />
+          <span className="mb-5 inline">- We&rsquo;ll Bring </span>
+          <br className="hidden md:block" />
+          <span className="mb-5 inline">Smiles</span>
         </h1>
       </div>
-      <Styled.Background data-testid="hero-background" ></Styled.Background>
-      
+      <Styled.Background data-testid="hero-background"></Styled.Background>
     </div>
   );
 };
