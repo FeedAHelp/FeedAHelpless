@@ -21,7 +21,7 @@ const todo_router_1 = __importDefault(require("./routes/todo.router"));
 const auth_router_1 = __importDefault(require("./routes/auth.router"));
 const user_router_1 = __importDefault(require("./routes/user.router"));
 const app = (0, express_1.default)();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3020;
 dotenv_1.default.config();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
