@@ -16,12 +16,10 @@ const GenericLink: React.FC<GenericLinkProps> = ({
   backgroundColor,
   fontSize,
 }) => {
-
   return (
     <Styled.GenericLink href={href} color={color} backgroundColor={backgroundColor} fontSize={fontSize}>
       {children}
     </Styled.GenericLink>
-
   );
 };
 
