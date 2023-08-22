@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Styled } from './Blabls.styled';
+import { Styled } from './GenericLink.styled';
 
 interface GenericLinkProps {
   children: ReactNode;
@@ -18,9 +18,9 @@ const GenericLink: React.FC<GenericLinkProps> = ({
 }) => {
 
   return (
-    <Styled.BlablsWrapper href={href} color={color} backgroundColor={backgroundColor} fontSize={fontSize}>
+    <Styled.GenericLink href={href} color={color} backgroundColor={backgroundColor} fontSize={fontSize}>
       {children}
-    </Styled.BlablsWrapper>
+    </Styled.GenericLink>
 
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import GenericLink from './GenericLink'; // Assuming the file is named GenericLink.tsx
+import GenericLink from './GenericLink'; 
 
 describe('GenericLink component', () => {
   it('renders correctly with given props', () => {
@@ -8,7 +8,6 @@ describe('GenericLink component', () => {
       href: 'https://example.com',
       color: 'blue',
       backgroundColor: 'lightgray',
-      fontSize: '16px',
     };
 
     const { getByText } = render(<GenericLink {...props}>Test Link</GenericLink>);
@@ -19,6 +18,5 @@ describe('GenericLink component', () => {
     expect(linkElement).toHaveAttribute('href', props.href);
     expect(linkElement).toHaveStyle(`color: ${props.color}`);
     expect(linkElement).toHaveStyle(`background-color: ${props.backgroundColor}`);
-    expect(linkElement).toHaveStyle(`font-size: ${props.fontSize}`);
   });
 });

@@ -3,6 +3,7 @@ import { Styled } from "./footer.styled";
 import { Grid } from "@mui/material";
 import FooterDown from "./footerDown";
 import Data from "./footerData";
+import GenericLink from "../../../../../../../packages/ui/components/elements/GenericLink/GenericLink";
 
 export const Footer = () => {
   return (
@@ -23,13 +24,12 @@ export const Footer = () => {
               {Data.map((item, index) => {
                 return (
                   <li key={index}>
-                    <a
-                      rel="noopener noreferrer"
+
+                    <GenericLink
                       href={item.title}
-                      className="hover:dark:text-violet-400"
-                    >
-                      {item.title}
-                    </a>
+                      color="Black"> {item.title}
+                    </GenericLink>
+
                   </li>
                 );
               })}
@@ -41,13 +41,10 @@ export const Footer = () => {
               {Data.map((item, index) => {
                 return (
                   <li key={index}>
-                    <a
-                      rel="noopener noreferrer"
+                    <GenericLink
                       href={item.title}
-                      className="hover:dark:text-violet-400"
-                    >
-                      {item.title}
-                    </a>
+                      color="Black"> {item.title}
+                    </GenericLink>
                   </li>
                 );
               })}
@@ -59,13 +56,10 @@ export const Footer = () => {
               {Data.map((item, index) => {
                 return (
                   <li key={index}>
-                    <a
-                      rel="noopener noreferrer"
+                     <GenericLink
                       href={item.title}
-                      className="hover:dark:text-violet-400"
-                    >
-                      {item.title}
-                    </a>
+                      color="Black"> {item.title}
+                    </GenericLink>
                   </li>
                 );
               })}
