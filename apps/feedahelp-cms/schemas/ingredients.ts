@@ -1,5 +1,5 @@
 import {LemonIcon} from '@sanity/icons'
-import {defineField, defineType} from 'sanity'
+import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'ingredients',
@@ -23,35 +23,40 @@ export default defineType({
         name: 'image',
         title: 'Image',
         type: 'image',
+        options: {
+          hotspot: true,
+        },
         validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'imgUrl',
+      title: 'Image Url',
+      type: 'string',
+    }),
+    defineField({
         name:'price',
-        title:'Price',
+        title:'Price (BDT)/Per Unit',
         type:'number',
         validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name:'measuringQuantity',
-      title:'Measur Quantity', 
-      type:'number',
-    }),
-    defineField({
-        name: 'status',
-        title: 'Status',
-        type: 'boolean',
-        validation: (Rule) => Rule.required(),
+      name: 'measuringUnit',
+      title: 'Select a Unit',
+      type: 'object',
+      fields: [
+        {
+          title: 'Units',
+          name: 'measuringUnits',
+          type: 'reference',
+          to: [{type: 'measuringUnits'}],
+        },
+      ],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
         name:'countryOfOrigin',
         title:'Country Of Origin',
         type:'string',
-        validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name:'imageUrl',
-      title:'Image Url',
-      type:'string',
-    }),
+    })
   ],
 })
