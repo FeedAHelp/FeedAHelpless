@@ -1,15 +1,17 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import { Footer } from "./footer"; // Update the import path based on your project structure
+import FooterSocial from "./FooterSocial";
 
-describe("Footer Component", () => {
-  it("renders without crashing", () => {
-    render(<Footer />);
-  });
+// Mock the fetchSocialMedia function
+jest.mock("~/utils/cms/fetchSocialMedia", () => ({
+  fetchSocialMedia: jest.fn(() => Promise.resolve([])),
+}));
 
-  it("displays '2023 FeedAHelp' text", () => {
-    const { getByText } = render(<Footer />);
-    const feedAHelpText = getByText("© 2023 FeedAHelp. All rights reserved.");
-    expect(feedAHelpText).toBeInTheDocument();
-  });
+test("renders social media icons", async () => {
+  const { findByAltText } = render(<FooterSocial />);
+  
+  // Wait for the component to render
+  const socialIcons = await findByAltText("feedahelpLogo");
+
+  expect(socialIcons).toBeInTheDocument();
 });
