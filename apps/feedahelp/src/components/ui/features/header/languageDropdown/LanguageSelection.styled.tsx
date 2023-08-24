@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from "styled-components";
 
 const HoverImage = styled.div`
   &:hover {
@@ -15,6 +15,33 @@ const HoverImage = styled.div`
   }
 `;
 
+const DropDownContainer = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 6rem;
+  top: 5rem;
+  padding: 0.5rem;
+  color: #fff;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.75);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+`;
+export const LanguageOption = styled.div`
+  cursor: pointer;
+  padding: 10px;
+  transition: background-color 0.2s ease;
+
+  &.selected {
+    background-color: #202124;
+  }
+`;
+
 export const Styled = {
-    HoverImage,
-  };
+  HoverImage,
+  DropDownContainer,
+  LanguageOption,
+};
