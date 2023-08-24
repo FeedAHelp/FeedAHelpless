@@ -31,4 +31,9 @@ model Register {
   accessToken String
   user         User?
 }
-
+model FeedahelpNewsletter{
+    id       String    @id @default(auto()) @map("_id") @db.ObjectId
+    userId String?
+    email String @unique
+    createAt DateTime @default(now())
+}
