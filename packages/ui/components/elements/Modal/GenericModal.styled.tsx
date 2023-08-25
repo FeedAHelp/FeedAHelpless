@@ -87,7 +87,7 @@ export const ModalBackground = styled.div`
     border-radius: 0.1875rem;
     font-weight: 300;
     position: relative; 
-    width: 80%;
+    width: 90%;
   } 
   .close-button {
     position: absolute;

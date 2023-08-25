@@ -1,12 +1,21 @@
 import { FormEvent } from "react";
 import {
+  ForgetPasswordLink,
   FormContainer,
   FormWrapper,
   ImageContainer,
   LoginImage,
-  PasswordWrapper,
+  PlaceCenter,
+  SocialLogin,
+  SubmitButton,
 } from "./login.styled";
-import { PasswordInputField, RememberDevice, TextInputField } from "../inputFields/inputFields";
+import {
+  PasswordInputField,
+  RememberDevice,
+  TextInputField,
+} from "../inputFields/inputFields";
+import Image from "next/image";
+import Link from "next/link";
 
 const Login = () => {
   const handleSubmit = (event: FormEvent) => {
@@ -21,7 +30,7 @@ const Login = () => {
         <p className="title">Sign In</p>
 
         <form onSubmit={handleSubmit}>
-            {/* email address */}
+          {/* email address */}
           <TextInputField
             label="Email Address"
             required
@@ -36,9 +45,47 @@ const Login = () => {
           />
 
           <RememberDevice />
-
-          
+          <SubmitButton type="submit">SIGN IN</SubmitButton>
+          <PlaceCenter>
+            <ForgetPasswordLink href="">Forgot Password?</ForgetPasswordLink>
+          </PlaceCenter>
+          {/* //todo add forget password link  */}
         </form>
+        <SocialLogin>
+          <p className="">You can also register using social network</p>
+          <div className="socialLink">
+            <Link href="" className="">
+              <Image
+              height={32}
+              width={32}
+                src="/static/images/social/facebook.png"
+                alt="social images"
+                
+                className="socialImage"
+              />
+            </Link>
+            <Link href="" className="">
+              <Image
+              height={32}
+              width={32}
+                src="/static/images/social/google.png"
+                alt="social images"
+                
+                className="socialImage"
+              />
+            </Link>
+            <Link href="" className="">
+              <Image
+              height={32}
+              width={32}
+                src="/static/images/social/Twitter.png"
+                alt="social images"
+                
+                className="socialImage"
+              />
+            </Link>
+          </div>
+        </SocialLogin>
       </FormContainer>
 
       {/* here is place of login image */}
