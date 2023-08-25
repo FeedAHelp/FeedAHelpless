@@ -1,17 +1,18 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import FooterSocial from "./FooterSocial";
-
-// Mock the fetchSocialMedia function
-jest.mock("~/utils/cms/fetchSocialMedia", () => ({
-  fetchSocialMedia: jest.fn(() => Promise.resolve([])),
-}));
-
-test("renders social media icons", async () => {
-  const { findByAltText } = render(<FooterSocial />);
-  
-  // Wait for the component to render
-  const socialIcons = await findByAltText("feedahelpLogo");
-
-  expect(socialIcons).toBeInTheDocument();
+describe("FooterSocial", () => {
+  it("renders social media links and images", () => {
+    render(<FooterSocial />);
+    const socialMediaLinks = screen.queryAllByRole("link");
+    const imageElements = screen.queryAllByAltText("feedahelpLogo");
+    socialMediaLinks.forEach((link) => {
+      expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    });
+    imageElements.forEach((image) => {
+      expect(image).toHaveAttribute("width", "40");
+      expect(image).toHaveAttribute("height", "40");
+      expect(image).toHaveClass("h-full object-cover");
+    });
+  });
 });
