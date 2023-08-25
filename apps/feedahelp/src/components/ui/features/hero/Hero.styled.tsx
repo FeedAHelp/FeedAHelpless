@@ -1,8 +1,11 @@
 import styled from "@emotion/styled";
 import Image from "next/image";
 
+interface liListsType {
+  isActive: boolean;
+}
+
 const ulLists = styled.ul`
-  position: relative;
   list-style: none;
   display: grid;
   padding: 1em;
@@ -12,7 +15,7 @@ const ulLists = styled.ul`
   gap: 1em;
 `;
 
-const liLists = styled.li`
+const liLists = styled.li<liListsType>`
   position: relative;
   display: grid;
   place-content: center;
@@ -89,13 +92,13 @@ const liLists = styled.li`
     grid-column: 1/2;
   }
 
-  &:active {
-    color: white;
-    text-shadow: 1px 1px 5px black, 0px 0px 2px black;
-  }
+  color: ${(props) => (props.isActive ? "white" : "")};
+  text-shadow: ${(props) =>
+    props.isActive ? "1px 1px 5px black, 0px 0px 2px black" : ""};
 
-  &:active img {
-    filter: grayscale(0) blur(0px) brightness(1);
+  img {
+    filter: ${(props) =>
+      props.isActive ? "grayscale(0) blur(0px) brightness(1)" : ""};
   }
 `;
 
@@ -118,7 +121,7 @@ const displayContainer = styled.div`
   grid-row: 2/-2 !important;
   grid-column: 2/-2 !important;
   overflow: hidden;
-  border: 5px solid rgb(243, 158, 48);
+  border: 5px solid #ed6c37;
   scroll-behavior: smooth;
 
   img {
@@ -130,9 +133,16 @@ const displayContainer = styled.div`
 
 const activeItemBorder = styled.div`
   pointer-events: none;
-  position: fixed;
-  border: 5px solid rgb(243, 158, 48);
+  position: absolute;
+  border: 5px solid #ed6c37;
   transition: top 0.5s ease, left 0.5s ease;
+`;
+const Info = styled.div`
+  position: fixed;
+  font-size: 2vmin;
+  transform: translate(0.5em, 0.5em);
+  color: white;
+  text-shadow: 1px 1px 5px black, 0px 0px 2px black;
 `;
 
 export const Styled = {
@@ -141,4 +151,5 @@ export const Styled = {
   Images,
   displayContainer,
   activeItemBorder,
+  Info,
 };

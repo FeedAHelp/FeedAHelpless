@@ -1,35 +1,32 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Styled } from "./Hero.styled";
+import { items } from "./data";
 
-interface DisplayImage {
-  src: string;
-  width: number;
-  height: number;
-}
+const Hero = () => {
+  const listRef = useRef<HTMLUListElement | null>(null);
+  const listItemsRef = useRef<(HTMLLIElement | null)[]>([]);
+  const displayRef = useRef<HTMLDivElement | null>(null);
+  const activeItemBorderRef = useRef<HTMLDivElement | null>(null);
+  const displayImgsRef = useRef<(HTMLImageElement | null)[]>([]);
 
-const Hero: React.FC = () => {
-  const [activeItem, setActiveItem] = useState<number>(0);
-  const [displayImages, setDisplayImages] = useState<DisplayImage[]>([]);
-  const [scrollTimeOut, setScrollTimeOut] = useState<boolean>(false);
+  const intervalTime = 3000;
+  const [activeItem, setActiveItem] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
 
-  const intervalTime: number = 3000;
+  const autoScrollRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    const listItems = document.querySelectorAll("ul li");
-    const newDisplayImages: DisplayImage[] = [];
+    const list = listRef.current;
 
-    listItems.forEach((item) => {
-      const img = item.querySelector("img");
-      if (img) {
-        newDisplayImages.push({
-          src: img.src,
-          width: img.width,
-          height: img.height,
-        });
-      }
-    });
+    const display = document.createElement("div");
+    display.id = "display-container";
+    list?.appendChild(display);
 
-    setDisplayImages(newDisplayImages);
+    const activeItemBorder = document.createElement("div");
+    activeItemBorder.id = "active-item-border";
+    document.body.appendChild(activeItemBorder);
+
+    positionActiveItemBorder();
 
     const handleResize = () => {
       positionActiveItemBorder();
@@ -39,225 +36,137 @@ const Hero: React.FC = () => {
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      clearInterval(autoScrollRef.current);
     };
   }, []);
 
+  const handleMouseEnter = () => {
+    setIsScrolling(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsScrolling(false);
+  };
+
+  let count = 0;
+  const handleWheel = (e: any) => {
+    setIsScrolling(true);
+    count++;
+
+    if (e.deltaY > 0 && count > 5) {
+      activeItem === 15 ? setActiveItem(0) : setActiveItem(activeItem + 1);
+      count = 0;
+    }
+
+    if (e.deltaY < 0 && count > 5) {
+      activeItem === 0 ? setActiveItem(15) : setActiveItem(activeItem - 1);
+      count = 15;
+    }
+  };
+
+  function disableScroll() {
+    const scrollPosition = window.scrollY;
+    document.body.style.position = "fixed";
+    document.body.style.marginTop = `-${scrollPosition}px`;
+  }
+
+  function enableScroll() {
+    const scrollPosition = parseInt(
+      document.body.style.marginTop.replace("-", ""),
+      10
+    );
+    document.body.style.position = "";
+    document.body.style.marginTop = "";
+    window.scrollTo(0, scrollPosition);
+  }
+
+  useEffect(() => {
+    document.body.style.marginRight = isScrolling ? "0.9rem" : "0rem";
+    isScrolling ? disableScroll() : enableScroll();
+  }, [isScrolling]);
+
   useEffect(() => {
     positionActiveItemBorder();
+  }, [activeItem]);
+
+  useEffect(() => {
     positionDisplayImg();
+    setActiveItem(0);
     setAutoScroll();
+  }, []);
 
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      if (scrollTimeOut || e.wheelDeltaY === 0) return;
-      setScrollTimeOut(true);
-      clearTimeout(scrollTimer);
-      const scrollTimer = setTimeout(() => {
-        setScrollTimeOut(false);
-      }, 500);
-
-      const direction = e.wheelDeltaY / -Math.abs(e.wheelDeltaY);
-      setActiveItem((prevActiveItem) => {
-        let newActiveItem = prevActiveItem + direction;
-        if (newActiveItem > displayImages.length - 1) newActiveItem = 0;
-        else if (newActiveItem < 0) newActiveItem = displayImages.length - 1;
-        positionActiveItemBorder();
-        positionDisplayImg();
-        setAutoScroll();
-        return newActiveItem;
-      });
-    };
-
-    document.querySelector("ul")?.addEventListener("wheel", handleWheel);
-
-    return () => {
-      document.querySelector("ul")?.removeEventListener("wheel", handleWheel);
-      clearInterval(autoScroll);
-    };
-  }, [activeItem, scrollTimeOut]);
+  const handleClick = (index: number) => {
+    if (listItemsRef.current[activeItem]) {
+      listItemsRef.current[activeItem].classList.remove("active");
+    }
+    positionDisplayImg();
+    setActiveItem(index);
+    setAutoScroll();
+  };
 
   const positionActiveItemBorder = () => {
-    const listItems = document.querySelectorAll("ul li");
-    const activeItemElement = listItems[activeItem] as HTMLElement;
-    if (activeItemElement) {
-      const bounding = activeItemElement.getBoundingClientRect();
-      const activeItemBorder = document.getElementById("active-item-border");
-      if (activeItemBorder) {
-        activeItemBorder.style.top = bounding.top + "px";
-        activeItemBorder.style.left = bounding.left + "px";
-        activeItemBorder.style.width = bounding.width + "px";
-        activeItemBorder.style.height = bounding.height + "px";
-      }
+    const bounding = listItemsRef.current[activeItem]?.getBoundingClientRect();
+    if (activeItemBorderRef.current) {
+      activeItemBorderRef.current.style.top = bounding?.top + "px";
+      activeItemBorderRef.current.style.left = bounding?.left + "px";
+      activeItemBorderRef.current.style.width = bounding?.width + "px";
+      activeItemBorderRef.current.style.height = bounding?.height + "px";
     }
   };
 
   const positionDisplayImg = () => {
-    const displayContainer = document.getElementById("display-container");
-    if (displayContainer) {
-      displayContainer.scrollTop =
-        displayImages[activeItem]?.height * activeItem || 0;
+    if (displayRef.current) {
+      displayRef.current.scrollTop =
+        displayImgsRef.current[activeItem]?.offsetTop;
     }
   };
 
-  let autoScroll: NodeJS.Timeout | null = null;
-
   const setAutoScroll = () => {
-    clearInterval(autoScroll as NodeJS.Timeout);
-    autoScroll = setInterval(() => {
-      setActiveItem((prevActiveItem) => {
-        let newActiveItem = prevActiveItem + 1;
-        if (newActiveItem > displayImages.length - 1) newActiveItem = 0;
-        positionActiveItemBorder();
-        positionDisplayImg();
-        return newActiveItem;
-      });
+    clearInterval(autoScrollRef.current);
+    autoScrollRef.current = setInterval(() => {
+      listItemsRef.current[activeItem]?.classList.remove("active");
+      let newActiveItem = activeItem + 1;
+      if (newActiveItem > listItemsRef.current.length - 1) {
+        newActiveItem = 0;
+      } else if (newActiveItem < 0) {
+        newActiveItem = listItemsRef.current.length - 1;
+      }
+      setActiveItem(newActiveItem);
+      positionActiveItemBorder();
+      positionDisplayImg();
     }, intervalTime);
   };
+  setAutoScroll();
 
   return (
-    <>
-      <Styled.ulLists>
-        <Styled.liLists>
-          {" "}
-          <Styled.Images
-            src="https://source.unsplash.com/ezSFnAFi9hY/500x500"
-            alt="cut citrus fruits. "
-          />
-          Lorem Ipsum
-        </Styled.liLists>
-        <Styled.liLists>
-          {" "}
-          <Styled.Images
-            src="https://source.unsplash.com/TIGDsyy0TK4/500x500"
-            alt="sliced mango. "
-          />
-          Dolor Sit
-        </Styled.liLists>
-        <Styled.liLists>
-          {" "}
-          <Styled.Images
-            src="https://source.unsplash.com/TdDtTu2rv4s/500x500"
-            alt="a bunch of blueberries. "
-          />
-          Amet Consectetur
-        </Styled.liLists>
-        <Styled.liLists>
-          {" "}
-          <Styled.Images
-            src="https://source.unsplash.com/eudGUrDdBB0/500x500"
-            alt="a pineapple sitting on a table. "
-          />
-          Adipiscing Elit
-        </Styled.liLists>
-        <Styled.liLists>
-          {" "}
-          <Styled.Images
-            src="https://source.unsplash.com/eJH4f1rlG7g/500x500"
-            alt="frozen raspberries. "
-          />{" "}
-          Nunc Tortor
-        </Styled.liLists>
-        <Styled.liLists>
-          {" "}
-          <Styled.Images
-            src="https://source.unsplash.com/24RUrLSW1HI/500x500"
-            alt="a sliced strawberry. "
-          />
-          Metus Mollis
-        </Styled.liLists>
-        <Styled.liLists>
-          {" "}
-          <Styled.Images
-            src="https://source.unsplash.com/h5yMpgOI5nI/500x500"
-            alt="an arrangement of assorted sliced fruits. "
-          />
-          Congue Sagittis
-        </Styled.liLists>
-        <Styled.liLists>
-          {" "}
-          <Styled.Images
-            src="https://source.unsplash.com/2TYrR2IB72s/500x500"
-            alt="sliced watermelons. "
-          />
-          Vestibulum Et
-        </Styled.liLists>
-        <Styled.liLists>
-          {" "}
-          <Styled.Images
-            src="https://source.unsplash.com/1cWZgnBhZRs/500x500"
-            alt="grapefruits, lemons, and pomegranates. "
-          />
-          Donec Eget
-        </Styled.liLists>
-        <Styled.liLists>
-          {" "}
-          <Styled.Images
-            src="https://source.unsplash.com/9aOswReDKPo/500x500"
-            alt="half of an avocado. "
-          />
-          Maecenas et Justo
-        </Styled.liLists>
-        <Styled.liLists>
-          {" "}
-          <Styled.Images
-            src="https://source.unsplash.com/Nl7eLS8E2Ss/500x500"
-            alt="half of a Styled.liListsme. "
-          />
-          Malesuada Quam
-        </Styled.liLists>
-        <Styled.liLists>
-          {" "}
-          <Styled.Images
-            src="https://source.unsplash.com/3HhXWJzG5Ko/500x500"
-            alt="a single cherry with stem. "
-          />
-          Ultricies SolStyled.liListscitudin
-        </Styled.liLists>
-        <Styled.liLists>
-          {" "}
-          <Styled.Images
-            src="https://source.unsplash.com/fczCr7MdE7U/500x500"
-            alt="a bunch of bananas. "
-          />
-          Gravida Nibh
-        </Styled.liLists>
-        <Styled.liLists>
-          {" "}
-          <Styled.Images
-            src="https://source.unsplash.com/uI900SItAyY/500x500"
-            alt="three pears. "
-          />
-          Pellentesque Sapien
-        </Styled.liLists>
-        <Styled.liLists>
-          {" "}
-          <Styled.Images
-            src="https://source.unsplash.com/0AynZdszfz0/500x500"
-            alt="a basket full of peaches next to a plate with sStyled.liListsced peaches. "
-          />
-          Suspendisse Vel
-        </Styled.liLists>
-        <Styled.liLists>
-          {" "}
-          <Styled.Images
-            src="https://source.unsplash.com/C6JhUKs9q8M/500x500"
-            alt="a bowl of avocados. "
-          />
-          Mauris Consectetur
-        </Styled.liLists>
-      </Styled.ulLists>
-      <Styled.displayContainer>
-        {displayImages.map((image, index) => (
-          <img
+    <div>
+      <Styled.ulLists
+        ref={listRef}
+        onWheel={handleWheel}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {items.map((value, index) => (
+          <Styled.liLists
             key={index}
-            src={image.src}
-            width={image.width}
-            height={image.height}
-          />
+            onClick={() => handleClick(index)}
+            isActive={activeItem === index ? true : false}
+            ref={(element) => (listItemsRef.current[index] = element)}
+          >
+            <Styled.Images src={value.imgSrc} alt={value.alt} />
+            {value.text}
+          </Styled.liLists>
         ))}
-      </Styled.displayContainer>
-      <Styled.activeItemBorder></Styled.activeItemBorder>
-    </>
+        <Styled.displayContainer ref={displayRef} className="h-72">
+          {items.map((value, index) => {
+            if (index === activeItem) {
+              return <img src={value.imgSrc} alt={value.alt} />;
+            }
+          })}
+        </Styled.displayContainer>
+        <Styled.activeItemBorder ref={activeItemBorderRef} />
+      </Styled.ulLists>
+    </div>
   );
 };
 
