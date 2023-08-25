@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components{
+    .dropDownOption{
+       @apply p-2 hover:bg-slate-400 w-full flex cursor-pointer rounded-r-lg border-l-transparent hover:border-l-white border-l-4
+    }
+    .heroTextWrapper{
+        @apply absolute md:relative z-20 bg-neutral-50 md:bg-transparent w-full md:w-[300px] lg:w-auto h-14 flex justify-center items-center md:justify-normal md:items-start
+    }
+    .heroText{
+        @apply md:mt-16 inline md:py-10 font-semibold text-neutral-400 md:w-96 md:ps-14 text-base md:text-left sm:text-2xl md:text-4xl lg:text-5xl
+    }
+}

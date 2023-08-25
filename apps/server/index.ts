@@ -1,11 +1,13 @@
 import express, { Request, Response } from 'express'
 import cors from 'cors'
+import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 import { startServer } from './utills/databaseConnection'
 import { authenticateJWT } from './middleware/auth.middleware'
 import todoRouter from './routes/todo.router'
 import authRouter from './routes/auth.router'
 import userRouter from './routes/user.router'
+import subscribeRouter from './routes/subscribe.route'
 
 const app = express()
 const port = process.env.PORT || 3020
@@ -13,8 +15,12 @@ const port = process.env.PORT || 3020
 dotenv.config()
 app.use(cors())
 app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 startServer()
+
+app.use(subscribeRouter)
+
 // Middleware to apply globally, excluding the authentication route
 app.use((req, res, next) => {
   if (req.path === '/auth/register' || req.path === '/auth/login') {

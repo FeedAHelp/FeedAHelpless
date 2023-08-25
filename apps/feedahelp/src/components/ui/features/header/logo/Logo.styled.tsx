@@ -9,7 +9,6 @@ const Logo = styled.div`
   font-weight: 800;
   margin: 0;
   padding: 0 1rem 0 0;
-  background: whitesmoke;
   display: flex;
   align-items: center;
   justify-content: center;

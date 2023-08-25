@@ -1,39 +1,42 @@
-# Create T3 App
+[![CI/CD](https://github.com/EnricoMi/publish-unit-test-result-action/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/EnricoMi/publish-unit-test-result-action/actions/workflows/ci-cd.yml)
+[![GitHub release badge](https://badgen.net/github/release/EnricoMi/publish-unit-test-result-action/stable)](https://github.com/EnricoMi/publish-unit-test-result-action/releases/latest)
+[![GitHub Workflows badge](https://gist.github.com/EnricoMi/612cb538c14731f1a8fefe504f519395/raw/workflows.svg)](https://github.com/search?q=publish-unit-test-result-action+path%3A.github%2Fworkflows%2F+language%3AYAML+language%3AYAML&type=Code&l=YAML)
+# FeedAHelp
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+FeedAHelp is a web application that allows users to find and donate food to those in need. It is built in a turboreop environment using pnpm, React, Nextjs, tailwindcss and styled-component. Sanity is used as the CMS and MongoDB is used for storing data. The application is deployed using Vercel.
 
-## What's next? How do I make an app with this?
+## Features
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+* Users can search for food banks and shelters in their area.
+* Users can donate food to food banks and shelters.
+* Users can track their donations.
+* Users can create and manage their own food bank or shelter.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Technologies
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+* pnpm
+* React
+* Nextjs
+* Tailwindcss
+* Styled-component
+* Sanity
+* MongoDB
+* Vercel
 
-## Learn More
+## Getting Started
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+To get started with FeedAHelp, you will need to:
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+1. Clone the repository: `git clone https://github.com/your-username/feedahelp.git`
+2. Install the dependencies: `pnpm install`
+3. Run the development server: `npm run dev`
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+The application will be available at http://localhost:3000.
 
-## How do I deploy this?
+## Contributing
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
-Mohammed Abu Hanifa
+Contributions are welcome! Please open a pull request if you have any changes or improvements.
 
-test_biplob
-test_sakib
-test_sojib
-test-muksana
-test_Rakib
-test-hanifa
-test_montasir
-test-ndmorsalin
-test-farhana
+## License
+
+FeedAHelp is licensed under the MIT License.

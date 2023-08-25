@@ -3,9 +3,10 @@ import { Styled } from "./Navbar.styled";
 import MenuIcon from "@mui/icons-material/Menu";
 import Modal from "../../../../../../../../packages/ui/components/elements/Modal/GenericModal";
 import Image from "next/image";
-import LanguageSelections from "~/components/translationDropdown/LanguageSelections";
-import Login from "../auth/login/login";
+import LanguageSelections from "~/components/ui/features/header/languageDropdown/LanguageSelections";
+import CurrencyDropDown from "../CurrencyDropDown/CurrencyDropDown";
 
+import Login from "../auth/login/login";
 
 const NewNav = () => {
 
@@ -42,6 +43,7 @@ const NewNav = () => {
         </Modal>
       </div>
       <LanguageSelections/>
+      <CurrencyDropDown/>
     </Styled.Navbar>
   );
 };

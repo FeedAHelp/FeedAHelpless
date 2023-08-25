@@ -1,4 +1,5 @@
 import React from "react";
+import GenericLink from "../../../../../../../packages/ui/components/elements/GenericLink/GenericLink"
 
 const Ingredients = () => {
   return (

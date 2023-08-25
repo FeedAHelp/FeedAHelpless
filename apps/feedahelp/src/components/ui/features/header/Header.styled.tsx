@@ -1,11 +1,13 @@
 import styled from "@emotion/styled";
 import { size } from "../../../../../../../packages/ui/components/foundations/breakpoints/device";
 
-const Header = styled.section`
+interface HeaderProps{
+    scrollBlur:boolean
+}
+
+const Header = styled.section<HeaderProps>`
   background: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0.25rem 1.875rem rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(0.475rem);
-  -webkit-backdrop-filter: blur(0.475rem);
+  background: transparent;
   position: fixed;
   z-index: 100;
   top: 0;
@@ -15,6 +17,9 @@ const Header = styled.section`
   justify-content: space-between;
   padding: 0 1rem;
   height: 5rem;
+  backdrop-filter:${props=>props.scrollBlur?'blur(0.475rem)':'blur(0rem)'};
+  -webkit-backdrop-filter:${props=>props.scrollBlur?'blur(0.475rem)':'blur(0rem)'};
+  transition: 0.5s;
 `;
 
 const NavBar = styled.nav`

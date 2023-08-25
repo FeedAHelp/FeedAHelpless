@@ -1,15 +1,18 @@
 import React from "react";
-import { render } from "@testing-library/react";
-import { Footer } from "./footer"; // Update the import path based on your project structure
-
-describe("Footer Component", () => {
-  it("renders without crashing", () => {
-    render(<Footer />);
-  });
-
-  it("displays '2023 FeedAHelp' text", () => {
-    const { getByText } = render(<Footer />);
-    const feedAHelpText = getByText("© 2023 FeedAHelp. All rights reserved.");
-    expect(feedAHelpText).toBeInTheDocument();
+import { render, screen } from "@testing-library/react";
+import FooterSocial from "./FooterSocial";
+describe("FooterSocial", () => {
+  it("renders social media links and images", () => {
+    render(<FooterSocial />);
+    const socialMediaLinks = screen.queryAllByRole("link");
+    const imageElements = screen.queryAllByAltText("feedahelpLogo");
+    socialMediaLinks.forEach((link) => {
+      expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    });
+    imageElements.forEach((image) => {
+      expect(image).toHaveAttribute("width", "40");
+      expect(image).toHaveAttribute("height", "40");
+      expect(image).toHaveClass("h-full object-cover");
+    });
   });
 });
