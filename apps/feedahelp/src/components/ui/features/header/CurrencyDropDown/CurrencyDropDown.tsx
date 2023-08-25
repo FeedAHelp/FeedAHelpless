@@ -1,16 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material";
 import Image from "next/image";
 import { Styled } from "./CurrencyDropDown.styled";
+import currency from "./currency.json";
 
 const CurrencyDropDown: React.FC = () => {
-  const currency = ["USD", "EUR", "GBP", "JPY", "DKK", "BDT"];
-
   const [isOpen, setIsOpen] = useState(false);
-
+  const [selectedItem, setSelectedItem] = useState<string | null>(null);
+  const dropdownRef = useRef(null);
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
   };
+
+  const handleItemClick = (currency: string) => {
+    setSelectedItem(currency);
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="flex flex-col items-center">
@@ -21,8 +38,8 @@ const CurrencyDropDown: React.FC = () => {
         <Styled.HoverImage>
           <Image
             src="/icons/currencyIcon.png"
-            height={38}
-            width={38}
+            height={32}
+            width={32}
             alt="currency-icon"
           />
         </Styled.HoverImage>
@@ -34,13 +51,19 @@ const CurrencyDropDown: React.FC = () => {
         )}
       </button>
       {isOpen && (
-        <div className="absolute top-20 flex w-20 flex-col items-start rounded-lg bg-gray-300 p-2">
+        <Styled.DropDownContainer ref={dropdownRef}>
           {currency.map((item, i) => (
-            <div key={i} className="dropDownOption">
-              <h3 className="font-bold">{item}</h3>
-            </div>
+            <Styled.CurrencyOption
+              key={i}
+              className={`dropDownOption ${
+                selectedItem === item.currency ? "selected" : ""
+              }`}
+              onClick={() => handleItemClick(item.currency)}
+            >
+              <h3 className="font-bold">{item.currency}</h3>
+            </Styled.CurrencyOption>
           ))}
-        </div>
+        </Styled.DropDownContainer>
       )}
     </div>
   );

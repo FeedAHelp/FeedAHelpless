@@ -1,3 +1,8 @@
+import axios from "axios";
+import { z, ZodType } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import toast, { Toaster } from "react-hot-toast";
 import Image from "next/image";
 import { Styled } from "./footer.styled";
 import { Grid } from "@mui/material";
@@ -5,7 +10,36 @@ import FooterDown from "./footerDown";
 import Data from "./footerData";
 import GenericLink from "../../../../../../../packages/ui/components/elements/GenericLink/GenericLink";
 
+interface FromData {
+  email: string;
+}
+
+const schema: ZodType<FromData> = z.object({
+  email: z.string().min(5).email(),
+});
+
 export const Footer = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FromData>({
+    resolver: zodResolver(schema),
+  });
+
+  const submitData = async (data: FromData) => {
+    const res = await axios({
+      method: "post",
+      url: "http://localhost:3020/subscribe",
+      data: {
+        email: data.email,
+      },
+    });
+    if (res.status === 200) {
+      toast.success("Thank you for subscribing!");
+    }
+  };
+  
   return (
     <footer className="py-6">
       <div className=" mx-auto space-y-6 divide-y divide-gray-400 divide-opacity-50 px-6 md:space-y-12">
@@ -67,12 +101,25 @@ export const Footer = () => {
           </Grid>
           <Grid item xs={12} md={3}>
             <p className="pb-1 text-lg font-medium">Want To Know More</p>
-            <div className="flex gap-2">
-              <Styled.InputField type="text" placeholder="Enter your email" />
-              <button className="h-10 rounded-md bg-violet-400 px-4  text-white">
-                Subscribe
-              </button>
-            </div>
+            <form onSubmit={handleSubmit(submitData)}>
+              <div className="flex gap-2">
+                <Styled.InputField
+                  type="text"
+                  placeholder="Enter your email"
+                  {...register("email")}
+                />
+                <button
+                  className="h-10 rounded-md bg-violet-400 px-4  text-white"
+                  type="submit"
+                >
+                  Subscribe
+                </button>
+              </div>
+              <span className="text-sm text-red-500">
+                {errors.email?.message}
+              </span>
+              <Toaster position="bottom-right" reverseOrder={false} />
+            </form>
           </Grid>
         </Grid>
         <FooterDown />

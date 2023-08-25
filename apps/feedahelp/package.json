@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@emotion/styled": "^11.11.0",
+    "@hookform/resolvers": "^3.3.0",
     "@mui/material": "^5.13.5",
     "@sanity/client": "^6.4.9",
     "@sanity/image-url": "^1.0.2",
