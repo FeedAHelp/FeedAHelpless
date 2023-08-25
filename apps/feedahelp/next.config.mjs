@@ -10,7 +10,7 @@ const config = {
   swcMinify: true,
   transpilePackages: ["ui"],
   images: {
-    domains: ["cdn.sanity.io", "i.ibb.co"],
+    domains: ["cdn.sanity.io", "i.ibb.co", "source.unsplash.com"],
   },
   typescript: {
     ignoreBuildErrors: true,
