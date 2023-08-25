@@ -16,7 +16,13 @@
         "NEXTAUTH_SECRET",
         "DISCORD_CLIENT_ID",
         "DISCORD_CLIENT_SECRET",
-        "ALLOW_ROBOTS"
+        "ALLOW_ROBOTS",
+        "NEXT_PUBLIC_SANITY_DATASET",
+        "NEXT_PUBLIC_SANITY_PROJECT_ID",
+        "NEXT_PUBLIC_BASE_URL",
+        "NEXT_PUBLIC_SANITY_API_TOKEN",
+        "SANITY_PREVIEW_SECRET"
+
       ]
     },
     "lint": {},
