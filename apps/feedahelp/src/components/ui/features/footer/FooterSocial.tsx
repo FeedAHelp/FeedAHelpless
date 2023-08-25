@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { fetchSocialMedia } from "~/utils/cms/fetchSocialMedia";
 import { urlForThumbnail } from "~/utils/cms/imageProcess";
+import Link from "next/link";
 
 const FooterSocial = () => {
   const [socialMedia, setSocilaMedia] = useState([]);
@@ -22,7 +23,7 @@ const FooterSocial = () => {
     <div className="flex justify-center space-x-4 pt-4 lg:col-end-13 lg:pt-0">
       {socialMedia.map((item: any, key) => {
         return (
-          <a
+          <Link
             key={key}
             rel="noopener noreferrer"
             href={item.solicalLinkUrl}
@@ -35,7 +36,7 @@ const FooterSocial = () => {
               alt={"feedahelpLogo"}
               className="h-full object-cover"
             />
-          </a>
+          </Link>
         );
       })}
     </div>
