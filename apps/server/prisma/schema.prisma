@@ -37,3 +37,13 @@ model FeedahelpNewsletter{
     email String @unique
     createAt DateTime @default(now())
 }
+
+model FahCounter{
+    id       String    @id @default(auto()) @map("_id") @db.ObjectId
+    sectionName String
+    sectionDescription String
+    imageIconUrl String
+    imageAlt String
+    value String
+    monthlyIncrease String
+}
