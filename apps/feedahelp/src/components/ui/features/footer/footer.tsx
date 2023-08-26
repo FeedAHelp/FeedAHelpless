@@ -39,7 +39,7 @@ export const Footer = () => {
       toast.success("Thank you for subscribing!");
     }
   };
-  
+
   return (
     <footer className="py-6">
       <div className=" mx-auto space-y-6 divide-y divide-gray-400 divide-opacity-50 px-6 md:space-y-12">
@@ -53,31 +53,16 @@ export const Footer = () => {
             />
           </Grid>
           <Grid item xs={6} md={2}>
-            <p className="pb-1 text-lg font-medium">Category</p>
+            <p className="pb-1 text-lg font-medium">About Us</p>
             <ul>
-              {Data.map((item, index) => {
-                return (
-                  <li key={index}>
-
-                    <GenericLink
-                      href={item.title}
-                      color="Black"> {item.title}
-                    </GenericLink>
-
-                  </li>
-                );
-              })}
-            </ul>
-          </Grid>
-          <Grid item xs={6} md={2}>
-            <p className="pb-1 text-lg font-medium">Category</p>
-            <ul>
-              {Data.map((item, index) => {
+              {Data?.About?.map((item, index) => {
                 return (
                   <li key={index}>
                     <GenericLink
                       href={item.title}
-                      color="Black"> {item.title}
+                      color="Black"
+                      fontSize="0.8rem"
+                    >{item.title}
                     </GenericLink>
                   </li>
                 );
@@ -85,14 +70,33 @@ export const Footer = () => {
             </ul>
           </Grid>
           <Grid item xs={6} md={2}>
-            <p className="pb-1 text-lg font-medium">Category</p>
+            <p className="pb-1 text-lg font-medium">Join Our Community</p>
             <ul>
-              {Data.map((item, index) => {
+              {Data?.Community?.map((item, index) => {
                 return (
                   <li key={index}>
-                     <GenericLink
+                    <GenericLink
                       href={item.title}
-                      color="Black"> {item.title}
+                      color="Black"
+                      fontSize="0.8rem"
+                    >{item.title}
+                    </GenericLink>
+                  </li>
+                );
+              })}
+            </ul>
+          </Grid>
+          <Grid item xs={6} md={2}>
+            <p className="pb-1 text-lg font-medium">Contact Us</p>
+            <ul>
+              {Data?.Contact?.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <GenericLink
+                      href={item.title}
+                      color="Black"
+                      fontSize="0.8rem"
+                    >{item.title}
                     </GenericLink>
                   </li>
                 );
