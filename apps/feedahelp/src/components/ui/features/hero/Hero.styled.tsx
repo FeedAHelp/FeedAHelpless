@@ -94,11 +94,11 @@ const liLists = styled.li<liListsType>`
 
   color: ${(props) => (props.isActive ? "white" : "")};
   text-shadow: ${(props) =>
-    props.isActive ? "1px 1px 5px black, 0px 0px 2px black" : ""};
+    props.isActive ? "0.063rem 0.063rem 0.313rem black, 0rem 0rem 0.125rem black" : ""};
 
   img {
     filter: ${(props) =>
-      props.isActive ? "grayscale(0) blur(0px) brightness(1)" : ""};
+      props.isActive ? "grayscale(0) blur(0rem) brightness(1)" : ""};
   }
 `;
 
@@ -110,7 +110,7 @@ const Images = styled.img`
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  filter: grayscale(1) blur(2px) brightness(0.3);
+  filter: grayscale(1) blur(0.125rem) brightness(0.3);
   -webkit-transition: -webkit-filter 500ms ease;
   transition: filter 0.25 ease;
   transition-delay: 0.25s;
@@ -118,10 +118,11 @@ const Images = styled.img`
 
 const displayContainer = styled.div`
   position: relative;
+  height:30vh;
   grid-row: 2/-2 !important;
   grid-column: 2/-2 !important;
   overflow: hidden;
-  border: 5px solid #ed6c37;
+  border: 0.313rem solid #ed6c37;
   scroll-behavior: smooth;
 
   img {
@@ -134,7 +135,7 @@ const displayContainer = styled.div`
 const activeItemBorder = styled.div`
   pointer-events: none;
   position: absolute;
-  border: 5px solid #ed6c37;
+  border: 0.313rem solid #ed6c37;
   transition: top 0.5s ease, left 0.5s ease;
 `;
 const Info = styled.div`
@@ -142,7 +143,7 @@ const Info = styled.div`
   font-size: 2vmin;
   transform: translate(0.5em, 0.5em);
   color: white;
-  text-shadow: 1px 1px 5px black, 0px 0px 2px black;
+  text-shadow: 0.063rem 0.063rem 0.313 black, 0rem 0rem 0.125rem black;
 `;
 
 export const Styled = {

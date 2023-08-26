@@ -96,7 +96,6 @@ const Hero = () => {
   }, []);
 
   const handleClick = (index: number) => {
-//    listItemsRef.current[activeItem].classList.remove("active");
 
     positionDisplayImg();
     setActiveItem(index);
@@ -156,7 +155,7 @@ const Hero = () => {
             {value.text}
           </Styled.liLists>
         ))}
-        <Styled.displayContainer ref={displayRef} className="h-72">
+        <Styled.displayContainer ref={displayRef}>
           {items.map((value, index) => {
             if (index === activeItem) {
               return <img key={index} src={value.imgSrc} alt={value.alt} />;
