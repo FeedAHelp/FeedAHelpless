@@ -1,6 +1,7 @@
 import React from "react";
 import CountUp from "react-countup";
 import Image from "next/image";
+import { urlForThumbnail } from "~/utils/cms/imageProcess";
 
 type CounterDisplayProp = {
   title: string;
@@ -35,7 +36,7 @@ const CounterDisplay = ({
       </div>
       <div>
         <span>
-          <Image src={imageIcon} alt={imageAlt} width={50} height={50} />
+          <Image src={urlForThumbnail(imageIcon)} alt={imageAlt} width={50} height={50} />
         </span>
       </div>
     </div>

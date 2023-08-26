@@ -1,17 +1,21 @@
-import React from "react";
-import { render } from "@testing-library/react";
-import FAHCounter from "./FAHCounter";
+import React from 'react';
+import { render } from '@testing-library/react';
+import FAHCounterDisplay from './FAHCounterDisplay';
 
-describe("FAHCounter Component", () => {
-  it("renders the FAHCounterDisplay components with correct data", () => {
-    const { getByText } = render(<FAHCounter />);
+describe('YourComponent', () => {
+  it('renders an image with the correct attributes', () => {
+    const imageIcon = 'image-Tb9Ew8CXIwaY6R1kjMvI0uRR-2000x3000-jpg';
+    const imageAlt = 'Alt text for your image';
 
-    // Check for the titles
-    expect(getByText("TOTAL MONTHLY DONATIONS ($)")).toBeInTheDocument();
-    expect(getByText("TOTAL CHEF COOKING")).toBeInTheDocument();
-    expect(getByText("TOTAL FAMILY HELPED")).toBeInTheDocument();
-    expect(getByText("TOTAL PEOPLE FEED")).toBeInTheDocument();
-    expect(getByText("TOTAL OLD AGE HELPED")).toBeInTheDocument();
-    expect(getByText("TOTAL USER REGISTERED")).toBeInTheDocument();
+    const { container } = render(
+      <FAHCounterDisplay
+        imageIcon={imageIcon}
+        imageAlt={imageAlt}
+      />
+    );
+    const imageElement = container.querySelector('img');
+    expect(imageElement).toBeInTheDocument();
+    expect(imageElement).toHaveAttribute('width', '50');
+    expect(imageElement).toHaveAttribute('height', '50');
   });
 });
