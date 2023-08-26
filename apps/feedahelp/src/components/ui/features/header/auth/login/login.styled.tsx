@@ -1,6 +1,11 @@
-import styled from "styled-components";
-import "../../../../../../../../../packages/ui/components/styles/Fonts/nunitoFont.style.css";
+import styled, { createGlobalStyle } from "styled-components";
 import { ReactNode } from "react";
+const GlobalStyles = createGlobalStyle`
+   /* Import the Google Font URL */
+  
+   @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+
+`
 
 export const FormWrapper = styled.div`
   display: grid;

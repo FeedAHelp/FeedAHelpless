@@ -30,7 +30,9 @@ export const TextInputField: FC<InputFieldProps> = ({
         className="formInput"
         placeholder={placeholder}
         disabled={disabled}
-        // onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => {
+          return onChange && onChange(e.target.value);
+        }}
         value={value}
       />
     </div>
