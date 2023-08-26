@@ -36,7 +36,7 @@ const Hero = () => {
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      clearInterval(autoScrollRef.current);
+      clearInterval(autoScrollRef.current as any);
     };
   }, []);
 
@@ -96,9 +96,8 @@ const Hero = () => {
   }, []);
 
   const handleClick = (index: number) => {
-    if (listItemsRef.current[activeItem]) {
-      listItemsRef.current[activeItem].classList.remove("active");
-    }
+//    listItemsRef.current[activeItem].classList.remove("active");
+
     positionDisplayImg();
     setActiveItem(index);
     setAutoScroll();
@@ -116,13 +115,13 @@ const Hero = () => {
 
   const positionDisplayImg = () => {
     if (displayRef.current) {
-      displayRef.current.scrollTop =
-        displayImgsRef.current[activeItem]?.offsetTop;
+      displayRef.current.scrollTop = displayImgsRef.current[activeItem]
+        ?.offsetTop as number;
     }
   };
 
   const setAutoScroll = () => {
-    clearInterval(autoScrollRef.current);
+    clearInterval(autoScrollRef.current as any);
     autoScrollRef.current = setInterval(() => {
       listItemsRef.current[activeItem]?.classList.remove("active");
       let newActiveItem = activeItem + 1;
@@ -160,7 +159,7 @@ const Hero = () => {
         <Styled.displayContainer ref={displayRef} className="h-72">
           {items.map((value, index) => {
             if (index === activeItem) {
-              return <img src={value.imgSrc} alt={value.alt} />;
+              return <img key={index} src={value.imgSrc} alt={value.alt} />;
             }
           })}
         </Styled.displayContainer>
