@@ -1,7 +1,13 @@
 import styled from "@emotion/styled";
 
-const SocialAvatar = styled.div``;
+const UserTermsConditions = styled.div`
+  display: inline-block;
+
+  @media (max-width: 800px) {
+    display: none;
+  }
+`;
 
 export const Styled = {
-  SocialAvatar,
+  UserTermsConditions,
 };

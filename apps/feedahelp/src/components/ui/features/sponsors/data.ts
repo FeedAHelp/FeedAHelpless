@@ -45,5 +45,3 @@ export const items = [
     text: "Metus Mollis",
   }
 ];
-
-export default items;
