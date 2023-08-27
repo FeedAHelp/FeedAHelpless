@@ -1,6 +1,6 @@
 /* number of images*/
 .gallery {
-  --d: 10s;
+  --d: 20s;
   /* duration */
   display: grid;
   width: 150px;
@@ -18,7 +18,7 @@
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
-  border: 10px solid #f2f2f2;
+  border: 0.3rem solid #f2f2f2;
   box-shadow: 0 0 4px #0007;
   z-index: 2;
   animation: slide var(--d) infinite, z-order var(--d) infinite steps(1);

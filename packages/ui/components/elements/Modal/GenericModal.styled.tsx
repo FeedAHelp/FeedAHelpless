@@ -83,10 +83,10 @@ export const ModalBackground = styled.div`
 
   .modal {
     background: white;
-    padding-top: 3.125rem;
-    padding-bottom: 3.125rem;
-    padding-left: 1.125rem;
-    padding-right: 1.125rem;
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+    padding-left: 0.125rem;
+    padding-right: 0.125rem;
     display: inline-block;
     border-radius: 0.1875rem;
     font-weight: 300;
