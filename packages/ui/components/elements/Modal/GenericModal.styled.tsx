@@ -49,7 +49,7 @@ export const ModalContainer = styled.div`
   top: 0;
   left: 0;
   transform: scale(0);
-  z-index: 1;
+  z-index: 5;
 
   &.one {
     transform: scaleY(0.01) scaleX(0);
@@ -83,11 +83,14 @@ export const ModalBackground = styled.div`
 
   .modal {
     background: white;
-    padding: 3.125rem;
-    display: inline-block; 
+    padding-top: 3.125rem;
+    padding-bottom: 3.125rem;
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
+    display: inline-block;
     border-radius: 0.1875rem;
     font-weight: 300;
-    position: relative; 
+    position: relative;
 
     h2 {
       font-size: 1.5625rem;
@@ -99,7 +102,7 @@ export const ModalBackground = styled.div`
       font-size: 1.125rem;
       line-height: 1.375rem;
     }
-  } 
+  }
   .close-button {
     position: absolute;
     top: 0.5rem;
@@ -108,10 +111,9 @@ export const ModalBackground = styled.div`
     font-size: 1.25rem;
     color: #333;
   }
-  
 `
 
-export const ModalContent = styled.div` 
+export const ModalContent = styled.div`
   background: white;
   position: relative;
   z-index: 0;

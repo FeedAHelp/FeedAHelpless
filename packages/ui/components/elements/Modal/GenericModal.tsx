@@ -13,7 +13,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, closeModal, children }) => {
 
   return (
     <Styled.ModalContainer className={isOpen ? 'one' : 'out'} onClick={(e) => e.stopPropagation()}>
-      <Styled.ModalBackground className='modal-background' onClick={closeModal}>
+      <Styled.ModalBackground className='modal-background'>
         <Styled.ModalContent className='modal'>
           <button className='close-button' onClick={closeModal}>
             <styled.CloseButton />
