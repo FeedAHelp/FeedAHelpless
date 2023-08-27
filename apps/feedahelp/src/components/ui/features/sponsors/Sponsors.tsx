@@ -1,11 +1,27 @@
-import React from 'react';
+import React from "react";
+import { Styled } from "./Sponsers.styled";
+import { items } from "./data";
+import Image from "next/image";
 
 const Sponsors = () => {
-    return (
-        <div className='border border-red-600 w-full h-60 mb-2'>
-            This is the Sponsors section
+  return (
+    <div className="mb-2 border">
+      <div className="container mx-auto p-4">
+        <div className="grid grid-cols-3 gap-4">
+          {items.map((value, index) => (
+            <Styled.bgCover key={index}>
+              <Image
+                src={value.imgSrc}
+                alt={value.alt}
+                width={200}
+                height={200}
+              />
+            </Styled.bgCover>
+          ))}
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Sponsors;
