@@ -1,13 +1,5 @@
 import styled from "@emotion/styled";
 
-const UserTermsConditions = styled.div`
-  display: inline-block;
-
-  @media (max-width: 800px) {
-    display: none;
-  }
-`;
-
 const Field = styled.div`
   position: relative;
   padding-top: 1rem;
@@ -35,7 +27,7 @@ const LoginInput = styled.input`
   border: 0;
   outline: none;
   width: 80vw;
-  max-width: 400px;
+  max-width: 300px;
   font-size: 1.5em;
   transition: padding 0.3s 0.2s ease;
 
@@ -45,7 +37,6 @@ const LoginInput = styled.input`
 `;
 
 export const Styled = {
-  UserTermsConditions,
   Field,
   Line,
   LoginInput,
