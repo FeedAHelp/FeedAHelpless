@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import { fetchSocialMedia } from "~/utils/cms/fetchSocialMedia";
 import { urlForThumbnail } from "~/utils/cms/imageProcess";
 import Link from "next/link";
+import {Styled} from './FooterSocial.styled'
 
 const FooterSocial = () => {
   const [socialMedia, setSocilaMedia] = useState([]);
@@ -29,7 +29,7 @@ const FooterSocial = () => {
             href={item.solicalLinkUrl}
             title={item.title}
           >
-            <Image
+            <Styled.SocialIcon
               src={urlForThumbnail(item.imageIcon)}
               width={40}
               height={40}
