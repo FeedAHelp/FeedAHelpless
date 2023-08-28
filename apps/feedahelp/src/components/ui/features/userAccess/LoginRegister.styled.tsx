@@ -6,9 +6,9 @@ const Field = styled.div`
 `;
 const Line = styled.div`
   width: 100%;
-  height: 3px;
+  height: 0.188rem;
   position: absolute;
-  bottom: -8px;
+  bottom: -0.5rem;
   background: #bdc3c7;
 
   &:after {
@@ -16,7 +16,7 @@ const Line = styled.div`
     position: absolute;
     float: right;
     width: 100%;
-    height: 3px;
+    height: 0.188rem;
     transform: scalex(0);
     transition: transform 0.3s ease;
     background: #1abc9c;
@@ -27,12 +27,12 @@ const LoginInput = styled.input`
   border: 0;
   outline: none;
   width: 80vw;
-  max-width: 300px;
+  max-width: 18.75rem;
   font-size: 1.5em;
   transition: padding 0.3s 0.2s ease;
 
   &:focus {
-    padding-bottom: 5px;
+    padding-bottom: 0.313rem;
   }
 `;
 

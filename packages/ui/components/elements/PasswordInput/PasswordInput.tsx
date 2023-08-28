@@ -14,8 +14,6 @@ export function PasswordInput({ placeholder, strengthCheck }: PasswordInputProps
   const [password, setPassword] = useState('')
   const [type, setType] = useState('password')
   const [icon, setIcon] = useState(eyeOff)
-  const [message, setMessage] = useState('')
-  const [progress, setProgress] = useState('')
 
   const handleToggle = () => {
     if (type === 'password') {

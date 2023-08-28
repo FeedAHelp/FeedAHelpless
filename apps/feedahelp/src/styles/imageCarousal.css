@@ -3,13 +3,13 @@
   --d: 20s;
   /* duration */
   display: grid;
-  width: 150px;
+  width: 9.375rem;
 }
 
 @media only screen and (max-width: 800px) {
   .gallery {
-    margin-left: 100px;
-    width: 100px;
+    margin-left: 6.25rem;
+    width: 6.25rem;
   }
 }
 
@@ -19,7 +19,7 @@
   aspect-ratio: 1;
   object-fit: cover;
   border: 0.3rem solid #f2f2f2;
-  box-shadow: 0 0 4px #0007;
+  box-shadow: 0 0 0.25rem #0007;
   z-index: 2;
   animation: slide var(--d) infinite, z-order var(--d) infinite steps(1);
 }
