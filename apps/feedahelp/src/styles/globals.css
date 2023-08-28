@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("imageCarousal.css");
+
 @layer components{
     .dropDownOption{
        @apply p-2 hover:bg-slate-400 w-full flex cursor-pointer rounded-r-lg border-l-transparent hover:border-l-white border-l-4

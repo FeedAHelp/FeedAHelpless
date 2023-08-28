@@ -49,7 +49,7 @@ export const ModalContainer = styled.div`
   top: 0;
   left: 0;
   transform: scale(0);
-  z-index: 1;
+  z-index: 5;
 
   &.one {
     transform: scaleY(0.01) scaleX(0);
@@ -83,23 +83,16 @@ export const ModalBackground = styled.div`
 
   .modal {
     background: white;
-    padding: 3.125rem;
-    display: inline-block; 
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+    padding-left: 0.125rem;
+    padding-right: 0.125rem;
+    display: inline-block;
     border-radius: 0.1875rem;
     font-weight: 300;
-    position: relative; 
+    position: relative;
+  }
 
-    h2 {
-      font-size: 1.5625rem;
-      line-height: 1.5625rem;
-      margin-bottom: 0.9375rem;
-    }
-
-    p {
-      font-size: 1.125rem;
-      line-height: 1.375rem;
-    }
-  } 
   .close-button {
     position: absolute;
     top: 0.5rem;
@@ -108,43 +101,10 @@ export const ModalBackground = styled.div`
     font-size: 1.25rem;
     color: #333;
   }
-  
 `
 
-export const ModalContent = styled.div` 
+export const ModalContent = styled.div`
   background: white;
   position: relative;
   z-index: 0;
-
-  h1 {
-    padding: 4.6875rem 0 1.875rem 0;
-    text-align: center;
-    font-size: 1.875rem;
-    line-height: 1.875rem;
-  }
-
-  .buttons {
-    max-width: 50rem;
-    margin: 0 auto;
-    padding: 0;
-    text-align: center;
-
-    .button {
-      display: inline-block;
-      text-align: center;
-      padding: 0.625rem 0.9375rem;
-      margin: 0.625rem;
-      background: red;
-      font-size: 1.125rem;
-      background-color: #efefef;
-      border-radius: 0.1875rem;
-      box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.3);
-      cursor: pointer;
-
-      &:hover {
-        color: white;
-        background: #009bd5;
-      }
-    }
-  }
 `

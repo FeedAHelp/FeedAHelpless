@@ -14,18 +14,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
+const body_parser_1 = __importDefault(require("body-parser"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const databaseConnection_1 = require("./utills/databaseConnection");
 const auth_middleware_1 = require("./middleware/auth.middleware");
 const todo_router_1 = __importDefault(require("./routes/todo.router"));
 const auth_router_1 = __importDefault(require("./routes/auth.router"));
 const user_router_1 = __importDefault(require("./routes/user.router"));
+const subscribe_route_1 = __importDefault(require("./routes/subscribe.route"));
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3020;
 dotenv_1.default.config();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
+app.use(body_parser_1.default.urlencoded({ extended: false }));
 (0, databaseConnection_1.startServer)();
+app.use(subscribe_route_1.default);
 // Middleware to apply globally, excluding the authentication route
 app.use((req, res, next) => {
     if (req.path === '/auth/register' || req.path === '/auth/login') {

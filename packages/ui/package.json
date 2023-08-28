@@ -38,6 +38,8 @@
     "framer-motion": "^10.12.16",
     "lottie-web": "^5.12.2",
     "next": "^13.4.2",
+    "react-icons-kit": "^2.0.0",
+    "react-password-strength-bar": "^0.4.1",
     "recoil": "^0.7.7",
     "styled-components": "6.0.0-rc.3"
   }

@@ -5,10 +5,9 @@ import Modal from "../../../../../../../../packages/ui/components/elements/Modal
 import Image from "next/image";
 import LanguageSelections from "~/components/ui/features/header/languageDropdown/LanguageSelections";
 import CurrencyDropDown from "../CurrencyDropDown/CurrencyDropDown";
-
+import Login from "../../userAccess/login/Login";
 
 const NewNav = () => {
-
   const [modalOpen, setModalOpen] = useState(false);
   const closeModal = (): void => {
     setModalOpen(false);
@@ -22,30 +21,44 @@ const NewNav = () => {
             avatar={"/assets/avatar.png"}
             className="img-rotate-button"
           >
-            <Image src="/assets/avatar.png" height={48} width={48} className="outer ring" alt="" />
-            <Image src="/assets/avatar.png" height={48} width={48} className="center ring" alt="" />
-            <Image src="/assets/avatar.png" height={48} width={48} className="inner ring" alt="" />
+            <Image
+              src="/assets/avatar.png"
+              height={48}
+              width={48}
+              className="outer ring"
+              alt=""
+            />
+            <Image
+              src="/assets/avatar.png"
+              height={48}
+              width={48}
+              className="center ring"
+              alt=""
+            />
+            <Image
+              src="/assets/avatar.png"
+              height={48}
+              width={48}
+              className="inner ring"
+              alt=""
+            />
           </Styled.Avatar>
-         
-        
         </div>
         <button
           id="hamburger"
           aria-label="hamburger"
           aria-haspopup="true"
           aria-expanded="false"
-          className="hamburger" 
+          className="hamburger"
         >
           <MenuIcon className="text-4xl" />
         </button>
         <Modal isOpen={modalOpen} closeModal={closeModal}>
-          <h2>This is a modal!</h2>
-          <p>Modal content goes here.</p>
-          <button onClick={closeModal}>Close Modal</button>
+          <Login />
         </Modal>
       </div>
-      <LanguageSelections/>
-      <CurrencyDropDown/>
+      <LanguageSelections />
+      <CurrencyDropDown />
     </Styled.Navbar>
   );
 };
