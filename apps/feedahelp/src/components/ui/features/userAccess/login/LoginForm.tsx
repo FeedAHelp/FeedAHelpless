@@ -41,8 +41,8 @@ const LoginForm = () => {
                         onChange={(e) => setPassword(e.target.value)}
                         autoComplete="current-password"
                     />
-                        <span className="flex justify-end items-center" onClick={handleToggle}>
-                            <Icon className="absolute pb-8" icon={icon} size={25}/>
+                        <span className="flex justify-end items-center cursor-pointer" onClick={handleToggle}>
+                            <Icon className="absolute pb-8" icon={icon} size={30}/>
                         </span>
                     <Styled.Line />
                     </Styled.Field>
