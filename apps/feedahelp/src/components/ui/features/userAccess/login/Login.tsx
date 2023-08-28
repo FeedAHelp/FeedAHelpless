@@ -5,6 +5,7 @@ import GenericLink from "../../../../../../../../packages/ui/components/elements
 import { Styled } from "../LoginRegister.styled";
 import SocialMedia from "../socialMedia/socialMedia";
 import LoginForm from "./LoginForm";
+import RegisterForm from "../register/RegisterForm";
 
 const Logo = dynamic(import("../../header/logo/Logo"));
 const MemoLogo = memo(Logo);
@@ -17,7 +18,7 @@ const Login = () => {
         <ImageCarousal />
       </div>
       <div className="bg-white p-5 md:flex-1">
-          <LoginForm />
+          <RegisterForm />
           <div className="mb-4 flex flex-row items-center justify-center text-center gap-4 pt-4">
             <h4 className="text-sm">Don't have an account?</h4>
             <GenericLink

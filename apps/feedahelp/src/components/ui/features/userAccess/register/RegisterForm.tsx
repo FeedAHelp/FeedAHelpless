@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Styled } from "../LoginRegister.styled";
 import { CheckboxButton } from "../../../../../../../../packages/ui/components/elements/Checkbox/CheckboxButton";
 import GenericLink from "../../../../../../../../packages/ui/components/elements/GenericLink/GenericLink";
+import { PasswordInput } from "../../../../../../../../packages/ui/components/elements/PasswordInput/PasswordInput";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const LoginForm = () => {
@@ -15,13 +16,7 @@ const LoginForm = () => {
                     </Styled.Field>
                 </div>
                 <div className="flex flex-col space-y-1">
-                    <Styled.Field>
-                    <Styled.LoginInput
-                        type="password"
-                        placeholder="What's your password?"
-                    />
-                    <Styled.Line />
-                    </Styled.Field>
+                    <PasswordInput placeholder="Password?" strengthCheck="true"/>
                 </div>
                 <div className="flex items-center justify-between pt-4 pb-4">
                     <CheckboxButton chackboxTitle="Remember me" />

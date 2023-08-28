@@ -1,28 +1,12 @@
-import React, { useState }from "react";
+import React from "react";
 import { Styled } from "../LoginRegister.styled";
 import { CheckboxButton } from "../../../../../../../../packages/ui/components/elements/Checkbox/CheckboxButton";
 import GenericLink from "../../../../../../../../packages/ui/components/elements/GenericLink/GenericLink";
+import { PasswordInput } from "../../../../../../../../packages/ui/components/elements/PasswordInput/PasswordInput";
 import ReCAPTCHA from "react-google-recaptcha";
-import {Icon} from 'react-icons-kit';
-import {eyeOff} from 'react-icons-kit/feather/eyeOff';
-import {eye} from 'react-icons-kit/feather/eye'
 
 
 const LoginForm = () => {
-    const [password, setPassword] = useState("");
-    const [type, setType] = useState('password');
-    const [icon, setIcon] = useState(eyeOff);
-
-    const handleToggle = () => {
-        if (type==='password'){
-           setIcon(eye);
-           setType('text')
-        } else {
-           setIcon(eyeOff)
-           setType('password')
-        }
-     }
-
   return <div>
             <h3 className="text-2xl font-semibold text-gray-700">Login</h3>
             <form action="#" className="flex flex-col space-y-4">
@@ -33,19 +17,7 @@ const LoginForm = () => {
                     </Styled.Field>
                 </div>
                 <div className="flex flex-col space-y-1">
-                    <Styled.Field>
-                    <Styled.LoginInput
-                        type={type}
-                        placeholder="What's your password?"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        autoComplete="current-password"
-                    />
-                        <span className="flex justify-end items-center cursor-pointer" onClick={handleToggle}>
-                            <Icon className="absolute pb-8" icon={icon} size={30}/>
-                        </span>
-                    <Styled.Line />
-                    </Styled.Field>
+                    <PasswordInput placeholder="password?" />
                 </div>
                 <div className="flex items-center justify-between pt-4 pb-4">
                     <CheckboxButton chackboxTitle="Remember me" />
