@@ -18,7 +18,7 @@ const Login = () => {
         <ImageCarousal />
       </div>
       <div className="bg-white p-5 md:flex-1">
-        <RegisterForm />
+        <LoginForm />
         <div className="mb-4 flex flex-row items-center justify-center gap-4 pt-4 text-center">
           <h4 className="text-sm">Already have an account?</h4>
           <GenericLink href={"www.google.com"} color="Black" fontSize="0.8rem">
