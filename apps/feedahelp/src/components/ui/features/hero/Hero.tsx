@@ -1,6 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Styled } from "./Hero.styled";
-import { items } from "./data";
+import { fetchHeroImages } from "~/utils/cms/fetchHeroImages";
+
+interface HeroImagesType{
+    title:string
+    imgSrc:string
+}
 
 const Hero = () => {
   const listRef = useRef<HTMLUListElement | null>(null);
@@ -8,6 +13,22 @@ const Hero = () => {
   const displayRef = useRef<HTMLDivElement | null>(null);
   const activeItemBorderRef = useRef<HTMLDivElement | null>(null);
   const displayImgsRef = useRef<(HTMLImageElement | null)[]>([]);
+
+  
+  const [heroImages, setHeroImages] = useState<HeroImagesType[]>([]);
+
+  const getHeroImages = async () => {
+    try {
+      const data = await fetchHeroImages();
+      setHeroImages(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getHeroImages();
+  }, []);
 
   const intervalTime = 3000;
   const [activeItem, setActiveItem] = useState(0);
@@ -96,7 +117,6 @@ const Hero = () => {
   }, []);
 
   const handleClick = (index: number) => {
-
     positionDisplayImg();
     setActiveItem(index);
     setAutoScroll();
@@ -144,21 +164,21 @@ const Hero = () => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        {items.map((value, index) => (
+        {heroImages.map((value, index) => (
           <Styled.liLists
             key={index}
             onClick={() => handleClick(index)}
             isActive={activeItem === index ? true : false}
             ref={(element) => (listItemsRef.current[index] = element)}
           >
-            <Styled.Images src={value.imgSrc} alt={value.alt} />
-            {value.text}
+            <Styled.Images src={value.imgSrc} alt='hero-image' />
+            {value.title}
           </Styled.liLists>
         ))}
         <Styled.displayContainer ref={displayRef}>
-          {items.map((value, index) => {
+          {heroImages.map((value, index) => {
             if (index === activeItem) {
-              return <img key={index} src={value.imgSrc} alt={value.alt} />;
+              return <img key={index} src={value.imgSrc} alt='hero-image' />;
             }
           })}
         </Styled.displayContainer>
