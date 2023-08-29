@@ -1,17 +1,27 @@
 [
     {
-        "language": "Bangla"
+        "language": "Bangla",
+        "country":"BD",
+        "altFlagImg":"BD-Flag"
     },
     {
-        "language": "English"
+        "language": "English",
+        "country":"US",
+        "altFlagImg":"US-Flag"
     },
     {
-        "language": "Spanish"
+        "language": "Spanish",
+        "country":"MX",
+        "altFlagImg":"MX-Flag"
     },
     {
-        "language": "Deutsch"
+        "language": "Deutsch",
+        "country":"DE",
+        "altFlagImg":"DE-Flag"
     },
     {
-        "language": "Danish"
+        "language": "Danish",
+        "country":"DK",
+        "altFlagImg":"DK-Flag"
     }
 ]
