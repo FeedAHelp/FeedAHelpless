@@ -2,7 +2,8 @@ import { useRef, useState } from "react";
 import { Styled } from "./Navbar.styled";
 import MenuIcon from "@mui/icons-material/Menu";
 import Modal from "../../../../../../../../packages/ui/components/elements/Modal/GenericModal";
-import { useSession } from "next-auth/react";
+import { LogoutButton } from "../../../../../../../../packages/ui/components/elements/LogoutButton/LogoutButton";
+import { useSession, signOut } from "next-auth/react";
 import LanguageSelections from "~/components/ui/features/header/languageDropdown/LanguageSelections";
 import CurrencyDropDown from "../CurrencyDropDown/CurrencyDropDown";
 import Login from "../../userAccess/login/Login";
@@ -11,51 +12,39 @@ const NewNav = () => {
   const { data: session } = useSession();
 
   const ref = useRef(null);
-  const [activeTab, setActiveTab] = useState<{
-    tabIndex: number;
-    tabOneStatus: boolean;
-    tabTwoStatus: boolean;
-    profileStatus?: boolean;
-  } | null>(null);
 
   const [modalOpen, setModalOpen] = useState(false);
   const closeModal = (): void => {
     setModalOpen(false);
   };
 
+  const handleLogout = async (e: any) => {
+    e.preventDefault();
+    await signOut({
+      callbackUrl: "/",
+    });
+  };
+
   return (
     <Styled.Navbar>
-      <div className="nav-end" onClick={() => setModalOpen(true)}>
+      <div className="nav-end">
         <div className="right-container">
           {session?.user.image ? (
-            <Styled.Avatar
-              avatar={session.user.image}
-              ref={ref}
-              onMouseEnter={() =>
-                setActiveTab({
-                  tabIndex: 2,
-                  profileStatus: true,
-                  tabOneStatus: false,
-                  tabTwoStatus: false,
-                })
-              }
-              className="img-rotate-button"
-            >
-              <img className="outer ring" />
-              <img className="center ring" />
-              <img className="inner ring" />
-            </Styled.Avatar>
+            <>
+              <LogoutButton handleLogout={handleLogout} />
+              <Styled.Avatar
+                avatar={session.user.image}
+                ref={ref}
+                className="img-rotate-button"
+              >
+                <img className="outer ring" />
+                <img className="center ring" />
+                <img className="inner ring" />
+              </Styled.Avatar>
+            </>
           ) : session?.user?.name ? (
             <div
               ref={ref}
-              onMouseEnter={() =>
-                setActiveTab({
-                  tabIndex: 2,
-                  profileStatus: true,
-                  tabOneStatus: false,
-                  tabTwoStatus: false,
-                })
-              }
               className=" cursor-pointer rounded-full bg-orange-600"
             >
               <span className="flex h-10 w-10  items-center justify-center text-lg font-bold text-white">
@@ -66,15 +55,8 @@ const NewNav = () => {
             <Styled.Avatar
               avatar={"/assets/avatar.png"}
               ref={ref}
-              onMouseEnter={() =>
-                setActiveTab({
-                  tabIndex: 2,
-                  profileStatus: true,
-                  tabOneStatus: false,
-                  tabTwoStatus: false,
-                })
-              }
               className="img-rotate-button"
+              onClick={() => setModalOpen(true)}
             >
               <img className="outer ring" />
               <img className="center ring" />
