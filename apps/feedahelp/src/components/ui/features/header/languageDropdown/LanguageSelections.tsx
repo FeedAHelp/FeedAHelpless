@@ -60,6 +60,7 @@ const LanguageSelections: React.FC = () => {
               }`}
               onClick={() => handleItemClick(item.language)}
             >
+              <img className="w-7 mr-3" src={getFlagSrc(item.country)} alt="" />
               <h3 className="font-bold">{item.language}</h3>
             </Styled.LanguageOption>
           ))}
@@ -70,3 +71,9 @@ const LanguageSelections: React.FC = () => {
 };
 
 export default LanguageSelections;
+
+function getFlagSrc(countryCode: string) {
+  return /^[A-Z]{2}$/.test(countryCode)
+    ? `https://www.countryflagicons.com/SHINY/64/${countryCode.toUpperCase()}.png`
+    : "";
+}
