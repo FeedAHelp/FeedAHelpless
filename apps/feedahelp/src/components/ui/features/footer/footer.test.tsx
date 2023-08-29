@@ -1,18 +1,17 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import FooterSocial from "./FooterSocial";
-describe("FooterSocial", () => {
-  it("renders social media links and images", () => {
-    render(<FooterSocial />);
-    const socialMediaLinks = screen.queryAllByRole("link");
-    const imageElements = screen.queryAllByAltText("feedahelpLogo");
-    socialMediaLinks.forEach((link) => {
-      expect(link).toHaveAttribute("rel", "noopener noreferrer");
-    });
-    imageElements.forEach((image) => {
-      expect(image).toHaveAttribute("width", "40");
-      expect(image).toHaveAttribute("height", "40");
-      expect(image).toHaveClass("h-full object-cover");
-    });
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import Footer from './Footer'; 
+
+describe('Footer', () => {
+  it('renders the footer component', () => {
+    render(<Footer />);
+    
+    expect(screen.getByText('About Us')).toBeInTheDocument();
+    expect(screen.getByText('Join Our Community')).toBeInTheDocument();
+    expect(screen.getByText('Contact Us')).toBeInTheDocument();
+    expect(screen.getByText('Want To Know More')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Enter your email')).toBeInTheDocument();
+    expect(screen.getByText('Subscribe')).toBeInTheDocument();
   });
+
 });
