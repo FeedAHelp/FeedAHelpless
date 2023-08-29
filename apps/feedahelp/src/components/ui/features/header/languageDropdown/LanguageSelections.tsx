@@ -60,7 +60,7 @@ const LanguageSelections: React.FC = () => {
               }`}
               onClick={() => handleItemClick(item.language)}
             >
-              <img className="w-7 mr-3" src={getFlagSrc(item.country)} alt="" />
+              <img className="w-7 mr-3" src={getFlagSrc(item.country)} alt={item.altFlagImg} />
               <h3 className="font-bold">{item.language}</h3>
             </Styled.LanguageOption>
           ))}
