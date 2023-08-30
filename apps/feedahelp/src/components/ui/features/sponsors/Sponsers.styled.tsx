@@ -4,7 +4,6 @@ const bgCover = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 12.5rem;
   width: 100%;
   cursor: pointer;
 
