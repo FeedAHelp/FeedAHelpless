@@ -13,7 +13,7 @@ const MemoLogo = memo(Logo);
 const Login = () => {
   return (
     <div className="max flex flex-col overflow-hidden rounded-md bg-white shadow-lg md:flex-1 md:flex-row lg:max-w-screen-md">
-      <div className="gap-8 bg-[#F3AF9A] text-black md:flex md:w-80 md:flex-shrink-0 md:flex-col md:items-center md:justify-center">
+      <div className="gap-8 text-black md:flex md:w-80 md:flex-shrink-0 md:flex-col md:items-center md:justify-center">
         <MemoLogo />
         <ImageCarousal />
       </div>
