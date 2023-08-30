@@ -24,7 +24,7 @@ const CardWrapper = styled.div`
     content: "";
     position: absolute;
     z-index: -1;
-    bottom: 2rem;
+    bottom: 2.2rem;
     right: -1rem;
     height: 1.875rem;
     width: 0rem;
@@ -36,7 +36,7 @@ const CardWrapper = styled.div`
     content: "";
     position: absolute;
     z-index: -1;
-    bottom: 2rem;
+    bottom: 2.2rem;
     right: -1rem;
     background: rgba(86, 215, 116, 0.292);
     height: 1.875rem;
