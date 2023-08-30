@@ -60,17 +60,15 @@ export const Footer = () => {
               alt={"feedahelpLogo"}
             />
             <button onClick={() => setModalOpen(true)}
-              className="h-10 mt-5 rounded-md transition-colors duration-300 bg-gradient-to-r from-[#ec0404] to-[#ed6002] hover:from-green-700 hover:to-green-600 px-4 text-white"
+              className="donate-btn"
               type="submit"
             >
               Donate
               <Modal isOpen={modalOpen} closeModal={closeModal}>
                 <div className="w-[400px] h-[400px]">
-
                 </div>
               </Modal>
             </button>
-
           </Grid>
           <Grid item xs={6} md={2}>
             <p className="pb-1 text-lg font-medium">About Us</p>
