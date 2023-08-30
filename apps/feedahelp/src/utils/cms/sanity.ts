@@ -4,7 +4,7 @@ export const config = {
     dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "feedahelp",
     projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
     token: process.env.NEXT_PUBLIC_SANITY_API_TOKEN!,
-    useCdn: process.env.NODE_ENV === "development",
+    useCdn: true,
 }
 export const sanityClient = createClient(config);
 export const urlFor = (source: string) => createImageUrlBuilder(config).image(source);
