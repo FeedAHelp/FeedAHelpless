@@ -5,7 +5,8 @@ export const config = {
     projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
     token: process.env.NEXT_PUBLIC_SANITY_API_TOKEN!,
     useCdn: true,
-    apiVersion: '2023-08-30'
+    apiVersion: '2023-08-30',
+    ignoreBrowserTokenWarning: true
 }
 export const sanityClient = createClient(config);
 export const urlFor = (source: string) => createImageUrlBuilder(config).image(source);
