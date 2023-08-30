@@ -8,7 +8,7 @@ const Sign = styled.div`
   justify-content: center;
 
   svg {
-    width: 17px;
+    width: 1.0625rem;
   }
 
   svg path {
@@ -31,20 +31,20 @@ const LogoutButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 30px;
-  height: 30px;
+  width: 1.875rem;
+  height: 1.875rem;
   border: none;
   border-radius: 50%;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   transition-duration: 0.3s;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  box-shadow: 0.125rem 0.125rem 0.625rem rgba(0, 0, 0, 0.199);
   background-color: rgb(178, 59, 59);
 
   &:hover {
-    width: 50px;
-    border-radius: 40px;
+    width: 3.125rem;
+    border-radius: 2.5rem;
     transition-duration: 0.3s;
     background-color: rgb(162, 178, 35);
   }

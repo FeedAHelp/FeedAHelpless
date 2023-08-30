@@ -15,7 +15,7 @@ const SocialMedia = () => {
         <div
           className="flex cursor-pointer items-center justify-center"
           key={index}
-          onClick={(e) => handleSignIn(e, item.provider)}
+          onClick={(e) => !item.disabled ? handleSignIn(e, item.provider) : null}
         >
           <Styled.SocialIcon
             src={item.imgSrc}
@@ -23,6 +23,7 @@ const SocialMedia = () => {
             height={40}
             alt={item.alt}
             className="h-full object-cover"
+            disbaleImage={item.disabled}
           />
         </div>
       ))}
