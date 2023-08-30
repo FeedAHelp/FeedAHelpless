@@ -69,7 +69,7 @@ const NewNav = () => {
           aria-label="hamburger"
           aria-haspopup="true"
           aria-expanded="false"
-          className="hamburger"
+          className="md:hidden"
         >
           <MenuIcon className="text-4xl" />
         </button>
