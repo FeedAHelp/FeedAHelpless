@@ -101,6 +101,9 @@ importers:
       react-icons-kit:
         specifier: ^2.0.0
         version: 2.0.0(react@18.2.0)
+      react-sticky-box:
+        specifier: ^2.0.4
+        version: 2.0.4(react@18.2.0)
       recoil:
         specifier: ^0.7.7
         version: 0.7.7(react-dom@18.2.0)(react@18.2.0)
@@ -115,7 +118,7 @@ importers:
         version: 2.2.0(react@18.2.0)
       ui:
         specifier: '*'
-        version: link:../../packages/ui
+        version: 0.2.4
       zod:
         specifier: ^3.21.4
         version: 3.21.4
@@ -398,6 +401,9 @@ importers:
         specifier: 6.0.0-rc.3
         version: 6.0.0-rc.3(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
+      '@emotion/babel-plugin':
+        specifier: ^11.11.0
+        version: 11.11.0
       '@emotion/react':
         specifier: ^11.11.1
         version: 11.11.1(@types/react@18.2.6)(react@18.2.0)
@@ -20540,6 +20546,14 @@ packages:
       react-style-proptype: 3.2.2
     dev: false
 
+  /react-sticky-box@2.0.4(react@18.2.0):
+    resolution: {integrity: sha512-EcnT4fpyyrBwyy5tsWViBTFBMsJZijDC78s2D/GlqrKuU0vsmW+jNc/Ubs1C4/HF/YmTZ90Y5GIGLQMzScQQbA==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react-style-proptype@3.2.2:
     resolution: {integrity: sha512-ywYLSjNkxKHiZOqNlso9PZByNEY+FTyh3C+7uuziK0xFXu9xzdyfHwg4S9iyiRRoPCR4k2LqaBBsWVmSBwCWYQ==}
     dependencies:
@@ -22167,6 +22181,10 @@ packages:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
 
+  /std@0.1.40:
+    resolution: {integrity: sha512-wUf57hkDGCoVShrhPA8Q7lAg2Qosk+FaMlECmAsr1A4/rL2NRXFHQGBcgMUFKVkPEemJFW9gzjCQisRty14ohg==}
+    dev: false
+
   /stop-iteration-iterator@1.0.0:
     resolution: {integrity: sha512-iCGQj+0l0HOdZ2AEeBADlsRC+vsnDsZsbdSiH1yNSjcfKM7fdpCMfqAL/dwF5BLiw/XhRft/Wax6zQbhq2BcjQ==}
     engines: {node: '>= 0.4'}
@@ -23536,6 +23554,12 @@ packages:
       uglify-js: 2.8.29
       webpack: 3.12.0
       webpack-sources: 1.4.3
+    dev: false
+
+  /ui@0.2.4:
+    resolution: {integrity: sha512-se2D+frb/i6JwFc7j72IEa0JADF8lfgc6ivOigaYkXHOuZRBtWe8R7UZ2YiXcbJ1dYNsjq40dn39rlNRxmVdPw==}
+    dependencies:
+      std: 0.1.40
     dev: false
 
   /uid-safe@2.1.5:
