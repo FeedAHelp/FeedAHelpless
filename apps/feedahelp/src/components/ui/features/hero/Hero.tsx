@@ -1,10 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Styled } from "./Hero.styled";
 import { fetchHeroImages } from "~/utils/cms/fetchHeroImages";
+import { urlForThumbnail } from "~/utils/cms/imageProcess";
 
-interface HeroImagesType{
-    title:string
-    imgSrc:string
+interface HeroImagesType {
+  title: string;
+  imgSrc: string;
 }
 
 const Hero = () => {
@@ -13,8 +14,6 @@ const Hero = () => {
   const displayRef = useRef<HTMLDivElement | null>(null);
   const activeItemBorderRef = useRef<HTMLDivElement | null>(null);
   const displayImgsRef = useRef<(HTMLImageElement | null)[]>([]);
-
-  
   const [heroImages, setHeroImages] = useState<HeroImagesType[]>([]);
 
   const getHeroImages = async () => {
@@ -164,21 +163,27 @@ const Hero = () => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        {heroImages.map((value, index) => (
+        {heroImages.map((item, index) => (
           <Styled.liLists
             key={index}
             onClick={() => handleClick(index)}
             isActive={activeItem === index ? true : false}
             ref={(element) => (listItemsRef.current[index] = element)}
           >
-            <Styled.Images src={value.imgSrc} alt='hero-image' />
-            {value.title}
+            <Styled.Images src={urlForThumbnail(item.image)} alt="hero-image" />
+            {item.title}
           </Styled.liLists>
         ))}
         <Styled.displayContainer ref={displayRef}>
-          {heroImages.map((value, index) => {
+          {heroImages.map((item, index) => {
             if (index === activeItem) {
-              return <img key={index} src={value.imgSrc} alt='hero-image' />;
+              return (
+                <img
+                  key={index}
+                  src={urlForThumbnail(item.image)}
+                  alt="hero-image"
+                />
+              );
             }
           })}
         </Styled.displayContainer>

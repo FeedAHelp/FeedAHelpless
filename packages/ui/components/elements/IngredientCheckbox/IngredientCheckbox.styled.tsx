@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const CheckboxInput = styled.input`
   display: none;
@@ -20,13 +20,13 @@ const CheckboxInput = styled.input`
     bottom: 0;
     font-size: 3.125rem;
     color: #ed6c37;
-    content: "\\2714";
+    content: '\\2714';
     line-height: 1;
     margin: auto;
     text-align: center;
     height: 1em;
   }
-`;
+`
 
 const CheckboxLabel = styled.label`
   position: relative;
@@ -41,9 +41,9 @@ const CheckboxLabel = styled.label`
     border: 0.3125rem solid #ed6c37;
     box-shadow: 0 0 0.0625rem #ed6c37;
   }
-`;
+`
 
 export const Styled = {
   CheckboxInput,
-  CheckboxLabel,
-};
+  CheckboxLabel
+}
