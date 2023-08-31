@@ -1,32 +1,39 @@
 export const items = [
     {
       imgSrc: "/static/images/social/facebook.png",
-      alt: "cut citrus fruits",
+      alt: "facebook",
+      provider: "facebook",
+      disabled: false
     },
     {
       imgSrc: "/static/images/social/google.png",
-      alt: "sliced mango",
-      text: "Dolor Sit",
+      alt: "google",
+      provider: "google",
+      disabled: false
     },
     {
       imgSrc: "/static/images/social/Twitter.png",
-      alt: "a bunch of blueberries",
-      text: "Amet Consectetur",
+      alt: "twitter",
+      provider: "twitter",
+      disabled: true
     },
     {
       imgSrc: "/static/images/social/linkedIn.png",
-      alt: "a pineapple sitting on a table",
-      text: "Adipiscing Elit",
+      alt: "linkedin",
+      provider: "linkedin",
+      disabled: false
     },
     {
       imgSrc: "/static/images/social/Instogram.png",
-      alt: "frozen raspberries",
-      text: "Nunc Tortor",
+      alt: "instagram",
+      provider: "instagram",
+      disabled: true
     },
     {
       imgSrc: "/static/images/social/YouTube.png",
-      alt: "a sliced strawberry",
-      text: "Metus Mollis",
+      alt: "youtube",
+      provider: "youtube",
+      disabled: true
     }
   ];
   

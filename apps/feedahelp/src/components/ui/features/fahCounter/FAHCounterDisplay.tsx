@@ -32,6 +32,7 @@ const CounterDisplay = ({
               end={value}
             />
           </span>
+          <br />
           <span className="ml-2 inline-block rounded-md bg-green-100 px-2 py-px text-xs text-green-500">
             {monthlyIncrease}
           </span>
