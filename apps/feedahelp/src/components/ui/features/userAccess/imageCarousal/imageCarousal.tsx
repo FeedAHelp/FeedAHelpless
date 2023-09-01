@@ -4,7 +4,7 @@ import { items } from "./data";
 const ImageCarousal = () => {
   return (
     <div>
-      <div className="gallery">
+      <div className="gallery sm:rounded-e-full">
         {items.map((value, index) => (
           <img
             src={value.imgSrc}
