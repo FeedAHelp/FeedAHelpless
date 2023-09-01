@@ -10,7 +10,7 @@ const Sponsors = () => {
           {items.map((value, index) => (
             // <Styled.bgCover key={index}>
             <div
-              className="relative flex h-[150px] w-[150px] md:h-[200px] md:w-[200px] items-center justify-center mx-auto"
+              className="relative flex h-[150px] w-[150px] md:h-[200px] md:w-[200px] items-center justify-center mx-auto duration-300 transform hover:scale-110"
               key={index}
             >
               <Image
