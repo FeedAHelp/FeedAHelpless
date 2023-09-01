@@ -17,4 +17,7 @@
     .carousal-with-logo{
         @apply gap-8 bg-[#F3AF9A] text-black md:flex md:w-80 md:flex-shrink-0 md:flex-col md:items-center md:justify-center rounded-e-full md:rounded-none
     }
+    .donate-btn{
+        @apply h-10 mt-5 rounded-md transition-colors duration-300 bg-gradient-to-r from-[#ec0404] to-[#ed6002] hover:from-green-700 hover:to-green-600 px-4 text-white
+    }
 }
