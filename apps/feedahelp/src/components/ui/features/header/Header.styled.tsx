@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import { size } from "../../../../../../../packages/ui/components/foundations/breakpoints/device";
+import { size } from "~/ui/components/foundations/breakpoints/device";
 
-interface HeaderProps{
-    scrollBlur:boolean
+interface HeaderProps {
+  scrollBlur: boolean;
 }
 
 const Header = styled.section<HeaderProps>`
@@ -17,8 +17,10 @@ const Header = styled.section<HeaderProps>`
   justify-content: space-between;
   padding: 0 1rem;
   height: 5rem;
-  backdrop-filter:${props=>props.scrollBlur?'blur(0.475rem)':'blur(0rem)'};
-  -webkit-backdrop-filter:${props=>props.scrollBlur?'blur(0.475rem)':'blur(0rem)'};
+  backdrop-filter: ${(props) =>
+    props.scrollBlur ? "blur(0.475rem)" : "blur(0rem)"};
+  -webkit-backdrop-filter: ${(props) =>
+    props.scrollBlur ? "blur(0.475rem)" : "blur(0rem)"};
   transition: 0.5s;
 `;
 

@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import { Styled } from "./Navbar.styled";
 import MenuIcon from "@mui/icons-material/Menu";
-import Modal from "../../../../../../../../packages/ui/components/elements/Modal/GenericModal";
-import { LogoutButton } from "../../../../../../../../packages/ui/components/elements/LogoutButton/LogoutButton";
+import Modal from "~/ui/components/elements/Modal/GenericModal";
+import { LogoutButton } from "~/ui/components/elements/LogoutButton/LogoutButton";
 import { useSession, signOut } from "next-auth/react";
 import LanguageSelections from "~/components/ui/features/header/languageDropdown/LanguageSelections";
 import CurrencyDropDown from "../CurrencyDropDown/CurrencyDropDown";

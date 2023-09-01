@@ -8,9 +8,9 @@ import { Styled } from "./footer.styled";
 import { Grid } from "@mui/material";
 import FooterDown from "./footerDown";
 import Data from "./footerData";
-import GenericLink from "../../../../../../../packages/ui/components/elements/GenericLink/GenericLink";
+import GenericLink from "~/ui/components/elements/GenericLink/GenericLink";
 import { useState } from "react";
-import Modal from "../../../../../../../packages/ui/components/elements/Modal/GenericModal";
+import Modal from "~/ui/components/elements/Modal/GenericModal";
 
 interface FromData {
   email: string;
@@ -21,7 +21,6 @@ const schema: ZodType<FromData> = z.object({
 });
 
 export const Footer = () => {
-
   const [modalOpen, setModalOpen] = useState(false);
   const closeModal = (): void => {
     setModalOpen(false);
@@ -59,14 +58,14 @@ export const Footer = () => {
               height={100}
               alt={"feedahelpLogo"}
             />
-            <button onClick={() => setModalOpen(true)}
+            <button
+              onClick={() => setModalOpen(true)}
               className="donate-btn"
               type="submit"
             >
               Donate
               <Modal isOpen={modalOpen} closeModal={closeModal}>
-                <div className="w-[400px] h-[400px]">
-                </div>
+                <div className="h-[400px] w-[400px]"></div>
               </Modal>
             </button>
           </Grid>
@@ -80,7 +79,8 @@ export const Footer = () => {
                       href={item.title}
                       color="Black"
                       fontSize="0.8rem"
-                    >{item.title}
+                    >
+                      {item.title}
                     </GenericLink>
                   </li>
                 );
@@ -97,7 +97,8 @@ export const Footer = () => {
                       href={item.title}
                       color="Black"
                       fontSize="0.8rem"
-                    >{item.title}
+                    >
+                      {item.title}
                     </GenericLink>
                   </li>
                 );
@@ -114,7 +115,8 @@ export const Footer = () => {
                       href={item.title}
                       color="Black"
                       fontSize="0.8rem"
-                    >{item.title}
+                    >
+                      {item.title}
                     </GenericLink>
                   </li>
                 );

@@ -1,21 +1,20 @@
-import React, { useRef, useState }  from "react";
+import React, { useRef, useState } from "react";
 import { Styled } from "../LoginRegister.styled";
-import { CheckboxButton } from "../../../../../../../../packages/ui/components/elements/Checkbox/CheckboxButton";
-import GenericLink from "../../../../../../../../packages/ui/components/elements/GenericLink/GenericLink";
-import { PasswordInput } from "../../../../../../../../packages/ui/components/elements/PasswordInput/PasswordInput";
+import { CheckboxButton } from "~/ui/components/elements/Checkbox/CheckboxButton";
+import GenericLink from "~/ui/components/elements/GenericLink/GenericLink";
+import { PasswordInput } from "~/ui/components/elements/PasswordInput/PasswordInput";
 import ReCAPTCHA from "react-google-recaptcha";
-import { verifyCaptcha } from "../../../../../server/ServerActions";
-import { log } from "console";
+import { verifyCaptcha } from "~/server/ServerActions";
 
 const LoginForm = () => {
-  const recaptchaRef = useRef<ReCAPTCHA>(null)
-  const [isVerified, setIsverified] = useState<boolean>(false)
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [isVerified, setIsverified] = useState<boolean>(false);
 
   async function handleCaptchaSubmission(token: string | null) {
-    console.log(token)
+    console.log(token);
     await verifyCaptcha(token)
       .then(() => setIsverified(true))
-      .catch(() => setIsverified(false))
+      .catch(() => setIsverified(false));
   }
 
   return (

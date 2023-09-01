@@ -1,13 +1,13 @@
 import React from "react";
 import RegisterFrom from "./RegisterForm";
 import SocialMedia from "../socialMedia/socialMedia";
-import GenericLink from "../../../../../../../../packages/ui/components/elements/GenericLink/GenericLink";
+import GenericLink from "~/ui/components/elements/GenericLink/GenericLink";
 type Props = {
   loginRegisterToggle: () => void;
 };
 const Register = ({ loginRegisterToggle }: Props) => {
   return (
-    <div className="p-10 bg-white">
+    <div className="bg-white p-10">
       <RegisterFrom />
       <div className="mb-4 flex flex-row items-center justify-center gap-4 pt-4 text-center">
         <h4 className="text-sm">Already have an account?</h4>

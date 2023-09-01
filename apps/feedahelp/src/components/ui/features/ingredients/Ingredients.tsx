@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Styled } from "./Ingredients.styled";
 import StickyBox from "react-sticky-box";
 import { fetchIngredients } from "~/utils/cms/fetchIngredients";
 import { urlForThumbnail } from "~/utils/cms/imageProcess";
-import IngredientCheckbox from "../../../../../../../packages/ui/components/elements/IngredientCheckbox/IngredientCheckbox";
-import IngredientSearchInput from "../../../../../../../packages/ui/components/elements/IngredientSearchInput/IngredientSearchInput";
+import IngredientCheckbox from "~/ui/components/elements/IngredientCheckbox/IngredientCheckbox";
+import IngredientSearchInput from "~/ui/components/elements/IngredientSearchInput/IngredientSearchInput";
 
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([]);
