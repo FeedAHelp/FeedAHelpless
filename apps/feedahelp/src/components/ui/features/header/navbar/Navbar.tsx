@@ -6,7 +6,7 @@ import { LogoutButton } from "../../../../../../../../packages/ui/components/ele
 import { useSession, signOut } from "next-auth/react";
 import LanguageSelections from "~/components/ui/features/header/languageDropdown/LanguageSelections";
 import CurrencyDropDown from "../CurrencyDropDown/CurrencyDropDown";
-import Login from "../../userAccess/login/Login";
+import LoginRegister from "../../userAccess/LoginRegister";
 
 const NewNav = () => {
   const { data: session } = useSession();
@@ -69,12 +69,14 @@ const NewNav = () => {
           aria-label="hamburger"
           aria-haspopup="true"
           aria-expanded="false"
-          className="hamburger"
+          className="md:hidden"
         >
           <MenuIcon className="text-4xl" />
         </button>
         <Modal isOpen={modalOpen} closeModal={closeModal}>
-          <Login />
+          <div className="overflow-hidden">
+            <LoginRegister />
+          </div>
         </Modal>
       </div>
       <LanguageSelections />

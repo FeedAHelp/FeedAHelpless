@@ -3,7 +3,7 @@ import { Styled } from './GenericLink.styled';
 
 interface GenericLinkProps {
   children: ReactNode;
-  href: string;
+  href?: string;
   color?: string;
   backgroundColor?: string;
   fontSize?: string;

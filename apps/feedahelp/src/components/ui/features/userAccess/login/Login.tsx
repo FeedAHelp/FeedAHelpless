@@ -7,22 +7,19 @@ import SocialMedia from "../socialMedia/socialMedia";
 import LoginForm from "./LoginForm";
 import RegisterForm from "../register/RegisterForm";
 
-const Logo = dynamic(import("../../header/logo/Logo"));
-const MemoLogo = memo(Logo);
+type Props = {
+  loginRegisterToggle: () => void;
+};
 
-const Login = () => {
+const Login = ({ loginRegisterToggle }: Props) => {
   return (
-    <div className="max flex flex-col overflow-hidden rounded-md bg-white shadow-lg md:flex-1 md:flex-row lg:max-w-screen-md">
-      <div className="gap-8 text-black md:flex md:w-80 md:flex-shrink-0 md:flex-col md:items-center md:justify-center">
-        <MemoLogo />
-        <ImageCarousal />
-      </div>
-      <div className="bg-white p-5 md:flex-1">
+    <div className="max flex flex-col overflow-hidden rounded-md bg-white p-10 pr-0 shadow-lg md:flex-1 md:flex-row lg:max-w-screen-md">
+      <div className="bg-white md:flex-1">
         <LoginForm />
         <div className="mb-4 flex flex-row items-center justify-center gap-4 pt-4 text-center">
-          <h4 className="text-sm">Already have an account?</h4>
-          <GenericLink href={"www.google.com"} color="Black" fontSize="0.8rem">
-            {"Sign In!"}
+          <h4 className="text-sm">Don&lsquo;t have an account?</h4>
+          <GenericLink color="Black" fontSize="0.8rem">
+            <button onClick={loginRegisterToggle}>{"Register!"}</button>
           </GenericLink>
         </div>
         <div className="flex flex-col space-y-5 pt-4">
