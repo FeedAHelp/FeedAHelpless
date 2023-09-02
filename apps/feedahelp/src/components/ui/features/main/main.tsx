@@ -3,7 +3,7 @@ import React from "react";
 import Hero from "../hero/Hero";
 import FeedAHelpCounter from "../fahCounter/FAHCounter";
 import Ingredients from "../ingredients/Ingredients";
-import Menu from "../menu/Menu";
+import DeshiMenu from "../deshiMenus/DeshiMenus";
 import Sponsors from "../sponsors/Sponsors";
 
 export const MainPage = () => {
@@ -20,7 +20,7 @@ export const MainPage = () => {
           <Ingredients />
         </Grid>
         <Grid item xs={12} md={8}>
-          <Menu />
+          <DeshiMenu />
         </Grid>
         <Grid item xs={12} md={12}>
           <Sponsors />
