@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { Styled } from "./footer.styled";
 import FooterSocial from "./FooterSocial";
 import GenericLink from "~/ui/components/elements/GenericLink/GenericLink";
