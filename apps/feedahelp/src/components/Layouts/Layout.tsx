@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import type { ThemeName } from "../../../../../packages/ui/components/foundations/theming";
-import { ThemeProvider } from "../../../../../packages/ui/components/contexts/ThemeContext";
+import type { ThemeName } from "~/ui/components/foundations/theming";
+import { ThemeProvider } from "~/ui/components/contexts/ThemeContext";
 
 type LayoutProps = {
   theme?: ThemeName;

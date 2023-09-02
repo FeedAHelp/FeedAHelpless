@@ -1,11 +1,6 @@
-import dynamic from "next/dynamic";
-import { memo, useEffect, useState } from "react";
-import ImageCarousal from "../imageCarousal/imageCarousal";
-import GenericLink from "../../../../../../../../packages/ui/components/elements/GenericLink/GenericLink";
-import { Styled } from "../LoginRegister.styled";
+import GenericLink from "~/ui/components/elements/GenericLink/GenericLink";
 import SocialMedia from "../socialMedia/socialMedia";
 import LoginForm from "./LoginForm";
-import RegisterForm from "../register/RegisterForm";
 
 type Props = {
   loginRegisterToggle: () => void;

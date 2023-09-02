@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Styled } from "../LoginRegister.styled";
-import { CheckboxButton } from "../../../../../../../../packages/ui/components/elements/Checkbox/CheckboxButton";
-import GenericLink from "../../../../../../../../packages/ui/components/elements/GenericLink/GenericLink";
-import { PasswordInput } from "../../../../../../../../packages/ui/components/elements/PasswordInput/PasswordInput";
+import { CheckboxButton } from "~/ui/components/elements/Checkbox/CheckboxButton";
+import GenericLink from "~/ui/components/elements/GenericLink/GenericLink";
+import { PasswordInput } from "~/ui/components/elements/PasswordInput/PasswordInput";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const LoginForm = () => {

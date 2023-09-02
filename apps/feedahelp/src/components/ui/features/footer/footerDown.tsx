@@ -1,8 +1,7 @@
 import React from "react";
-import Image from "next/image";
 import { Styled } from "./footer.styled";
 import FooterSocial from "./FooterSocial";
-import GenericLink from "../../../../../../../packages/ui/components/elements/GenericLink/GenericLink";
+import GenericLink from "~/ui/components/elements/GenericLink/GenericLink";
 
 const footerDown = () => {
   return (
@@ -11,8 +10,12 @@ const footerDown = () => {
         <Styled.DownFooter>
           &copy; {new Date().getFullYear()} FeedAHelp. All rights reserved.
         </Styled.DownFooter>
-        <GenericLink color="gray" fontSize="0.8rem" href="#">Privacy policy</GenericLink>
-        <GenericLink color="gray" fontSize="0.8rem" href="#">Terms of service</GenericLink>
+        <GenericLink color="gray" fontSize="0.8rem" href="#">
+          Privacy policy
+        </GenericLink>
+        <GenericLink color="gray" fontSize="0.8rem" href="#">
+          Terms of service
+        </GenericLink>
       </div>
       <FooterSocial />
     </div>

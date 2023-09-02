@@ -29,6 +29,12 @@ export default defineType({
         validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'imageAlt',
+      title: 'Image Alternative Text',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+  }),
+    defineField({
       name: 'imgUrl',
       title: 'Image Url',
       type: 'string',
