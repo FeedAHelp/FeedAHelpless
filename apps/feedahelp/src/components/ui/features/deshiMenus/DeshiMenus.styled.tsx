@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Image from "next/image";
 
 const Container = styled.div`
   width: 280px;
@@ -36,6 +37,7 @@ const Header = styled.div`
   background-color: #fa792e;
   background-image: linear-gradient(left top, #fa792e 17%, #bf212f 100%);
   cursor: pointer;
+  padding-top: 1px;
   box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.25),
     inset 2px 20px 5px rgba(255, 255, 255, 0.25),
     8px 30px 30px rgba(0, 0, 0, 0.4), inset -2px -2px 5px rgba(0, 0, 0, 0.4);
@@ -93,14 +95,6 @@ const Caption = styled.span`
 const Rating = styled.div`
   padding-top: 7px;
   font-size: 12px;
-
-  i {
-    margin-right: 1px;
-  }
-
-  i.gray {
-    color: #acacab;
-  }
 `;
 
 const Price = styled.div`
@@ -111,7 +105,7 @@ const Price = styled.div`
   top: 55px;
   line-height: 45px;
   font-size: 22px;
-  background: #11e95b;
+  background: #fa792e;
   text-align: center;
   font-weight: 300;
   color: #fff;
@@ -125,6 +119,36 @@ const Price = styled.div`
   }
 `;
 
+const DeshiShareIcon = styled(Image)`
+  transition: 0.5s;
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%)
+    contrast(100%);
+  &:hover {
+    filter: invert(0%) sepia(0%) saturate(100%) hue-rotate(0deg)
+      brightness(100%) contrast(100%);
+    transform: scale(1.5);
+  }
+`;
+
+const DeshiUl = styled.ul`
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  bottom: -15px;
+  padding-left: 10px;
+`;
+
+const DeshiLi = styled.li`
+  background: #fff;
+  border-radius: 50%;
+  padding: 8px;
+  box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.25),
+    inset 2px 2px 5px rgba(255, 255, 255, 0.25),
+    8px 30px 30px rgba(0, 0, 0, 0.4), inset -2px -2px 5px rgba(0, 0, 0, 0.4);
+`;
+
 export const Styled = {
   Container,
   Header,
@@ -136,4 +160,7 @@ export const Styled = {
   Caption,
   Rating,
   Price,
+  DeshiShareIcon,
+  DeshiUl,
+  DeshiLi,
 };

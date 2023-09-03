@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchSocialMedia } from "~/utils/cms/fetchSocialMedia";
 import { urlForThumbnail } from "~/utils/cms/imageProcess";
 import Link from "next/link";
-import {Styled} from './FooterSocial.styled'
+import { Styled } from "./FooterSocial.styled";
 
 type GetSocialMediaType={
     socialLinkUrl:string,

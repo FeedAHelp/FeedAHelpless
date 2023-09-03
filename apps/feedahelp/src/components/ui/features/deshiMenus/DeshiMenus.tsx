@@ -1,8 +1,8 @@
 import React from "react";
-import Image from "next/image";
 import { Styled } from "./DeshiMenus.styled";
 import StickyBox from "react-sticky-box";
 import IngredientSearchInput from "~/ui/components/elements/IngredientSearchInput/IngredientSearchInput";
+import DeshiSocial from "./DeshiSocial";
 
 const DeshiMenus = () => {
   return (
@@ -28,6 +28,7 @@ const DeshiMenus = () => {
                     <h2>CHICKEN BIRANY</h2>
                     Real nice chicken
                   </Styled.Title>
+                  <DeshiSocial />
                 </Styled.Header>
                 <Styled.Body>
                   <Styled.TitleSpan>
@@ -35,12 +36,7 @@ const DeshiMenus = () => {
                     <Styled.Badge>NEW</Styled.Badge>
                   </Styled.TitleSpan>
                   <Styled.Caption>Rice, carrot, fried</Styled.Caption>
-                  <Styled.Rating>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star gray"></i>
-                  </Styled.Rating>
+                  <Styled.Rating></Styled.Rating>
                   <Styled.Price>
                     USD <b>23,453</b>
                   </Styled.Price>
