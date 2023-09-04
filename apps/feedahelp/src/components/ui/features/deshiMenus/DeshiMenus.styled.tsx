@@ -1,5 +1,12 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Image from "next/image";
+
+const iconwidth = '12px'
+const iconheight = '12px'
+const height = '24px'
+const fontsize = '12px'
+const fontweight = '500'
+const iterationCount = 'infinite'
 
 const Container = styled.div`
   width: 280px;
@@ -58,22 +65,14 @@ const Body = styled.div`
   background: #fff;
   height: 240px;
   border-radius: 10px;
-  padding-top: 20px;
-  padding-left: 20px;
+  padding-top: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
   box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.25),
     inset 2px 2px 5px rgba(255, 255, 255, 0.25),
     8px 30px 30px rgba(0, 0, 0, 0.4), inset -2px -2px 5px rgba(0, 0, 0, 0.4);
 `;
 
-const TitleSpan = styled.span`
-  display: block;
-  font-size: 18px;
-  font-weight: 400;
-
-  b {
-    font-weight: 900;
-  }
-`;
 
 const Badge = styled.span`
   position: relative;
@@ -90,6 +89,9 @@ const Caption = styled.span`
   font-size: 9px;
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.8);
+  display: block;
+  align-items: center;
+  justify-content: start;
 `;
 
 const Rating = styled.div`
@@ -98,13 +100,8 @@ const Rating = styled.div`
 `;
 
 const Price = styled.div`
-  position: absolute;
-  width: 160px;
-  height: 45px;
-  right: -12px;
-  top: 55px;
-  line-height: 45px;
-  font-size: 22px;
+  width: 100%;
+  font-size: 15px;
   background: #fa792e;
   text-align: center;
   font-weight: 300;
@@ -114,9 +111,6 @@ const Price = styled.div`
     inset 2px 2px 5px rgba(255, 255, 255, 0.25),
     8px 30px 30px rgba(0, 0, 0, 0.4), inset -2px -2px 5px rgba(0, 0, 0, 0.4);
 
-  b {
-    padding-left: 5px;
-  }
 `;
 
 const DeshiShareIcon = styled(Image)`
@@ -149,13 +143,75 @@ const DeshiLi = styled.li`
     8px 30px 30px rgba(0, 0, 0, 0.4), inset -2px -2px 5px rgba(0, 0, 0, 0.4);
 `;
 
+const pulseAuxiliarLow = keyframes`
+  0% {
+    box-shadow: 0px 0px 0px 0px rgba(179, 62, 150, 1);
+  }
+  100% {
+    box-shadow: 0px 0px 0px 5px transparent;
+  }
+`;
+
+const Highlight = styled.div`
+  position: relative;
+  display: inline-flex;
+  width: ${iconwidth};
+  height: ${iconheight};
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: ${iconwidth};
+    height: ${iconheight};
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    border: none;
+    transition: all 0.3s;
+    z-index: 2;
+    border-radius: 50%;
+  }
+
+  &::after {
+    background: rgba(179, 62, 150, 1);
+    border: 1px solid rgba(179, 62, 150, 1);
+    animation: ${pulseAuxiliarLow} 1s ease ${iterationCount};
+  }
+`;
+
+const StatusTag = styled.div`
+  position: relative;
+  width: auto;
+  display: inline-flex;
+  height: ${height};
+  padding: 0 10px 0 5px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border-top-left-radius: 13px;
+  border-bottom-left-radius: 13px;
+  border-top-right-radius: 13px;
+  border-bottom-right-radius: 13px;
+`;
+
+const StatusTagText = styled.span`
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-family: Graphik, Helvetica, sans-serif;
+  font-size: ${fontsize};
+  line-height: ${fontsize};
+  font-weight: ${fontweight};
+`;
+
 export const Styled = {
   Container,
   Header,
   Logo,
   Title,
   Body,
-  TitleSpan,
   Badge,
   Caption,
   Rating,
@@ -163,4 +219,8 @@ export const Styled = {
   DeshiShareIcon,
   DeshiUl,
   DeshiLi,
+  Highlight, 
+  StatusTag, 
+  StatusTagText, 
+  pulseAuxiliarLow
 };
