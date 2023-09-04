@@ -1,12 +1,12 @@
 import styled, { keyframes } from "styled-components";
 import Image from "next/image";
 
-const iconwidth = '12px'
-const iconheight = '12px'
-const height = '24px'
-const fontsize = '12px'
-const fontweight = '500'
-const iterationCount = 'infinite'
+const iconwidth = "20px";
+const iconheight = "20px";
+const height = "24px";
+const fontsize = "12px";
+const fontweight = "500";
+const iterationCount = "infinite";
 
 const Container = styled.div`
   width: 280px;
@@ -17,46 +17,18 @@ const Container = styled.div`
 
 const Logo = styled.img`
   width: 55px;
-  margin-left: 25px;
   margin-top: 25px;
   transition: transform 0.9s;
 `;
 
 const Title = styled.div`
-  padding: 5px 25px;
-  padding-right: 80px;
   font-size: 10px;
   color: #fff;
   transition: transform 0.5s;
   transform: scale(1);
-
-  h2 {
-    font-weight: 500;
-    font-size: 19px;
-  }
-`;
-
-const Header = styled.div`
-  position: relative;
-  z-index: 1;
-  height: 180px;
-  border-radius: 10px;
-  background-color: #fa792e;
-  background-image: linear-gradient(left top, #fa792e 17%, #bf212f 100%);
-  cursor: pointer;
-  padding-top: 1px;
-  box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.25),
-    inset 2px 20px 5px rgba(255, 255, 255, 0.25),
-    8px 30px 30px rgba(0, 0, 0, 0.4), inset -2px -2px 5px rgba(0, 0, 0, 0.4);
-
-  &:hover > ${Logo} {
-    transform: scale(6) translate(25px, 10px);
-  }
-
-  &:hover > ${Title} {
-    transition: transform 0.5s;
-    transform: scale(0);
-  }
+  font-weight: 500;
+  font-size: 19px;
+  padding-top: 20px;
 `;
 
 const Body = styled.div`
@@ -73,7 +45,6 @@ const Body = styled.div`
     8px 30px 30px rgba(0, 0, 0, 0.4), inset -2px -2px 5px rgba(0, 0, 0, 0.4);
 `;
 
-
 const Badge = styled.span`
   position: relative;
   background: red;
@@ -85,13 +56,13 @@ const Badge = styled.span`
   margin-left: 7px;
 `;
 
-const Caption = styled.span`
-  font-size: 9px;
-  text-transform: uppercase;
+const Caption = styled.div`
   color: rgba(0, 0, 0, 0.8);
-  display: block;
-  align-items: center;
-  justify-content: start;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-row-gap: 5px;
+  padding: 5px;
 `;
 
 const Rating = styled.div`
@@ -110,7 +81,6 @@ const Price = styled.div`
   box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.25),
     inset 2px 2px 5px rgba(255, 255, 255, 0.25),
     8px 30px 30px rgba(0, 0, 0, 0.4), inset -2px -2px 5px rgba(0, 0, 0, 0.4);
-
 `;
 
 const DeshiShareIcon = styled(Image)`
@@ -154,7 +124,9 @@ const pulseAuxiliarLow = keyframes`
 
 const Highlight = styled.div`
   position: relative;
-  display: inline-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: ${iconwidth};
   height: ${iconheight};
 
@@ -171,11 +143,11 @@ const Highlight = styled.div`
     transition: all 0.3s;
     z-index: 2;
     border-radius: 50%;
+    background-image: url("/assets/Rice.png");
   }
 
   &::after {
-    background: rgba(179, 62, 150, 1);
-    border: 1px solid rgba(179, 62, 150, 1);
+    border: 1px solid #fff;
     animation: ${pulseAuxiliarLow} 1s ease ${iterationCount};
   }
 `;
@@ -206,9 +178,45 @@ const StatusTagText = styled.span`
   font-weight: ${fontweight};
 `;
 
+const Heading = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  &:hover > ${Logo} {
+    transform: scale(6) translate(25px, 10px);
+  }
+
+  &:hover > ${Title} {
+    transition: transform 0.5s;
+    transform: scale(0);
+  }
+`;
+
+const Header = styled.div`
+  position: relative;
+  z-index: 1;
+  height: 180px;
+  border-radius: 10px;
+  background-color: #fa792e;
+  background-image: linear-gradient(left top, #fa792e 17%, #bf212f 100%);
+  cursor: pointer;
+  padding-top: 1px;
+  box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.25),
+    inset 2px 20px 5px rgba(255, 255, 255, 0.25),
+    8px 30px 30px rgba(0, 0, 0, 0.4), inset -2px -2px 5px rgba(0, 0, 0, 0.4);
+
+  &:hover > ${Caption} {
+    transition: transform 0.5s;
+    transform: scale(0);
+  }
+`;
+
 export const Styled = {
   Container,
   Header,
+  Heading,
   Logo,
   Title,
   Body,
@@ -219,8 +227,8 @@ export const Styled = {
   DeshiShareIcon,
   DeshiUl,
   DeshiLi,
-  Highlight, 
-  StatusTag, 
-  StatusTagText, 
-  pulseAuxiliarLow
+  Highlight,
+  StatusTag,
+  StatusTagText,
+  pulseAuxiliarLow,
 };

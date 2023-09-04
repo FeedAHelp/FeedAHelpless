@@ -21,20 +21,22 @@ const DeshiMenus = () => {
             <div className="grid grid-cols-3 gap-5">
               <Styled.Container>
                 <Styled.Header>
-                  <Styled.Logo
-                    src="https://www.pngkey.com/png/full/366-3662220_hot-and-spicy-chicken-biryani.pnghttps://s5.postimg.cc/j9r8yf9gn/sws1.pnghttps://s5.postimg.cc/wy79025cz/nike_Logo_White.png"
-                    alt=""
-                  />
-                  <Styled.Title>
-                    <h2>Chicken<b>BIRANY</b></h2>
-                    <DeshiMenuCaptions />
-                  </Styled.Title>
+                  <Styled.Heading>
+                    <Styled.Logo
+                      src="https://www.pngkey.com/png/full/366-3662220_hot-and-spicy-chicken-biryani.pnghttps://s5.postimg.cc/j9r8yf9gn/sws1.pnghttps://s5.postimg.cc/wy79025cz/nike_Logo_White.png"
+                      alt=""
+                    />
+                    <Styled.Title>
+                      Chicken<b>BIRANY</b>
+                    </Styled.Title>
+                  </Styled.Heading>
+                  <DeshiMenuCaptions />
                   <DeshiSocial />
                 </Styled.Header>
                 <Styled.Body>
-                    <Styled.Price>
-                      USD <b>23,453</b>
-                    </Styled.Price>
+                  <Styled.Price>
+                    USD <b>23,453</b>
+                  </Styled.Price>
                   <Styled.Rating></Styled.Rating>
                 </Styled.Body>
               </Styled.Container>
