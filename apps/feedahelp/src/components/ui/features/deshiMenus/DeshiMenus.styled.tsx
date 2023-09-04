@@ -192,6 +192,11 @@ const Heading = styled.div`
     transition: transform 0.5s;
     transform: scale(0);
   }
+
+  &:hover > ${Caption} {
+    transition: transform 0.5s;
+    transform: scale(0);
+  }
 `;
 
 const Header = styled.div`
@@ -206,11 +211,6 @@ const Header = styled.div`
   box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.25),
     inset 2px 20px 5px rgba(255, 255, 255, 0.25),
     8px 30px 30px rgba(0, 0, 0, 0.4), inset -2px -2px 5px rgba(0, 0, 0, 0.4);
-
-  &:hover > ${Caption} {
-    transition: transform 0.5s;
-    transform: scale(0);
-  }
 `;
 
 export const Styled = {

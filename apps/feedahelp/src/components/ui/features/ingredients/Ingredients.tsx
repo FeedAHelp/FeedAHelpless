@@ -25,7 +25,7 @@ const Ingredients = () => {
     <div className="mb-2 h-96 w-full overflow-auto">
       <div className="relitive container">
         <div className="row">
-          <StickyBox offsetTop={0} offsetBottom={20} style={{ zIndex: 9999 }}>
+          <StickyBox offsetTop={0} offsetBottom={20} style={{ zIndex: 99 }}>
             <div>
               <form>
                 <IngredientSearchInput />
