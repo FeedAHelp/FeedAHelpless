@@ -11,6 +11,7 @@ import Data from "./footerData";
 import GenericLink from "~/ui/components/elements/GenericLink/GenericLink";
 import { useState } from "react";
 import Modal from "~/ui/components/elements/Modal/GenericModal";
+import Link from "next/link";
 
 interface FromData {
   email: string;
@@ -52,12 +53,14 @@ export const Footer = () => {
       <div className=" mx-auto space-y-6 divide-y divide-gray-400 divide-opacity-50 px-6 md:space-y-12">
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}>
-            <Image
-              src={"/static/images/feedahelp/logo.png"}
-              width={200}
-              height={100}
-              alt={"feedahelpLogo"}
-            />
+            <Link href="/">
+              <Image
+                src={"/static/images/feedahelp/logo.png"}
+                width={200}
+                height={100}
+                alt={"feedahelpLogo"}
+              />
+            </Link>
             <button
               onClick={() => setModalOpen(true)}
               className="donate-btn"
