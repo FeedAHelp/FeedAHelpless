@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Image from "next/image";
 
 interface liListsType {
   isActive: boolean;

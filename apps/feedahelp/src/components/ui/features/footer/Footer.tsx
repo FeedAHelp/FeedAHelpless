@@ -1,5 +1,6 @@
 import axios from "axios";
-import { z, ZodType } from "zod";
+import { z } from "zod";
+import type {ZodType} from 'zod';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import toast, { Toaster } from "react-hot-toast";

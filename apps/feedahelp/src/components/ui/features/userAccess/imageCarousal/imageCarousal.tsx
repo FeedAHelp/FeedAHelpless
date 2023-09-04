@@ -1,4 +1,5 @@
 import React from "react";
+import Image from 'next/image'
 import { items } from "./data";
 
 const ImageCarousal = () => {
@@ -6,10 +7,13 @@ const ImageCarousal = () => {
     <div>
       <div className="gallery sm:rounded-e-full">
         {items.map((value, index) => (
-          <img
+          <Image
+            className="img"
             src={value.imgSrc}
             alt="a lovely kiss in the night"
             key={index}
+            width={172}
+            height={172}
           />
         ))}
       </div>

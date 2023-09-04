@@ -8,10 +8,6 @@ import { motion, AnimatePresence } from "framer-motion";
 const Logo = dynamic(import("../header/logo/Logo"));
 const MemoLogo = memo(Logo);
 
-type Props = {
-  loginRegisterToggle: () => void;
-};
-
 const LoginRegister = () => {
   const [isLoginPage, setIsLoginPage] = useState(false);
   const loginRegisterToggle = () => {
