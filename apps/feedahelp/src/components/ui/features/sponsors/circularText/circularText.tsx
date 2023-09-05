@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from "react";
+import { RotatingDiv } from "./circular.styled";
 
 interface CircularTextProps {
   text: string;
@@ -30,10 +31,11 @@ const CircularText: FC<CircularTextProps> = ({ text }) => {
   }, []);
 
   return (
-    <div className="text absolute h-full w-full text-black">
+    <RotatingDiv className="text absolute h-full w-full text-black">
       <p>
         {chars.map((char, i) => {
-          const rotationValue = i * rotation; const transformOriginValue = `0 ${transformOrigin}px`;
+          const rotationValue = i * rotation;
+          const transformOriginValue = `0 ${transformOrigin}px`;
 
           const charStyle = {
             transform: `rotate(${rotationValue}deg)`,
@@ -51,7 +53,7 @@ const CircularText: FC<CircularTextProps> = ({ text }) => {
           );
         })}
       </p>
-    </div>
+    </RotatingDiv>
   );
 };
 
