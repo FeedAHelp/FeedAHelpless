@@ -50,6 +50,7 @@ model FahCounter {
 }
 
 model Ingredient {
-  id   String @id @default(auto()) @map("_id") @db.ObjectId
-  name String
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  imageName String
 }
