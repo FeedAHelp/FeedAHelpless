@@ -1,4 +1,4 @@
-import React,{ useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Styled } from "./Navbar.styled";
 import MenuIcon from "@mui/icons-material/Menu";
 import Modal from "~/ui/components/elements/Modal/GenericModal";
@@ -58,8 +58,8 @@ const NewNav = () => {
               className="img-rotate-button"
               onClick={() => setModalOpen(true)}
             >
-              <div className="img outer ring"  />
-              <div className="img center ring"  />
+              <div className="img outer ring" />
+              <div className="img center ring" />
               <div className="img inner ring" />
             </Styled.Avatar>
           )}
