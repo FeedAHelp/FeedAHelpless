@@ -1,7 +1,7 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 generator client {
-  provider        = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -10,40 +10,47 @@ datasource db {
 }
 
 model Todo {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  todo  String
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  todo String
 }
 
 model User {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
   name       String
   image      String?
   register   Register @relation(fields: [registerId], references: [id])
-  registerId String @unique
+  registerId String   @unique
 }
 
 model Register {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  email        String   @unique
-  phone        String   @unique
-  password     String
-  role         String
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  email       String @unique
+  phone       String @unique
+  password    String
+  role        String
   accessToken String
-  user         User?
-}
-model FeedahelpNewsletter{
-    id       String    @id @default(auto()) @map("_id") @db.ObjectId
-    userId String?
-    email String @unique
-    createAt DateTime @default(now())
+  user        User?
 }
 
-model FahCounter{
-    id       String    @id @default(auto()) @map("_id") @db.ObjectId
-    sectionName String
-    sectionDescription String
-    imageIconUrl String
-    imageAlt String
-    value String
-    monthlyIncrease String
+model FeedahelpNewsletter {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId   String?
+  email    String   @unique
+  createAt DateTime @default(now())
+}
+
+model FahCounter {
+  id                 String @id @default(auto()) @map("_id") @db.ObjectId
+  sectionName        String
+  sectionDescription String
+  imageIconUrl       String
+  imageAlt           String
+  value              String
+  monthlyIncrease    String
+}
+
+model Ingredients {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  imageName String
 }
