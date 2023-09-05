@@ -4,7 +4,7 @@ import { items } from "./data";
 import { Styled } from "./socialMedia.styled";
 
 const SocialMedia = () => {
-  const handleSignIn = (e: any, provider: string) => {
+  const handleSignIn = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, provider: string) => {
     e.preventDefault();
     signIn(provider, { callbackUrl: "/" });
   };

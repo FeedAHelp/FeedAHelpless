@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Styled } from "../LoginRegister.styled";
 import { CheckboxButton } from "~/ui/components/elements/Checkbox/CheckboxButton";
 import GenericLink from "~/ui/components/elements/GenericLink/GenericLink";

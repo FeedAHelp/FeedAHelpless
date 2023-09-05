@@ -4,29 +4,35 @@ import { urlForThumbnail } from "~/utils/cms/imageProcess";
 import Link from "next/link";
 import {Styled} from './FooterSocial.styled'
 
-const FooterSocial = () => {
-  const [socialMedia, setSocilaMedia] = useState([]);
+type GetSocialMediaType={
+    socialLinkUrl:string,
+    title:string,
+    imageIcon:string
+}
 
-  const getSocilaMedia = async () => {
+const FooterSocial = () => {
+  const [socialMedia, setSocialMedia] = useState<GetSocialMediaType[]>([]);
+
+  const getSocialMedia = async () => {
     try {
       const socialData = await fetchSocialMedia();
-      setSocilaMedia(socialData);
+      setSocialMedia(socialData);
     } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(() => {
-    getSocilaMedia();
+    getSocialMedia();
   }, []);
   return (
     <div className="flex justify-center space-x-4 pt-4 lg:col-end-13 lg:pt-0">
-      {socialMedia.map((item: any, key) => {
+      {socialMedia.map((item: GetSocialMediaType, key:number) => {
         return (
           <Link
             key={key}
             rel="noopener noreferrer"
-            href={item.solicalLinkUrl}
+            href={item.socialLinkUrl}
             title={item.title}
           >
             <Styled.SocialIcon

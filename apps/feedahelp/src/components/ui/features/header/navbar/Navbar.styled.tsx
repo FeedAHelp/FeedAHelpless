@@ -21,7 +21,7 @@ const Avatar = styled.a<AvatarProps>`
   color: white;
   cursor: pointer;
 
-  img {
+  .img {
     display: inline-block;
     width: 3rem;
     height: auto;
