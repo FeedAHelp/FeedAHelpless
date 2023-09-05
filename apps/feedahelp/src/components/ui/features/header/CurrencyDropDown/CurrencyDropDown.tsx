@@ -55,12 +55,15 @@ const CurrencyDropDown: React.FC = () => {
           {currency.map((item, i) => (
             <Styled.CurrencyOption
               key={i}
-              className={`dropDownOption ${
-                selectedItem === item.currency ? "selected" : ""
-              }`}
+              className={`dropDownOption ${selectedItem === item.currency ? "selected" : ""
+                }`}
               onClick={() => handleItemClick(item.currency)}
             >
-              <h3 className="font-bold">{item.currency}</h3>
+              <span
+                className="mr-2"
+                dangerouslySetInnerHTML={{ __html: item?.currencyIconHTML }}
+              />
+              <h3 className="font-bold">{item?.currency}</h3>
             </Styled.CurrencyOption>
           ))}
         </Styled.DropDownContainer>

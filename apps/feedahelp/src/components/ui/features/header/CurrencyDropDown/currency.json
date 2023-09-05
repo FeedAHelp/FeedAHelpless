@@ -1,20 +1,26 @@
 [
   {
-    "currency": "USD"
+    "currency": "USD",
+    "currencyIconHTML": "&#36;"
   },
   {
-    "currency": "EUR"
+    "currency": "EUR",
+    "currencyIconHTML": "&euro;"
   },
   {
-    "currency": "GBP"
+    "currency": "GBP",
+    "currencyIconHTML": "&pound;"
   },
   {
-    "currency": "JPY"
+    "currency": "JPY",
+    "currencyIconHTML": "&yen;"
   },
   {
-    "currency": "DKK"
+    "currency": "DKK",
+    "currencyIconHTML": "kr"
   },
   {
-    "currency": "BDT"
+    "currency": "BDT",
+    "currencyIconHTML": "&#2547;"
   }
 ]
