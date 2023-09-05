@@ -8,7 +8,6 @@ const Sponsors = () => {
       <div className="container mx-auto p-4">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 ">
           {items.map((value, index) => (
-            // <Styled.bgCover key={index}>
             <div
               className="relative flex h-[150px] w-[150px] md:h-[200px] md:w-[200px] items-center justify-center mx-auto duration-300 transform hover:scale-110"
               key={index}
@@ -22,7 +21,6 @@ const Sponsors = () => {
               />
               <CircularText text={value.text} />
             </div>
-            // </Styled.bgCover>
           ))}
         </div>
       </div>

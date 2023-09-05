@@ -21,9 +21,7 @@ export default {
         '16': '16',
         '17': '17',
       },
-      animation: {
-        'spin-slow': 'spin 5s linear infinite', // Adjust the duration as needed
-      },
+      
     },
   },
   plugins: [],
