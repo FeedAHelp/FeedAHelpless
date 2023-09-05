@@ -49,7 +49,7 @@ model FahCounter {
   monthlyIncrease    String
 }
 
-model Ingredient {
+model Ingredients {
   id        String @id @default(auto()) @map("_id") @db.ObjectId
   name      String
   imageName String
