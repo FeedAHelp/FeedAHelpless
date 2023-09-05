@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import Image from "next/image";
+import { devices } from "~/utils/devices";
 
 const iconwidth = "1.25rem";
 const iconheight = "1.25rem";
@@ -211,6 +212,14 @@ const Header = styled.div`
   ${BoxShadow}
 `;
 
+const DeshiGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15.625rem, 21.875rem));
+  grid-gap: 0.9375rem 0.9375rem;
+  justify-content: center;
+  align-items: baseline;
+`;
+
 export const Styled = {
   Container,
   Header,
@@ -229,4 +238,5 @@ export const Styled = {
   StatusTag,
   StatusTagText,
   pulseAuxiliarLow,
+  DeshiGrid
 };

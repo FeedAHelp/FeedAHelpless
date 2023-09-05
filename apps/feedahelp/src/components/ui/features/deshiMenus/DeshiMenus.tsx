@@ -18,8 +18,8 @@ const DeshiMenus = () => {
               </form>
             </div>
           </StickyBox>
-          <div className="pt-2">
-            <div className="grid grid-cols-3 gap-5">
+          <>
+            <Styled.DeshiGrid>
               {items.map((item, index) => {
                 return (
                   <Styled.Container key={index}>
@@ -45,8 +45,8 @@ const DeshiMenus = () => {
                   </Styled.Container>
                 );
               })}
-            </div>
-          </div>
+            </Styled.DeshiGrid>
+          </>
         </div>
       </div>
     </div>
