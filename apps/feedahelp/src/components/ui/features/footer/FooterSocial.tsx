@@ -32,7 +32,7 @@ const FooterSocial = () => {
           <Link
             key={key}
             rel="noopener noreferrer"
-            href={item.socialLinkUrl}
+            href={"/"}
             title={item.title}
           >
             <Styled.SocialIcon
