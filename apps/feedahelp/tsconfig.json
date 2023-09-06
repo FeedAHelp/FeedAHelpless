@@ -34,7 +34,7 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs"
-, "src/pages/admin.tsx"  ],
+, "src/pages/admin.tsx" ],
   "exclude": [
     "node_modules"
   ]
