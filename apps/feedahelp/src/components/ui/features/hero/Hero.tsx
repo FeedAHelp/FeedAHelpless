@@ -178,9 +178,8 @@ const Hero = () => {
           {heroImages.map((item, index) => {
             if (index === activeItem) {
               return (
-                <div className="">
+                <div key={index}>
                   <Styled.converImage
-                    key={index}
                     src={urlForThumbnail(item.image)}
                     alt="hero-image"
                   />
