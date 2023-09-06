@@ -12,11 +12,6 @@ const ulLists = styled.ul`
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
   gap: 1em;
-  overflow: hidden;
-
-  @media (max-width: 768px) {
-    gap: 0.2rem;
-  }
 `;
 
 const liLists = styled.li<liListsType>`
@@ -29,8 +24,8 @@ const liLists = styled.li<liListsType>`
   transition: color 0.25 ease, text-shadow 0.25 ease;
   transition-delay: 0.25s;
   cursor: pointer;
-  padding-left:1rem;
-  p
+  padding:0.5rem;
+
 
   &:nth-child(1) {
     grid-row: 1/2;
@@ -127,7 +122,7 @@ const Images = styled.img`
 
 const displayContainer = styled.div`
   position: relative;
-  height: 60vh;
+  height: 70vh;
   grid-row: 2/-2 !important;
   grid-column: 2/-2 !important;
   overflow: hidden;
@@ -137,7 +132,7 @@ const displayContainer = styled.div`
 
 const converImage = styled.img`
   width: 100%;
-  height: 400px;
+  height: 450px;
   object-fit: cover;
   position: relative;
 `;

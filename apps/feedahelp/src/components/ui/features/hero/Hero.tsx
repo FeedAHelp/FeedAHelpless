@@ -185,7 +185,7 @@ const Hero = () => {
                     alt="hero-image"
                   />
 
-                  <div className="absolute top-0 z-0 w-3/12">
+                  <div className="absolute top-0 z-0 w-2/12">
                     <img src={"/static/images/feedahelp/logo.png"} alt="logo" />
                   </div>
                 </div>
