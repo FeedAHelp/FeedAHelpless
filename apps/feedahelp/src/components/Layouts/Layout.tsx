@@ -19,12 +19,9 @@ type LayoutProps = {
 };
 
 export function Layout({ header, child, footer }: LayoutProps) {
-   
   const { isLoading } = useLoadingContext();
 
-  
-
-   return (
+  return (
     <ThemeProvider>
       <header>{header}</header>
       <main>{child}</main>
