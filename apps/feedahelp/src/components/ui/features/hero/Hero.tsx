@@ -61,7 +61,7 @@ const Hero = () => {
   }, []);
 
   const handleMouseEnter = () => {
-    setIsScrolling(true);
+    setIsScrolling(false);
   };
 
   const handleMouseLeave = () => {
@@ -70,7 +70,7 @@ const Hero = () => {
 
   let count = 0;
   const handleWheel = (e: any) => {
-    setIsScrolling(true);
+    setIsScrolling(false);
     count++;
 
     if (e.deltaY > 0 && count > 5) {
@@ -178,11 +178,17 @@ const Hero = () => {
           {heroImages.map((item, index) => {
             if (index === activeItem) {
               return (
-                <img
-                  key={index}
-                  src={urlForThumbnail(item.image)}
-                  alt="hero-image"
-                />
+                <div className="">
+                  <Styled.converImage
+                    key={index}
+                    src={urlForThumbnail(item.image)}
+                    alt="hero-image"
+                  />
+
+                  <div className="absolute top-0 z-0 w-3/12">
+                    <img src={"/static/images/feedahelp/logo.png"} alt="logo" />
+                  </div>
+                </div>
               );
             }
           })}
