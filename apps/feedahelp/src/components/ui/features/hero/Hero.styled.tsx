@@ -27,7 +27,7 @@ const liLists = styled.li<liListsType>`
   padding: 0.1rem;
 
   color: ${(props) => (props.isActive ? "white" : "")};
-  border-radius: 10px;
+  border-radius: 0.625rem;
   text-shadow: ${(props) =>
     props.isActive
       ? "0.063rem 0.063rem 0.313rem black, 0rem 0rem 0.125rem black"
@@ -81,10 +81,10 @@ const LogoImage = styled(Image)`
 `;
 
 const ImageContentDesktop = styled.div`
-  font-size: 18px;
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
+  font-size: 1.125rem;
+  padding-top: 0.625rem;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
 
   @media (max-width: 568px) {
     display: none;
@@ -92,12 +92,12 @@ const ImageContentDesktop = styled.div`
 `;
 
 const ImageContentMobile = styled.div`
-  font-size: 8px;
+  font-size: 0.5rem;
   color: white;
   text-shadow: 0.063rem 0.063rem 0.313 black, 0rem 0rem 0.125rem black;
-  padding-top: 110px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-top: 6.875rem;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
   display: none;
 
   @media (max-width: 568px) {
