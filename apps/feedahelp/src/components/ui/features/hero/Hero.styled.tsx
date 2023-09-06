@@ -24,6 +24,8 @@ const liLists = styled.li<liListsType>`
   transition: color 0.25 ease, text-shadow 0.25 ease;
   transition-delay: 0.25s;
   cursor: pointer;
+  padding:0.5rem;
+
 
   &:nth-child(1) {
     grid-row: 1/2;
@@ -91,14 +93,17 @@ const liLists = styled.li<liListsType>`
     grid-column: 1/2;
   }
 
+  @media (max-width: 768px) {
+    &:nth-child(1) {
+      grid-row: 1/2;
+    }
+  }
+
   color: ${(props) => (props.isActive ? "white" : "")};
   text-shadow: ${(props) =>
-    props.isActive ? "0.063rem 0.063rem 0.313rem black, 0rem 0rem 0.125rem black" : ""};
-
-  img {
-    filter: ${(props) =>
-      props.isActive ? "grayscale(0) blur(0rem) brightness(1)" : ""};
-  }
+    props.isActive
+      ? "0.063rem 0.063rem 0.313rem black, 0rem 0rem 0.125rem black"
+      : ""};
 `;
 
 const Images = styled.img`
@@ -117,24 +122,26 @@ const Images = styled.img`
 
 const displayContainer = styled.div`
   position: relative;
-  height:30vh;
+  height: 70vh;
   grid-row: 2/-2 !important;
   grid-column: 2/-2 !important;
   overflow: hidden;
-  border: 0.313rem solid #ed6c37;
   scroll-behavior: smooth;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  border-radius: 0.5rem;
 `;
+
+const converImage = styled.img`
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  position: relative;
+`;
+
+
 
 const activeItemBorder = styled.div`
   pointer-events: none;
   position: absolute;
-  border: 0.313rem solid #ed6c37;
   transition: top 0.5s ease, left 0.5s ease;
 `;
 const Info = styled.div`
@@ -152,4 +159,5 @@ export const Styled = {
   displayContainer,
   activeItemBorder,
   Info,
+  converImage,
 };
