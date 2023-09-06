@@ -6,11 +6,9 @@ interface CustomSpinnerProps {
   children?: React.ReactNode
 }
 
-
 const CustomSpinner: React.FC<CustomSpinnerProps> = ({ isLoading, children }) => {
   return isLoading ? (
-    <> 
-      <Styled.PanLoaderContainer>
+    <Styled.PanLoaderContainer>
       <Styled.Loader />
       <Styled.PanContainer>
         <Styled.Pan />
@@ -18,7 +16,6 @@ const CustomSpinner: React.FC<CustomSpinnerProps> = ({ isLoading, children }) =>
       </Styled.PanContainer>
       <Styled.Shadow />
     </Styled.PanLoaderContainer>
-    </>
   ) : (
     <>{children}</>
   )
