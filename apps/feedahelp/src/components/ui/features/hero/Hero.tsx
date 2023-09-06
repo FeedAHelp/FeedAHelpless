@@ -177,7 +177,9 @@ const Hero = () => {
               width={100}
               height={100}
             />
-            {/*  {item.title} */}
+            <Styled.ImageContentDesktop>
+              {item.title}
+            </Styled.ImageContentDesktop>
           </Styled.liLists>
         ))}
         <Styled.displayContainer ref={displayRef}>
@@ -197,6 +199,9 @@ const Hero = () => {
                       width={200}
                       height={100}
                     />
+                    <Styled.ImageContentMobile>
+                      {item.title}
+                    </Styled.ImageContentMobile>
                   </div>
                 </div>
               );

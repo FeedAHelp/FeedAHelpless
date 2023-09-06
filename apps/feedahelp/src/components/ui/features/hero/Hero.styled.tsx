@@ -74,17 +74,34 @@ const activeItemBorder = styled.div`
   transition: top 0.5s ease, left 0.5s ease;
 `;
 
-const Info = styled.div`
-  position: fixed;
-  font-size: 2vmin;
-  transform: translate(0.5em, 0.5em);
-  color: white;
-  text-shadow: 0.063rem 0.063rem 0.313 black, 0rem 0rem 0.125rem black;
-`;
-
 const LogoImage = styled(Image)`
   @media (max-width: 568px) {
     width: 30%;
+  }
+`;
+
+const ImageContentDesktop = styled.div`
+  font-size: 18px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  @media (max-width: 568px) {
+    display: none;
+  }
+`;
+
+const ImageContentMobile = styled.div`
+  font-size: 8px;
+  color: white;
+  text-shadow: 0.063rem 0.063rem 0.313 black, 0rem 0rem 0.125rem black;
+  padding-top: 110px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: none;
+
+  @media (max-width: 568px) {
+    display: block;
   }
 `;
 
@@ -94,7 +111,8 @@ export const Styled = {
   SideImages,
   displayContainer,
   activeItemBorder,
-  Info,
   converImage,
   LogoImage,
+  ImageContentDesktop,
+  ImageContentMobile,
 };
