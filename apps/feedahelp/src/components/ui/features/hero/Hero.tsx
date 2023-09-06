@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Styled } from "./Hero.styled";
 import { fetchHeroImages } from "~/utils/cms/fetchHeroImages";
 import { urlForThumbnail } from "~/utils/cms/imageProcess";
+import Image from "next/image";
 
 interface HeroImagesType {
   title: string;
@@ -170,8 +171,13 @@ const Hero = () => {
             isActive={activeItem === index ? true : false}
             ref={(element) => (listItemsRef.current[index] = element)}
           >
-            <Styled.Images src={urlForThumbnail(item.image)} alt="hero-image" />
-            {item.title}
+            <Styled.SideImages
+              src={urlForThumbnail(item.image)}
+              alt="hero-image"
+              width={100}
+              height={100}
+            />
+            {/*  {item.title} */}
           </Styled.liLists>
         ))}
         <Styled.displayContainer ref={displayRef}>
@@ -184,15 +190,19 @@ const Hero = () => {
                     alt="hero-image"
                   />
 
-                  <div className="absolute top-0 z-0 w-2/12">
-                    <img src={"/static/images/feedahelp/logo.png"} alt="logo" />
+                  <div className="absolute top-1 z-0">
+                    <Styled.LogoImage
+                      src={"/static/images/feedahelp/logo.png"}
+                      alt="logo"
+                      width={200}
+                      height={100}
+                    />
                   </div>
                 </div>
               );
             }
           })}
         </Styled.displayContainer>
-        <Styled.activeItemBorder ref={activeItemBorderRef} />
       </Styled.ulLists>
     </div>
   );
