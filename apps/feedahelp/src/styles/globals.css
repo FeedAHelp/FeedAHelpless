@@ -26,4 +26,7 @@
     .donate-btn{
         @apply h-10 mt-5 rounded-md transition-colors duration-300 bg-gradient-to-r from-[#ec0404] to-[#ed6002] hover:from-green-700 hover:to-green-600 px-4 text-white
     }
+    .sponsor-wrapper {
+        @apply relative flex h-[150px] w-[150px] md:h-[200px] md:w-[200px] items-center justify-center mx-auto duration-300 transform hover:scale-110
+    }
 }
