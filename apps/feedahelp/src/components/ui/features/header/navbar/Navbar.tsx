@@ -7,9 +7,15 @@ import { useSession, signOut } from "next-auth/react";
 import LanguageSelections from "~/components/ui/features/header/languageDropdown/LanguageSelections";
 import CurrencyDropDown from "../CurrencyDropDown/CurrencyDropDown";
 import LoginRegister from "../../userAccess/LoginRegister";
+import { useLoadingContext } from "~/ui/components/contexts/LoadingContext";
 
 const NewNav = () => {
   const { data: session } = useSession();
+  const { isLoading, setIsLoading } = useLoadingContext();
+
+  const toggleLoading = () => {
+    setIsLoading(!isLoading);
+  };
 
   const ref = useRef(null);
 
@@ -29,6 +35,9 @@ const NewNav = () => {
     <Styled.Navbar>
       <div className="nav-end">
         <div className="right-container">
+          <div>
+            <button onClick={toggleLoading}>Spinner</button>
+          </div>
           {session?.user.image ? (
             <>
               <LogoutButton handleLogout={handleLogout} />

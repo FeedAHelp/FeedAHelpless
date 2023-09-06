@@ -6,17 +6,18 @@ interface CustomSpinnerProps {
   children?: React.ReactNode
 }
 
+
 const CustomSpinner: React.FC<CustomSpinnerProps> = ({ isLoading, children }) => {
   return isLoading ? (
-    <>
-      <Styled.Container>
-        <Styled.Preloader>
-          <Styled.Shape1 />
-          <Styled.Shape2 />
-          <Styled.Shape3 />
-        </Styled.Preloader>
-        <Styled.Shadow />
-      </Styled.Container>
+    <> 
+      <Styled.PanLoaderContainer>
+      <Styled.Loader />
+      <Styled.PanContainer>
+        <Styled.Pan />
+        <Styled.Handle />
+      </Styled.PanContainer>
+      <Styled.Shadow />
+    </Styled.PanLoaderContainer>
     </>
   ) : (
     <>{children}</>

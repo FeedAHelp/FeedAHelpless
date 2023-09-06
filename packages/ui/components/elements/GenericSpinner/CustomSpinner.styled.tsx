@@ -1,94 +1,124 @@
 import styled, { keyframes } from 'styled-components'
 
-const rem = (px) => `${px / 16}rem` // Conversion function
-
-export const rotate = keyframes`
+export const loaderAnimation = keyframes`
+  0% {
+    width: 10%;
+    transform: rotate(0deg);
+  }
+  10% {
+    left: 0%;
+    transform: rotate(0deg);
+  }
+  20% {
+    width: 0%;
+    left: 20%;
+  }
+  30% {
+    width: 25%;
+  }
   50% {
+    left: 15%;
+    width: 35%;
+  }
+  70% {
+    width: 30%;
+    left: 18%;
+    transform: rotate(240deg);
+  }
+  90% {
+    width: 30%;
+    left: 10%;
+  }
+  100% {
+    width: 2%;
+    left: 25%;
     transform: rotate(360deg);
   }
-  100% {
-    transform: rotate(720deg);
-  }
-`
+`;
 
-export const shape_1 = keyframes`
-  60% {
-    transform: scale(0.4);
+export const panAnimation = keyframes`
+  0% {
+    transform: rotate(0deg);
+    transform-origin: top right;
   }
-`
-
-export const shape_2 = keyframes`
-  40% {
-    transform: scale(0.4);
+  10% {
+    transform: rotate(-2deg);
+    transform-origin: top right;
   }
-`
-
-export const shape_3 = keyframes`
   50% {
-    border-radius: 100%;
-    transform: scale(0.5) rotate(-45deg);
+    transform: rotate(15deg);
   }
   100% {
-    transform: scale(0.98) rotate(-45deg);
+    transform: rotate(0deg);
   }
-`
+`;
 
-export const shadow = keyframes`
+export const shadowAnimation = keyframes`
+  0% {
+    width: 30%;
+  }
   50% {
-    transform: translateX(-50%) scale(0.5);
-    border-color: #f2f2f2;
+    width: 40%;
+    left: 1.25rem;
   }
-`
+  100% {
+    width: 30%;
+  }
+`; 
 
-export const Container = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`
+export const PanLoaderContainer = styled.div`
+  position: fixed;
+  top: calc(50% - 5.625rem); /* Corrected top value */
+  left: calc(50% - 5.625rem); /* Corrected left value */
+  width: 180px;
+  height: 180px;
+`;
 
-export const Preloader = styled.div`
-  animation: ${rotate} 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-`
 
-export const PreloaderSpan = styled.span`
-  --c: #f23f3f;
-  position: absolute;
-  display: block;
-  height: ${rem(64)};
-  width: ${rem(64)};
-  background: var(--c);
-  border: ${rem(1)} solid var(--c);
-  border-radius: 100%;
-`
-
-export const Shape1 = styled(PreloaderSpan)`
-  transform: translate(${rem(-28)}, ${rem(-28)});
-  animation: ${shape_1} 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-`
-
-export const Shape2 = styled(PreloaderSpan)`
-  transform: translate(${rem(28)}, ${rem(-28)});
-  animation: ${shape_2} 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-`
-
-export const Shape3 = styled(PreloaderSpan)`
+export const Loader = styled.div`
   position: relative;
-  border-radius: 0;
-  transform: scale(0.98) rotate(-45deg);
-  animation: ${shape_3} 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-`
+  top: 10%;
+  left: 0;
+  z-index: -1;
+  width: 60%;
+  height: 45%;
+  border: 0.625rem solid transparent;
+  border-bottom: 0.625rem solid #FDD835;
+  border-radius: 50%;
+  animation: ${loaderAnimation} 2s infinite linear;
+`;
+
+export const PanContainer = styled.div`
+  display: flex;
+  width: 100%;
+  animation: ${panAnimation} 2s infinite;
+`;
+
+export const Pan = styled.div`
+  width: 60%;
+  height: 1.25rem;
+  background: linear-gradient(#3949AB, #5C6BC0);
+  border-bottom-right-radius: 1.25rem;
+  border-bottom-left-radius: 1.25rem;
+`;
+
+export const Handle = styled.div`
+  width: 40%;
+  height: 0.625em;
+  background: linear-gradient(#3949AB, #5C6BC0);
+  border-top-right-radius: 0.625em;
+  border-top-left-radius: 0.625em;
+  border-bottom-right-radius: 0.625em;
+  border-bottom-left-radius: 0.625em;
+`;
 
 export const Shadow = styled.div`
   position: relative;
-  top: ${rem(30)};
-  left: 50%;
-  transform: translateX(-50%);
-  display: block;
-  height: ${rem(16)};
-  width: ${rem(64)};
-  border-radius: 50%;
-  background-color: #d9d9d9;
-  border: ${rem(1)} solid #d9d9d9;
-  animation: ${shadow} 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-`
+  top: 15%;
+  left: 15%;
+  width: 30%;
+  height: 0.5rem;
+  background: lightgray;
+  border-radius: 1.25rem;
+  animation: ${shadowAnimation} 2s infinite;
+`;
