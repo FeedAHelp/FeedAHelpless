@@ -9,7 +9,7 @@ const Sponsors = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 ">
           {items.map((value, index) => (
             <div
-              className="relative flex h-[150px] w-[150px] md:h-[200px] md:w-[200px] items-center justify-center mx-auto duration-300 transform hover:scale-110"
+              className="sponsor-wrapper"
               key={index}
             >
               <Image
