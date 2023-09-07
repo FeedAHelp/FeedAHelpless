@@ -1,6 +1,6 @@
 import React from "react";
 import Index from "./index";
-import { describe } from "mocha";
+import { describe } from "@jest/globals";
 
 describe("<Index />", () => {
   it("renders", () => {
