@@ -66,6 +66,7 @@ const converImage = styled.img`
   height: 100%;
   object-fit: cover;
   position: relative;
+  animation: fadeIn 0.7s ease-in-out;
 `;
 
 const activeItemBorder = styled.div`
