@@ -12,6 +12,7 @@
         "SKIP_ENV_VALIDATION",
         "DATABASE_URL",
         "JWT_SECRETE",
+        "PORT",
         "NEXTAUTH_URL",
         "NEXTAUTH_SECRET",
         "DISCORD_CLIENT_ID",
