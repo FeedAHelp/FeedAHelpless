@@ -61,7 +61,7 @@ const Hero = () => {
   }, []);
 
   const handleMouseEnter = () => {
-    setIsScrolling(true);
+    setIsScrolling(false);
   };
 
   const handleMouseLeave = () => {
@@ -70,7 +70,7 @@ const Hero = () => {
 
   let count = 0;
   const handleWheel = (e: any) => {
-    setIsScrolling(true);
+    setIsScrolling(false);
     count++;
 
     if (e.deltaY > 0 && count > 5) {
@@ -170,24 +170,43 @@ const Hero = () => {
             isActive={activeItem === index ? true : false}
             ref={(element) => (listItemsRef.current[index] = element)}
           >
-            <Styled.Images src={urlForThumbnail(item.image)} alt="hero-image" />
-            {item.title}
+            <Styled.SideImages
+              src={urlForThumbnail(item.image)}
+              alt="hero-image"
+              width={100}
+              height={100}
+            />
+            <Styled.ImageContentDesktop>
+              {item.title}
+            </Styled.ImageContentDesktop>
           </Styled.liLists>
         ))}
         <Styled.displayContainer ref={displayRef}>
           {heroImages.map((item, index) => {
             if (index === activeItem) {
               return (
-                <img
-                  key={index}
-                  src={urlForThumbnail(item.image)}
-                  alt="hero-image"
-                />
+                <div key={index}>
+                  <Styled.converImage
+                    src={urlForThumbnail(item.image)}
+                    alt="hero-image"
+                  />
+
+                  <div className="absolute top-1 z-0">
+                    <Styled.LogoImage
+                      src={"/static/images/feedahelp/logo.png"}
+                      alt="logo"
+                      width={200}
+                      height={100}
+                    />
+                    <Styled.ImageContentMobile>
+                      {item.title}
+                    </Styled.ImageContentMobile>
+                  </div>
+                </div>
               );
             }
           })}
         </Styled.displayContainer>
-        <Styled.activeItemBorder ref={activeItemBorderRef} />
       </Styled.ulLists>
     </div>
   );
