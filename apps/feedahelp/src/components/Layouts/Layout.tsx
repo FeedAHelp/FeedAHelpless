@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { useContext } from "react";
 import type { ThemeName } from "~/ui/components/foundations/theming";
 import { ThemeProvider } from "~/ui/components/contexts/ThemeContext";
 import { useLoadingContext } from "~/ui/components/contexts/LoadingContext";
