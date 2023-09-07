@@ -1,6 +1,9 @@
 name: Cypress Tests
 
-on: push
+on:
+  push:
+    branches:
+      - develop
 
 jobs:
   cypress-run:
@@ -12,6 +15,19 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
-        with:
-          build: npm run build
-          start: npm start
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Start
+        run: npm start
+
+      - name: Run Cypress Tests
+        run: pnpm run cypress:test
+          
