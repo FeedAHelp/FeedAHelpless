@@ -6,12 +6,12 @@ const Logo = () => {
   return (
     <Styled.Logo>
       <Styled.Container>
-        <Link href='/'>
-        <Image
-          src={"/static/images/feedahelp/logo.png"}
-          width={220}
-          height={70}
-          alt={"feedahelpLogo"}
+        <Link href="/">
+          <Image
+            src={"/static/images/feedahelp/logo.png"}
+            width={220}
+            height={70}
+            alt={"feedahelpLogo"}
           />
         </Link>
       </Styled.Container>

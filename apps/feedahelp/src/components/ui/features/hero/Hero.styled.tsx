@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled, { keyframes } from "styled-components";
 import Image from "next/image";
 
 interface liListsType {
@@ -81,28 +81,64 @@ const LogoImage = styled(Image)`
   }
 `;
 
-const ImageContentDesktop = styled.div`
-  font-size: 1.125rem;
-  padding-top: 0.625rem;
-  padding-left: 0.625rem;
-  padding-right: 0.625rem;
+const texcol = "#fff";
 
-  @media (max-width: 568px) {
-    display: none;
+const focus = keyframes`
+  0% {
+    text-shadow:0 0 30px ${texcol}, 0 20px 50px darken(${texcol}, 30%);
+  }
+  50% {
+    text-shadow:0 0 0 ${texcol};
+  }
+  75% {
+    text-shadow:0 0 0 ${texcol};
+  }
+  100% {
+    text-shadow:0 0 0 ${texcol};
   }
 `;
 
-const ImageContentMobile = styled.div`
-  font-size: 0.5rem;
-  color: white;
+const ImageContentMobile = styled.p`
+  /*  font-size: 1vw;
+  letter-spacing: 8px;
   text-shadow: 0.063rem 0.063rem 0.313 black, 0rem 0rem 0.125rem black;
-  padding-top: 6.875rem;
-  padding-left: 0.625rem;
-  padding-right: 0.625rem;
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 340px;
+  padding-left: 20px;
+  padding-right: 20px;
 
   @media (max-width: 568px) {
-    display: block;
+    font-size: 0.5rem;
+    padding-top: 90px;
+  } */
+  position: relative;
+  display: flex;
+  bottom: -400px;
+  font-family: "Raleway", sans-serif;
+  font-size: 1vw;
+  margin: 0;
+  color: transparent;
+  text-shadow: 0 0 10px #d94c2b;
+  letter-spacing: 2px;
+  padding: 10px;
+  border-radius: 20px;
+  animation-name: ${focus};
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+
+  @media (max-width: 568px) {
+    padding: 10px;
+    bottom: -115px;
+    letter-spacing: 1px;
   }
 `;
 
@@ -114,6 +150,5 @@ export const Styled = {
   activeItemBorder,
   converImage,
   LogoImage,
-  ImageContentDesktop,
   ImageContentMobile,
 };

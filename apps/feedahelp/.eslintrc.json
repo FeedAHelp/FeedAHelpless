@@ -11,5 +11,10 @@
   "rules": {
     "@typescript-eslint/consistent-type-imports": "warn",
     "@typescript-eslint/no-explicit-any": "warn"
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
   }
 }

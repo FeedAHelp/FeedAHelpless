@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 import { Styled } from "./Hero.styled";
 import { fetchHeroImages } from "~/utils/cms/fetchHeroImages";
 import { urlForThumbnail } from "~/utils/cms/imageProcess";
-import Image from "next/image";
 
 interface HeroImagesType {
   title: string;
@@ -177,9 +176,6 @@ const Hero = () => {
               width={100}
               height={100}
             />
-            <Styled.ImageContentDesktop>
-              {item.title}
-            </Styled.ImageContentDesktop>
           </Styled.liLists>
         ))}
         <Styled.displayContainer ref={displayRef}>
@@ -191,7 +187,6 @@ const Hero = () => {
                     src={urlForThumbnail(item.image)}
                     alt="hero-image"
                   />
-
                   <div className="absolute top-1 z-0">
                     <Styled.LogoImage
                       src={"/static/images/feedahelp/logo.png"}

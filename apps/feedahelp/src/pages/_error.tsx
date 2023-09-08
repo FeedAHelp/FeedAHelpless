@@ -1,36 +1,27 @@
-import ServerError from '../components/ui/features/errors/ServerError'
-import Forbidden from '../components/ui/features/errors/Forbidden'
-import Unauthorized from '../components/ui/features/errors/Unauthorized'
-import ServiceUnavailable from '../components/ui/features/errors/ServiceUnavailable'
+import React from "react";
+import type { GetServerSideProps } from "next";
 
-type ErrorWithStatusCode = {
-    statusCode: 403 | 401;
-    estimatedTime?: number;
+type Props = {
+  statusCode: number;
 };
-  
-type ErrorWithStatusCodeAndTime = {
-    statusCode: 503;
-    estimatedTime: number;
-};
-  
-type ErrorProps = ErrorWithStatusCode | ErrorWithStatusCodeAndTime 
 
-const Error = ({ statusCode,estimatedTime }:ErrorProps) => {
-    const time=estimatedTime?estimatedTime:0
-  return (
-    statusCode? <RenderPages statusCode={statusCode} estimatedTime={time}/> : <ServerError/>
-  );
+const Error: React.FC<Props> = ({ statusCode }) => (
+  <p>
+    {statusCode
+      ? `An error ${statusCode} occurred on server`
+      : "An error occurred on client"}
+  </p>
+);
+
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+  let statusCode = 500;
+  if (res?.statusCode) statusCode = res.statusCode;
+
+  return {
+    props: {
+      statusCode,
+    },
+  };
 };
+
 export default Error;
-
-
-const RenderPages=({statusCode,estimatedTime}:{statusCode:number,estimatedTime:number})=>{
-
-    if(statusCode===401) return <Unauthorized/>
-
-    if(statusCode===403) return <Forbidden/>
-
-    if(statusCode===503) return <ServiceUnavailable estimatedTime={estimatedTime}/>
-
-    return <ServerError/>
-}
