@@ -4,7 +4,6 @@ import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 import { startServer } from './utills/databaseConnection'
 import { authenticateJWT } from './middleware/auth.middleware'
-import todoRouter from './routes/todo.router'
 import authRouter from './routes/auth.router'
 import userRouter from './routes/user.router'
 import subscribeRouter from './routes/subscribe.route'
@@ -33,14 +32,13 @@ app.use((req, res, next) => {
 
 app.get('/', async (req: Request, res: Response): Promise<void> => {
   try {
-    res.status(200).json('WELCOME TO EMACH SERVER')
+    res.status(200).json('WELCOME TO FEEDAHELP SERVER')
   } catch (error) {
     res.status(500).json({ error: 'Internal server error' })
   }
 })
 app.use('/auth', authRouter)
 app.use('/user', userRouter)
-app.use('/todo', todoRouter)
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`)
