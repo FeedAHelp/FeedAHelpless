@@ -12,6 +12,9 @@
 /prisma/db.sqlite
 /prisma/db.sqlite-journal
 
+/cypress
+/cypress/e2e
+
 # next.js
 /.next/
 /out/
