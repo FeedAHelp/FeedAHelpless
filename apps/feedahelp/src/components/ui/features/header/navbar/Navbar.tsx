@@ -8,10 +8,14 @@ import LanguageSelections from "~/components/ui/features/header/languageDropdown
 import CurrencyDropDown from "../CurrencyDropDown/CurrencyDropDown";
 import LoginRegister from "../../userAccess/LoginRegister";
 import { useLoadingContext } from "~/ui/components/contexts/LoadingContext";
+import { motion, AnimatePresence } from "framer-motion";
+import CurrencyDropDownMobile from "../CurrencyDropDown/CurrencyDropDownMobile";
+import LanguageSelectionsMobile from "../languageDropdown/languageSectionMobile";
 
 const NewNav = () => {
   const { data: session } = useSession();
   const { isLoading, setIsLoading } = useLoadingContext();
+  const [isSideBar, setIsSideBar] = useState(false);
 
   const toggleLoading = () => {
     setIsLoading(!isLoading);
@@ -79,6 +83,7 @@ const NewNav = () => {
           aria-haspopup="true"
           aria-expanded="false"
           className="md:hidden"
+          onClick={() => setIsSideBar(!isSideBar)}
         >
           <MenuIcon className="text-4xl" />
         </button>
@@ -88,8 +93,27 @@ const NewNav = () => {
           </div>
         </Modal>
       </div>
-      <LanguageSelections />
-      <CurrencyDropDown />
+      <div className="hidden md:block">
+        <LanguageSelections />
+      </div>
+      <div className="hidden md:block">
+        <CurrencyDropDown />
+      </div>
+
+      <AnimatePresence>
+        {isSideBar && (
+          <motion.div
+            initial={{ x: -1000 }}
+            animate={{ x: 0 }}
+            exit={{ x: -1000 }}
+            transition={{ duration: 0.2, ease: "easeIn" }}
+            className="absolute left-0 top-[5rem] h-screen w-full bg-[rgba(60,60,60,0.86)] block md:hidden"
+          >
+            <LanguageSelectionsMobile />
+            <CurrencyDropDownMobile />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Styled.Navbar>
   );
 };
