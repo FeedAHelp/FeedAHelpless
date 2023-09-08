@@ -62,16 +62,16 @@ export const Footer = () => {
                 alt={"feedahelpLogo"}
               />
             </Link>
-            <button
-              onClick={() => setModalOpen(true)}
-              className="donate-btn"
-              type="submit"
+            <Styled.FooterButton
+              onClick={() => {
+                setModalOpen(true);
+              }}
+              type="button"
             >
-              Donate
               <Modal isOpen={modalOpen} closeModal={closeModal}>
                 <div className="h-[400px] w-[400px]"></div>
               </Modal>
-            </button>
+            </Styled.FooterButton>
           </Grid>
           <Grid item xs={6} md={2}>
             <p className="pb-1 text-lg font-medium">About Us</p>
