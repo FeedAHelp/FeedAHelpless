@@ -1,7 +1,8 @@
 "use client";
+
 import axios, { type AxiosInstance } from "axios";
 import { getSession } from "next-auth/react";
-import { type User } from "~/types/type";
+import { type User } from "~/types/authType";
 
 export const apiSetup = async () => {
   const api: AxiosInstance = axios.create({
@@ -11,6 +12,7 @@ export const apiSetup = async () => {
         : process.env.NEXT_PUBLIC_LOCAL_BACKEND_BASE_URL,
   });
 
+  console.log(api)
   const session: {
     user: User;
   } = await getSession();

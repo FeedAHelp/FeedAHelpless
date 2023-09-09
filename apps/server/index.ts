@@ -9,7 +9,7 @@ import userRouter from './routes/user.router'
 import subscribeRouter from './routes/subscribe.route'
 
 const app = express()
-const port = process.env.PORT || 3020
+const port = process.env.SERVER_PORT || 4000
 
 dotenv.config()
 app.use(cors())
@@ -20,10 +20,8 @@ startServer()
 
 app.use(subscribeRouter)
 
-// Middleware to apply globally, excluding the authentication route
 app.use((req, res, next) => {
   if (req.path === '/auth/register' || req.path === '/auth/login') {
-    // Skip authentication middleware for the /auth route
     next()
   } else {
     authenticateJWT(req, res, next)
@@ -41,5 +39,5 @@ app.use('/auth', authRouter)
 app.use('/user', userRouter)
 
 app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`)
+  console.log(`FeedAHelp Server listening at ${port}`)
 })

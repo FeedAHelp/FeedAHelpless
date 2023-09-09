@@ -47,8 +47,17 @@ export const authOptions: NextAuthOptions = {
     ],
     callbacks: {
       jwt: async ({ token, user }: JWTCallbackParams) => {
-        /* if (user && (user.id || user.name)) {
+        if (user && (user.id || user.name)) {
           await postMethod(endPoints.auth.register, {
+            name: user.name || "Not found",
+            email: user.email,
+            password: user.password || user.id,
+            image: user.image || "Not found",
+            role: "User",
+          }).then((res) => {
+            console.log(res)
+          })
+         /*  await postMethod(endPoints.auth.register, {
             name: user.name || "Not found",
             email: user.email,
             password: user.password || user.id,
@@ -56,37 +65,20 @@ export const authOptions: NextAuthOptions = {
             role: "Customer",
           })
             .then((res) => {
+              console.log(res.data)
               const data: User = res.data;
               token.id = data.id;
               token.email = data.email;
               token.name = data.name;
               token.userType = data.registerId;
               token.image = data.image;
-              token.accessToken = data.accessToken;
+              token.accessToken = data.accessToken; 
             })
             .catch(async (error) => {
-              await postMethod(endPoints.auth.login, {
-                email: user.email,
-                password: user.password || user.id,
-              })
-                .then((res) => {
-                  const data: User = res.data;
-                  token.id = data.id;
-                  token.email = data.email;
-                  token.name = data.name;
-                  token.userType = data.registerId;
-                  token.image = data.image;
-                  token.accessToken = data.accessToken;
-                })
-                .catch((error) => {
-                  console.error(error.response.data.message);
-                  token.error = error.response.data.message;
-                });
               console.error(error);
-              token.error = error.response.data.message;
-            });
-        } */
-        if (user && (!user.id || !user.name)) {
+            }); */
+        } 
+/*         if (user && (!user.id || !user.name)) {
           await postMethod(endPoints.auth.login, {
             email: user.email,
             password: user.password || user.id,
@@ -104,7 +96,7 @@ export const authOptions: NextAuthOptions = {
               console.error(error.response.data.message);
               token.error = error.response.data.message;
             });
-        }
+        } */
         return token;
       },
       session: ({ session, token }: SessionCallbackParams) => {
