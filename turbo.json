@@ -33,7 +33,8 @@
         "NEXT_PUBLIC_BASE_URL",
         "NEXT_PUBLIC_SANITY_API_TOKEN",
         "SANITY_PREVIEW_SECRET",
-        "RECAPTCHA_SECRET_KEY"
+        "RECAPTCHA_SECRET_KEY",
+        "NEXT_PUBLIC_RECAPTCHA_SITEKEY"
       ]
     },
     "lint": {},
