@@ -13,6 +13,7 @@ import {
 import { type NextAuthOptions } from "next-auth";
 import { postMethod } from "../../../utils/api/postMethod";
 import { endPoints } from "../../../utils/api/route";
+import CredentialsProvider from 'next-auth/providers/credentials'
 
 export const authOptions: NextAuthOptions = {
     session: {
@@ -43,7 +44,17 @@ export const authOptions: NextAuthOptions = {
       Discord({
         clientId: `${process.env.DISCORD_CLIENT_ID}`,
         clientSecret: `${process.env.DISCORD_CLIENT_SECRET}`,
-      })
+      }),
+      CredentialsProvider({
+        type: 'credentials',
+        credentials: {},
+        async authorize(credentials: any) {
+          const user = {
+            ...credentials,
+          }
+          return user
+        },
+      }),
     ],
     callbacks: {
       jwt: async ({ token, user }: JWTCallbackParams) => {
@@ -55,7 +66,8 @@ export const authOptions: NextAuthOptions = {
             image: user.image || "Not found",
             role: "User",
           }).then((res) => {
-            console.log(res)
+            console.log(res.data);
+            
           })
          /*  await postMethod(endPoints.auth.register, {
             name: user.name || "Not found",

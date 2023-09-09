@@ -12,7 +12,6 @@ export const apiSetup = async () => {
         : process.env.NEXT_PUBLIC_LOCAL_BACKEND_BASE_URL,
   });
 
-  console.log(api)
   const session: {
     user: User;
   } = await getSession();
