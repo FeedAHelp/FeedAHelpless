@@ -10,11 +10,19 @@ datasource db {
 }
 
 model User {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  name       String
-  image      String?
-  register   Register @relation(fields: [registerId], references: [id])
-  registerId String   @unique
+  id           String         @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  image        String?
+  register     Register       @relation(fields: [registerId], references: [id])
+  registerId   String         @unique
+  UserLoggedIn UserLoggedIn[]
+}
+
+model UserLoggedIn {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  createAt DateTime @default(now())
+  user     User     @relation(fields: [userId], references: [id])
+  userId   String
 }
 
 model Register {
