@@ -35,7 +35,7 @@ const LoginForm = () => {
           </GenericLink>
         </div>
         <div>
-          <ReCAPTCHA sitekey="Your client site key" />
+          <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITEKEY as string} />
         </div>
         <div>
           <button

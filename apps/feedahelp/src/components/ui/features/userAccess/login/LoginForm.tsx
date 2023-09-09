@@ -38,7 +38,7 @@ const LoginForm = () => {
         </div>
         <div>
           <ReCAPTCHA
-            sitekey="6Ldu4eMnAAAAAIWpEX8R81LvNVjvVbAv0CMKALT0"
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITEKEY as string}
             ref={recaptchaRef}
             onChange={handleCaptchaSubmission}
           />
