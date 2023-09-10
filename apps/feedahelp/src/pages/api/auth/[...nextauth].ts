@@ -66,8 +66,15 @@ export const authOptions: NextAuthOptions = {
             image: user.image || "Not found",
             role: "User",
           }).then((res) => {
-            console.log(res.data);
+            console.log(res);
             
+            /* const data: User = res.data;
+            token.id = data.id;
+            token.email = data.email;
+            token.name = data.name;
+            token.userType = data.registerId;
+            token.image = data.image;
+            token.accessToken = data.accessToken;  */
           })
          /*  await postMethod(endPoints.auth.register, {
             name: user.name || "Not found",
