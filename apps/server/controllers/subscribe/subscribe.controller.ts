@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { prisma } from '../../utills/prismaInstance'
+import { prisma } from '../../utils/prismaInstance'
 import { subscribeSchema,subscribeType } from '../../schema/subscribe.schema'
 
 export const subscribeController = async (req: Request<{}, {},subscribeType>, res: Response) => {    

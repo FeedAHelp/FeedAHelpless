@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
-import { startServer } from './utills/databaseConnection'
+import { startServer } from './utils/databaseConnection'
 import { authenticateJWT } from './middleware/auth.middleware'
 import { router } from "./routes";
 

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { prisma } from '../../utills/prismaInstance'
+import { prisma } from '../../utils/prismaInstance'
 
 export const getSubscriberController = async (req: Request, res: Response) => {
   try {

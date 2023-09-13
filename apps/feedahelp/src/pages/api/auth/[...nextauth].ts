@@ -67,6 +67,7 @@ export const authOptions: NextAuthOptions = {
           image: user.image || "Not found",
           role: "Donar",
         }).then((res) => {
+          console.log(res.data)
           const data: User = res.data;
           token.id = data.id;
           token.email = data.email;
@@ -89,10 +90,8 @@ export const authOptions: NextAuthOptions = {
               token.accessToken = data.accessToken;
             })
             .catch((error) => {
-              console.error(error.response.data.message);
               token.error = error.response.data.message;
             });
-          console.error(error);
           token.error = error.response.data.message;
         });
       }
