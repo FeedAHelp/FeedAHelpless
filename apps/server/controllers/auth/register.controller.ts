@@ -14,9 +14,8 @@ export const registerController = async (req: Request, res: Response) => {
     // Check if email already exists
     const existingUser = await prisma.register.findUnique({ where: { email } })
     if (existingUser) {
-      const user = await prisma.UserLoggedIn.create({
+      const user = await prisma.userLoggedIn.create({
         data: {
-          name: name,
           userId: existingUser.id
         }
       })
