@@ -7,6 +7,6 @@ export const subscribeRouter: Router = express.Router();
 
 subscribeRouter.get('/subscribe', getSubscriberController)
 subscribeRouter.post('/subscribe', subscribeController)
-subscribeRouter.delete('/subscribe/:id', deleteSubscribeController)
+subscribeRouter.delete('/subscribe/:email', deleteSubscribeController)
 
 export default subscribeRouter

@@ -8,7 +8,6 @@ import { router } from "./routes";
 
 const app = express()
 const port = process.env.SERVER_PORT || 4000
-const api = process.env.API_URL;
 
 dotenv.config()
 app.use(cors())
@@ -17,8 +16,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 startServer()
 
-app.use(`${api}`, router);
+app.use('/api', router);
 
 app.listen(port, () => {
-  console.log(`FeedAHelp Server listening at ${port}`)
+  console.log(`FeedAHelp Server running at http://localhost:${port}`)
 })

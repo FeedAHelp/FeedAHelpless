@@ -1,13 +1,9 @@
 import { Request, Response } from 'express'
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import {prisma} from '../../utills/prismaInstance'
 
 export const getAllUsersController = async (_req: Request, res: Response) => {
   try {
-    const users = await prisma.user.findMany({
-      include: { register: true }
-    })
+    const users = await prisma.user.findMany({})
 
     return res.status(200).json({ users })
   } catch (error) {

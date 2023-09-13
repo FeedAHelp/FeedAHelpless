@@ -1,14 +1,11 @@
 import { Request, Response } from 'express'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import {prisma} from '../../utills/prismaInstance'
 
 export const registerController = async (req: Request, res: Response) => {
   try {
     const { name, email, password, image } = req.body
-
     // Check if required data is present
     if (!email || !password) {
       return res.status(400).json({ message: 'Required data not found' })

@@ -6,7 +6,6 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 export const loginController = async (req: Request, res: Response) => {
-console.log('sfsdfsdf login');
 
   try {
     res.status(200).json('WELCOME LOGIN')
