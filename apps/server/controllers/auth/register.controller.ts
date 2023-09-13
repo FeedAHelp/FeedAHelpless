@@ -12,7 +12,7 @@ const createUser = async (userData: any) => {
 
 const createAccessToken = async (register: any) => {
   const token = jwt.sign(
-    { email: register.email, userId: register.user.id },
+    { email: register.email, userId: register.id },
     process.env.JWT_SECRET,
     { expiresIn: '1h' }
   );
