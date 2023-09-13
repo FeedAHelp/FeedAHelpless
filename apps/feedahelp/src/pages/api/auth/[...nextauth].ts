@@ -59,54 +59,44 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async jwt({ token, user, account }) {
-      //   if (user && (user.id || user.name)) {
-      //     await postMethod(endPoints.auth.register, {
-      //       name: user.name || "Not found",
-      //       email: user.email,
-      //       password:  user.id,
-      //       image: user.image || "Not found",
-      //       role: "User",
-      //     }).then((res) => {
-      //         console.log(res);
-      //       const data: User = res.data;
-      //       token.id = data.id;
-      //       token.email = data.email;
-      //       token.name = data.name;
-      //       token.userType = data.registerId;
-      //       token.image = data.image;
-      //       token.accessToken = data.accessToken;
-      //     });
-      //    /*  await postMethod(endPoints.auth.register, {
-      //       name: user.name || "Not found",
-      //       email: user.email,
-      //       password: user.password || user.id,
-      //       image: user.image || "Not found",
-      //       role: "Customer",
-      //     })
-      //       .then((res) => {
-      //         console.log(res.data)
-      //         const data: User = res.data;
-      //         token.id = data.id;
-      //         token.email = data.email;
-      //         token.name = data.name;
-      //         token.userType = data.registerId;
-      //         token.image = data.image;
-      //         token.accessToken = data.accessToken;
-      //       })
-      //       .catch(async (error) => {
-      //         console.error(error);
-      //       }); */
-      //   }
-
-      // when upper comment lines are work then you can remove this is block
-      if (user) {
-        token.id = user.id;
-        token.email = user.email;
-        token.name = user.name;
-        token.userType = account?.type;
-        token.picture = user.image;
-        token.accessToken = account?.access_token;
+      if (user && (user.id || user.name)) {
+        await postMethod(endPoints.auth.register, {
+          name: user.name || "Not found",
+          email: user.email,
+          password: user.id || user.id,
+          image: user.image || "Not found",
+          role: "Donar",
+        }).then((res) => {
+          const data: User = res.data;
+          token.id = data.id;
+          token.email = data.email;
+          token.name = data.name;
+          token.userType = data.registerId;
+          token.image = data.image;
+          token.accessToken = data.accessToken;
+        }).catch(async (error) => {
+          await postMethod(endPoints.auth.login, {
+            email: user.email,
+            password: user.id || user.id,
+          })
+            .then((res) => {
+              const data: User = res.data;
+              token.id = data.id;
+              token.email = data.email;
+              token.name = data.name;
+              token.userType = data.registerId;
+              token.image = data.image;
+              token.accessToken = data.accessToken;
+            })
+            .catch((error) => {
+              console.error(error.response.data.message);
+              token.error = error.response.data.message;
+            });
+          console.error(error);
+          token.error = error.response.data.message;
+        });
       }
+
       return token;
     },
 

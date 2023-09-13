@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^4.15.0",
+    "@prisma/client": "^5.3.0",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/uuid": "^9.0.3",
     "bcrypt": "^5.1.0",
@@ -29,7 +29,6 @@
     "faker": "^6.6.6",
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^6.0.0",
-    "prisma": "^4.15.0",
     "progress": "^2.0.3",
     "uuid": "^9.0.0",
     "zod": "^3.21.4"
@@ -42,6 +41,7 @@
     "@types/node": "^18.16.0",
     "@types/progress": "^2.0.5",
     "nodemon": "^2.0.22",
+    "prisma": "^5.3.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   },

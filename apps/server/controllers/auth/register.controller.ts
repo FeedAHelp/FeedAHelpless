@@ -5,7 +5,7 @@ import {prisma} from '../../utills/prismaInstance'
 
 export const registerController = async (req: Request, res: Response) => {
   try {
-    const { name, email, password, image } = req.body
+    const { name, email, password, image, role, accessToken } = req.body
     // Check if required data is present
     if (!email || !password) {
       return res.status(400).json({ message: 'Required data not found' })
@@ -14,7 +14,12 @@ export const registerController = async (req: Request, res: Response) => {
     // Check if email already exists
     const existingUser = await prisma.register.findUnique({ where: { email } })
     if (existingUser) {
-      return res.status(409).json({ message: 'Email already exists' })
+      const user = await prisma.UserLoggedIn.create({
+        data: {
+          name: name,
+          userId: existingUser.id
+        }
+      })
     }
 
     // Hash the password
@@ -26,8 +31,8 @@ export const registerController = async (req: Request, res: Response) => {
         email,
         phone: '', // Add the phone property here
         password: hashedPassword,
-        role: 'customer',
-        accessToken: '' // Add the access_token property here
+        role: role,
+        accessToken: accessToken // Add the access_token property here
       }
     })
 
