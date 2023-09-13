@@ -1,12 +1,12 @@
 import { Request, Response } from 'express'
-import { prisma } from '../../utills/prismaInstance'
+import { prisma } from '../../utils/prismaInstance'
 
 export const deleteSubscribeController = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params
+    const { email } = req.params
     await prisma.feedahelpNewsletter.delete({
       where: {
-        id: id
+        email:email
       }
     })
     return res.status(200).json({ status: 'success' })

@@ -56,14 +56,17 @@ const NewNav = () => {
               </Styled.Avatar>
             </>
           ) : session?.user?.name ? (
-            <div
-              ref={ref}
-              className=" cursor-pointer rounded-full bg-orange-600"
-            >
-              <span className="flex h-10 w-10  items-center justify-center text-lg font-bold text-white">
-                {session?.user?.name.slice(0, 1)}
-              </span>
-            </div>
+            <>
+              <LogoutButton handleLogout={handleLogout} />
+              <div
+                ref={ref}
+                className=" cursor-pointer rounded-full bg-orange-600"
+              >
+                <span className="flex h-10 w-10  items-center justify-center text-lg font-bold text-white">
+                  {session?.user?.name.slice(0, 1)}
+                </span>
+              </div>
+            </>
           ) : (
             <Styled.Avatar
               avatar={"/assets/avatar.png"}
@@ -107,7 +110,7 @@ const NewNav = () => {
             animate={{ x: 0 }}
             exit={{ x: -1000 }}
             transition={{ duration: 0.2, ease: "easeIn" }}
-            className="absolute left-0 top-[5rem] h-screen w-full bg-[rgba(60,60,60,0.86)] block md:hidden"
+            className="absolute left-0 top-[5rem] block h-screen w-full bg-[rgba(60,60,60,0.86)] md:hidden"
           >
             <LanguageSelectionsMobile />
             <CurrencyDropDownMobile />
