@@ -16,6 +16,40 @@ const BoxShadow = () => `
       0.5rem 1.875rem 1.875rem rgba(0, 0, 0, 0.4), inset -0.125rem -0.125rem 0.3125rem rgba(0, 0, 0, 0.4);
 `;
 
+const DonateHover = () => `
+  &:hover ${HeaderBg} {
+    left: 0;
+  }
+
+  &:hover ${SliderRange} {
+    width: 80%;
+    transition: transform 0.5s;
+  }
+
+  &:hover ${SliderOutput} {
+    opacity: 1;
+    transition: transform 0.5s;
+  }
+
+  &:hover ${DonateAmount} {
+    left: 8.75rem;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-size: 1.5em;
+  }
+
+  &:hover ${DonateButton} {
+    right: 0;
+    transform: scale(1);
+  }
+
+  &:hover ${QtyInput} {
+    margin: 0;
+  }
+`;
+
 const Container = styled.div`
   width: 17.5rem;
   height: 31.25rem;
@@ -224,12 +258,12 @@ const DeshiGrid = styled.div`
 const InsideContainer = styled.div`
   z-index: 9;
   background: #92879b;
-  width: 80px;
-  height: 80px;
+  width: 5rem;
+  height: 5rem;
   position: absolute;
-  top: -40px;
-  right: 0px;
-  border-radius: 0px 0px 200px 200px;
+  top: -2.5rem;
+  right: 0rem;
+  border-radius: 0 0 12.5rem 12.5rem;
   transition: all 0.5s, border-radius 2s, top 1s;
   overflow: hidden;
   ${BoxShadow}
@@ -249,13 +283,13 @@ const InsideContainer = styled.div`
     width: 100%;
     right: 0;
     top: 0;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     height: 80%;
 
     .icon {
       opacity: 0;
-      right: 25px;
-      top: 25px;
+      right: 1.5625rem;
+      top: 1.5625rem;
       transition: all 0.3s;
     }
 
@@ -276,7 +310,7 @@ const InsideContainer = styled.div`
 
 const BoxDown = styled.div`
   width: 100%;
-  height: 40px;
+  height: 2.5rem;
   position: relative;
   overflow: hidden;
 `;
@@ -293,9 +327,9 @@ const HeaderBg = styled.div`
   width: 100%;
   height: 100%;
   background-color: transparent;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   position: absolute;
-  left: -659px;
+  left: -41.1875rem;
 `;
 
 const HeaderBgInner = styled.div`
@@ -335,7 +369,7 @@ const DonateAmount = styled.div`
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  font-size: 16px;
+  font-size: 1rem;
   color: #252525;
 `;
 
@@ -347,7 +381,7 @@ const DonateButton = styled.span`
   position: absolute;
   bottom: 0;
   right: 0;
-  padding: 15px;
+  padding: 0.9375rem;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
@@ -362,65 +396,34 @@ const QtyInput = styled.div`
   display: flex;
   align-items: center;
   overflow: hidden;
-  margin: 50px;
+  margin: 3.125rem;
 `;
 
 const Slider = styled.div``;
 const SliderOutput = styled.div`
-  font-size: 10px;
+  font-size: 0.625rem;
   opacity: 0;
 `;
 
 const SliderRange = styled.input`
   -webkit-appearance: none;
   appearance: none;
-  width: 80%;
+  width: 0%;
   background: #fa792e;
   outline: none;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   cursor: pointer;
-  opacity: 0;
 `;
 
 const ElWrapper = styled.div`
-  width: 260px;
-  padding: 10px;
-  margin: 145px auto;
+  width: 16.25rem;
+  padding: 0.625rem;
+  margin: 9.0625rem auto;
   background-color: transparent;
   cursor: pointer;
   transition: transform 0.5s;
 
-  &:hover ${HeaderBg} {
-    left: 0px;
-  }
-
-  &:hover ${SliderRange} {
-    opacity: 1;
-    transition: transform 0.5s;
-  }
-
-  &:hover ${SliderOutput} {
-    opacity: 1;
-    transition: transform 0.5s;
-  }
-
-  &:hover ${DonateAmount} {
-    left: 140px;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-    font-size: 1.5em;
-  }
-
-  &:hover ${DonateButton} {
-    right: 0;
-    transform: scale(1);
-  }
-
-  &:hover ${QtyInput} {
-    margin: 0;
-  }
+  ${DonateHover}
 `;
 
 const DonateButtonIcon = styled.div`
