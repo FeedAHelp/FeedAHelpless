@@ -220,6 +220,59 @@ const DeshiGrid = styled.div`
   align-items: baseline;
 `;
 
+const InsideContainer = styled.div`
+  z-index: 9;
+  background: #92879B;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: -40px;
+  right: 0px;
+  border-radius: 0px 0px 200px 200px;
+  transition: all 0.5s, border-radius 2s, top 1s;
+  overflow: hidden;
+  ${BoxShadow}
+
+  .icon {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: white;
+    opacity: 1;
+    cursor: pointer; 
+  }
+  
+  &:hover {
+    width: 100%;
+    right: 0;
+    top: 0;
+    border-radius: 10px;
+    height: 80%;
+    
+    .icon {
+      opacity: 0;
+      right: 25px;
+      top: 25px;
+      transition: all 0.3s;
+    }
+    
+    .contents {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+  
+  .contents {
+    padding: 5%;
+    opacity: 0;
+    transform: scale(0.5) translateY(-200%);
+    transition: opacity 0.2s, transform 0.8s;
+    curson: pointer;
+  }
+`;
+
 export const Styled = {
   Container,
   Header,
@@ -238,5 +291,6 @@ export const Styled = {
   StatusTag,
   StatusTagText,
   pulseAuxiliarLow,
-  DeshiGrid
+  DeshiGrid,
+  InsideContainer
 };

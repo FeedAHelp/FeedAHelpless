@@ -5,8 +5,13 @@ import IngredientSearchInput from "~/ui/components/elements/IngredientSearchInpu
 import DeshiSocial from "./DeshiSocial";
 import DeshiMenuCaptions from "./DeshiMenuCaption";
 import { items } from "./data";
+import { ic_info_outline } from 'react-icons-kit/md/ic_info_outline'
+import { withBaseIcon } from 'react-icons-kit'
 
 const DeshiMenus = () => {
+  const SideIconContainer = withBaseIcon({ size: 25 })
+
+
   return (
     <div className="mb-2 h-96 w-full overflow-auto customScrollBar">
       <div className="relitive container">
@@ -37,10 +42,19 @@ const DeshiMenus = () => {
                       <DeshiSocial />
                     </Styled.Header>
                     <Styled.Body>
-                      <Styled.Price>
+                    <Styled.InsideContainer>
+                      <div className="icon">
+                        <SideIconContainer icon={ic_info_outline} />
+
+                      </div>
+                      <div className="contents">
+                        
+                      </div>
+                    </Styled.InsideContainer>
+                      {/* <Styled.Price>
                         USD <b>23,453</b>
                       </Styled.Price>
-                      <Styled.Rating></Styled.Rating>
+                      <Styled.Rating></Styled.Rating> */}
                     </Styled.Body>
                   </Styled.Container>
                 );
