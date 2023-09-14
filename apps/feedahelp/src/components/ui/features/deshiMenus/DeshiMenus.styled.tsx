@@ -292,7 +292,7 @@ const HeaderBg = styled.div`
   transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
   width: 100%;
   height: 100%;
-  background-color: #3f96cd;
+  background-color: transparent;
   border-radius: 20px;
   position: absolute;
   left: -659px;
@@ -315,7 +315,7 @@ const Cart = styled.div`
   font-weight: 700;
 `;
 
-const DonatAmount = styled.div`
+const DonateAmount = styled.div`
   -webkit-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
   -moz-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
   -o-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
@@ -340,25 +340,19 @@ const DonatAmount = styled.div`
 `;
 
 const DonateButton = styled.span`
-  -webkit-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  -o-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
   transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
   transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -webkit-transition-delay: 100ms;
-  -o-transition-delay: 100ms;
   transition-delay: 100ms;
   display: block;
   position: absolute;
-  top: 50%;
-  left: 110%;
+  bottom: 0;
+  right: 0;
+  padding: 15px;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  transform: scale(0);
 `;
 
 const QtyInput = styled.div`
@@ -371,28 +365,57 @@ const QtyInput = styled.div`
   margin: 50px;
 `;
 
+const Slider = styled.div``;
+const SliderOutput = styled.div`
+  font-size: 10px;
+  opacity: 0;
+`;
+
+const SliderRange = styled.input`
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80%;
+  background: #fa792e;
+  outline: none;
+  border-radius: 20px;
+  cursor: pointer;
+  opacity: 0;
+`;
+
 const ElWrapper = styled.div`
   width: 260px;
   padding: 10px;
   margin: 145px auto;
   background-color: transparent;
   cursor: pointer;
+  transition: transform 0.5s;
 
   &:hover ${HeaderBg} {
     left: 0px;
   }
 
-  &:hover ${DonatAmount} {
-    left: 155px;
+  &:hover ${SliderRange} {
+    opacity: 1;
+    transition: transform 0.5s;
+  }
+
+  &:hover ${SliderOutput} {
+    opacity: 1;
+    transition: transform 0.5s;
+  }
+
+  &:hover ${DonateAmount} {
+    left: 140px;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
-    color: #818181;
+    font-size: 1.5em;
   }
 
   &:hover ${DonateButton} {
-    left: 90%;
+    right: 0;
+    transform: scale(1);
   }
 
   &:hover ${QtyInput} {
@@ -433,8 +456,11 @@ export const Styled = {
   HeaderBg,
   HeaderBgInner,
   Cart,
-  DonatAmount,
+  DonateAmount,
   DonateButton,
   QtyInput,
   DonateButtonIcon,
+  Slider,
+  SliderOutput,
+  SliderRange,
 };

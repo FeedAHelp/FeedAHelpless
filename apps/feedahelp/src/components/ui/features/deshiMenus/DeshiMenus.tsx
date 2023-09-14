@@ -56,23 +56,36 @@ const DeshiMenus = () => {
                             <Styled.HeaderBgInner></Styled.HeaderBgInner>
                           </Styled.HeaderBg>
                           <Styled.Cart>
-                            <Styled.DonatAmount>
+                            <Styled.DonateAmount>
                               ${donateAmount}
-                            </Styled.DonatAmount>
-                            <Styled.QtyInput>Slider</Styled.QtyInput>
-                            <Styled.DonateButton>
-                              <Styled.DonateButtonIcon>
-                                <Styled.DeshiShareIcon
-                                  src="https://cdn.sanity.io/images/s98tqz9i/production/caf473f4c94fbb175ba834421beb4ef363bc142d-3144x3026.png"
-                                  width={30}
-                                  height={30}
-                                  alt={"feedahelpLogo"}
-                                  className="object-cover"
+                            </Styled.DonateAmount>
+                            <Styled.QtyInput>
+                              <Styled.Slider>
+                                <Styled.SliderOutput>100</Styled.SliderOutput>
+                                <Styled.SliderRange
+                                  type="range"
+                                  min="100"
+                                  max="10000"
+                                  value="100"
+                                  step="50"
+                                  oninput="move()"
+                                  id="range"
                                 />
-                              </Styled.DonateButtonIcon>
-                            </Styled.DonateButton>
+                              </Styled.Slider>
+                            </Styled.QtyInput>
                           </Styled.Cart>
                         </Styled.BoxDown>
+                        <Styled.DonateButton>
+                          <Styled.DonateButtonIcon>
+                            <Styled.DeshiShareIcon
+                              src="https://cdn.sanity.io/images/s98tqz9i/production/caf473f4c94fbb175ba834421beb4ef363bc142d-3144x3026.png"
+                              width={30}
+                              height={30}
+                              alt={"feedahelpLogo"}
+                              className="object-cover"
+                            />
+                          </Styled.DonateButtonIcon>
+                        </Styled.DonateButton>
                       </Styled.ElWrapper>
                     </Styled.Body>
                   </Styled.Container>
