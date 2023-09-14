@@ -1,19 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Styled } from "./DeshiMenus.styled";
 import StickyBox from "react-sticky-box";
 import IngredientSearchInput from "~/ui/components/elements/IngredientSearchInput/IngredientSearchInput";
 import DeshiSocial from "./DeshiSocial";
 import DeshiMenuCaptions from "./DeshiMenuCaption";
+import Link from "next/link";
 import { items } from "./data";
-import { ic_info_outline } from 'react-icons-kit/md/ic_info_outline'
-import { withBaseIcon } from 'react-icons-kit'
+import { ic_info_outline } from "react-icons-kit/md/ic_info_outline";
+import { withBaseIcon } from "react-icons-kit";
 
 const DeshiMenus = () => {
-  const SideIconContainer = withBaseIcon({ size: 25 })
+  const [donateAmount, setDonateAmount] = useState(100);
 
+  const SideIconContainer = withBaseIcon({ size: 25 });
 
   return (
-    <div className="mb-2 h-96 w-full overflow-auto customScrollBar">
+    <div className="customScrollBar mb-2 h-96 w-full overflow-auto">
       <div className="relitive container">
         <div className="row">
           <StickyBox offsetTop={0} offsetBottom={20} style={{ zIndex: 99 }}>
@@ -42,19 +44,36 @@ const DeshiMenus = () => {
                       <DeshiSocial />
                     </Styled.Header>
                     <Styled.Body>
-                    <Styled.InsideContainer>
-                      <div className="icon">
-                        <SideIconContainer icon={ic_info_outline} />
-
-                      </div>
-                      <div className="contents">
-                        
-                      </div>
-                    </Styled.InsideContainer>
-                      {/* <Styled.Price>
-                        USD <b>23,453</b>
-                      </Styled.Price>
-                      <Styled.Rating></Styled.Rating> */}
+                      <Styled.InsideContainer>
+                        <div className="icon">
+                          <SideIconContainer icon={ic_info_outline} />
+                        </div>
+                        <div className="contents"></div>
+                      </Styled.InsideContainer>
+                      <Styled.ElWrapper>
+                        <Styled.BoxDown>
+                          <Styled.HeaderBg>
+                            <Styled.HeaderBgInner></Styled.HeaderBgInner>
+                          </Styled.HeaderBg>
+                          <Styled.Cart>
+                            <Styled.DonatAmount>
+                              ${donateAmount}
+                            </Styled.DonatAmount>
+                            <Styled.QtyInput>Slider</Styled.QtyInput>
+                            <Styled.DonateButton>
+                              <Styled.DonateButtonIcon>
+                                <Styled.DeshiShareIcon
+                                  src="https://cdn.sanity.io/images/s98tqz9i/production/caf473f4c94fbb175ba834421beb4ef363bc142d-3144x3026.png"
+                                  width={30}
+                                  height={30}
+                                  alt={"feedahelpLogo"}
+                                  className="object-cover"
+                                />
+                              </Styled.DonateButtonIcon>
+                            </Styled.DonateButton>
+                          </Styled.Cart>
+                        </Styled.BoxDown>
+                      </Styled.ElWrapper>
                     </Styled.Body>
                   </Styled.Container>
                 );

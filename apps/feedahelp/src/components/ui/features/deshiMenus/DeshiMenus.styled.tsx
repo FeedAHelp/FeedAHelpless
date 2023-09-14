@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 import { devices } from "~/utils/devices";
 
 const iconwidth = "1.25rem";
@@ -222,7 +223,7 @@ const DeshiGrid = styled.div`
 
 const InsideContainer = styled.div`
   z-index: 9;
-  background: #92879B;
+  background: #92879b;
   width: 80px;
   height: 80px;
   position: absolute;
@@ -241,29 +242,29 @@ const InsideContainer = styled.div`
     transform: translate(-50%, -50%);
     color: white;
     opacity: 1;
-    cursor: pointer; 
+    cursor: pointer;
   }
-  
+
   &:hover {
     width: 100%;
     right: 0;
     top: 0;
     border-radius: 10px;
     height: 80%;
-    
+
     .icon {
       opacity: 0;
       right: 25px;
       top: 25px;
       transition: all 0.3s;
     }
-    
+
     .contents {
       opacity: 1;
       transform: scale(1) translateY(0);
     }
   }
-  
+
   .contents {
     padding: 5%;
     opacity: 0;
@@ -271,6 +272,140 @@ const InsideContainer = styled.div`
     transition: opacity 0.2s, transform 0.8s;
     curson: pointer;
   }
+`;
+
+const BoxDown = styled.div`
+  width: 100%;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+`;
+
+const HeaderBg = styled.div`
+  -webkit-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+  -moz-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+  -o-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+  transition: all 800ms;
+  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  width: 100%;
+  height: 100%;
+  background-color: #3f96cd;
+  border-radius: 20px;
+  position: absolute;
+  left: -659px;
+`;
+
+const HeaderBgInner = styled.div`
+  width: 50%;
+  height: 100%;
+  background-color: transparent;
+`;
+
+const Cart = styled.div`
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+`;
+
+const DonatAmount = styled.div`
+  -webkit-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+  -moz-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+  -o-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+  transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -webkit-transition-delay: 100ms;
+  -o-transition-delay: 100ms;
+  transition-delay: 100ms;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: #252525;
+`;
+
+const DonateButton = styled.span`
+  -webkit-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+  -moz-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+  -o-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+  transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+  -webkit-transition-delay: 100ms;
+  -o-transition-delay: 100ms;
+  transition-delay: 100ms;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 110%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+`;
+
+const QtyInput = styled.div`
+  position: relative;
+  color: #000;
+  background: $white;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin: 50px;
+`;
+
+const ElWrapper = styled.div`
+  width: 260px;
+  padding: 10px;
+  margin: 145px auto;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover ${HeaderBg} {
+    left: 0px;
+  }
+
+  &:hover ${DonatAmount} {
+    left: 155px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: #818181;
+  }
+
+  &:hover ${DonateButton} {
+    left: 90%;
+  }
+
+  &:hover ${QtyInput} {
+    margin: 0;
+  }
+`;
+
+const DonateButtonIcon = styled.div`
+  ackground: #fff;
+  border-radius: 50%;
+  padding: 0.5rem;
+  z-index: 99;
+  ${BoxShadow}
 `;
 
 export const Styled = {
@@ -292,5 +427,14 @@ export const Styled = {
   StatusTagText,
   pulseAuxiliarLow,
   DeshiGrid,
-  InsideContainer
+  InsideContainer,
+  ElWrapper,
+  BoxDown,
+  HeaderBg,
+  HeaderBgInner,
+  Cart,
+  DonatAmount,
+  DonateButton,
+  QtyInput,
+  DonateButtonIcon,
 };
