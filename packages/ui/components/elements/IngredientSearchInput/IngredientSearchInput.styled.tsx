@@ -73,7 +73,7 @@ const SearchButton = styled(ButtonUnstyled)`
 const SearchIcons = styled(SearchIcon)`
   position: absolute;
   font-size: 2.1875rem;
-  left: 0.5rem;
+  right: 0.5rem;
   top: 0.5625rem;
   color: #fff;
 `
