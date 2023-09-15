@@ -73,4 +73,9 @@ export const DeshiMenuInforamtion = [
     title: "Total Vedio Shout",
     value: "200"
   },
+  {
+    image: "/static/images/misc/ingred.png",
+    title: "Total Ingredients Needed",
+    value: "25"
+  },
 ];
