@@ -1,18 +1,6 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import Image from "next/image";
-
-const iconwidth = "1.25rem";
-const iconheight = "1.25rem";
-const height = "1.5rem";
-const fontsize = "0.75rem";
-const fontweight = "500";
-const iterationCount = "infinite";
-
-const BoxShadow = () => `
-  box-shadow: -0.0625rem -0.0625rem 0.125rem rgba(255, 255, 255, 0.25),
-      inset 0.125rem 0.125rem 0.3125rem rgba(255, 255, 255, 0.25),
-      0.5rem 1.875rem 1.875rem rgba(0, 0, 0, 0.4), inset -0.125rem -0.125rem 0.3125rem rgba(0, 0, 0, 0.4);
-`;
+import { BoxShadow } from "../DeshiMenus.styled";
 
 const DonateHover = () => `
   &:hover ${SliderRange} {

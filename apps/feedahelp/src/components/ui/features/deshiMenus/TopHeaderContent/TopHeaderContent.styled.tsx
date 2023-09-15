@@ -1,10 +1,5 @@
-import styled, { keyframes } from "styled-components";
-
-const BoxShadow = () => `
-  box-shadow: -0.0625rem -0.0625rem 0.125rem rgba(255, 255, 255, 0.25),
-      inset 0.125rem 0.125rem 0.3125rem rgba(255, 255, 255, 0.25),
-      0.5rem 1.875rem 1.875rem rgba(0, 0, 0, 0.4), inset -0.125rem -0.125rem 0.3125rem rgba(0, 0, 0, 0.4);
-`;
+import styled from "styled-components";
+import { BoxShadow } from "../DeshiMenus.styled";
 
 const Logo = styled.img`
   width: 3.4375rem;
