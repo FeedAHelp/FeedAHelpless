@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import Image from "next/image";
-import { BoxShadow } from "../DeshiMenus.styled";
+import { DeshiShareIcon, BoxShadow } from "../DeshiMenus.styled";
 
 const ButtonHover = () => `
   display: flex;
@@ -18,17 +17,6 @@ const ButtonHover = () => `
     transform: translateY(0.5em);
   }
   `;
-
-const DeshiShareIcon = styled(Image)`
-  transition: 0.5s;
-  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%)
-    contrast(100%);
-  &:hover {
-    filter: invert(0%) sepia(0%) saturate(100%) hue-rotate(0deg)
-      brightness(100%) contrast(100%);
-    transform: scale(1.5);
-  }
-`;
 
 const InfoContent = styled.div`
   display: flex;
