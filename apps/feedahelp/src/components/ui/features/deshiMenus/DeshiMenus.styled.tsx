@@ -46,6 +46,23 @@ const DonateHover = () => `
   }
 `;
 
+const ButtonHover = () => `
+  display: flex;
+  background: #e3edf7;
+  padding: 1.4em;
+  border-radius: 0.625rem;
+  box-shadow: 0.375rem 0.375rem 0.625rem -0.0625rem rgba(0, 0, 0, 0.15),
+    -0.375rem -0.375rem 0.625rem -0.0625rem rgba(255, 255, 255, 0.7);
+  border: 0.0625rem solid rgba(0, 0, 0, 0);
+  cursor: pointer;
+  transition: transform 0.5s;
+
+  &:hover {
+    border: 0.0625rem solid rgba(0, 0, 0, 0.1);
+    transform: translateY(0.5em);
+  }
+  `;
+
 const Container = styled.div`
   width: 17.5rem;
   height: 31.25rem;
@@ -251,6 +268,29 @@ const DeshiGrid = styled.div`
   align-items: baseline;
 `;
 
+const InfoContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 3.125rem;
+  opacity: 0;
+  transform: scale(0.5) translateY(-200%);
+  transition: opacity 0.2s, transform 0.8s;
+  curson: pointer;
+`;
+
+const InfoIcon = styled.div`
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: white;
+  opacity: 1;
+  cursor: pointer;
+`;
+
 const InsideContainer = styled.div`
   z-index: 9;
   background: #92879b;
@@ -264,17 +304,6 @@ const InsideContainer = styled.div`
   overflow: hidden;
   ${BoxShadow}
 
-  .icon {
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    color: white;
-    opacity: 1;
-    cursor: pointer;
-  }
-
   &:hover {
     width: 100%;
     right: 0;
@@ -282,25 +311,17 @@ const InsideContainer = styled.div`
     border-radius: 0.625rem;
     height: 80%;
 
-    .icon {
+    ${InfoIcon} {
       opacity: 0;
       right: 1.5625rem;
       top: 1.5625rem;
       transition: all 0.3s;
     }
 
-    .contents {
+    ${InfoContent} {
       opacity: 1;
-      transform: scale(1) translateY(0);
+      transform: scale(1.5) translateY(0);
     }
-  }
-
-  .contents {
-    padding: 5%;
-    opacity: 0;
-    transform: scale(0.5) translateY(-200%);
-    transition: opacity 0.2s, transform 0.8s;
-    curson: pointer;
   }
 `;
 
@@ -410,7 +431,7 @@ const DonateButtonIcon = styled.div`
 const MainContent = styled.div`
   position: absolute;
   overflow: auto;
-  height: 155px;
+  height: 9.6875rem;
   width: 100%;
 `;
 
@@ -420,7 +441,7 @@ const ListWithIconsUL = styled.ul`
   align-items: center;
   flex-direction: column;
   list-style: none;
-  padding: 10px;
+  padding: 0.625rem;
 `;
 
 const ListWithIconsLI = styled.li`
@@ -428,15 +449,15 @@ const ListWithIconsLI = styled.li`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 10px;
-  margin: 5px;
+  padding: 0.625rem;
+  margin: 0.3125rem;
   line-height: 1;
   font-family: "Arial";
-  font-size: 20px;
+  font-size: 1.25rem;
   background-color: #f1f1f1;
-  border-right: 1px dashed #ccc;
-  border-radius: 3px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+  border-right: 0.0625rem dashed #ccc;
+  border-radius: 0.1875rem;
+  box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.16);
   position: relative;
   transition: all 0.35s ease;
   color: #000;
@@ -448,6 +469,22 @@ const TextSpan = styled.span`
 `;
 const TextInformation = styled.div`
   font-size: 0.8rem;
+`;
+
+const ButtonIngredient = styled.button`
+  ${ButtonHover}
+
+  img {
+    transition: transform 0.5s;
+    object-fit: contain;
+  }
+
+  &:hover img {
+    transform: scale(2);
+  }
+`;
+const ButtonDirections = styled.button`
+  ${ButtonHover}
 `;
 
 export const Styled = {
@@ -485,4 +522,8 @@ export const Styled = {
   ListWithIconsLI,
   TextSpan,
   TextInformation,
+  ButtonIngredient,
+  ButtonDirections,
+  InfoContent,
+  InfoIcon,
 };

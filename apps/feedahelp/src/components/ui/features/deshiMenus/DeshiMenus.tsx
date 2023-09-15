@@ -15,7 +15,7 @@ const DeshiMenus = () => {
   const SideIconContainer = withBaseIcon({ size: 25 });
 
   return (
-    <div className="customScrollBar mb-2 h-96 w-full overflow-auto">
+    <div className="customScrollBar mb-2 h-[34rem] w-full overflow-auto">
       <div className="relitive container">
         <div className="row">
           <StickyBox offsetTop={0} offsetBottom={20} style={{ zIndex: 99 }}>
@@ -47,10 +47,27 @@ const DeshiMenus = () => {
                     <Styled.Body>
                       {/* EXTRA CONTENT */}
                       <Styled.InsideContainer>
-                        <div className="icon">
+                        <Styled.InfoIcon>
                           <SideIconContainer icon={ic_info_outline} />
-                        </div>
-                        <div className="contents"></div>
+                        </Styled.InfoIcon>
+                        <Styled.InfoContent>
+                          <Styled.ButtonIngredient>
+                            <Styled.DeshiShareIcon
+                              src="/static/images/misc/ingred.png"
+                              width={30}
+                              height={30}
+                              alt={"feedahelpLogo"}
+                            />
+                          </Styled.ButtonIngredient>
+                          <Styled.ButtonDirections>
+                            <Styled.DeshiShareIcon
+                              src="/static/images/misc/direction.png"
+                              width={30}
+                              height={30}
+                              alt={"feedahelpLogo"}
+                            />
+                          </Styled.ButtonDirections>
+                        </Styled.InfoContent>
                       </Styled.InsideContainer>
                       {/* MAIN CONTENT */}
                       <Styled.MainContent>
@@ -104,7 +121,6 @@ const DeshiMenus = () => {
                               width={30}
                               height={30}
                               alt={"feedahelpLogo"}
-                              className="object-cover"
                             />
                           </Styled.DonateButtonIcon>
                         </Styled.DonateButton>

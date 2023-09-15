@@ -22,7 +22,7 @@ const Ingredients = () => {
   }, []);
 
   return (
-    <div className="mb-2 h-96 w-full overflow-auto customScrollBar">
+    <div className="customScrollBar mb-2 h-[34rem] w-full overflow-auto">
       <div className="relitive container">
         <div className="row">
           <StickyBox offsetTop={0} offsetBottom={20} style={{ zIndex: 99 }}>
