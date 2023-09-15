@@ -4,6 +4,10 @@ import { Styled } from "./Cta.styled";
 const Cta = () => {
   const [donateAmount, setDonateAmount] = useState(100);
 
+  const move = () => {
+    console.log("Move");
+  };
+
   return (
     <Styled.ElWrapper>
       <Styled.BoxDown>
