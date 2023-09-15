@@ -5,7 +5,7 @@ import IngredientSearchInput from "~/ui/components/elements/IngredientSearchInpu
 import DeshiSocial from "./DeshiSocial";
 import DeshiMenuCaptions from "./DeshiMenuCaption";
 import Link from "next/link";
-import { items } from "./data";
+import { items, DeshiMenuInforamtion } from "./data";
 import { ic_info_outline } from "react-icons-kit/md/ic_info_outline";
 import { withBaseIcon } from "react-icons-kit";
 
@@ -30,6 +30,7 @@ const DeshiMenus = () => {
               {items.map((item, index) => {
                 return (
                   <Styled.Container key={index}>
+                    {/* TOP HEADER CONTENT */}
                     <Styled.Header>
                       <Styled.Heading>
                         <Styled.Logo
@@ -44,17 +45,38 @@ const DeshiMenus = () => {
                       <DeshiSocial />
                     </Styled.Header>
                     <Styled.Body>
+                      {/* EXTRA CONTENT */}
                       <Styled.InsideContainer>
                         <div className="icon">
                           <SideIconContainer icon={ic_info_outline} />
                         </div>
                         <div className="contents"></div>
                       </Styled.InsideContainer>
+                      {/* MAIN CONTENT */}
+                      <Styled.MainContent>
+                        <Styled.ListWithIconsUL>
+                          {DeshiMenuInforamtion.map((item, index) => {
+                            return (
+                              <Styled.ListWithIconsLI key={index}>
+                                <Styled.DeshiShareIcon
+                                  src={item.image}
+                                  width={30}
+                                  height={30}
+                                  alt={item.title}
+                                />
+                                <Styled.TextSpan>{item.title}</Styled.TextSpan>
+                                <Styled.TextInformation>
+                                  {item.value}
+                                </Styled.TextInformation>
+                              </Styled.ListWithIconsLI>
+                            );
+                          })}
+                        </Styled.ListWithIconsUL>
+                      </Styled.MainContent>
+
+                      {/* CTA */}
                       <Styled.ElWrapper>
                         <Styled.BoxDown>
-                          <Styled.HeaderBg>
-                            <Styled.HeaderBgInner></Styled.HeaderBgInner>
-                          </Styled.HeaderBg>
                           <Styled.Cart>
                             <Styled.DonateAmount>
                               ${donateAmount}
