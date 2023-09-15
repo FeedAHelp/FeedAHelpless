@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { BoxShadow } from "../DeshiMenus.styled";
 
 const Logo = styled.img`
@@ -59,9 +59,28 @@ const Header = styled.div`
   ${BoxShadow}
 `;
 
+const MenuRating = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 72px;
+  height: 48px;
+  padding: 70px 24px 0px 25px;
+
+  h2 {
+    display: flex;
+    vertical-align: middle;
+    font-size: 1em;
+    color: #fff;
+    padding: 0px 4px;
+  }
+`;
+
 export const Styled = {
   Header,
   Heading,
   Logo,
   Title,
+  MenuRating,
 };
