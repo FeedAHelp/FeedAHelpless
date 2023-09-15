@@ -1,7 +1,7 @@
 import React from "react";
-import { Styled } from "./DeshiMenus.styled";
+import { Styled } from "../DeshiMenus.styled";
 import Image from "next/image";
-import { items } from "./data";
+import { items } from "../data";
 
 type DeshiMenuCaptionsProps = {
   imgSrc: string;

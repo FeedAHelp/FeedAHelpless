@@ -1,5 +1,5 @@
 import React from "react";
-import { Styled } from "./DeshiMenus.styled";
+import { Styled } from "../DeshiMenus.styled";
 import Link from "next/link";
 
 const DeshiSocial = () => {
