@@ -17,7 +17,8 @@ const config = {
       "www.countryflagicons.com", 
       "media.istockphoto.com",
       "drive.google.com",
-      "png.pngtree.com"
+      "png.pngtree.com",
+      "cdn-icons-png.flaticon.com"
       ],
   },
   typescript: {
