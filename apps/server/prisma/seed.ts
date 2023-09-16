@@ -12,7 +12,7 @@ async function main() {
     const ingredients = IngredientsData.ingredients;
     const totalIngredients = ingredients.length;
 
-    await prisma.ingredients.deleteMany(); // Delete existing records
+    await prisma.ingredients.deleteMany();
 
     console.log('Deleted records in ingredients table');
 
@@ -23,7 +23,7 @@ async function main() {
         total: totalIngredients,
     });
 
-    const createIngredient = async (ingredient : any) => {
+    const createIngredient = async (ingredient : {name: string, imageName: string}) => {
         try {
             await prisma.ingredients.create({
                 data: {
@@ -38,16 +38,17 @@ async function main() {
     };
 
     const insertIngredients = async () => {
-        const promises = ingredients.map((ingredient :any) => createIngredient(ingredient));
+        const promises = ingredients.map((ingredient : {name: string, imageName: string}) => createIngredient(ingredient));
         await Promise.all(promises);
         console.log("All ingredients inserted successfully.");
     };
 
-    await insertIngredients(); // Await the insertion function
-
-    await prisma.$disconnect();
+    await insertIngredients();
 }
 
-main().catch((e) => {
+main().catch(e => {
     console.error(e);
-});
+    process.exit(1);
+}).finally(async () => {
+    await prisma.$disconnect();
+})
