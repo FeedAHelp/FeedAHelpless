@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import { Layout } from "../components/Layouts";
 import { MainPage } from "../components/ui/features/main";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
 const Header = dynamic(
   import("../components/ui/features/header").then((mod) => mod.Header)
@@ -12,6 +13,8 @@ const Footer = dynamic(
 );
 
 const Index = () => {
+  const { t } = useTranslation("language");
+
   return (
     <Layout
       header={<Header />}
