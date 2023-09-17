@@ -7,7 +7,6 @@ const Splitter = styled.div`
 `;
 
 const First = styled.div`
-  background-color: #fff;
   width: 20%;
   height: 100%;
   min-width: 0.625rem;
@@ -33,7 +32,6 @@ const Separator = styled.div`
 `;
 
 const Second = styled.div`
-  background-color: #fff;
   width: 80%;
   height: 100%;
   min-width: 0.625rem;
