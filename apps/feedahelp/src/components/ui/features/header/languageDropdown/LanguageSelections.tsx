@@ -3,17 +3,24 @@ import language from "./language.json";
 import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material";
 import Image from "next/image";
 import { Styled } from "./LanguageSelection.styled";
+import { useRouter } from "next/router";
 
 const LanguageSelections: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const dropdownRef = useRef(null);
+  const { locale, locales, push } = useRouter();
+  const router = useRouter();
+  const [active, setActive] = useState(locale === "bn" ? 1 : 0);
+
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
   };
 
-  const handleItemClick = (language: string) => {
+  const handleItemClick = (language: string, activeIndex: number) => {
+    setActive(activeIndex);
     setSelectedItem(language);
+    push(router.asPath, undefined, { locale: language });
   };
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -58,9 +65,15 @@ const LanguageSelections: React.FC = () => {
               className={`dropDownOption ${
                 selectedItem === item.language ? "selected" : ""
               }`}
-              onClick={() => handleItemClick(item.language)}
+              onClick={() => handleItemClick(item.language, i)}
             >
-              <Image width={30} height={5} className="mr-3" src={getFlagSrc(item.country)} alt={item.altFlagImg} />
+              <Image
+                width={30}
+                height={5}
+                className="mr-3"
+                src={getFlagSrc(item.country)}
+                alt={item.altFlagImg}
+              />
               <h3 className="font-bold">{item.language}</h3>
             </Styled.LanguageOption>
           ))}

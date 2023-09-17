@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import { Layout } from "../components/Layouts";
 import { MainPage } from "../components/ui/features/main";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const Header = dynamic(
   import("../components/ui/features/header").then((mod) => mod.Header)
@@ -27,3 +28,15 @@ const Index = () => {
 };
 
 export default Index;
+
+export async function getStaticProps({ locale }: { locale: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        "common",
+        "language",
+        "contentBanner",
+      ])),
+    },
+  };
+}
