@@ -8,7 +8,7 @@ type Props = {
 const Register = ({ loginRegisterToggle }: Props) => {
   return (
     <div className="bg-white p-10">
-      <RegisterFrom />
+      <RegisterFrom loginRegisterToggle={loginRegisterToggle}/>
       <div className="mb-4 flex flex-row items-center justify-center gap-4 pt-4 text-center">
         <h4 className="text-sm">Already have an account?</h4>
         <GenericLink color="Black" fontSize="0.8rem">

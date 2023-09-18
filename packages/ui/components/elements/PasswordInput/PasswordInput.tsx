@@ -6,12 +6,14 @@ import { eye } from 'react-icons-kit/feather/eye'
 import PasswordStrengthBar from 'react-password-strength-bar'
 
 type PasswordInputProps = {
-  placeholder: string
-  strengthCheck?: boolean
-}
+  placeholder: string;
+  strengthCheck?: boolean;
+  password: string;
+  setPassword: (newPassword: string) => void;
+};
 
-export function PasswordInput({ placeholder, strengthCheck }: PasswordInputProps) {
-  const [password, setPassword] = useState('')
+export function PasswordInput({ placeholder, strengthCheck, password, setPassword }) {
+
   const [type, setType] = useState('password')
   const [icon, setIcon] = useState(eyeOff)
 
@@ -25,10 +27,6 @@ export function PasswordInput({ placeholder, strengthCheck }: PasswordInputProps
     }
   }
 
-  const handlePassword = (passwordValue) => {
-    setPassword(passwordValue)
-  }
-
   return (
     <>
       <Styled.Field>
@@ -36,17 +34,20 @@ export function PasswordInput({ placeholder, strengthCheck }: PasswordInputProps
           type={type}
           placeholder={placeholder}
           value={password}
-          onChange={(e) => (!strengthCheck ? setPassword(e.target.value) : handlePassword(e.target.value))}
+          onChange={(e) => setPassword(e.target.value)}
           autoComplete='current-password'
+          required
         />
         <span onClick={handleToggle}>
           <Icon icon={icon} size={30} />
         </span>
-        <PasswordStrengthBar
-          password={password}
-          shortScoreWord='No Password'
-          scoreWords={['ok', 'fine', 'cool', 'too much', 'fuck off']}
-        />
+        {strengthCheck && (
+          <PasswordStrengthBar
+            password={password}
+            shortScoreWord='No Password'
+            scoreWords={['ok', 'fine', 'cool', 'enough', 'hard enough']}
+          />
+        )}
       </Styled.Field>
     </>
   )

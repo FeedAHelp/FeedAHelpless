@@ -13,7 +13,7 @@ import {
 import { type NextAuthOptions } from "next-auth";
 import { postMethod } from "../../../utils/api/postMethod";
 import { endPoints } from "../../../utils/api/route";
-import CredentialsProvider from "next-auth/providers/credentials";
+import CredentialsProvider from 'next-auth/providers/credentials';
 
 export const authOptions: NextAuthOptions = {
   session: {

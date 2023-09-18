@@ -11,18 +11,21 @@ export const loginController = async (req: Request, res: Response) => {
 
     // Check if required data is present
     if (!email || !password) {
+      console.log("OON")
       return res.status(400).json({ message: 'Required data not found' })
     }
 
     // Check if email exists
     const existingUser = await prisma.register.findUnique({ where: { email } })
     if (!existingUser) {
+      console.log("OK")
       return res.status(401).json({ message: 'User is not found' })
     }
 
     // Compare passwords
     const passwordMatch = await bcrypt.compare(password, existingUser.password)
     if (!passwordMatch) {
+      console.log("IN")
       return res.status(401).json({ message: 'Password is not match' })
     }
     // Retrieve user data
@@ -47,7 +50,7 @@ export const loginController = async (req: Request, res: Response) => {
   } catch (error) {
     console.error(error)
     return res.status(500).json({ message: 'Login failed' })
-  } 
+  }
 }
 
 export default loginController

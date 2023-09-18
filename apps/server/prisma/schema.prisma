@@ -15,14 +15,13 @@ model User {
   image      String?
   register   Register       @relation(fields: [registerId], references: [id])
   registerId String         @unique
-  logins     LoginHistory[]
 }
 
 model LoginHistory {
   id        Int      @id @default(autoincrement())
   loginTime DateTime @default(now())
   userId    String
-  user      User     @relation(fields: [userId], references: [id])
+  user      Register     @relation(fields: [userId], references: [id])
 }
 
 model Register {
@@ -32,7 +31,10 @@ model Register {
   password    String
   role        String
   accessToken String
+  vrified     Boolean
   user        User?
+  emailVerify   EmailVerify[]
+  logins     LoginHistory[]
 }
 
 model FeedahelpNewsletter {
@@ -56,4 +58,13 @@ model Ingredients {
   id        String @id @default(uuid())
   name      String
   imageName String
+}
+
+model EmailVerify {
+  id        Int           @id @default(autoincrement())
+  email     String
+  code      Int
+  expireAt  DateTime
+  createAt  DateTime      @default(now())
+  register   Register     @relation(fields: [email], references: [email])
 }

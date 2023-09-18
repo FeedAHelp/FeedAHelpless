@@ -11,6 +11,7 @@ export type User = {
   registerId: string;
   password: string;
   error: string;
+  verified: boolean;
 };
 
 export type RegisterFormData = {

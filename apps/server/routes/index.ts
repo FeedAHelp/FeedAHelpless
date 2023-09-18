@@ -7,7 +7,7 @@ import { rootRouter } from "./root.router";
 
 export const router: Router = Router();
 
+router.use("/", rootRouter);
 router.use("/v1/auth", authRouter);
 router.use("/v1/user", userRouter);
 router.use("/v1/subscriber", subscribeRouter);
-router.use("/", rootRouter);
