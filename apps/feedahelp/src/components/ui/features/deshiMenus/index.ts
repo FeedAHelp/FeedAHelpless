@@ -1,1 +1,1 @@
-export * from './DeshiMenus'
+export * from './DeshiMenus';
