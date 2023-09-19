@@ -1,20 +1,17 @@
 import { Request, Response } from 'express';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
 import { prisma } from '../../utils/prismaInstance';
-import sendVerificationEmail from './SendEmail';
+import validator from 'validator';
 
 
-function isValidEmail(email : string): boolean {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
+function isValidEmail(email: string) {
+  return validator.isEmail(email);
 }
 
 
 export const verifyController = async (req: Request, res: Response) => {
   try {
-    const email = req.query.email as string;
-    const passcode = req.query.passcode;
+    const email = req.query?.email as string;
+    const passcode = req.query?.passcode as string;
     const passcodeNumber = +passcode;
     const localTime = new Date();
 
@@ -38,6 +35,13 @@ export const verifyController = async (req: Request, res: Response) => {
       return res.status(400).json({ message: 'Verification Code Expired' });
     }
 
+    const account = await prisma.register.findUnique(
+      {where: { email: email }
+    })
+
+    if (account.vrified){
+      return res.status(200).json({ message: 'Account is already verified' });
+    }
 
     await prisma.register.update({
       where: { email: email },

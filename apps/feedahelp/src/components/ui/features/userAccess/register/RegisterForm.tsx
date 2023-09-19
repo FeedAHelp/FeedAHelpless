@@ -4,9 +4,10 @@ import { CheckboxButton } from "~/ui/components/elements/Checkbox/CheckboxButton
 import GenericLink from "~/ui/components/elements/GenericLink/GenericLink";
 import { PasswordInput } from "~/ui/components/elements/PasswordInput/PasswordInput";
 import ReCAPTCHA from "react-google-recaptcha";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import axios from "axios";
 import ReactCodeInput from "react-verification-code-input";
+import CustomSpinner from "~/ui/components/elements/GenericSpinner/CustomSpinner";
 
 type Props = {
   loginRegisterToggle: () => void;
@@ -21,8 +22,10 @@ const RegisterFrom = ({ loginRegisterToggle }: Props) => {
   const [role, setRole] = useState("donor");
   const [recapta, setRecapcha] = useState(true);
   const [codeSent, setCodesent] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const register = async () => {
+    setIsLoading(true);
     try {
       await axios
         .post(
@@ -41,12 +44,11 @@ const RegisterFrom = ({ loginRegisterToggle }: Props) => {
     } catch (error) {
       console.log(error);
     }
+    setIsLoading(false);
   };
 
-
-
-
   const verify = async () => {
+    setIsLoading(true);
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_LOCAL_BACKEND_BASE_URL}auth/verify?email=${email}&passcode=${passcode}`
@@ -62,15 +64,15 @@ const RegisterFrom = ({ loginRegisterToggle }: Props) => {
     } catch (error) {
       console.log("An error occurred during verification:", error);
     }
-
-
+    setIsLoading(false);
   };
 
-
   return (
+
     <div>
       {codeSent && (
         <>
+
           <h3 className="pt-20 text-2xl font-semibold text-gray-700">
             Verify Your Mail
           </h3>
@@ -80,12 +82,7 @@ const RegisterFrom = ({ loginRegisterToggle }: Props) => {
           </p>
           <form action="#" className="flex flex-col space-y-4 pt-5">
             <div className="flex flex-row justify-center">
-              <ReactCodeInput
-                fields={4}
-                onChange={(val) =>
-                  setPasscode(val)
-                }
-              />
+              <ReactCodeInput fields={4} onChange={(val) => setPasscode(val)} />
             </div>
 
             <div>
@@ -103,14 +100,18 @@ const RegisterFrom = ({ loginRegisterToggle }: Props) => {
                 <button>"Resend Code!"</button>
               </GenericLink>
             </div>
+
           </form>
+
         </>
       )}
 
       {!codeSent && (
         <>
+
           <h3 className="text-2xl font-semibold text-gray-700">Register</h3>
           <form action="#" className="flex flex-col space-y-4">
+
             <div className="flex flex-col text-left">
               <Styled.Field>
                 <Styled.LoginInput
@@ -170,10 +171,14 @@ const RegisterFrom = ({ loginRegisterToggle }: Props) => {
                 Register Now
               </button>
             </div>
+
           </form>
+
         </>
       )}
+      <CustomSpinner isLoading={isLoading}></CustomSpinner>
     </div>
+
   );
 };
 
