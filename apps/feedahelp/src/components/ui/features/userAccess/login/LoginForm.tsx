@@ -42,7 +42,7 @@ const LoginForm = () => {
             <Styled.LoginInput
               type="text"
               placeholder="email"
-              onChange={(e: any) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <Styled.Line />
           </Styled.Field>
@@ -64,7 +64,7 @@ const LoginForm = () => {
         <div>
           <ReCAPTCHA
             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
-            onChange={(value) => setRecapcha(!recapta)}
+            onChange={() => setRecapcha(!recapta)}
           />
         </div>
 

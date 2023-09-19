@@ -97,7 +97,7 @@ const RegisterFrom = ({ loginRegisterToggle }: Props) => {
             <div className="mb-4 flex flex-row items-center justify-center gap-4 pt-4 text-center">
               <h4 className="text-sm">Haven't Received Code?</h4>
               <GenericLink color="Black" fontSize="0.8rem">
-                <button>"Resend Code!"</button>
+                <button>Resend Code</button>
               </GenericLink>
             </div>
 
@@ -157,7 +157,7 @@ const RegisterFrom = ({ loginRegisterToggle }: Props) => {
             <div>
               <ReCAPTCHA
                 sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
-                onChange={(value) => setRecapcha(!recapta)}
+                onChange={() => setRecapcha(!recapta)}
               />
             </div>
 
