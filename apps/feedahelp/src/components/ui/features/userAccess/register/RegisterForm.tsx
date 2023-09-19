@@ -95,7 +95,7 @@ const RegisterFrom = ({ loginRegisterToggle }: Props) => {
               </button>
             </div>
             <div className="mb-4 flex flex-row items-center justify-center gap-4 pt-4 text-center">
-              <h4 className="text-sm">Haven't Received Code?</h4>
+              <h4 className="text-sm">{`Haven't Received Code?`}</h4>
               <GenericLink color="Black" fontSize="0.8rem">
                 <button>Resend Code</button>
               </GenericLink>
