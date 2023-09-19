@@ -18,7 +18,7 @@ const RegisterFrom = ({ loginRegisterToggle }: Props) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [passcode, setPasscode] = useState("");
-  const [image, setImage] = useState("eteer");
+  const [image, setImage] = useState("feedahelpAvatar");
   const [role, setRole] = useState("donor");
   const [recapta, setRecapcha] = useState(true);
   const [codeSent, setCodesent] = useState(false);
@@ -68,11 +68,9 @@ const RegisterFrom = ({ loginRegisterToggle }: Props) => {
   };
 
   return (
-
     <div>
       {codeSent && (
         <>
-
           <h3 className="pt-20 text-2xl font-semibold text-gray-700">
             Verify Your Mail
           </h3>
@@ -100,18 +98,14 @@ const RegisterFrom = ({ loginRegisterToggle }: Props) => {
                 <button>Resend Code</button>
               </GenericLink>
             </div>
-
           </form>
-
         </>
       )}
 
       {!codeSent && (
         <>
-
           <h3 className="text-2xl font-semibold text-gray-700">Register</h3>
           <form action="#" className="flex flex-col space-y-4">
-
             <div className="flex flex-col text-left">
               <Styled.Field>
                 <Styled.LoginInput
@@ -171,14 +165,11 @@ const RegisterFrom = ({ loginRegisterToggle }: Props) => {
                 Register Now
               </button>
             </div>
-
           </form>
-
         </>
       )}
       <CustomSpinner isLoading={isLoading}></CustomSpinner>
     </div>
-
   );
 };
 

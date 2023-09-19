@@ -7,14 +7,13 @@ import { createUser, createAccessToken, generateRandomCode } from '../../utils/a
 export const registerController = async (req: Request, res: Response) => {
   try {
     const { name, email, password, image, role } = req.body
-    const hashedPassword = await bcrypt.hash(password, 10)
-
+    
     if (!email || !password || !name || !image || !role) {
       return res.status(400).json({ message: 'Required data not found' })
     }
 
+    const hashedPassword = await bcrypt.hash(password, 10)
     const existingUser = await prisma.register.findUnique({ where: { email } })
-    //console.log(existingUser)
 
     if (existingUser) {
       await prisma.loginHistory.create({
@@ -29,19 +28,17 @@ export const registerController = async (req: Request, res: Response) => {
           password: hashedPassword,
           role,
           accessToken: '',
-          vrified: false
+          verified: false
         }
       })
 
       const user = await createUser({ name, image, registerId: register.id })
       const accessToken = await createAccessToken(register)
-
       const verifyCode = generateRandomCode()
 
       const expirationTime = new Date()
       expirationTime.setMinutes(expirationTime.getMinutes() + 5)
-
-      const sendEmail = sendVerificationEmail(email, verifyCode, 'Account Verify Code')
+      sendVerificationEmail(email, verifyCode, 'Account Verify Code')
 
       await prisma.emailVerify.create({
         data: { email, createAt: new Date(), expireAt: expirationTime, code: +verifyCode }

@@ -10,31 +10,31 @@ datasource db {
 }
 
 model User {
-  id         String         @id @default(uuid())
+  id         String   @id @default(uuid())
   name       String
   image      String?
-  register   Register       @relation(fields: [registerId], references: [id])
-  registerId String         @unique
+  register   Register @relation(fields: [registerId], references: [id])
+  registerId String   @unique
 }
 
 model LoginHistory {
   id        Int      @id @default(autoincrement())
   loginTime DateTime @default(now())
   userId    String
-  user      Register     @relation(fields: [userId], references: [id])
+  user      Register @relation(fields: [userId], references: [id])
 }
 
 model Register {
-  id          String @id @default(uuid())
-  email       String @unique
-  phone       String @unique
+  id          String         @id @default(uuid())
+  email       String         @unique
+  phone       String         @unique
   password    String
   role        String
   accessToken String
-  vrified     Boolean
+  verified    Boolean
   user        User?
-  emailVerify   EmailVerify[]
-  logins     LoginHistory[]
+  emailVerify EmailVerify[]
+  logins      LoginHistory[]
 }
 
 model FeedahelpNewsletter {
@@ -61,10 +61,10 @@ model Ingredients {
 }
 
 model EmailVerify {
-  id        Int           @id @default(autoincrement())
-  email     String
-  code      Int
-  expireAt  DateTime
-  createAt  DateTime      @default(now())
-  register   Register     @relation(fields: [email], references: [email])
+  id       Int      @id @default(autoincrement())
+  email    String
+  code     Int
+  expireAt DateTime
+  createAt DateTime @default(now())
+  register Register @relation(fields: [email], references: [email])
 }

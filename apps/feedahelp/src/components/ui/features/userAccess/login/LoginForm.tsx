@@ -8,10 +8,10 @@ import ReCAPTCHA from "react-google-recaptcha";
 import CustomSpinner from "~/ui/components/elements/GenericSpinner/CustomSpinner";
 
 const LoginForm = () => {
-  const [recapta, setRecapcha] = useState(true);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [recaptcha, setRecaptcha] = useState<boolean>(true);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const login = async () => {
     setIsLoading(true);
@@ -26,6 +26,7 @@ const LoginForm = () => {
       if (result?.error) {
         console.error(result.error);
       } else {
+        // Do something on successful login
       }
     } catch (error) {
       console.error(error);
@@ -64,7 +65,7 @@ const LoginForm = () => {
         <div>
           <ReCAPTCHA
             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
-            onChange={() => setRecapcha(!recapta)}
+            onChange={() => setRecaptcha(!recaptcha)}
           />
         </div>
 
@@ -72,7 +73,7 @@ const LoginForm = () => {
           <button
             type="button"
             className="w-full rounded-md bg-[#EC5921] px-4 py-2 text-lg font-semibold text-white shadow transition-colors duration-300 hover:bg-[#F3AF9A] focus:outline-none focus:ring-4 focus:ring-blue-200 disabled:bg-blue-500"
-            disabled={recapta}
+            disabled={recaptcha}
             onClick={login}
           >
             Log in

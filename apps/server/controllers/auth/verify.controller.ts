@@ -2,11 +2,9 @@ import { Request, Response } from 'express';
 import { prisma } from '../../utils/prismaInstance';
 import validator from 'validator';
 
-
 function isValidEmail(email: string) {
   return validator.isEmail(email);
 }
-
 
 export const verifyController = async (req: Request, res: Response) => {
   try {
@@ -39,13 +37,13 @@ export const verifyController = async (req: Request, res: Response) => {
       {where: { email: email }
     })
 
-    if (account.vrified){
+    if (account.verified){
       return res.status(200).json({ message: 'Account is already verified' });
     }
 
     await prisma.register.update({
       where: { email: email },
-      data: { vrified: true }
+      data: { verified: true }
     })
 
     return res.status(200).json({ message: 'Account Verified' });
