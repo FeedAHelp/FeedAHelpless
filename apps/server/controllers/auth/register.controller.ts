@@ -1,8 +1,8 @@
 import { Request, Response } from 'express'
 import bcrypt from 'bcrypt'
 import { prisma } from '../../utils/prismaInstance'
-import sendVerificationEmail from './SendEmail'
-import { createUser, createAccessToken, generateRandomCode } from './register.support'
+import sendVerificationEmail from './email.controller'
+import { createUser, createAccessToken, generateRandomCode } from '../../utils/auth/register'
 
 export const registerController = async (req: Request, res: Response) => {
   try {
@@ -14,6 +14,7 @@ export const registerController = async (req: Request, res: Response) => {
     }
 
     const existingUser = await prisma.register.findUnique({ where: { email } })
+    //console.log(existingUser)
 
     if (existingUser) {
       await prisma.loginHistory.create({

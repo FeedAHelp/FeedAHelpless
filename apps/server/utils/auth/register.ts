@@ -1,4 +1,4 @@
-import { prisma } from '../../utils/prismaInstance'
+import { prisma } from '../prismaInstance'
 import jwt from 'jsonwebtoken'
 
 export const createUser = async (userData: any) => {

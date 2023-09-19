@@ -1,11 +1,10 @@
 import * as nodemailer from 'nodemailer'
-import { emit } from 'process'
 
 const transporter = nodemailer.createTransport({
-  service: 'Gmail',
+  service: process.env.NEXT_PUBLIC_EMAIL_HOST,
   auth: {
-    user: process.env.EMAIL,
-    pass: process.env.APP_PASSWORD
+    user: process.env.NEXT_PUBLIC_EMAIL,
+    pass: process.env.NEXT_PUBLIC_EMAIL_PASSWORD
   }
 })
 
@@ -16,7 +15,7 @@ const sendVerificationEmail = async (
   ) => {
   try {
     const mailOptions = {
-      from: 'feedahelp@gmail.com',
+      from: process.env.NEXT_PUBLIC_EMAIL,
       to: toEmail,
       subject: subject,
       text: `Use this Code within 5 minutes. \n${verificationToken}\n You can also click the following link to verify your account: \n${process.env.PRODUCTION_BACKEND_BASE_URL}auth/verify?email=${toEmail}&passcode=${verificationToken}`
