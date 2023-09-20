@@ -9,35 +9,33 @@ export const loginController = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body
 
-    // Check if required data is present
     if (!email || !password) {
+      console.log("OON")
       return res.status(400).json({ message: 'Required data not found' })
     }
 
-    // Check if email exists
     const existingUser = await prisma.register.findUnique({ where: { email } })
     if (!existingUser) {
+      console.log("OK")
       return res.status(401).json({ message: 'User is not found' })
     }
 
-    // Compare passwords
     const passwordMatch = await bcrypt.compare(password, existingUser.password)
     if (!passwordMatch) {
+      console.log("IN")
       return res.status(401).json({ message: 'Password is not match' })
     }
-    // Retrieve user data
+
     const user = await prisma.user.findUnique({
       where: { registerId: existingUser.id }
     })
 
-    // Generate JWT token
     const token = jwt.sign(
-      { email: existingUser.email, userId: user.id },
+      { email: existingUser.email },
       process.env.JWT_SECRETE,
-      { expiresIn: '1h' } // Token expiry time
+      { expiresIn: '1h' }
     )
 
-    // Save the token in the access_token field of the Register model
     await prisma.register.update({
       where: { id: existingUser.id },
       data: { accessToken: token }
@@ -47,7 +45,7 @@ export const loginController = async (req: Request, res: Response) => {
   } catch (error) {
     console.error(error)
     return res.status(500).json({ message: 'Login failed' })
-  } 
+  }
 }
 
 export default loginController

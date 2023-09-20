@@ -7,19 +7,13 @@ import { useSession, signOut } from "next-auth/react";
 import LanguageSelections from "~/components/ui/features/header/languageDropdown/LanguageSelections";
 import CurrencyDropDown from "../CurrencyDropDown/CurrencyDropDown";
 import LoginRegister from "../../userAccess/LoginRegister";
-import { useLoadingContext } from "~/ui/components/contexts/LoadingContext";
 import { motion, AnimatePresence } from "framer-motion";
 import CurrencyDropDownMobile from "../CurrencyDropDown/CurrencyDropDownMobile";
 import LanguageSelectionsMobile from "../languageDropdown/languageSectionMobile";
 
 const NewNav = () => {
   const { data: session } = useSession();
-  const { isLoading, setIsLoading } = useLoadingContext();
   const [isSideBar, setIsSideBar] = useState(false);
-
-  const toggleLoading = () => {
-    setIsLoading(!isLoading);
-  };
 
   const ref = useRef(null);
 
@@ -35,18 +29,22 @@ const NewNav = () => {
     });
   };
 
+  const getAvater = () => {
+    const Avater = session?.user.image;
+    return Avater === "feedahelpAvater"
+      ? `/assets/${session?.user.image}.png`
+      : session?.user.image;
+  };
+
   return (
     <Styled.Navbar>
       <div className="nav-end">
         <div className="right-container">
-          <div>
-            <button onClick={toggleLoading}>Spinner</button>
-          </div>
           {session?.user.image ? (
             <>
               <LogoutButton handleLogout={handleLogout} />
               <Styled.Avatar
-                avatar={session.user.image}
+                avatar={getAvater}
                 ref={ref}
                 className="img-rotate-button"
               >

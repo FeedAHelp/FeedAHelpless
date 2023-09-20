@@ -18,7 +18,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
-    maxAge: 30 * 24 * 60 * 60, // 30 days
+    maxAge: 30 * 24 * 60 * 60,
   },
   providers: [
     GoogleProvider({
@@ -53,7 +53,7 @@ export const authOptions: NextAuthOptions = {
         const user = {
           ...credentials,
         };
-        return user;
+        return { email: credentials.email, id: credentials.password };
       },
     }),
   ],
@@ -66,36 +66,39 @@ export const authOptions: NextAuthOptions = {
           password: user.id || user.id,
           image: user.image || "Not found",
           role: "Donar",
-        }).then((res) => {
-          console.log(res.data)
-          const data: User = res.data;
-          token.id = data.id;
-          token.email = data.email;
-          token.name = data.name;
-          token.userType = data.registerId;
-          token.image = data.image;
-          token.accessToken = data.accessToken;
-        }).catch(async (error) => {
-          await postMethod(endPoints.auth.login, {
-            email: user.email,
-            password: user.id || user.id,
+          verified: true,
+        })
+          .then((res) => {
+            const data: User = res.data;
+            token.id = data.id;
+            token.email = data.email;
+            token.name = data.name;
+            token.userType = data.registerId;
+            token.image = data.image;
+            token.accessToken = data.accessToken;
+            token.verified = data.verified
           })
-            .then((res) => {
-              const data: User = res.data;
-              token.id = data.id;
-              token.email = data.email;
-              token.name = data.name;
-              token.userType = data.registerId;
-              token.image = data.image;
-              token.accessToken = data.accessToken;
+          .catch(async (error) => {
+            await postMethod(endPoints.auth.login, {
+              email: user.email,
+              password: user.id,
             })
-            .catch((error) => {
-              token.error = error.response.data.message;
-            });
-          token.error = error.response.data.message;
-        });
+              .then((res) => {
+                const data: User = res.data;
+                token.id = data.id;
+                token.email = data.email;
+                token.name = data.name;
+                token.userType = data.registerId;
+                token.image = data.image;
+                token.accessToken = data.accessToken;
+                token.verified = data.verified
+              })
+              .catch((error) => {
+                token.error = error.response.data.message;
+              });
+            token.error = error.response.data.message;
+          });
       }
-
       return token;
     },
 
@@ -105,9 +108,12 @@ export const authOptions: NextAuthOptions = {
         session.user.email = token.email;
         session.user.name = token.name;
         session.user.userType = token.userType;
-        session.user.image = token.picture as string;
+        session.user.image = token.picture
+          ? token.picture
+          : (token.image as string);
         session.user.accessToken = token.accessToken;
         session.user.error = token.error;
+        session.user.verified = token.verified as boolean;
       }
       return session;
     },

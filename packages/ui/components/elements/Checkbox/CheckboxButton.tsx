@@ -6,7 +6,7 @@ export type CloseButtonProps = {
 export function CheckboxButton({chackboxTitle}: CloseButtonProps) {
   return (
     <Styled.CheckboxButton>
-      <input id="wp-comment-cookies-consent" name="FAHCheckbox" type="checkbox" value="yes" />
+      <input id="wp-comment-cookies-consent" name="FAHCheckbox" type="checkbox" required />
       <label htmlFor="wp-comment-cookies-consent">{chackboxTitle}</label>
     </Styled.CheckboxButton>
   );

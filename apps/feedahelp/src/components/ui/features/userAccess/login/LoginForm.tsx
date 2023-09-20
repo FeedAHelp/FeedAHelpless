@@ -1,21 +1,38 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
+import { signIn } from "next-auth/react";
 import { Styled } from "../LoginRegister.styled";
 import { CheckboxButton } from "~/ui/components/elements/Checkbox/CheckboxButton";
 import GenericLink from "~/ui/components/elements/GenericLink/GenericLink";
 import { PasswordInput } from "~/ui/components/elements/PasswordInput/PasswordInput";
 import ReCAPTCHA from "react-google-recaptcha";
-import { verifyCaptcha } from "~/server/ServerActions";
+import CustomSpinner from "~/ui/components/elements/GenericSpinner/CustomSpinner";
 
 const LoginForm = () => {
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const [isVerified, setIsverified] = useState<boolean>(false);
+  const [recaptcha, setRecaptcha] = useState<boolean>(true);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  async function handleCaptchaSubmission(token: string | null) {
-    console.log(token);
-    await verifyCaptcha(token)
-      .then(() => setIsverified(true))
-      .catch(() => setIsverified(false));
-  }
+  const login = async () => {
+    setIsLoading(true);
+    try {
+      const result = await signIn("credentials", {
+        email: email,
+        password: password,
+        redirect: true,
+        callbackUrl: "/",
+      });
+
+      if (result?.error) {
+        console.error(result.error);
+      } else {
+        // Do something on successful login
+      }
+    } catch (error) {
+      console.error(error);
+    }
+    setIsLoading(false);
+  };
 
   return (
     <div>
@@ -23,12 +40,21 @@ const LoginForm = () => {
       <form action="#" className="flex flex-col space-y-4">
         <div className="flex flex-col text-left">
           <Styled.Field>
-            <Styled.LoginInput type="text" placeholder="What's your email?" />
+            <Styled.LoginInput
+              type="text"
+              placeholder="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
             <Styled.Line />
           </Styled.Field>
         </div>
         <div className="flex flex-col space-y-1">
-          <PasswordInput placeholder="password?" />
+          <PasswordInput
+            placeholder="Password"
+            password={password}
+            strengthCheck={false}
+            setPassword={setPassword}
+          />
         </div>
         <div className="flex items-center justify-between pb-4 pt-4">
           <CheckboxButton chackboxTitle="Remember me" />
@@ -39,20 +65,22 @@ const LoginForm = () => {
         <div>
           <ReCAPTCHA
             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
-            ref={recaptchaRef}
-            onChange={handleCaptchaSubmission}
+            onChange={() => setRecaptcha(!recaptcha)}
           />
         </div>
+
         <div>
           <button
-            type="submit"
-            className="w-full rounded-md bg-[#EC5921] px-4 py-2 text-lg font-semibold text-white shadow transition-colors duration-300 hover:bg-[#F3AF9A] focus:outline-none focus:ring-4 focus:ring-blue-200"
-            disabled={!isVerified}
+            type="button"
+            className="w-full rounded-md bg-[#EC5921] px-4 py-2 text-lg font-semibold text-white shadow transition-colors duration-300 hover:bg-[#F3AF9A] focus:outline-none focus:ring-4 focus:ring-blue-200 disabled:bg-blue-500"
+            disabled={recaptcha}
+            onClick={login}
           >
             Log in
           </button>
         </div>
       </form>
+      <CustomSpinner isLoading={isLoading}></CustomSpinner>
     </div>
   );
 };
