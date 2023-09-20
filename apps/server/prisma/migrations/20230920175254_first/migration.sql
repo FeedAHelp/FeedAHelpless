@@ -1,5 +1,5 @@
 -- CreateEnum
-CREATE TYPE "ContributionType" AS ENUM ('financial', 'volunteer');
+CREATE TYPE "ContributionTypes" AS ENUM ('financial', 'volunteer');
 
 -- CreateTable
 CREATE TABLE "User" (
@@ -33,13 +33,13 @@ CREATE TABLE "Register" (
 );
 
 -- CreateTable
-CREATE TABLE "FeedahelpNewsletter" (
+CREATE TABLE "Newsletter" (
     "id" TEXT NOT NULL,
     "userId" TEXT,
     "email" TEXT NOT NULL,
-    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "FeedahelpNewsletter_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Newsletter_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -65,15 +65,15 @@ CREATE TABLE "Ingredients" (
 );
 
 -- CreateTable
-CREATE TABLE "contributionId" (
+CREATE TABLE "contributions" (
     "id" TEXT NOT NULL,
     "contributor" TEXT NOT NULL,
-    "type" "ContributionType" NOT NULL,
+    "type" "ContributionTypes" NOT NULL,
     "dateTime" TIMESTAMP(3) NOT NULL,
     "value" DOUBLE PRECISION NOT NULL,
-    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "contributionId_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "contributions_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -86,10 +86,13 @@ CREATE UNIQUE INDEX "Register_email_key" ON "Register"("email");
 CREATE UNIQUE INDEX "Register_phone_key" ON "Register"("phone");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "FeedahelpNewsletter_email_key" ON "FeedahelpNewsletter"("email");
+CREATE UNIQUE INDEX "Newsletter_email_key" ON "Newsletter"("email");
 
 -- AddForeignKey
 ALTER TABLE "User" ADD CONSTRAINT "User_registerId_fkey" FOREIGN KEY ("registerId") REFERENCES "Register"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "LoginHistory" ADD CONSTRAINT "LoginHistory_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "contributions" ADD CONSTRAINT "contributions_contributor_fkey" FOREIGN KEY ("contributor") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
