@@ -5,11 +5,11 @@ import ProgressBar from 'progress';
 
 const prisma = new PrismaClient();
 
-export async function seeder({file, schema}: {file: string; schema: string}) {
+export async function seed({file, schema}: {file: string; schema: string}) {
     const filePath = path.join(process.cwd(), file);
     const jsonData = await fsPromises.readFile(filePath);
     const rawData = JSON.parse(jsonData.toString());
-    const data = rawData.data;
+    const data = rawData[schema];
     const totalData = data.length;
     const prismaTable = (prisma as any)[schema];
 
@@ -23,10 +23,10 @@ export async function seeder({file, schema}: {file: string; schema: string}) {
         total: totalData,
     });
 
-    const createIngredient = async (ingredient : any) => {
+    const createEntry = async (i : any) => {
         try {
             await prismaTable.create({
-                data: ingredient,
+                data: i,
             });
             bar.tick();
         } catch (error) {
@@ -34,12 +34,12 @@ export async function seeder({file, schema}: {file: string; schema: string}) {
         }
     };
 
-    const insertIngredients = async () => {
-        const promises = data.map((ingredient : any) => createIngredient(ingredient));
+    const insertAll = async () => {
+        const promises = data.map((i : any) => createEntry(i));
         await Promise.all(promises);
         console.log(`All ${schema} inserted successfully.`);
     };
-    await insertIngredients();
+    await insertAll();
 
     await prisma.$disconnect();
 }

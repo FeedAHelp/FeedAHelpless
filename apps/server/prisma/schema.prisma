@@ -16,6 +16,7 @@ model User {
   register   Register       @relation(fields: [registerId], references: [id])
   registerId String         @unique
   logins     LoginHistory[]
+  contributions  contributions[]
 }
 
 model LoginHistory {
@@ -35,7 +36,7 @@ model Register {
   user        User?
 }
 
-model FeedahelpNewsletter {
+model Newsletter {
   id       String   @id @default(uuid())
   userId   String?
   email    String   @unique
@@ -65,6 +66,7 @@ model contributions {
   dateTime  DateTime
   value     Float
   createdAt  DateTime      @default(now())
+  user      User     @relation(fields: [contributor], references: [id])
 }
 
 enum ContributionTypes {
