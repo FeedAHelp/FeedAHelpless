@@ -1,3 +1,6 @@
+-- CreateEnum
+CREATE TYPE "ContributionType" AS ENUM ('financial', 'volunteer');
+
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
@@ -9,12 +12,12 @@ CREATE TABLE "User" (
 );
 
 -- CreateTable
-CREATE TABLE "UserLoggedIn" (
-    "id" TEXT NOT NULL,
-    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+CREATE TABLE "LoginHistory" (
+    "id" SERIAL NOT NULL,
+    "loginTime" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "userId" TEXT NOT NULL,
 
-    CONSTRAINT "UserLoggedIn_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "LoginHistory_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -61,6 +64,18 @@ CREATE TABLE "Ingredients" (
     CONSTRAINT "Ingredients_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "contributionId" (
+    "id" TEXT NOT NULL,
+    "contributor" TEXT NOT NULL,
+    "type" "ContributionType" NOT NULL,
+    "dateTime" TIMESTAMP(3) NOT NULL,
+    "value" DOUBLE PRECISION NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "contributionId_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "User_registerId_key" ON "User"("registerId");
 
@@ -77,4 +92,4 @@ CREATE UNIQUE INDEX "FeedahelpNewsletter_email_key" ON "FeedahelpNewsletter"("em
 ALTER TABLE "User" ADD CONSTRAINT "User_registerId_fkey" FOREIGN KEY ("registerId") REFERENCES "Register"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "UserLoggedIn" ADD CONSTRAINT "UserLoggedIn_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "LoginHistory" ADD CONSTRAINT "LoginHistory_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

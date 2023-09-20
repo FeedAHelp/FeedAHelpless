@@ -33,6 +33,7 @@ model Register {
   role        String
   accessToken String
   user        User?
+  // contributions  contributionId[]   for production
 }
 
 model FeedahelpNewsletter {
@@ -56,4 +57,19 @@ model Ingredients {
   id        String @id @default(uuid())
   name      String
   imageName String
+}
+
+model contributionId {
+  id        String        @id @default(uuid())
+  contributor String
+  type      ContributionType
+  dateTime  DateTime
+  value     Float
+  createAt  DateTime      @default(now())
+  // register  Register     @relation(fields: [contributor], references: [id]), we will use this later for production
+}
+
+enum ContributionType {
+  financial
+  volunteer
 }
