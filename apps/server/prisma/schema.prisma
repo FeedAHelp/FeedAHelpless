@@ -15,6 +15,7 @@ model User {
   image      String?
   register   Register @relation(fields: [registerId], references: [id])
   registerId String   @unique
+  contributions  contributions[]
 }
 
 model LoginHistory {
@@ -37,11 +38,11 @@ model Register {
   logins      LoginHistory[]
 }
 
-model FeedahelpNewsletter {
+model Newsletter {
   id       String   @id @default(uuid())
   userId   String?
   email    String   @unique
-  createAt DateTime @default(now())
+  createdAt DateTime @default(now())
 }
 
 model FahCounter {
@@ -67,4 +68,19 @@ model EmailVerify {
   expireAt DateTime
   createAt DateTime @default(now())
   register Register @relation(fields: [email], references: [email])
+}
+
+model contributions {
+  id        String        @id @default(uuid())
+  contributor String
+  type      ContributionTypes
+  dateTime  DateTime
+  value     Float
+  createdAt  DateTime      @default(now())
+  user      User     @relation(fields: [contributor], references: [id])
+}
+
+enum ContributionTypes {
+  financial
+  volunteer
 }
