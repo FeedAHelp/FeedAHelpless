@@ -4,7 +4,7 @@ import { prisma } from '../../utils/prismaInstance'
 export const deleteSubscribeController = async (req: Request, res: Response) => {
   try {
     const { email } = req.params
-    await prisma.feedahelpNewsletter.delete({
+    await prisma.newsletter.delete({
       where: {
         email:email
       }
