@@ -3,7 +3,7 @@ import { prisma } from '../../utils/prismaInstance'
 
 export const getSubscriberController = async (req: Request, res: Response) => {
   try {
-    const subscriber = await prisma.feedahelpNewsletter.findMany({
+    const subscriber = await prisma.newsletter.findMany({
       orderBy: {
         createdAt: 'desc'
       }

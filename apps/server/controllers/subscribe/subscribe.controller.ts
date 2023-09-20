@@ -2,12 +2,12 @@ import { Request, Response } from 'express'
 import { prisma } from '../../utils/prismaInstance'
 import { subscribeSchema,subscribeType } from '../../schema/subscribe.schema'
 
-export const subscribeController = async (req: Request<{}, {},subscribeType>, res: Response) => {    
+export const subscribeController = async (req: Request<{}, {},subscribeType>, res: Response) => {
   try {
     const { email } = req.body
     subscribeSchema.parse(req.body)
 
-    await prisma.feedahelpNewsletter.create({
+    await prisma.newsletter.create({
       data: {
         email: email
       }
