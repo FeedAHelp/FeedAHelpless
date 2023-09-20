@@ -6,7 +6,8 @@
           "phone": "$2b$10$Fiia2l.18LbipaBouveW4ugVpvwzo4oPWfdtSBMKtNKJw3lpK1bXa",
           "password": "$2b$10$Fiia2l.18LbipaBouveW4ugVpvwzo4oPWfdtSBMKtNKJw3lpK1bXa",
           "role": "donor",
-          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRhbnZpci5hbGFtLnNoYXduQGdtYWlsLmNvbSIsImlhdCI6MTY5NTE1NDg5NywiZXhwIjoxNjk1MTU4NDk3fQ.BasA62IUp-WaUOvbhFsYiG07DXwduimrAfgtuO1cd38"
+          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRhbnZpci5hbGFtLnNoYXduQGdtYWlsLmNvbSIsImlhdCI6MTY5NTE1NDg5NywiZXhwIjoxNjk1MTU4NDk3fQ.BasA62IUp-WaUOvbhFsYiG07DXwduimrAfgtuO1cd38",
+          "verified": true
         }
        ]
 

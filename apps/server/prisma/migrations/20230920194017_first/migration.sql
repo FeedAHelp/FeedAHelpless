@@ -28,6 +28,7 @@ CREATE TABLE "Register" (
     "password" TEXT NOT NULL,
     "role" TEXT NOT NULL,
     "accessToken" TEXT NOT NULL,
+    "verified" BOOLEAN NOT NULL,
 
     CONSTRAINT "Register_pkey" PRIMARY KEY ("id")
 );
@@ -65,7 +66,6 @@ CREATE TABLE "Ingredients" (
 );
 
 -- CreateTable
-<<<<<<<< HEAD:apps/server/prisma/migrations/20230916110053_first/migration.sql
 CREATE TABLE "EmailVerify" (
     "id" SERIAL NOT NULL,
     "email" TEXT NOT NULL,
@@ -74,7 +74,9 @@ CREATE TABLE "EmailVerify" (
     "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "EmailVerify_pkey" PRIMARY KEY ("id")
-========
+);
+
+-- CreateTable
 CREATE TABLE "contributions" (
     "id" TEXT NOT NULL,
     "contributor" TEXT NOT NULL,
@@ -84,7 +86,6 @@ CREATE TABLE "contributions" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "contributions_pkey" PRIMARY KEY ("id")
->>>>>>>> 268-get-contribution-data:apps/server/prisma/migrations/20230920175254_first/migration.sql
 );
 
 -- CreateIndex
@@ -103,11 +104,10 @@ CREATE UNIQUE INDEX "Newsletter_email_key" ON "Newsletter"("email");
 ALTER TABLE "User" ADD CONSTRAINT "User_registerId_fkey" FOREIGN KEY ("registerId") REFERENCES "Register"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "LoginHistory" ADD CONSTRAINT "LoginHistory_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "LoginHistory" ADD CONSTRAINT "LoginHistory_userId_fkey" FOREIGN KEY ("userId") REFERENCES "Register"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-<<<<<<<< HEAD:apps/server/prisma/migrations/20230916110053_first/migration.sql
 ALTER TABLE "EmailVerify" ADD CONSTRAINT "EmailVerify_email_fkey" FOREIGN KEY ("email") REFERENCES "Register"("email") ON DELETE RESTRICT ON UPDATE CASCADE;
-========
+
+-- AddForeignKey
 ALTER TABLE "contributions" ADD CONSTRAINT "contributions_contributor_fkey" FOREIGN KEY ("contributor") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
->>>>>>>> 268-get-contribution-data:apps/server/prisma/migrations/20230920175254_first/migration.sql
