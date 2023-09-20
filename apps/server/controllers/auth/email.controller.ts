@@ -1,4 +1,6 @@
 import * as nodemailer from 'nodemailer'
+import { render } from '@react-email/render';
+import { Email } from "~/ui/components/elements/Email/emailTemplate";
 
 const transporter = nodemailer.createTransport({
   service: process.env.NEXT_PUBLIC_EMAIL_HOST,
@@ -7,6 +9,8 @@ const transporter = nodemailer.createTransport({
     pass: process.env.NEXT_PUBLIC_EMAIL_PASSWORD
   }
 })
+
+//const emailHtml = render(<Email FahURL="https://example.com" />);
 
 const sendVerificationEmail = async (
   toEmail: string,
