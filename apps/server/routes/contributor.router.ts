@@ -1,7 +1,7 @@
 import express, { Router } from "express";
-import { getContributionController } from "../controllers/contribution/contribution.controller";
+import { getContributions } from "../controllers/contribution/contribution.controller";
 
 export const contributionRouter: Router = express.Router();
 
-contributionRouter.get('/get', getContributionController)
+contributionRouter.get('/get', getContributions)
 export default contributionRouter

@@ -8,9 +8,9 @@ const firstDayOfLastMonth = new Date(currentDate.getFullYear(), currentDate.getM
 const firstDayOfThisMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1)
 const firstDayOfNextMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1)
 
-export const getContributionController = async (req: Request, res: Response) => {
+export const getContributions = async (req: Request, res: Response) => {
   try {
-    const contributorsLastMonth = await prisma.contributionId.findMany({
+    const contributorsLastMonth = await prisma.contributions.findMany({
       where: {
         dateTime: {
           gte: firstDayOfLastMonth,
@@ -19,7 +19,7 @@ export const getContributionController = async (req: Request, res: Response) => 
       }
     })
 
-    const contributorsThisMonth = await prisma.contributionId.findMany({
+    const contributorsThisMonth = await prisma.contributions.findMany({
       where: {
         dateTime: {
           gte: firstDayOfThisMonth,
@@ -37,7 +37,7 @@ export const getContributionController = async (req: Request, res: Response) => 
 
     return res
       .status(200)
-      .json({ lastMonthContribution: lastMonthContribution, thisMonthContribution: thisMonthContribution, contributionIncrease: contributionIncrease })
+      .json({ lastMonthContribution, thisMonthContribution, contributionIncrease})
   } catch (error) {
     console.log(error)
     return res.status(500).json({ message: 'Failed to fetch user data' })

@@ -33,14 +33,13 @@ model Register {
   role        String
   accessToken String
   user        User?
-  // contributions  contributionId[]   for production
 }
 
 model FeedahelpNewsletter {
   id       String   @id @default(uuid())
   userId   String?
   email    String   @unique
-  createAt DateTime @default(now())
+  createdAt DateTime @default(now())
 }
 
 model FahCounter {
@@ -59,17 +58,16 @@ model Ingredients {
   imageName String
 }
 
-model contributionId {
+model contributions {
   id        String        @id @default(uuid())
   contributor String
-  type      ContributionType
+  type      ContributionTypes
   dateTime  DateTime
   value     Float
-  createAt  DateTime      @default(now())
-  // register  Register     @relation(fields: [contributor], references: [id]), we will use this later for production
+  createdAt  DateTime      @default(now())
 }
 
-enum ContributionType {
+enum ContributionTypes {
   financial
   volunteer
 }

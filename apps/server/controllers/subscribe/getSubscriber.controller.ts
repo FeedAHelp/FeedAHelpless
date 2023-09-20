@@ -5,7 +5,7 @@ export const getSubscriberController = async (req: Request, res: Response) => {
   try {
     const subscriber = await prisma.feedahelpNewsletter.findMany({
       orderBy: {
-        createAt: 'desc'
+        createdAt: 'desc'
       }
     })
     return res.status(200).json(subscriber)
