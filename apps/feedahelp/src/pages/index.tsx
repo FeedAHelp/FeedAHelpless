@@ -32,7 +32,7 @@ const Index = () => {
 
 export default Index;
 
-export async function getStaticProps({ locale }: { locale: string }) {
+/* export async function getServerSideProps({ locale }: { locale: string }) {
   return {
     props: {
       ...(await serverSideTranslations(locale, [
@@ -42,4 +42,4 @@ export async function getStaticProps({ locale }: { locale: string }) {
       ])),
     },
   };
-}
+} */

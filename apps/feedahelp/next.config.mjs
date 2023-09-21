@@ -27,12 +27,12 @@ const config = {
   compiler: {
     styledComponents: true,
   },
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
-  },
   experimental: {
     serverActions: true,
+  },
+  i18n: {
+    locales: ['en', 'bn'],
+    defaultLocale: 'en',
   },
 };
 

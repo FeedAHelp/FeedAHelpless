@@ -3,6 +3,7 @@ import { Styled } from "./Hero.styled";
 import { fetchHeroImages } from "~/utils/cms/fetchHeroImages";
 import { urlForThumbnail } from "~/utils/cms/imageProcess";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 
 interface HeroImagesType {
   title: string;
@@ -16,7 +17,10 @@ const Hero = () => {
   const activeItemBorderRef = useRef<HTMLDivElement | null>(null);
   const displayImgsRef = useRef<(HTMLImageElement | null)[]>([]);
   const [heroImages, setHeroImages] = useState<HeroImagesType[]>([]);
+  const { locale } = useRouter()
   const { t } = useTranslation("contentBanner");
+
+  console.log(t("A meal shared with wrinkles and wisdom"))
 
   const getHeroImages = async () => {
     try {

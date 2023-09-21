@@ -29,13 +29,13 @@ const LanguageSelections: React.FC = () => {
     }
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
+ */
   return (
     <div className="flex flex-col items-center">
       <button
@@ -63,9 +63,9 @@ const LanguageSelections: React.FC = () => {
             <Styled.LanguageOption
               key={i}
               className={`dropDownOption ${
-                selectedItem === item.language ? "selected" : ""
+                selectedItem === item.localLang ? "selected" : ""
               }`}
-              onClick={() => handleItemClick(item.language, i)}
+              onClick={() => handleItemClick(item.localLang, i)}
             >
               <Image
                 width={30}

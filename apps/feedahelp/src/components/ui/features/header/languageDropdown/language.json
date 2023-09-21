@@ -1,26 +1,19 @@
 [
     {
         "language": "Bangla",
+        "localLang": "bn",
         "country":"BD",
         "altFlagImg":"BD-Flag"
     },
     {
         "language": "English",
+        "localLang": "en",
         "country":"US",
         "altFlagImg":"US-Flag"
     },
     {
-        "language": "Spanish",
-        "country":"MX",
-        "altFlagImg":"MX-Flag"
-    },
-    {
-        "language": "Deutsch",
-        "country":"DE",
-        "altFlagImg":"DE-Flag"
-    },
-    {
         "language": "Danish",
+        "localLang": "dk",
         "country":"DK",
         "altFlagImg":"DK-Flag"
     }

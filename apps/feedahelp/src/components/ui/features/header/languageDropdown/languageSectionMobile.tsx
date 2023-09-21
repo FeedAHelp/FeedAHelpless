@@ -1,5 +1,5 @@
 import { useState } from "react";
-import data from "./language.json";
+import language from "./language.json";
 import Image from "next/image";
 import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material";
 import { Styled } from "./LanguageSelection.styled";
@@ -24,7 +24,7 @@ const LanguageSelectionsMobile = () => {
         </div>
       </Styled.HoverImage>
       {isShowing &&
-        data.map((item, index) => {
+        language.map((item, index) => {
           return (
             <div key={index}>
               <div className="flex cursor-pointer select-none items-center justify-center gap-4 p-1 text-white hover:bg-[rgba(40,42,54,0.23)]">
