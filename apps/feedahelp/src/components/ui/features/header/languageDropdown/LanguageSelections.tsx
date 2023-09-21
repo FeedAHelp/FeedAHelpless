@@ -20,7 +20,7 @@ const LanguageSelections: React.FC = () => {
   const handleItemClick = (language: string, activeIndex: number) => {
     setActive(activeIndex);
     setSelectedItem(language);
-    push(router.asPath, '/', { locale: language });
+    push(router.asPath, "/", { locale: language });
   };
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -29,13 +29,13 @@ const LanguageSelections: React.FC = () => {
     }
   };
 
-  /* useEffect(() => {
+  useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
- */
+
   return (
     <div className="flex flex-col items-center">
       <button

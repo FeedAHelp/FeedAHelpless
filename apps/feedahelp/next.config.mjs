@@ -5,6 +5,7 @@
 await import("./src/env.mjs");
 import pkg from './next-i18next.config.js';
 const { i18n } = pkg;
+
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
@@ -33,6 +34,5 @@ const config = {
   },
   i18n
 };
-
 
 export default config;
