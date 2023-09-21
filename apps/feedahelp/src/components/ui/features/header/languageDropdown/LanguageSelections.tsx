@@ -20,7 +20,7 @@ const LanguageSelections: React.FC = () => {
   const handleItemClick = (language: string, activeIndex: number) => {
     setActive(activeIndex);
     setSelectedItem(language);
-    push(router.asPath, undefined, { locale: language });
+    push(router.asPath, '/', { locale: language });
   };
 
   const handleClickOutside = (event: MouseEvent) => {

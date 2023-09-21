@@ -10,9 +10,9 @@ export type LocaleInfo = {
     locale: string
 }
 
-export function getLocaleInfo(locale: string): LocaleInfo
-export function getLocaleInfo(locale: string | undefined): LocaleInfo | undefined
-export function getLocaleInfo(languageCode: string, countryCode: string): LocaleInfo
+// export function getLocaleInfo(locale: string): LocaleInfo
+// export function getLocaleInfo(locale: string | undefined): LocaleInfo | undefined
+// export function getLocaleInfo(languageCode: string, countryCode: string): LocaleInfo
 
 export function getLocaleInfo(arg0: string | undefined, arg1?: string): LocaleInfo | undefined {
     let languageCode = arg0?.split('-')[0]

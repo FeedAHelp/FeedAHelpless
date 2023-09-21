@@ -3,7 +3,8 @@
  * for Docker builds.
  */
 await import("./src/env.mjs");
-
+import pkg from './next-i18next.config.js';
+const { i18n } = pkg;
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
@@ -11,10 +12,10 @@ const config = {
   transpilePackages: ["ui"],
   images: {
     domains: [
-      "cdn.sanity.io", 
-      "i.ibb.co", 
+      "cdn.sanity.io",
+      "i.ibb.co",
       "source.unsplash.com",
-      "www.countryflagicons.com", 
+      "www.countryflagicons.com",
       "media.istockphoto.com",
       "drive.google.com",
       "png.pngtree.com",
@@ -30,10 +31,8 @@ const config = {
   experimental: {
     serverActions: true,
   },
-  i18n: {
-    locales: ['en', 'bn'],
-    defaultLocale: 'en',
-  },
+  i18n
 };
+
 
 export default config;

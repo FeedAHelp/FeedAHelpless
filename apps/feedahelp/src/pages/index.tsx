@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import { Layout } from "../components/Layouts";
 import { MainPage } from "../components/ui/features/main";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useTranslation } from "next-i18next";
 
 const Header = dynamic(
@@ -12,7 +13,7 @@ const Footer = dynamic(
   import("../components/ui/features/footer").then((mod) => mod.Footer)
 );
 
-const Index = () => {
+const Index: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (_props) => {
   const { t } = useTranslation("language");
 
   return (
@@ -32,14 +33,25 @@ const Index = () => {
 
 export default Index;
 
-/* export async function getServerSideProps({ locale }: { locale: string }) {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, [
+      ...(await serverSideTranslations(locale ?? 'en', [
         "common",
-        "language",
-        "contentBanner",
+        "language"
       ])),
     },
   };
-} */
+}
+
+
+
+// export async function getServerSideProps({ locale }: { locale: string }) {
+//   return {
+//     props: {
+//       ...(await serverSideTranslations(locale, [
+//         "common"
+//       ])),
+//     },
+//   };
+// }

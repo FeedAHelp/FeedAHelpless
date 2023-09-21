@@ -18,9 +18,9 @@ const Hero = () => {
   const displayImgsRef = useRef<(HTMLImageElement | null)[]>([]);
   const [heroImages, setHeroImages] = useState<HeroImagesType[]>([]);
   const { locale } = useRouter()
-  const { t } = useTranslation("contentBanner");
+  const { t } = useTranslation("common");
 
-  console.log(t("A meal shared with wrinkles and wisdom"))
+  console.log(t('Chair'))
 
   const getHeroImages = async () => {
     try {
