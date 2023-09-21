@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Styled } from "./Hero.styled";
 import { fetchHeroImages } from "~/utils/cms/fetchHeroImages";
 import { urlForThumbnail } from "~/utils/cms/imageProcess";
+import { useTranslation } from "next-i18next";
 
 interface HeroImagesType {
   title: string;
@@ -15,6 +16,9 @@ const Hero = () => {
   const activeItemBorderRef = useRef<HTMLDivElement | null>(null);
   const displayImgsRef = useRef<(HTMLImageElement | null)[]>([]);
   const [heroImages, setHeroImages] = useState<HeroImagesType[]>([]);
+  const { t } = useTranslation("common");
+
+  console.log(t("Shared Meal"));
 
   const getHeroImages = async () => {
     try {
@@ -195,7 +199,7 @@ const Hero = () => {
                       height={100}
                     />
                     <Styled.ImageContentMobile>
-                      {item.title}
+                      {t(item.title)}
                     </Styled.ImageContentMobile>
                   </div>
                 </div>

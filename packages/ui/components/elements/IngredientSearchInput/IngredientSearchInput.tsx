@@ -22,7 +22,6 @@ const IngredientSearchInput = () => {
       <Styled.SearchBox>
         <label htmlFor={id}><Styled.SearchIcons /></label>
         <Styled.SearchInput id={id} type='text' className='input-search' placeholder='Type to Search...' />
-        
       </Styled.SearchBox>
     </Styled.SearchBoxContainer>
   )

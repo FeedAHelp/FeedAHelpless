@@ -23,8 +23,10 @@
     "baseUrl": ".",
     "paths": {
       "~/*": [
-        "./src/*", "../../packages/*"
-      ]
+        "./src/*", 
+        "../../packages/*"
+      ],
+      "~/i18n": ["src/i18n"],
     }
   },
   "include": [
