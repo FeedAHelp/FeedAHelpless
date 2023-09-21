@@ -35,7 +35,7 @@ export default Index;
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? "en", ["language"])),
+      ...(await serverSideTranslations(locale ?? "en", ["common", "language"])),
     },
   };
 };

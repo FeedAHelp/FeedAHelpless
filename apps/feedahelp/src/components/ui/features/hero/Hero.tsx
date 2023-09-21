@@ -18,7 +18,7 @@ const Hero = () => {
   const [heroImages, setHeroImages] = useState<HeroImagesType[]>([]);
   const { t } = useTranslation("common");
 
-  console.log(t("Chair"));
+  console.log(t("Shared Meal"));
 
   const getHeroImages = async () => {
     try {

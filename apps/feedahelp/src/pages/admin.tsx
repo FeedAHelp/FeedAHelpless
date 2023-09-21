@@ -36,7 +36,7 @@ export default Index;
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? "en", ["language"])),
+      ...(await serverSideTranslations(locale ?? "en", ["common", "language"])),
     },
   };
 };
