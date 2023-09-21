@@ -3,7 +3,6 @@ import { Layout } from "../components/Layouts";
 import { MainPage } from "../components/ui/features/main";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
-import { useTranslation } from "next-i18next";
 
 const Header = dynamic(
   import("../components/ui/features/header").then((mod) => mod.Header)
@@ -14,8 +13,6 @@ const Footer = dynamic(
 );
 
 const Index: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (_props) => {
-  const { t } = useTranslation("language");
-
   return (
     <Layout
       header={<Header />}
@@ -37,21 +34,8 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
       ...(await serverSideTranslations(locale ?? 'en', [
-        "common",
         "language"
       ])),
     },
   };
 }
-
-
-
-// export async function getServerSideProps({ locale }: { locale: string }) {
-//   return {
-//     props: {
-//       ...(await serverSideTranslations(locale, [
-//         "common"
-//       ])),
-//     },
-//   };
-// }
