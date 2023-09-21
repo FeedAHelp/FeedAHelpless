@@ -9,7 +9,7 @@ export const subscribeController = async (req: Request<{}, {},subscribeType>, re
 
     await prisma.newsletter.create({
       data: {
-        email: email
+        email
       }
     })
     return res.status(200).json({ status: 'success' })
