@@ -5,6 +5,7 @@ import {authRouter} from "./auth.router";
 import { userRouter } from "./user.router";
 import { rootRouter } from "./root.router";
 import {contributionRouter} from "./contribution.router";
+import {likeWishShareRouter} from "./likeWishShare.router";
 
 export const router: Router = Router();
 
@@ -12,4 +13,5 @@ router.use("/v1/auth", authRouter);
 router.use("/v1/user", userRouter);
 router.use("/v1/subscriber", subscribeRouter);
 router.use("/v1/contribution", contributionRouter);
+router.use("/v1/lws", likeWishShareRouter);
 router.use("/", rootRouter);

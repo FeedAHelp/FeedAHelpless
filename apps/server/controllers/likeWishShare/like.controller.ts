@@ -9,7 +9,6 @@ export const likeController = async (req: Request<{}, {}, likeType>, res: Respon
 
     const like = await prisma.likes.create({
       data: {
-
         menuId: menuId,
         liker: liker
       }
