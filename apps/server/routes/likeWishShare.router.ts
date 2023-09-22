@@ -1,7 +1,7 @@
 import express, { Router } from "express";
-import { likeController } from "~/likeWishShare/like.controller";
-import { wishController } from "~/likeWishShare/wish.controller";
-import { shareController } from "~/likeWishShare/share.controller";
+import { likeController } from "../controllers/likeWishShare/like.controller";
+import { wishController } from "../controllers/likeWishShare/wish.controller";
+import { shareController } from "../controllers/likeWishShare/share.controller";
 
 export const likeWishShareRouter: Router = express.Router();
 
