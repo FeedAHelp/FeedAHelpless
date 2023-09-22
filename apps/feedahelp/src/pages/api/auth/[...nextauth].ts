@@ -39,6 +39,12 @@ export const authOptions: NextAuthOptions = {
     LinkedInProvider({
       clientId: `${process.env.NEXT_PUBLIC_LINKEDIN_ID}`,
       clientSecret: `${process.env.NEXT_PUBLIC_LINKEDIN_SECRET}`,
+      wellKnown: 'https://www.linkedin.com/oauth/.well-known/openid-configuration',
+      authorization: {
+        params: {
+          scope: "openid profile email",
+        }
+      },
     }),
     Discord({
       clientId: `${process.env.DISCORD_CLIENT_ID}`,
