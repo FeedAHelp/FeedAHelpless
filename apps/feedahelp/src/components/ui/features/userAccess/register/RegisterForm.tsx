@@ -138,15 +138,9 @@ const RegisterFrom = ({ loginRegisterToggle }: Props) => {
                 setPassword={setPassword}
               />
             </div>
-            <div className="flex items-center justify-between pb-4 pt-4">
+            <div className="flex items-center justify-start pb-4 pt-4 pl-4">
               <CheckboxButton chackboxTitle="Remember me" />
-              <GenericLink
-                href={"www.google.com"}
-                color="Black"
-                fontSize="0.8rem"
-              >
-                {"Forgot password?"}
-              </GenericLink>
+
             </div>
             <div>
               <ReCAPTCHA
