@@ -9,16 +9,14 @@ const LanguageSelections: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const dropdownRef = useRef(null);
-  const { locale, locales, push } = useRouter();
+  const { push } = useRouter();
   const router = useRouter();
-  const [active, setActive] = useState(locale === "bn" ? 1 : 0);
 
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
   };
 
-  const handleItemClick = (language: string, activeIndex: number) => {
-    setActive(activeIndex);
+  const handleItemClick = (language: string) => {
     setSelectedItem(language);
     push(router.asPath, "/", { locale: language });
   };

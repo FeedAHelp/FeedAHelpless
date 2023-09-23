@@ -60,7 +60,7 @@ const Hero = () => {
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      clearInterval(autoScrollRef.current as any);
+      clearInterval(autoScrollRef.current as NodeJS.Timeout);
     };
   }, []);
 
@@ -73,7 +73,7 @@ const Hero = () => {
   };
 
   let count = 0;
-  const handleWheel = (e: any) => {
+  const handleWheel = (e: React.WheelEvent) => {
     setIsScrolling(false);
     count++;
 
@@ -143,7 +143,7 @@ const Hero = () => {
   };
 
   const setAutoScroll = () => {
-    clearInterval(autoScrollRef.current as any);
+    clearInterval(autoScrollRef.current as NodeJS.Timeout);
     autoScrollRef.current = setInterval(() => {
       listItemsRef.current[activeItem]?.classList.remove("active");
       let newActiveItem = activeItem + 1;

@@ -1,11 +1,11 @@
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { RotatingDiv } from "./circular.styled";
 
 interface CircularTextProps {
   text: string;
 }
 
-const CircularText: FC<CircularTextProps> = ({ text }) => {
+const CircularText: React.FC<CircularTextProps> = ({ text }) => {
   const chars = text.split("");
   const [rotation, setRotation] = useState(12);
   const [transformOrigin, setTransformOrigin] = useState(75);

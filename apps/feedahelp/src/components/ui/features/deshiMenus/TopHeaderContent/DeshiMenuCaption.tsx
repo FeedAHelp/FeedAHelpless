@@ -3,10 +3,7 @@ import { Styled } from "../DeshiMenus.styled";
 import Image from "next/image";
 import { items } from "../data";
 
-type DeshiMenuCaptionsProps = {
-  imgSrc: string;
-  imgAlt: string;
-};
+
 
 const DeshiMenuCaptions = () => {
   return (

@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { BoxShadow } from "../DeshiMenus.styled";
 
 const Logo = styled.img`

@@ -1,14 +1,11 @@
-import React, { useState, MouseEvent } from "react";
+import React, { useState } from "react";
 import Ingredients from "../../ingredients/Ingredients";
 import DeshiMenu from "../../deshiMenus/DeshiMenus";
 import { Styled } from "./DeshiMenuIngredients.styled";
 
 const DeshiMenuIngredients = () => {
-  const [isDragging, setIsDragging] = useState(false);
-
-  const onMouseDown = (e: MouseEvent) => {
+    const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    setIsDragging(true);
 
     const separator = e.currentTarget;
     const first = separator.previousSibling as HTMLDivElement;
@@ -35,7 +32,6 @@ const DeshiMenuIngredients = () => {
     };
 
     const onMouseUp = () => {
-      setIsDragging(false);
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseup", onMouseUp);
     };

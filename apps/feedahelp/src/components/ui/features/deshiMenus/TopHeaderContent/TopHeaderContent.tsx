@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { Styled } from "./TopHeaderContent.styled";
 import DeshiSocial from "./DeshiSocial";
-import DeshiMenuCaptions from "./DeshiMenuCaption";
 import { star } from "react-icons-kit/fa/star";
 import { withBaseIcon } from "react-icons-kit";
 
 const TopHeaderContent = () => {
   const StarIcon = withBaseIcon({ size: 25 });
-  const [rate, setRate] = useState(4.5);
+  const [rate] = useState(4.5);
 
   return (
     <Styled.Header>

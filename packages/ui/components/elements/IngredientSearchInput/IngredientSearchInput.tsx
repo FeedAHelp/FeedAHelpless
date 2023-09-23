@@ -6,8 +6,8 @@ import { uuidv4 } from '../../utils/uuid'
 
 type IngredientSearchInputProps = {
   id: string
-  imgSrc: string
-  imgAlt: string
+  imgSrc?: string
+  imgAlt?: string
 }
 
 const SearchIcon = () => (
@@ -15,8 +15,8 @@ const SearchIcon = () => (
     <Icon icon={search} size={24} />
   </div>
 )
-const IngredientSearchInput = () => {
-  const id = `input-search-field-${uuidv4()}`
+const IngredientSearchInput = ({ id, imgSrc, imgAlt }: IngredientSearchInputProps) => {
+  // const id = `input-search-field-${uuidv4()}`
   return (
     <Styled.SearchBoxContainer>
       <Styled.SearchBox>
