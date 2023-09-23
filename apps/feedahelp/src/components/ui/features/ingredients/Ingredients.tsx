@@ -28,7 +28,7 @@ const Ingredients = () => {
           <StickyBox offsetTop={0} offsetBottom={20} style={{ zIndex: 99 }}>
             <div>
               <form>
-                <IngredientSearchInput />
+                <IngredientSearchInput id="ingredient_srearch" />
               </form>
             </div>
           </StickyBox>

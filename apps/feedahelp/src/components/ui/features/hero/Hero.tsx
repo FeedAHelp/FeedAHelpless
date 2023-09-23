@@ -62,7 +62,7 @@ const Hero = () => {
       window.removeEventListener("resize", handleResize);
       clearInterval(autoScrollRef.current as NodeJS.Timeout);
     };
-  });
+  }, []);
 
   const handleMouseEnter = () => {
     setIsScrolling(false);

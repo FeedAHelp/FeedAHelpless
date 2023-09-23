@@ -16,7 +16,7 @@ const DeshiMenus = () => {
           <StickyBox offsetTop={0} offsetBottom={20} style={{ zIndex: 99 }}>
             <div>
               <form>
-                <IngredientSearchInput />
+                <IngredientSearchInput id="deshi_menu_search" />
               </form>
             </div>
           </StickyBox>
