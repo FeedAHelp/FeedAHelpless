@@ -49,10 +49,10 @@ export const authOptions: NextAuthOptions = {
       type: "credentials",
       credentials: {},
       async authorize(credentials: any) {
-        const user = {
-          ...credentials,
-        };
-        return { email: user.email, id: user.password };
+        if (!credentials.email || !credentials.password) {
+          return null;
+        }
+        return { email: credentials.email, id: credentials.password };
       },
     }),
   ],
