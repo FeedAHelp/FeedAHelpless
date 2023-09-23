@@ -4,6 +4,10 @@ const Splitter = styled.div`
   width: 100%;
   height: 34.375rem;
   display: flex;
+
+  ${({ theme }) => theme.breakpoints.down("lg")} {
+    flex-direction: column;
+  }
 `;
 
 const First = styled.div`
