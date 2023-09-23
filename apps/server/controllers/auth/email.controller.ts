@@ -10,19 +10,34 @@ const transporter = nodemailer.createTransport({
   }
 })
 
-//const emailHtml = render(<Email FahURL="https://example.com" />);
-
 const sendVerificationEmail = async (
   toEmail: string,
   verificationToken: string,
-  subject: string = 'No Subject'
+  subject: 'FeedAHelp Account Verification Code'
   ) => {
   try {
     const mailOptions = {
       from: process.env.NEXT_PUBLIC_EMAIL,
       to: toEmail,
       subject: subject,
-      text: `Use this Code within 5 minutes. \n${verificationToken}\n You can also click the following link to verify your account: \n${process.env.PRODUCTION_BACKEND_BASE_URL}auth/verify?email=${toEmail}&passcode=${verificationToken}`
+      text: `
+        Dear Contributor,
+
+        We are grateful for your support and contributions to FeedAHelp in our mission to help the poorest in need.
+
+        Please use the following verification code within the next 5 minutes to verify your donor account:
+
+        Verification Code: ${verificationToken}
+
+        You can also click the link below to verify your account:
+        ${process.env.PRODUCTION_BACKEND_BASE_URL}auth/verify?email=${toEmail}&passcode=${verificationToken}
+
+        If you didn't request this verification, please disregard this email.
+
+        Best regards,
+        FeedAHelp Team
+      `,
+
     }
 
     await transporter.sendMail(mailOptions)
