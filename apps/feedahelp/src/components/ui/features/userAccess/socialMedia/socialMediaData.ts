@@ -33,7 +33,7 @@ export const SocialMedias = [
       imgSrc: "/static/images/social/Discord.png",
       alt: "discord",
       provider: "discord",
-      disabled: true
+      disabled: false
     }
   ];
   

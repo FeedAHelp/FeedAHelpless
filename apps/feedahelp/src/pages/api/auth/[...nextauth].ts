@@ -4,7 +4,7 @@ import LinkedInProvider from "next-auth/providers/linkedin";
 import FacebookProvider from "next-auth/providers/facebook";
 import InstagramProvider from "next-auth/providers/instagram";
 import TwitterProvider from "next-auth/providers/twitter";
-import Discord from "next-auth/providers/discord";
+import DiscordProvider from 'next-auth/providers/discord'
 import {
   type User,
   type SessionCallbackParams,
@@ -13,6 +13,8 @@ import { type NextAuthOptions } from "next-auth";
 import { postMethod } from "../../../utils/api/postMethod";
 import { endPoints } from "../../../utils/api/route";
 import CredentialsProvider from "next-auth/providers/credentials";
+
+const scopes = ['identify'].join(' ')
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -55,9 +57,10 @@ export const authOptions: NextAuthOptions = {
         };
       },
     }),
-    Discord({
+    DiscordProvider({
       clientId: `${process.env.DISCORD_CLIENT_ID}`,
       clientSecret: `${process.env.DISCORD_CLIENT_SECRET}`,
+      authorization: {params: {scope: scopes}},
     }),
     CredentialsProvider({
       name: "credentials",
