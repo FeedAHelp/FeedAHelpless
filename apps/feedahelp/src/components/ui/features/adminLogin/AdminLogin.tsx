@@ -8,7 +8,7 @@ const AdminLogin = () => {
   return (
     <div>
       <Styled.FormContainer>
-        <Image src="/FeedaHelpLogo.png" alt={"logo"} width={300} height={300} />
+        <Image className="w-auto h-auto" src="/FeedaHelpLogo.png" alt={"logo"} width={300} height={300} />
         <Styled.Heading>Admin Login</Styled.Heading>
         <Styled.InputContainer>
           <Styled.InputIcon>

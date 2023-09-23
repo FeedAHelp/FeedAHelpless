@@ -60,6 +60,7 @@ export const Footer = () => {
                 width={200}
                 height={100}
                 alt={"feedahelpLogo"}
+                className="w-auto h-auto"
               />
             </Link>
             <Styled.FooterButton

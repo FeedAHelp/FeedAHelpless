@@ -12,6 +12,7 @@ const Logo = () => {
             width={220}
             height={70}
             alt={"feedahelpLogo"}
+            className="w-auto h-auto"
           />
         </Link>
       </Styled.Container>
