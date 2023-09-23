@@ -10,10 +10,12 @@ const transporter = nodemailer.createTransport({
   }
 })
 
+//const emailHtml = render(<Email FahURL="https://example.com" />);
+
 const sendVerificationEmail = async (
   toEmail: string,
   verificationToken: string,
-  subject: 'FeedAHelp Account Verification Code'
+  subject: string = 'FeedAHelp Account Verification Code'
   ) => {
   try {
     const mailOptions = {
