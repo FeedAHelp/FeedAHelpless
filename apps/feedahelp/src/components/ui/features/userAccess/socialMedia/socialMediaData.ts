@@ -1,9 +1,9 @@
-export const items = [
+export const SocialMedias = [
     {
       imgSrc: "/static/images/social/facebook.png",
       alt: "facebook",
       provider: "facebook",
-      disabled: false
+      disabled: true
     },
     {
       imgSrc: "/static/images/social/google.png",
@@ -15,7 +15,7 @@ export const items = [
       imgSrc: "/static/images/social/Twitter.png",
       alt: "twitter",
       provider: "twitter",
-      disabled: true
+      disabled: false
     },
     {
       imgSrc: "/static/images/social/linkedIn.png",
@@ -30,9 +30,9 @@ export const items = [
       disabled: true
     },
     {
-      imgSrc: "/static/images/social/YouTube.png",
-      alt: "youtube",
-      provider: "youtube",
+      imgSrc: "/static/images/social/Discord.png",
+      alt: "discord",
+      provider: "discord",
       disabled: true
     }
   ];
