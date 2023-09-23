@@ -18,8 +18,8 @@ const RegisterFrom = ({ loginRegisterToggle }: Props) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [passcode, setPasscode] = useState("");
-  const [image, setImage] = useState("feedahelpAvatar");
-  const [role, setRole] = useState("donor");
+  const [image] = useState("feedahelpAvatar");
+  const [role] = useState("donor");
   const [recapta, setRecapcha] = useState(true);
   const [codeSent, setCodesent] = useState(false);
   const [isLoading, setIsLoading] = useState(false);

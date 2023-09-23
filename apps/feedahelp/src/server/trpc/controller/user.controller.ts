@@ -92,8 +92,11 @@ const subscribe = publicProcedure
     }
   })
 
-export default {
+
+const userController = {
   create,
   findAll,
   subscribe,
-}
+};
+
+export default userController;

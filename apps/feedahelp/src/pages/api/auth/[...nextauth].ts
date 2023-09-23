@@ -7,7 +7,6 @@ import TwitterProvider from "next-auth/providers/twitter";
 import Discord from "next-auth/providers/discord";
 import {
   type User,
-  type JWTCallbackParams,
   type SessionCallbackParams,
 } from "../../../types/authType";
 import { type NextAuthOptions } from "next-auth";
@@ -53,12 +52,12 @@ export const authOptions: NextAuthOptions = {
         const user = {
           ...credentials,
         };
-        return { email: credentials.email, id: credentials.password };
+        return { email: user.email, id: user.password };
       },
     }),
   ],
   callbacks: {
-    async jwt({ token, user, account }) {
+    async jwt({ token, user }) {
       if (user && (user.id || user.name)) {
         await postMethod(endPoints.auth.register, {
           name: user.name || "Not found",

@@ -13,7 +13,7 @@ const Footer = dynamic(
 );
 
 const Index: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
-  _props
+
 ) => {
   return (
     <Layout

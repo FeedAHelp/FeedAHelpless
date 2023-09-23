@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Styled } from "./Cta.styled";
 
 const Cta = () => {
-  const [donateAmount, setDonateAmount] = useState(100);
+  const [donateAmount] = useState(100);
 
   const move = () => {
     console.log("Move");
@@ -22,7 +22,7 @@ const Cta = () => {
                 max="10000"
                 value="100"
                 step="50"
-                oninput="move()"
+                onInput={move}
                 id="range"
               />
             </Styled.Slider>
