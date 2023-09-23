@@ -14,7 +14,7 @@ const DownFooter = styled.span`
 `;
 
 const FooterButton = styled.button`
-height: 50px;
+  height: 50px;
   width: 150px;
   border: none;
   border-radius: 10px;
@@ -25,14 +25,14 @@ height: 50px;
   margin-top: 20px;
 
   &:hover {
-    box-shadow: .5px .5px 150px #252525;
+    box-shadow: 0.5px 0.5px 150px #252525;
   }
 
   &::after {
     content: "Donate Now";
     height: 50px;
     width: 150px;
-    background-color:#e9ecef;
+    background-color: ${({ theme }) => theme.colors.primary.green};
     color: #f24c00;
     position: absolute;
     top: 0%;
@@ -43,17 +43,16 @@ height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0; 
+    opacity: 0;
     transition: all 0.5s ease-in-out;
-    border-radius: 10px; 
-    border: 3px solid #f24c00;
+    border-radius: 10px;
   }
 
   &::before {
     content: "Donate";
     height: 50px;
     width: 150px;
-    background: linear-gradient(to right, red, orange);
+    background: ${({ theme }) => theme.colors.primary.blue};
     color: #ffff;
     position: absolute;
     top: 0%;
@@ -65,12 +64,12 @@ height: 50px;
     align-items: center;
     justify-content: center;
     transition: all 0.5s ease-in-out;
-    border-radius: 10px; 
+    border-radius: 10px;
   }
 
   &:hover::after {
     transform: translateY(0px);
-    opacity: 1; 
+    opacity: 1;
   }
 `;
 

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Image from "next/image";
 
 export const BoxShadow = () => `
@@ -17,7 +17,7 @@ const Container = styled.div`
 const Body = styled.div`
   position: relative;
   z-index: 0;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.neutrals.full_white};
   height: 15rem;
   border-radius: 0.625rem;
   padding-top: 0.875rem;
@@ -48,7 +48,7 @@ const DeshiUl = styled.ul`
 `;
 
 const DeshiLi = styled.li`
-  background: #fff;
+  background: ${({ theme }) => theme.colors.neutrals.full_white};
   border-radius: 50%;
   padding: 0.5rem;
   ${BoxShadow}
