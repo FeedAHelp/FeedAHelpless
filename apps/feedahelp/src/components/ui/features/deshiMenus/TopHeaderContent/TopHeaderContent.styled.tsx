@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { BoxShadow } from "../DeshiMenus.styled";
+import { baseTheme } from "~/ui/components/foundations/theming/theming";
 
 const Logo = styled.img`
   width: 3.4375rem;
@@ -9,7 +10,7 @@ const Logo = styled.img`
 
 const Title = styled.div`
   font-size: 0.625rem;
-  color: #fff;
+  color: ${baseTheme.colors.primary.blue};
   transition: transform 0.5s;
   transform: scale(1);
   font-weight: 500;
@@ -18,7 +19,7 @@ const Title = styled.div`
 `;
 
 const Caption = styled.div`
-  color: rgba(0, 0, 0, 0.8);
+  color: ${baseTheme.colors.primary.blue};
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr;
@@ -52,8 +53,7 @@ const Header = styled.div`
   z-index: 1;
   height: 11.25rem;
   border-radius: 0.625rem;
-  background-color: #fa792e;
-  background-image: linear-gradient(left top, #fa792e 17%, #bf212f 100%);
+  background-color: ${baseTheme.colors.primary.green};
   cursor: pointer;
   padding-top: 0.0625rem;
   ${BoxShadow}
@@ -72,7 +72,7 @@ const MenuRating = styled.div`
     display: flex;
     vertical-align: middle;
     font-size: 1em;
-    color: #fff;
+    color: ${baseTheme.colors.neutrals.full_white};
     padding: 0px 4px;
   }
 `;
