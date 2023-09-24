@@ -41,7 +41,7 @@ const CounterDisplay = ({
           <span>
             <Image
               src={urlForThumbnail(imageIcon)}
-              alt={imageAlt}
+              alt={'imageAlt'}
               width={50}
               height={50}
               className="w-auto h-auto"

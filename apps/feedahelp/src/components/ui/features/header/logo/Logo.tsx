@@ -12,6 +12,7 @@ const Logo = () => {
             width={220}
             height={70}
             alt={"feedahelpLogo"}
+            priority={true}
             className="w-auto h-auto"
           />
         </Link>
