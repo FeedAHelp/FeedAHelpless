@@ -18,9 +18,7 @@ const Index: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = () => {
       header={<Header />}
       child={
         <>
-          <div className=" min-h-screen  items-center justify-center text-fuchsia-600">
-            <MainPage />
-          </div>
+          <MainPage />
         </>
       }
       footer={<Footer />}

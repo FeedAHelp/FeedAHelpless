@@ -5,6 +5,8 @@ const Splitter = styled.div`
   height: 34.375rem;
   display: flex;
 
+  /*   ['xs', 'sm', 'md', 'lg', 'xl'] */
+
   ${({ theme }) => theme.breakpoints.down("lg")} {
     flex-direction: column;
   }
@@ -14,6 +16,10 @@ const First = styled.div`
   width: 20%;
   height: 100%;
   min-width: 0.625rem;
+
+  ${({ theme }) => theme.breakpoints.down("lg")} {
+    width: 100%;
+  }
 `;
 
 const Separator = styled.div`
@@ -33,12 +39,22 @@ const Separator = styled.div`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  display: block;
+
+  ${({ theme }) => theme.breakpoints.down("lg")} {
+    display: none;
+  }
 `;
 
 const Second = styled.div`
   width: 80%;
   height: 100%;
   min-width: 0.625rem;
+
+  ${({ theme }) => theme.breakpoints.down("lg")} {
+    width: 100%;
+    background-color: red;
+  }
 `;
 
 export const Styled = {
