@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import PerfectScrollbar from "react-perfect-scrollbar";
 
 const CheckboxInput = styled.input`
   display: none;
@@ -19,7 +20,7 @@ const CheckboxInput = styled.input`
     right: 0;
     bottom: 0;
     font-size: 3.125rem;
-    color: #ed6c37;
+    color: ${({ theme }) => theme.colors.primary.green});
     content: "\\2714";
     line-height: 1;
     margin: auto;
@@ -31,19 +32,27 @@ const CheckboxInput = styled.input`
 const CheckboxLabel = styled.label`
   position: relative;
   display: block;
-  border: solid 0.3125rem #fff;
+  border: solid 0.3125rem ${({ theme }) => theme.colors.neutrals.full_white});
   border-radius: 50%;
   box-shadow: 0 0 0.0625rem #fff;
   cursor: pointer;
   transition: box-shadow 0.4s, border 0.4s;
 
   &:hover {
-    border: 0.3125rem solid #ed6c37;
-    box-shadow: 0 0 0.0625rem #ed6c37;
+    border: 0.3125rem solid ${({ theme }) => theme.colors.primary.green});;
+    box-shadow: 0 0 0.0625rem ${({ theme }) => theme.colors.primary.green});;
+  }
+`;
+
+const PerfectScrollbarStyled = styled(PerfectScrollbar)`
+  .ps__thumb-y {
+    background-color: red;
+    width: 4px;
   }
 `;
 
 export const Styled = {
+  PerfectScrollbarStyled,
   CheckboxInput,
   CheckboxLabel,
 };
