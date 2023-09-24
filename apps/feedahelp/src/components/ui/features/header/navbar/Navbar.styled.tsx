@@ -109,8 +109,8 @@ const Navbar = styled.div`
 
   .btn {
     display: block;
-    background-color: #2b72fb;
-    color: #ffffff;
+    background-color: ${({ theme }) => theme.colors.primary.green});
+    color: ${({ theme }) => theme.colors.neutrals.full_white});
     text-align: center;
     padding: 0.6rem 1.4rem;
     font-size: 1rem;
@@ -120,7 +120,7 @@ const Navbar = styled.div`
 
   .icon {
     padding: 0.5rem;
-    background-color: #eeeeee;
+    background-color: ${({ theme }) => theme.colors.neutrals.full_white});;
     border-radius: 0.625rem;
   }
 
@@ -129,7 +129,8 @@ const Navbar = styled.div`
   }
 
   .nav-menu {
-    border-bottom: 0.063rem solid #eeeeee;
+    border-bottom: 0.063rem solid ${({ theme }) =>
+      theme.colors.neutrals.full_white});
     position: fixed;
     top: 0;
     z-index: 100;
@@ -137,7 +138,7 @@ const Navbar = styled.div`
 
   .menu {
     position: relative;
-    background-color: #ffffff;
+    background-color: ${({ theme }) => theme.colors.neutrals.full_white});
 
     @media (min-width: 68.75rem) {
       background-color: transparent;
@@ -150,11 +151,13 @@ const Navbar = styled.div`
   }
 
   .menu-bar li:first-of-type ul:nth-of-type(1) {
-    border-right: 0.063rem solid #eeeeee;
+    border-right: 0.063rem solid ${({ theme }) =>
+      theme.colors.neutrals.full_white});
   }
 
   .menu-bar li:nth-of-type(n + 2) ul:nth-of-type(1) {
-    border-bottom: 0.063rem solid #eeeeee;
+    border-bottom: 0.063rem solid ${({ theme }) =>
+      theme.colors.neutrals.full_white});
   }
 
   .menu-bar .dropdown-link-title {
@@ -172,7 +175,7 @@ const Navbar = styled.div`
 
   .menu-bar .nav-link:hover,
   .dropdown-link:hover {
-    color: #2b72fb;
+    color: ${({ theme }) => theme.colors.primary.green});
   }
 
   .nav-start,
@@ -191,7 +194,7 @@ const Navbar = styled.div`
     display: flex;
     flex-direction: column;
     min-width: 14.375rem;
-    background-color: #ffffff;
+    background-color: ${({ theme }) => theme.colors.neutrals.full_white});
     border-radius: 0.625rem;
     position: absolute;
     top: 2.25rem;
@@ -253,14 +256,14 @@ const Navbar = styled.div`
   }
 
   .search input {
-    background-color: #f4f4f4;
+    background-color: ${({ theme }) => theme.colors.primary.green});
     border: none;
     border-radius: 0.375rem;
     padding: 0.7rem;
     padding-left: 2.4rem;
     font-size: 1rem;
     width: 100%;
-    border: 0.063rem solid #eeeeee;
+    border: 0.063rem solid ${({ theme }) => theme.colors.neutrals.full_white});
   }
 
   .search .bx-search {
@@ -295,7 +298,8 @@ const Navbar = styled.div`
 
     .menu-bar li:first-of-type ul:nth-of-type(1) {
       border-right: none;
-      border-bottom: 0.063rem solid #eeeeee;
+      border-bottom: 0.063rem solid ${({ theme }) =>
+        theme.colors.neutrals.full_white});
     }
 
     .dropdown {
@@ -344,7 +348,8 @@ const Navbar = styled.div`
 
     .menu-bar > li:not(:last-child) {
       padding-bottom: 0.5rem;
-      border-bottom: 0.063rem solid #eeeeee;
+      border-bottom: 0.063rem solid ${({ theme }) =>
+        theme.colors.neutrals.full_white});
     }
   }
 
