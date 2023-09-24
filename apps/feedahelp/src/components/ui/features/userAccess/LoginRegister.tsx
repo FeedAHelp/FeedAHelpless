@@ -8,13 +8,11 @@ import { motion, AnimatePresence } from "framer-motion";
 const Logo = dynamic(import("../header/logo/Logo"));
 const MemoLogo = memo(Logo);
 
- const LoginRegister = () => {
+const LoginRegister = () => {
   const [isLoginPage, setIsLoginPage] = useState(false);
   const loginRegisterToggle = () => {
     setIsLoginPage(!isLoginPage);
   };
-
-
 
   return (
     <div className={"h-[50rem] min-w-[26rem] md:h-[45rem] md:min-w-[46rem]"}>
@@ -87,7 +85,7 @@ const MemoLogo = memo(Logo);
               exit={{ x: -800, transition: { duration: 0.6 } }}
               className="flex"
             >
-              <Register loginRegisterToggle={loginRegisterToggle}/>
+              <Register loginRegisterToggle={loginRegisterToggle} />
             </motion.div>
           </motion.div>
         )}

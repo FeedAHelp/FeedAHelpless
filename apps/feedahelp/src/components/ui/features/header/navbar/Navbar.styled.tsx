@@ -79,6 +79,7 @@ const Avatar = styled.a<AvatarProps>`
     filter: blur(${rot_btn_blur_i}) grayscale(${rot_btn_greyscale_i});
   }
 `;
+
 const Navbar = styled.div`
   display: flex;
   align-items: center;

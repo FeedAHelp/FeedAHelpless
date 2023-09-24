@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const FormContainer = styled.form`
   width: 37.5rem;

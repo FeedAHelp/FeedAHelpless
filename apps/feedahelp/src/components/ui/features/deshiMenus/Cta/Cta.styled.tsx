@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { DeshiShareIcon, BoxShadow } from "../DeshiMenus.styled";
+import { baseTheme } from "~/ui/components/foundations/theming/theming";
 
 const DonateHover = () => `
   &:hover ${SliderRange} {
@@ -78,7 +79,7 @@ const DonateAmount = styled.div`
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   font-size: 1rem;
-  color: #252525;
+  color: ${baseTheme.colors.primary.blue};
 `;
 
 const DonateButton = styled.span`
@@ -99,8 +100,7 @@ const DonateButton = styled.span`
 
 const QtyInput = styled.div`
   position: relative;
-  color: #000;
-  background: $white;
+  color: ${baseTheme.colors.primary.blue};
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -117,7 +117,7 @@ const SliderRange = styled.input`
   -webkit-appearance: none;
   appearance: none;
   width: 0%;
-  background: #fa792e;
+  background: ${baseTheme.colors.primary.blue};
   outline: none;
   border-radius: 1.25rem;
   cursor: pointer;
@@ -127,7 +127,6 @@ const ElWrapper = styled.div`
   width: 16.25rem;
   padding: 0.625rem;
   margin: 10.0625rem auto;
-  background-color: transparent;
   cursor: pointer;
   transition: transform 0.5s;
 
@@ -135,7 +134,7 @@ const ElWrapper = styled.div`
 `;
 
 const DonateButtonIcon = styled.div`
-  ackground: #fff;
+  background: ${baseTheme.colors.neutrals.full_white};
   border-radius: 50%;
   padding: 0.5rem;
   z-index: 99;
