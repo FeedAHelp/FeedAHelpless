@@ -4,12 +4,13 @@ const Field = styled.div`
   position: relative;
   padding-top: 1rem;
 `;
+
 const Line = styled.div`
   width: 100%;
   height: 0.188rem;
   position: absolute;
   bottom: -0.5rem;
-  background: #bdc3c7;
+  background: ${({ theme }) => theme.colors.neutrals.gray98};
 
   &:after {
     content: " ";
@@ -19,9 +20,10 @@ const Line = styled.div`
     height: 0.188rem;
     transform: scalex(0);
     transition: transform 0.3s ease;
-    background: #1abc9c;
+    background: ${({ theme }) => theme.colors.neutrals.gray98};
   }
 `;
+
 const LoginInput = styled.input`
   background: 0;
   border: 0;

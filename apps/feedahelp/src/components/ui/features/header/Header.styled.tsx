@@ -6,8 +6,6 @@ interface HeaderProps {
 }
 
 const Header = styled.section<HeaderProps>`
-  background: rgba(255, 255, 255, 0.5);
-  background: transparent;
   position: fixed;
   z-index: 100;
   top: 0;
@@ -42,7 +40,7 @@ const Hamburger = styled.a`
     display: block;
     width: 1.5rem;
     height: 0.135rem;
-    background: #fff;
+    background: ${({ theme }) => theme.colors.primary.green});
     margin: 0.35rem 0;
   }
 `;

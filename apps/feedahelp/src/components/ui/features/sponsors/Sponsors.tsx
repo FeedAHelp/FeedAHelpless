@@ -6,7 +6,7 @@ const Sponsors = () => {
   return (
     <div className="mb-2 border">
       <div className="container mx-auto p-4">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 ">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {items.map((value, index) => (
             <div
               className="sponsor-wrapper"

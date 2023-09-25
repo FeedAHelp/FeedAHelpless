@@ -1,4 +1,5 @@
-import styled, { keyframes } from "styled-components";
+import styled from "@emotion/styled";
+import { css, keyframes } from "@emotion/react";
 import Image from "next/image";
 
 interface liListsType {
@@ -99,20 +100,6 @@ const focus = keyframes`
 `;
 
 const ImageContentMobile = styled.p`
-  /*  font-size: 1vw;
-  letter-spacing: 8px;
-  text-shadow: 0.063rem 0.063rem 0.313 black, 0rem 0rem 0.125rem black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 340px;
-  padding-left: 20px;
-  padding-right: 20px;
-
-  @media (max-width: 568px) {
-    font-size: 0.5rem;
-    padding-top: 90px;
-  } */
   position: relative;
   display: flex;
   bottom: -400px;

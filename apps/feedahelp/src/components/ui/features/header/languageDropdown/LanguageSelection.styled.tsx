@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const HoverImage = styled.div`
   &:hover {
@@ -30,6 +30,7 @@ const DropDownContainer = styled.div`
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
 `;
+
 export const LanguageOption = styled.div`
   cursor: pointer;
   padding: 10px;
