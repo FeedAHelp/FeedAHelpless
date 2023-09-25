@@ -4,7 +4,7 @@ const Splitter = styled.div`
   width: 100%;
   height: 34.375rem;
   display: flex;
-
+  z-index: 9999;
   /*   ['xs', 'sm', 'md', 'lg', 'xl'] */
 
   ${({ theme }) => theme.breakpoints.down("lg")} {
@@ -53,7 +53,6 @@ const Second = styled.div`
 
   ${({ theme }) => theme.breakpoints.down("lg")} {
     width: 100%;
-    background-color: red;
   }
 `;
 
