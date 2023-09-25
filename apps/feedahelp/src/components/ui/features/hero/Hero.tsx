@@ -197,6 +197,8 @@ const Hero = () => {
                       alt="logo"
                       width={200}
                       height={100}
+                      priority={true}
+                      className="w-auto h-auto"
                     />
                     <Styled.ImageContentMobile>
                       {t(item.title)}

@@ -13,7 +13,7 @@ const DeshiSocial = () => {
               width={20}
               height={20}
               alt={"feedahelpLogo"}
-              className="object-cover"
+              className="w-auto h-auto object-cover"
             />
           </Link>
         </Styled.DeshiLi>
@@ -24,7 +24,7 @@ const DeshiSocial = () => {
               width={20}
               height={20}
               alt={"feedahelpLogo"}
-              className="object-cover"
+              className=" w-auto h-auto object-cover"
             />
           </Link>
         </Styled.DeshiLi>
@@ -35,7 +35,7 @@ const DeshiSocial = () => {
               width={20}
               height={20}
               alt={"feedahelpLogo"}
-              className="object-cover"
+              className="w-auto h-auto object-cover"
             />
           </Link>
         </Styled.DeshiLi>

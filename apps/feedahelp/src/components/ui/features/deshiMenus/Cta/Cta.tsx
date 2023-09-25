@@ -36,6 +36,7 @@ const Cta = () => {
             width={30}
             height={30}
             alt={"feedahelpLogo"}
+            className="w-auto h-auto"
           />
         </Styled.DonateButtonIcon>
       </Styled.DonateButton>
