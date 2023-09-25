@@ -74,7 +74,7 @@ export const Footer = () => {
               type="button"
             >
               <Modal isOpen={modalOpen} closeModal={closeModal}>
-                <div className="h-[380px] w-[600px]">
+                <div className="h-[520px] w-[600px]">
                   <Payment />
                 </div>
               </Modal>
