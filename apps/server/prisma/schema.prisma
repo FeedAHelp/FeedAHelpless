@@ -151,3 +151,9 @@ model Shares {
   menuWishLikes menuWishLikes @relation(fields: [menuId], references: [menuId])
   user          User          @relation(fields: [sharer], references: [id])
 }
+
+model Payment {
+        id      Int    @id @default(autoincrement())
+        orderID String
+        status  String
+}

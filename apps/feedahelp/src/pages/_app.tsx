@@ -11,24 +11,34 @@ import { type AppType } from "next/app";
 import { trpc } from "../utils/trpc";
 import { appWithTranslation } from "next-i18next";
 import "~/styles/globals.css";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
   return (
+
     <FormatImageUrlProvider value={formatImageUrl}>
       <SessionProvider session={session}>
         <LoadingContextProvider>
           <MuiThemeProvider theme={baseTheme}>
             <CssBaseline />
             <CmsContextProvider>
+            <PayPalScriptProvider
+          options={{
+            'clientId': process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID as string,
+            currency: 'USD',
+          }}
+        >
               <Component {...pageProps} />
+              </PayPalScriptProvider>
             </CmsContextProvider>
           </MuiThemeProvider>
         </LoadingContextProvider>
       </SessionProvider>
     </FormatImageUrlProvider>
+
   );
 };
 
