@@ -154,6 +154,7 @@ model Shares {
 
 model Payment {
         id      Int    @id @default(autoincrement())
+        email   String
         orderID String
         status  String
 }

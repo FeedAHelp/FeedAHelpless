@@ -1,13 +1,17 @@
 import { prisma } from '../../utils/prismaInstance';
 import { Request, Response } from 'express';
 import client from '../lib/prisma'
-import paypal from '@paypal/checkout-server-sdk'
+import paypal from '@paypal/checkout-server-sdk';
+import { string } from 'zod';
+import { paypalCreateSchema, paypalCreateType } from '../../schema/paypalCreate.schema';
 
 export default async function create(
-  req: Request,
+  req: Request<{}, {},paypalCreateType>,
   res: Response,
 ) {
   const PaypalClient = client()
+  const { value, currency, email = 'No Email' } = req.body;
+  paypalCreateSchema.parse(req.body)
 
   const request = new paypal.orders.OrdersCreateRequest()
   request.headers['Prefer'] = 'return=representation'
@@ -16,8 +20,8 @@ export default async function create(
     purchase_units: [
       {
         amount: {
-          currency_code: 'USD',
-          value: '100.00',
+          currency_code: currency,
+          value: value,
         },
       },
     ],
@@ -27,7 +31,9 @@ export default async function create(
     res.status(500)
   }
 
-  //Once order is created store the data using Prisma
+
+  const user = (await prisma.register.findUnique({ where: { email: email } }));
+
   await prisma.payment.create({
     data: {
       orderID: response.result.id,
