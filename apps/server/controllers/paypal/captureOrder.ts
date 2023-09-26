@@ -2,9 +2,11 @@ import { Request, Response } from 'express'
 import client from '../lib/prisma'
 import paypal from '@paypal/checkout-server-sdk'
 import { prisma } from '../../utils/prismaInstance'
+import { paypalCaptureSchema, paypalCaptureType } from '../../schema/paypal.schema';
 
-export default async function capture(req: Request, res: Response) {
+export default async function capture(req: Request<{}, {},paypalCaptureType>, res: Response) {
   const { orderID } = req.body
+  paypalCaptureSchema.parse(req.body)
   const PaypalClient = client()
   const request = new paypal.orders.OrdersCaptureRequest(orderID)
   try {

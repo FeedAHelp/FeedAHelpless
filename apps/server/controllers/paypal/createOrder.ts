@@ -2,8 +2,7 @@ import { prisma } from '../../utils/prismaInstance';
 import { Request, Response } from 'express';
 import client from '../lib/prisma'
 import paypal from '@paypal/checkout-server-sdk';
-import { string } from 'zod';
-import { paypalCreateSchema, paypalCreateType } from '../../schema/paypalCreate.schema';
+import { paypalCreateSchema, paypalCreateType } from '../../schema/paypal.schema';
 
 export default async function create(
   req: Request<{}, {},paypalCreateType>,
@@ -31,13 +30,11 @@ export default async function create(
     res.status(500)
   }
 
-
-  const user = (await prisma.register.findUnique({ where: { email: email } }));
-
   await prisma.payment.create({
     data: {
       orderID: response.result.id,
       status: 'PENDING',
+      email: email,
     },
   })
   res.json({ orderID: response.result.id })

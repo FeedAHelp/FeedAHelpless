@@ -7,3 +7,9 @@ export const paypalCreateSchema = z.object({
 });
 
 export type paypalCreateType = z.infer<typeof paypalCreateSchema>;
+
+export const paypalCaptureSchema = z.object({
+  orderID: z.string()
+});
+
+export type paypalCaptureType = z.infer<typeof paypalCaptureSchema>;
