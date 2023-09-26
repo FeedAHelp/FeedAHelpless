@@ -5,11 +5,11 @@ import Image from "next/image";
 const PickACard = () => {
 
     const changeCardBackground = (e: any) => {
-        var visa = document.getElementById('visa');
-        var master = document.getElementById('master');
-        var card = document.getElementById('card');
-        var logo = document.getElementById('logo');
-        var container = document.getElementById('container');
+        let visa = document.getElementById('visa');
+        let master = document.getElementById('master');
+        let card = document.getElementById('card');
+        let logo = document.getElementById('logo');
+        let container = document.getElementById('container');
     
         if (visa!.checked) {
             card!.style.backgroundColor = "black";
