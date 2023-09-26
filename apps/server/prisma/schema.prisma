@@ -110,7 +110,7 @@ model subMenuIngredients {
   ingredient  String
   amount      Float
   subMenues   subMenues   @relation(fields: [subMenu], references: [name])
-  ingredients Ingredients @relation(fields: [ingredient], references: [name])
+  ingredients Ingredient @relation(fields: [ingredient], references: [name])
 }
 
 model menuWishLikes {
