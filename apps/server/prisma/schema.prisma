@@ -58,7 +58,7 @@ model FahCounter {
   monthlyIncrease    String
 }
 
-model Ingredients {
+model Ingredient {
   id                 String               @id @default(uuid())
   name               String               @unique
   imageName          String
