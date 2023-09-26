@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 
 const PaymentContainer = styled.div`
     margin-top; 3.125rem;
-    max-width: 18.75rem;
-    height: 28.125rem;
+    width: 100%;
+    height: 100%;
     padding: 0.625rem;
     background-color: white;
     border-radius: 0.9375rem;
