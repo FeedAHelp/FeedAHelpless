@@ -10,7 +10,6 @@ import LoginRegister from "../../userAccess/LoginRegister";
 import { motion, AnimatePresence } from "framer-motion";
 import CurrencyDropDownMobile from "../CurrencyDropDown/CurrencyDropDownMobile";
 import LanguageSelectionsMobile from "../languageDropdown/languageSectionMobile";
-import Payment from "./payment";
 
 const NewNav = () => {
   const { data: session } = useSession();
@@ -91,8 +90,7 @@ const NewNav = () => {
         </button>
         <Modal isOpen={modalOpen} closeModal={closeModal}>
           <div className="overflow-hidden">
-            {/* <LoginRegister /> */}
-            <Payment />
+            <LoginRegister />
           </div>
         </Modal>
       </div>

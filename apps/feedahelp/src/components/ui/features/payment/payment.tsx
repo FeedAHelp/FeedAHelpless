@@ -1,18 +1,26 @@
 import { useState } from "react";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import {
-  PayPalScriptProvider,
   PayPalButtons,
   FUNDING,
 } from "@paypal/react-paypal-js";
 
-const Payment = () => {
+interface PaymentProps{
+  value: string;
+  currency: string;
+  email?: string | undefined;
+}
 
-
+const Payment: React.FC<PaymentProps> = ({ value, currency, email }) => {
   const createOrder = async () => {
     try {
       const response = await axios.post(
-        process.env.NEXT_PUBLIC_LOCAL_BACKEND_BASE_URL + "pay/create"
+        process.env.NEXT_PUBLIC_LOCAL_BACKEND_BASE_URL + "pay/create",
+        {
+          value,
+          currency,
+          ...(email && { email })
+        }
       );
       const orderID = response.data.orderID;
 
@@ -23,8 +31,7 @@ const Payment = () => {
     }
   };
 
-
-  const onApprove = async ({data}) => {
+  const onApprove = async (data: OnApproveData, actions: any) => {
     try {
       await axios.post(
         process.env.NEXT_PUBLIC_LOCAL_BACKEND_BASE_URL + "pay/capture",
@@ -37,17 +44,13 @@ const Payment = () => {
     }
   };
 
-
-
-  const fundingSources = [FUNDING.CARD];
-
-  return (
+ return (
     <PayPalButtons
       style={{
-        color: "white",
+        color: "gold",
         shape: "rect",
         label: "pay",
-        height: 50,
+        height: 50
       }}
       fundingSource={FUNDING.PAYPAL}
       createOrder={createOrder}
@@ -55,12 +58,6 @@ const Payment = () => {
     />
   );
 };
-
-// declare global {
-//   interface Window {
-//     paypal: any
-//   }
-// }
 
 interface OnApproveData {
   billingToken?: string | null;

@@ -14,6 +14,8 @@ import { useState } from "react";
 import Modal from "~/ui/components/elements/Modal/GenericModal";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
+import Payment from './../payment/payment'
+import { useSession } from "next-auth/react";
 
 interface FromData {
   email: string;
@@ -29,6 +31,7 @@ export const Footer = () => {
   const closeModal = (): void => {
     setModalOpen(false);
   };
+  const { data: session } = useSession();
 
   const {
     register,
@@ -76,6 +79,7 @@ export const Footer = () => {
                 <div className="h-[400px] w-[400px]"></div>
               </Modal>
             </Styled.FooterButton>
+            <Payment email={session?.user?.email ?? undefined} value="10.00" currency="USD" />
           </Grid>
           <Grid item xs={6} md={2}>
             <p className="pb-1 text-lg font-medium">About Us</p>
