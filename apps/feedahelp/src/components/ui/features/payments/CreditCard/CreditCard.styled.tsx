@@ -28,7 +28,7 @@ const Card = styled.div`
   height: 200px;
   border-radius: 15px;
   background-color: black;
-  background-image: url("./assets/visa.png");
+  background-image: url("./static/images/payment/visa.png");
   -webkit-box-shadow: 10px 10px 5px -6px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 10px 10px 5px -6px rgba(0, 0, 0, 0.75);
   box-shadow: 10px 10px 5px -6px rgba(0, 0, 0, 0.75);
@@ -63,12 +63,13 @@ const Expirition = styled.div`
 const CardNumber = styled.p`
   position: absolute;
   left: 20px;
-  bottom: -130px;
+  bottom: -150px;
   color: white;
   flex-direction: column;
   align-items: flex-start;
   width: fit-content;
   font-family: "Russo One", sans-serif;
+  font-size: 20px;
 `;
 
 const CardName = styled.p`
@@ -76,7 +77,7 @@ const CardName = styled.p`
   position: absolute;
   max-width: 120px;
   left: 20px;
-  bottom: -190px;
+  bottom: -185px;
   color: white;
   flex-direction: column;
   align-items: flex-start;
@@ -88,9 +89,8 @@ const CardName = styled.p`
 const CardSurname = styled.p`
   display: flex;
   position: absolute;
-  max-width: 20px;
-  left: 120px;
-  bottom: -190px;
+  left: 80px;
+  bottom: -185px;
   color: white;
   flex-direction: column;
   align-items: flex-start;
@@ -103,7 +103,7 @@ const Cardmm = styled.p`
   display: flex;
   position: absolute;
   max-width: 20px;
-  left: 190px;
+  left: 220px;
   bottom: -185px;
   color: white;
   flex-direction: column;
@@ -122,7 +122,6 @@ const Cardyy = styled.p`
   bottom: -185px;
   color: white;
   flex-direction: column;
-  align-items: flex-start;
   width: fit-content;
   font-family: "Russo One", sans-serif;
   overflow: hidden;
@@ -281,6 +280,11 @@ const CTAButton = styled.button`
   }
 `;
 
+const CardInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
 export const Styled = {
   PaymentContainer,
   CTAWrapper,
@@ -288,6 +292,7 @@ export const Styled = {
   Card,
   CardPosition,
   CardDetails,
+  CardInfo,
   Logo,
   LogoSim,
   Expirition,

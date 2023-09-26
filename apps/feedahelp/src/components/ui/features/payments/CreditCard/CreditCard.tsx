@@ -1,22 +1,81 @@
-import React from "react";
+import React, { useState } from "react";
 import { Styled } from "./CreditCard.styled";
 
 const CreditCard = () => {
+  const [cardName, setCardName] = useState("");
+  const [cardSurname, setCardSurname] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [cvvNumber, setCvvNumber] = useState("");
+  const [expMonth, setExpMonth] = useState("");
+  const [expYear, setExpYear] = useState("");
+  const delay = ms => new Promise(res => setTimeout(res, ms));
+
+  const changeCardBackground = (e: any) => {
+    var visa = document.getElementById('visa');
+    var master = document.getElementById('master');
+    var card = document.getElementById('card');
+    var logo = document.getElementById('logo');
+    var container = document.getElementById('container');
+
+    if (visa!.checked) {
+        card!.style.backgroundColor = "black";
+        card!.style.backgroundImage = "url('./static/images/payment/visa.png')";
+        logo!.src = "https://i.hizliresim.com/Lx4G72.png";
+        logo!.style.backgroundColor = "transparent";
+        container!.style.borderColor = "black";
+    }
+    if (master!.checked) {
+        card!.style.backgroundColor = "blue";
+        card!.style.backgroundImage = "url('./static/images/payment/master.png')";
+        logo!.src = "https://i.hizliresim.com/rqCMI3.png";
+        container!.style.borderColor = "rgb(70, 179, 252)";
+    }
+  }
+
+  const changeCardName = async (e: any) => {
+    await delay(1000);
+    setCardName(e.target.value.toUpperCase());
+  }
+
+  const changeCardSurname = async (e: any) => {
+    await delay(1000);
+    setCardSurname(e.target.value.toUpperCase());
+  }
+
+  const changeCardNumber = async (e: any) => {
+    await delay(1000);
+    setCardNumber(e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'));
+  }
+
+  const changeCVVNumber = async (e: any) => {
+    await delay(1000);
+    setCvvNumber(e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'));
+    console.log(cvvNumber)
+  }
+
+  const changeExpMonth = (e: any) => {
+    setExpMonth(e.target.value);
+  }
+
+  const changeExpYear = (e: any) => {
+    setExpYear(e.target.value);
+  }
+
   return (
     <Styled.PaymentForms>
       <Styled.PaymentContainer id="container">
         <Styled.PickACard>
-          <input type="radio" id="visa" name="card" value="visa" checked />
+          <input type="radio" id="visa" name="card" value="visa" onClick={(e) => { changeCardBackground(e)}} checked />
           <label htmlFor="visa">Visa</label>
-          <input type="radio" id="master" name="card" value="master" />
+          <input type="radio" id="master" name="card" value="master" onClick={(e) => { changeCardBackground(e)}} />
           <label htmlFor="huey">Master</label>
         </Styled.PickACard>
         <Styled.FirstDiv>
-          <input type="text" id="cardName" placeholder="Name" />
-          <input type="text" id="cardSurname" placeholder="Surname" />
+          <input type="text" id="cardName" placeholder="Name" onInput={(e) => { changeCardName(e)}} />
+          <input type="text" id="cardSurname" placeholder="Surname" onInput={(e) => { changeCardSurname(e)}} />
         </Styled.FirstDiv>
         <Styled.SecondDiv>
-          <input type="text" id="cardNumber" placeholder="Credit Card Number" />
+          <input type="text" id="cardNumber" placeholder="Credit Card Number" onInput={(e) => { changeCardNumber(e)}} />
         </Styled.SecondDiv>
         <Styled.CardDetails>
           <Styled.ThirdDiv>
@@ -24,7 +83,7 @@ const CreditCard = () => {
               <p>Expirition Date</p>
             </div>
             <Styled.Expirition>
-              <Styled.SelectItem name="mm" id="mm">
+              <Styled.SelectItem name="mm" id="mm" onInput={changeExpMonth}>
                 <option>mm</option>
                 <option value="01">01</option>
                 <option value="02">02</option>
@@ -39,7 +98,7 @@ const CreditCard = () => {
                 <option value="11">11</option>
                 <option value="12">12</option>
               </Styled.SelectItem>
-              <Styled.SelectItem name="yy" id="yy">
+              <Styled.SelectItem name="yy" id="yy" onInput={changeExpYear}>
                 <option>yy</option>
                 <option value="23">2023</option>
                 <option value="24">2024</option>
@@ -55,7 +114,7 @@ const CreditCard = () => {
               <p>CVV</p>
             </div>
             <Styled.Expirition>
-              <Styled.CVVInput type="text" id="cardNumber" />
+              <Styled.CVVInput type="text" id="cardNumber" onInput={(e) => { changeCVVNumber(e)}}/>
             </Styled.Expirition>
           </Styled.ForthDiv>
         </Styled.CardDetails>
@@ -66,22 +125,18 @@ const CreditCard = () => {
         <Styled.Card id="card">
           <Styled.CardPosition>
             <Styled.CardPosition>
-              <Styled.CardNumber id="displayNumber" />
+              <Styled.CardNumber>{cardNumber.slice(0, 4)} {cardNumber.slice(4, 8)} {cardNumber.slice(8, 12)} {cardNumber.slice(12, 16)}</Styled.CardNumber>
             </Styled.CardPosition>
-            <div>
+            <Styled.CardInfo>
               <Styled.CardPosition>
-                <Styled.CardName id="displayName" />
+                <Styled.CardName>{cardName}</Styled.CardName>
+                <Styled.CardSurname>{cardSurname}</Styled.CardSurname>
               </Styled.CardPosition>
               <Styled.CardPosition>
-                <Styled.CardSurname id="displaySurname" />
+                <Styled.Cardmm>{expMonth}</Styled.Cardmm>
+                <Styled.Cardyy>{expYear}</Styled.Cardyy>
               </Styled.CardPosition>
-              <Styled.CardPosition>
-                <Styled.Cardmm id="displayMm" />
-              </Styled.CardPosition>
-              <Styled.CardPosition>
-                <Styled.Cardyy id="displayYy" />
-              </Styled.CardPosition>
-            </div>
+            </Styled.CardInfo>
             <Styled.LogoSim
               id="sim"
               src="https://i.hizliresim.com/MdZ3Cf.png"
