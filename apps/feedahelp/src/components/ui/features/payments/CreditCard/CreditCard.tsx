@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Styled } from "./CreditCard.styled";
+import PickACard from "./PickACard/PickACard";
 
 const CreditCard = () => {
   const [cardName, setCardName] = useState("");
@@ -9,28 +10,6 @@ const CreditCard = () => {
   const [expMonth, setExpMonth] = useState("");
   const [expYear, setExpYear] = useState("");
   const delay = ms => new Promise(res => setTimeout(res, ms));
-
-  const changeCardBackground = (e: any) => {
-    var visa = document.getElementById('visa');
-    var master = document.getElementById('master');
-    var card = document.getElementById('card');
-    var logo = document.getElementById('logo');
-    var container = document.getElementById('container');
-
-    if (visa!.checked) {
-        card!.style.backgroundColor = "black";
-        card!.style.backgroundImage = "url('./static/images/payment/visa.png')";
-        logo!.src = "https://i.hizliresim.com/Lx4G72.png";
-        logo!.style.backgroundColor = "transparent";
-        container!.style.borderColor = "black";
-    }
-    if (master!.checked) {
-        card!.style.backgroundColor = "blue";
-        card!.style.backgroundImage = "url('./static/images/payment/master.png')";
-        logo!.src = "https://i.hizliresim.com/rqCMI3.png";
-        container!.style.borderColor = "rgb(70, 179, 252)";
-    }
-  }
 
   const changeCardName = async (e: any) => {
     await delay(1000);
@@ -64,12 +43,7 @@ const CreditCard = () => {
   return (
     <Styled.PaymentForms>
       <Styled.PaymentContainer id="container">
-        <Styled.PickACard>
-          <input type="radio" id="visa" name="card" value="visa" onClick={(e) => { changeCardBackground(e)}} checked />
-          <label htmlFor="visa">Visa</label>
-          <input type="radio" id="master" name="card" value="master" onClick={(e) => { changeCardBackground(e)}} />
-          <label htmlFor="huey">Master</label>
-        </Styled.PickACard>
+        <PickACard />
         <Styled.FirstDiv>
           <input type="text" id="cardName" placeholder="Name" onInput={(e) => { changeCardName(e)}} />
           <input type="text" id="cardSurname" placeholder="Surname" onInput={(e) => { changeCardSurname(e)}} />

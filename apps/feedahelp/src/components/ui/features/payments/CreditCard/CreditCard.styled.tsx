@@ -225,7 +225,8 @@ const CardDetails = styled.div`
 
 const PickACard = styled.div`
   display: flex;
-  gap: 5px;
+  justify-content: center;
+  align-items: center;
 `;
 
 const CTAWrapper = styled.div`
