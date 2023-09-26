@@ -7,9 +7,7 @@ export default async function capture(
   req: Request,
   res: Response,
 ) {
-
-
-  const { orderID } = req.body
+ const { orderID } = req.body
   const PaypalClient = client()
   const request = new paypal.orders.OrdersCaptureRequest(orderID)
   // request.requestBody({})
