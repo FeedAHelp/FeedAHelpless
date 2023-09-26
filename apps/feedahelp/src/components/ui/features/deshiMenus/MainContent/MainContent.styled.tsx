@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { DeshiShareIcon } from "../DeshiMenus.styled";
 
 const MainContent = styled.div`
@@ -27,13 +27,13 @@ const ListWithIconsLI = styled.li`
   line-height: 1;
   font-family: "Arial";
   font-size: 1.25rem;
-  background-color: #f1f1f1;
+  background-color: ${({ theme }) => theme.colors.neutrals.gray98});
   border-right: 0.0625rem dashed #ccc;
   border-radius: 0.1875rem;
   box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.16);
   position: relative;
   transition: all 0.35s ease;
-  color: #000;
+  color:  ${({ theme }) => theme.colors.neutrals.full_black});
 `;
 
 const TextSpan = styled.span`

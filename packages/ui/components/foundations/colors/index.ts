@@ -9,7 +9,7 @@ export const colors = {
   asRgba: (hexCode: string, opacity: number) =>
     `rgba(${toRgbValues(hexCode)}, ${opacity})`,
   primary: {
-    green: "#00954D",
+    green: "#FFed34",
     blue: "#0056A4",
     red: "#E92525",
     black: "#151616",

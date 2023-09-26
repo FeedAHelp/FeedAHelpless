@@ -12,17 +12,13 @@ const Footer = dynamic(
   import("../components/ui/features/footer").then((mod) => mod.Footer)
 );
 
-const Index: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = (
-
-) => {
+const Index: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = () => {
   return (
     <Layout
       header={<Header />}
       child={
         <>
-          <div className=" min-h-screen  items-center justify-center text-fuchsia-600">
-            <MainPage />
-          </div>
+          <MainPage />
         </>
       }
       footer={<Footer />}
@@ -35,7 +31,11 @@ export default Index;
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? "en", ["common", "language"])),
+      ...(await serverSideTranslations(locale ?? "en", [
+        "common",
+        "language",
+        "footer",
+      ])),
     },
   };
 };

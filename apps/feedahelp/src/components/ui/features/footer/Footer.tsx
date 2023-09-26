@@ -1,6 +1,6 @@
 import axios from "axios";
 import { z } from "zod";
-import type {ZodType} from 'zod';
+import type { ZodType } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import toast, { Toaster } from "react-hot-toast";
@@ -13,6 +13,7 @@ import GenericLink from "~/ui/components/elements/GenericLink/GenericLink";
 import { useState } from "react";
 import Modal from "~/ui/components/elements/Modal/GenericModal";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
 interface FromData {
   email: string;
@@ -24,6 +25,7 @@ const schema: ZodType<FromData> = z.object({
 
 export const Footer = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const { t } = useTranslation("footer");
   const closeModal = (): void => {
     setModalOpen(false);
   };
@@ -61,7 +63,7 @@ export const Footer = () => {
                 height={100}
                 alt={"feedahelpLogo"}
                 priority={true}
-                className="w-auto h-auto"
+                className="h-auto w-auto"
               />
             </Link>
             <Styled.FooterButton
@@ -86,7 +88,7 @@ export const Footer = () => {
                       color="Black"
                       fontSize="0.8rem"
                     >
-                      {item.title}
+                      {t(item.title)}
                     </GenericLink>
                   </li>
                 );

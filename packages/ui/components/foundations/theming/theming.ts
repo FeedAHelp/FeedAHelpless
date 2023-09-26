@@ -3,7 +3,7 @@ import type { Theme as MuiTheme } from '@mui/material/styles';
 import { createTheme as createMuiTheme, useTheme as useMuiTheme } from '@mui/material/styles'
 import type { Property } from 'csstype'
 
-import type { ButtonTheme } from '../../elements/Button'
+import type { ButtonTheme } from '../../elements/Buttons/Button'
 import type { HeadingTheme } from '../../elements/Heading'
 import type { PriceTheme } from '../../elements/Price'
 import type { LinkTheme } from '../../elements/Link';

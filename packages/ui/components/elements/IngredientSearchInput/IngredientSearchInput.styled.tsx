@@ -26,7 +26,7 @@ const SearchInput = styled.input`
   outline: none;
   border-radius: 1.5625rem;
   transition: all 0.5s ease-in-out;
-  background-color: #ed6c37;
+  background-color: ${({ theme }) => theme.colors.primary.green};
   padding-right: 2.5rem;
   color: #fff;
 
