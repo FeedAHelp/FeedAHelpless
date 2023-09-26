@@ -284,7 +284,7 @@ const CTAButton = styled.button`
 const CardInfo = styled.div`
   display: flex;
   flex-direction: row;
-`
+`;
 
 export const Styled = {
   PaymentContainer,

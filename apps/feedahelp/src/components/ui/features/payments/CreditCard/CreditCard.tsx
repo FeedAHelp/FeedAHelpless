@@ -9,47 +9,72 @@ const CreditCard = () => {
   const [cvvNumber, setCvvNumber] = useState("");
   const [expMonth, setExpMonth] = useState("");
   const [expYear, setExpYear] = useState("");
-  const delay = ms => new Promise(res => setTimeout(res, ms));
+  const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
   const changeCardName = async (e: any) => {
     await delay(1000);
     setCardName(e.target.value.toUpperCase());
-  }
+  };
 
   const changeCardSurname = async (e: any) => {
     await delay(1000);
     setCardSurname(e.target.value.toUpperCase());
-  }
+  };
 
   const changeCardNumber = async (e: any) => {
     await delay(1000);
-    setCardNumber(e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'));
-  }
+    setCardNumber(
+      e.target.value.replace(/[^0-9.]/g, "").replace(/(\..*)\./g, "$1")
+    );
+  };
 
   const changeCVVNumber = async (e: any) => {
     await delay(1000);
-    setCvvNumber(e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'));
-    console.log(cvvNumber)
-  }
+    setCvvNumber(
+      e.target.value.replace(/[^0-9.]/g, "").replace(/(\..*)\./g, "$1")
+    );
+    console.log(cvvNumber);
+  };
 
   const changeExpMonth = (e: any) => {
     setExpMonth(e.target.value);
-  }
+  };
 
   const changeExpYear = (e: any) => {
     setExpYear(e.target.value);
-  }
+  };
 
   return (
     <Styled.PaymentForms>
       <Styled.PaymentContainer id="container">
         <PickACard />
         <Styled.FirstDiv>
-          <input type="text" id="cardName" placeholder="Name" onInput={(e) => { changeCardName(e)}} />
-          <input type="text" id="cardSurname" placeholder="Surname" onInput={(e) => { changeCardSurname(e)}} />
+          <input
+            type="text"
+            id="cardName"
+            placeholder="Name"
+            onInput={(e) => {
+              changeCardName(e);
+            }}
+          />
+          <input
+            type="text"
+            id="cardSurname"
+            placeholder="Surname"
+            onInput={(e) => {
+              changeCardSurname(e);
+            }}
+          />
         </Styled.FirstDiv>
         <Styled.SecondDiv>
-          <input type="text" id="cardNumber" placeholder="Credit Card Number" onInput={(e) => { changeCardNumber(e)}} />
+          <input
+            type="text"
+            id="cardNumber"
+            placeholder="Credit Card Number"
+            onInput={(e) => {
+              changeCardNumber(e);
+            }}
+          />
         </Styled.SecondDiv>
         <Styled.CardDetails>
           <Styled.ThirdDiv>
@@ -88,7 +113,13 @@ const CreditCard = () => {
               <p>CVV</p>
             </div>
             <Styled.Expirition>
-              <Styled.CVVInput type="text" id="cardNumber" onInput={(e) => { changeCVVNumber(e)}}/>
+              <Styled.CVVInput
+                type="text"
+                id="cardNumber"
+                onInput={(e) => {
+                  changeCVVNumber(e);
+                }}
+              />
             </Styled.Expirition>
           </Styled.ForthDiv>
         </Styled.CardDetails>
@@ -99,7 +130,10 @@ const CreditCard = () => {
         <Styled.Card id="card">
           <Styled.CardPosition>
             <Styled.CardPosition>
-              <Styled.CardNumber>{cardNumber.slice(0, 4)} {cardNumber.slice(4, 8)} {cardNumber.slice(8, 12)} {cardNumber.slice(12, 16)}</Styled.CardNumber>
+              <Styled.CardNumber>
+                {cardNumber.slice(0, 4)} {cardNumber.slice(4, 8)}{" "}
+                {cardNumber.slice(8, 12)} {cardNumber.slice(12, 16)}
+              </Styled.CardNumber>
             </Styled.CardPosition>
             <Styled.CardInfo>
               <Styled.CardPosition>

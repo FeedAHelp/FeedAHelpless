@@ -6,43 +6,43 @@ const PaymentWrapper = styled.div`
 `;
 
 const TabContainer = styled.div`
-  padding: 16px;
+  padding: 1rem;
   width: 100%;
   display: flex;
-  margin: 10px;
-  border-radius: 16px;
+  margin: 0.625rem;
+  border-radius: 1rem;
   background-color: var(--white);
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 0.4375rem 1.8125rem 0rem;
 `;
 
 const TabsUL = styled.ul`
   position: relative;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid #f0f0f0;
+  border-right: 0.0625rem solid #f0f0f0;
   list-style-type: none;
-  padding-right: 16px;
-  gap: 8px;
+  padding-right: 1rem;
+  gap: 0.5rem;
 
   a {
     position: relative;
     display: flex;
     text-decoration: none;
     width: 100%;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 600;
     color: var(--gray-mid);
     text-align: left;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     justify-content: start;
-    padding: 12px;
+    padding: 0.75rem;
     align-items: center;
-    gap: 8px;
+    gap: 0.5rem;
     transition: all 0.3s ease-in-out;
 
     img {
-      height: 20px;
-      width: 20px;
+      height: 1.25rem;
+      width: 1.25rem;
     }
 
     &:hover {
@@ -65,15 +65,15 @@ const TabsUL = styled.ul`
 const TabsContentWrapper = styled.div`
   overflow-y: hidden;
   overflow-x: auto;
-  height: 450px;
+  height: 28.125rem;
   transition: all 0.45s ease-in-out;
-  padding: 0 16px;
+  padding: 0 1rem;
 `;
 
 const TabsContent = styled.section`
   font-size: 0.8rem;
-  min-height: 300px;
-  min-width: 240px;
+  min-height: 18.75rem;
+  min-width: 15rem;
   overflow-x: auto;
   transition: all 0.45s ease-in-out;
 
@@ -81,8 +81,8 @@ const TabsContent = styled.section`
     color: #3e3e3e;
     font-size: 1.2rem;
     font-weight: 600;
-    margin-top: 0px;
-    margin-bottom: 8px;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
   }
 `;
 
