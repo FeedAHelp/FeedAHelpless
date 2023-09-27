@@ -14,6 +14,7 @@ const DownFooter = styled.span`
 `;
 
 const FooterButton = styled.button`
+  display:block;
   height: 3.125rem;
   width: 9.375rem;
   border: none;
@@ -22,7 +23,7 @@ const FooterButton = styled.button`
   position: relative;
   overflow: hidden;
   transition: all 0.5s ease-in-out;
-  margin-top: 1.25rem;
+  margin: 0rem auto;
 
   &:hover {
     box-shadow: 0.0313rem 0.0313rem 9.375rem

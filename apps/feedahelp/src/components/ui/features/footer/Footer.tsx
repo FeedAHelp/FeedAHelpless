@@ -52,7 +52,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="py-6">
+    <footer className="py-6 px-4">
       <div className=" mx-auto space-y-6 divide-y divide-gray-400 divide-opacity-50 px-6 md:space-y-12">
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}>
@@ -63,7 +63,7 @@ export const Footer = () => {
                 height={100}
                 alt={"feedahelpLogo"}
                 priority={true}
-                className="h-auto w-auto"
+                className="mx-auto h-auto w-auto"
               />
             </Link>
             <Styled.FooterButton
