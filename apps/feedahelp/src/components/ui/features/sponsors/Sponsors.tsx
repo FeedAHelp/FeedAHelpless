@@ -1,25 +1,43 @@
-import { items } from "./data";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import CircularText from "./circularText/circularText";
+import { fetchSponsers } from "~/utils/cms/fetchSponsers";
 
-const Sponsors = () => {
+type SponserProps = {
+  sponserName: string;
+  image: string;
+};
+
+const FAHSponsers = () => {
+  const [sponserData, setSponserData] = useState<SponserProps[]>([]);
+
+  const getSponsers = async () => {
+    try {
+      const sponserData: SponserProps[] = await fetchSponsers();
+      setSponserData(sponserData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getSponsers();
+  }, []);
+
   return (
     <div className="mb-2 border">
       <div className="container mx-auto p-4">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {items.map((value, index) => (
-            <div
-              className="sponsor-wrapper"
-              key={index}
-            >
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+          {sponserData.map((value, index) => (
+            <div className="sponsor-wrapper" key={index}>
               <Image
-                src={value.imgSrc}
-                alt={value.alt}
+                src={value.image}
+                alt={value.sponserName}
                 width={150}
                 height={150}
-                className={`rounded-full md:w-[150px] md:h-[150px] w-[110px] h-[110px]`}
+                className={`h-[110px] w-[110px] rounded-full md:h-[150px] md:w-[150px]`}
               />
-              <CircularText text={value.text} />
+              <CircularText text={value.sponserName} />
             </div>
           ))}
         </div>
@@ -28,4 +46,4 @@ const Sponsors = () => {
   );
 };
 
-export default Sponsors;
+export default FAHSponsers;
