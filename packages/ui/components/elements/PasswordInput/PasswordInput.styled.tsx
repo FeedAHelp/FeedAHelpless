@@ -19,7 +19,24 @@ const LoginInput = styled.input`
   }
 `
 
+const StrengthIndicator = styled.div`
+
+  .strength-text {
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  .strong {
+    color: green;
+  }
+
+  .weak {
+    color: red;
+  }
+`;
+
 export const Styled = {
   Field,
-  LoginInput
+  LoginInput,
+  StrengthIndicator
 }
