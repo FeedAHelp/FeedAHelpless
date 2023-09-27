@@ -1,17 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
-import {
-  PayPalButtons,
-  FUNDING,
-} from "@paypal/react-paypal-js";
+import { PayPalButtons, FUNDING } from "@paypal/react-paypal-js";
 
-interface PaymentProps{
+interface PaymentProps {
   value: string;
   currency: string;
   email?: string | undefined;
 }
 
-const Payment: React.FC<PaymentProps> = ({ value, currency, email }) => {
+const PaypalProvider: React.FC<PaymentProps> = ({ value, currency, email }) => {
   const createOrder = async () => {
     try {
       const response = await axios.post(
@@ -19,7 +16,7 @@ const Payment: React.FC<PaymentProps> = ({ value, currency, email }) => {
         {
           value,
           currency,
-          ...(email && { email })
+          ...(email && { email }),
         }
       );
       const orderID = response.data.orderID;
@@ -44,13 +41,13 @@ const Payment: React.FC<PaymentProps> = ({ value, currency, email }) => {
     }
   };
 
- return (
+  return (
     <PayPalButtons
       style={{
         color: "gold",
         shape: "rect",
         label: "pay",
-        height: 50
+        height: 50,
       }}
       fundingSource={FUNDING.PAYPAL}
       createOrder={createOrder}
@@ -69,4 +66,4 @@ interface OnApproveData {
   authCode?: string | null;
 }
 
-export default Payment;
+export default PaypalProvider;
