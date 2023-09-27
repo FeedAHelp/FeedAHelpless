@@ -76,7 +76,9 @@ export const Footer = () => {
               type="button"
             >
               <Modal isOpen={modalOpen} closeModal={closeModal}>
-                <div className="h-[400px] w-[400px]"></div>
+                <div className="payment-modal-dimention">
+                  <Payment />
+                </div>
               </Modal>
             </Styled.FooterButton>
             <Payment email={session?.user?.email ?? undefined} value="10.00" currency="USD" />
