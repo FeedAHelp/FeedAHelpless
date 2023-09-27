@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Styled } from "./DeshiMenus.styled";
 import StickyBox from "react-sticky-box";
 import IngredientSearchInput from "~/ui/components/elements/IngredientSearchInput/IngredientSearchInput";
@@ -7,8 +7,31 @@ import TopHeaderContent from "./TopHeaderContent/TopHeaderContent";
 import ExtraInformation from "./ExtraInformation/ExtraInformation";
 import MainContent from "./MainContent/MainContent";
 import CTA from "./Cta/Cta";
+import { fetchDeshiMenus } from "~/utils/cms/fetchDeshiMenus";
+
+type DeshiMenuProps = {
+  sponserName: string;
+  image: string;
+};
 
 const DeshiMenus = () => {
+  const [DeshiMenus, setDeshiMenus] = useState<DeshiMenuProps[]>([]);
+
+  const getDeshiMenus = async () => {
+    try {
+      const DeshiMenus: DeshiMenuProps[] = await fetchDeshiMenus();
+      setDeshiMenus(DeshiMenus);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getDeshiMenus();
+  }, []);
+
+  console.log("=>DeshiMenu", DeshiMenus);
+
   return (
     <div className="customScrollBar mb-2 h-[34rem] w-full overflow-auto">
       <div className="relitive container">

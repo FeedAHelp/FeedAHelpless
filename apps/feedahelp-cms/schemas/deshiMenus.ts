@@ -44,8 +44,7 @@ export default defineType({
                 to: [{type: 'deshiMenuIngredients'}],
                 title: 'Make reference to Ingredient',
             },
-        ],
-        validation: (Rule) => Rule.required(),
+        ]
     }),
   ],
 })
