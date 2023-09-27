@@ -7,21 +7,21 @@ export default defineType({
     type: 'document',
     icon: RocketIcon,
     fields: [
-      defineField({
-        name: 'sponserName',
-        title: 'Sponser Name',
-        type: 'string',
-        validation: (Rule) => Rule.required(),
-      }),
-      defineField({
-        name: 'image',
-        title: 'Sponser Logo',
-        type: 'image',
-        options: {
-          hotspot: true,
-        },
-        validation: (Rule) => Rule.required(),
-    }),
+        defineField({
+            name: 'sponserName',
+            title: 'Sponser Name',
+            type: 'string',
+            validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+            name: 'image',
+            title: 'Sponser Logo',
+            type: 'image',
+            options: {
+            hotspot: true,
+            },
+            validation: (Rule) => Rule.required(),
+        }),
     ],
-  })
+})
   

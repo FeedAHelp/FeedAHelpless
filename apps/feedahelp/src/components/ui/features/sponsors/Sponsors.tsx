@@ -25,7 +25,7 @@ const FAHSponsers = () => {
   }, []);
 
   return (
-    <div className="mb-2 border">
+    <div className="mb-2">
       <div className="container mx-auto p-4">
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
           {sponserData.map((value, index) => (
