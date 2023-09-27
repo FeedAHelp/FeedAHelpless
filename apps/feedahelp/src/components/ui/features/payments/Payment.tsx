@@ -1,48 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { Styled } from "./Payment.styled";
-import Image from "next/image";
-import Link from "next/link";
 import CreditCard from "./CreditCard/CreditCard";
+import Tab from "@mui/material/Tab";
+import Box from "@mui/material/Box";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
 
 const Payment = () => {
+  const [value, setValue] = useState("1");
+
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+  };
+
   return (
     <Styled.PaymentWrapper>
-      <Styled.TabContainer>
-        <Styled.TabsUL>
-          <li>
-            <a id="tab1" title="Analytics" href="#tab1">
-              <Image
-                className="h-auto w-auto"
-                src="/static/images/payment/CreditCard.png"
-                alt={"credit"}
-                width={300}
-                height={300}
-              />
-              Card
-            </a>
-          </li>
-          <li>
-            <a id="tab2" title="Reports" href="#tab2">
-              <Image
-                className="h-auto w-auto"
-                src="/static/images/payment/Paypal.png"
-                alt={"paypal"}
-                width={300}
-                height={300}
-              />
-              Paypal
-            </a>
-          </li>
-        </Styled.TabsUL>
-        <Styled.TabsContentWrapper>
-          <Styled.TabsContent id="tab1-content">
+      <Box>
+        <TabContext value={value}>
+          <Box>
+            <TabList onChange={handleChange} aria-label="feedahelp-tab">
+              <Tab label="Credit Card" value="1" />
+              <Tab label="Paypal" value="2" />
+            </TabList>
+          </Box>
+          <TabPanel value="1" sx={{ padding: 1 }}>
             <CreditCard />
-          </Styled.TabsContent>
-          <Styled.TabsContent id="tab2-content">
-            {/* Paypal */}
-          </Styled.TabsContent>
-        </Styled.TabsContentWrapper>
-      </Styled.TabContainer>
+          </TabPanel>
+          <TabPanel value="2">Paypal</TabPanel>
+        </TabContext>
+      </Box>
     </Styled.PaymentWrapper>
   );
 };

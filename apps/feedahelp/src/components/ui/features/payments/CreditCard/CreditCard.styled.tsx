@@ -1,18 +1,14 @@
 import styled from "@emotion/styled";
 
 const PaymentContainer = styled.div`
-    margin-top; 3.125rem;
-    width: 100%;
-    height: 100%;
-    padding: 0.625rem;
-    background-color: white;
-    border-radius: 0.9375rem;
-    border-style: solid;
-    border-color: black;
-    overflow: hidden;
-    -webkit-box-shadow: 0.625rem 0.625rem 0.3125rem -0.375rem rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0.625rem 0.625rem 0.3125rem -0.375rem rgba(0, 0, 0, 0.75);
-    box-shadow: 0.625rem 0.625rem 0.3125rem -0.375rem rgba(0, 0, 0, 0.75);
+  width: 100%;
+  height: 100%;
+  padding: 0.625rem;
+  background-color: white;
+  border-radius: 0.9375rem;
+  border-style: solid;
+  border-color: black;
+  overflow: hidden;
 `;
 
 const PaymentForms = styled.div`
@@ -22,7 +18,6 @@ const PaymentForms = styled.div`
 `;
 
 const Card = styled.div`
-  margin-top: 0.625rem;
   transition: 0.5s;
   width: 23.75rem;
   height: 12.5rem;
@@ -32,6 +27,8 @@ const Card = styled.div`
   -webkit-box-shadow: 0.625rem 0.625rem 0.3125rem -0.375rem rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0.625rem 0.625rem 0.3125rem -0.375rem rgba(0, 0, 0, 0.75);
   box-shadow: 0.625rem 0.625rem 0.3125rem -0.375rem rgba(0, 0, 0, 0.75);
+  margin: 0 auto;
+  margin-top: 20px;
 `;
 
 const CardPosition = styled.div`
