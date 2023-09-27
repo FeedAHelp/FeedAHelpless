@@ -14,6 +14,7 @@ import { useState } from "react";
 import Modal from "~/ui/components/elements/Modal/GenericModal";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
+import Payment from "../payments/Payment";
 
 interface FromData {
   email: string;
@@ -73,7 +74,9 @@ export const Footer = () => {
               type="button"
             >
               <Modal isOpen={modalOpen} closeModal={closeModal}>
-                <div className="h-[400px] w-[400px]"></div>
+                <div className="payment-modal-dimention">
+                  <Payment />
+                </div>
               </Modal>
             </Styled.FooterButton>
           </Grid>
