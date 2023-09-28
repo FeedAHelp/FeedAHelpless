@@ -45,15 +45,21 @@ export function PasswordInput({ placeholder, password, setPassword }) {
         <span onClick={handleToggle}>
           <Icon icon={icon} size={30} />
         </span>
-        {password && (
-          <Styled.StrengthIndicator>
-            <div className={`strength-bar ${isStrongPassword(password) ? 'strong' : 'weak'}`}></div>
-            <div className={`strength-text ${isStrongPassword(password) ? 'strong' : 'weak'}`}>
-              {isStrongPassword(password) ? 'Strong' : 'Weak'}
-            </div>
-          </Styled.StrengthIndicator>
-        )}
       </Styled.Field>
+      {password && (
+        <Styled.StrengthIndicator>
+          <div
+            className="strength-bar"
+            style={{
+              width: isStrongPassword(password) ? '100%' : '50%',
+              backgroundColor: isStrongPassword(password) ? '#50C878' : '#F3AF9A'
+            }}
+          ></div>
+          <div className={`strength-text ${isStrongPassword(password) ? 'strong' : 'weak'}`}>
+            Password Strength: {isStrongPassword(password) ? 'Strong' : 'Weak'}
+          </div>
+        </Styled.StrengthIndicator>
+      )}
     </>
   )
 }

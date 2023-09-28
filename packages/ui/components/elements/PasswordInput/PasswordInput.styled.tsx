@@ -20,18 +20,28 @@ const LoginInput = styled.input`
 `
 
 const StrengthIndicator = styled.div`
+  .strength-bar {
+    height: 10px;
+    width: 0;
+    background-color: lightgray;
+    position: relative;
+    transition: width 0.3s ease; 
+    border-radius: 5px;
+  }
 
   .strength-text {
-    text-align: center;
+    text-align: left;
     margin-top: 5px;
   }
 
-  .strong {
-    color: green;
+  & .strong .strength-bar {
+    background-color: #50C878;
+    width: 100%;
   }
 
-  .weak {
-    color: red;
+  & .weak .strength-bar {
+    background-color: #F3AF9A;
+    width: 50%;
   }
 `;
 
