@@ -9,17 +9,12 @@ import MainContent from "./MainContent/MainContent";
 import CTA from "./Cta/Cta";
 import { fetchDeshiMenus } from "~/utils/cms/fetchDeshiMenus";
 
-type DeshiMenuProps = {
-  sponserName: string;
-  image: string;
-};
-
 const DeshiMenus = () => {
-  const [DeshiMenus, setDeshiMenus] = useState<DeshiMenuProps[]>([]);
+  const [DeshiMenus, setDeshiMenus] = useState([]);
 
   const getDeshiMenus = async () => {
     try {
-      const DeshiMenus: DeshiMenuProps[] = await fetchDeshiMenus();
+      const DeshiMenus = await fetchDeshiMenus();
       setDeshiMenus(DeshiMenus);
     } catch (error) {
       console.error(error);
@@ -45,22 +40,24 @@ const DeshiMenus = () => {
           </StickyBox>
           <>
             <Styled.DeshiGrid>
-              {items.map((item, index) => {
-                return (
-                  <Styled.Container key={index}>
-                    {/* TOP HEADER CONTENT */}
-                    <TopHeaderContent />
-                    <Styled.Body>
-                      {/* EXTRA CONTENT */}
-                      <ExtraInformation />
-                      {/* MAIN CONTENT */}
-                      <MainContent />
-                      {/* CTA */}
-                      <CTA />
-                    </Styled.Body>
-                  </Styled.Container>
-                );
-              })}
+              {
+                DeshiMenus.map((_deshiMenu, index) => {
+                  return (
+                    <Styled.Container key={index}>
+                      {/* TOP HEADER CONTENT */}
+                      <TopHeaderContent menuName={_deshiMenu.englishName} images={_deshiMenu.image} />
+                      <Styled.Body>
+                        {/* EXTRA CONTENT */}
+                        <ExtraInformation />
+                        {/* MAIN CONTENT */}
+                        <MainContent />
+                        {/* CTA */}
+                        <CTA />
+                      </Styled.Body>
+                    </Styled.Container>
+                  );
+                })
+              }
             </Styled.DeshiGrid>
           </>
         </div>

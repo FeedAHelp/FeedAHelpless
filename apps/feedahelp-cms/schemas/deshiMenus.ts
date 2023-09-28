@@ -35,6 +35,47 @@ export default defineType({
         validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'pricePerPerson',
+      title: 'Price Per Person',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'rating',
+      title: 'Rating',
+      type: 'string',
+    }),
+    defineField({
+      name: 'totalTimePrepare',
+      title: 'Total Time to Prepare',
+      type: 'string',
+    }),
+    defineField({
+      name: 'totalDonated',
+      title: 'Total Donated',
+      type: 'string',
+    }),
+    defineField({
+      name: 'totalChefCooked',
+      title: 'Total Chef Cooked',
+      type: 'string',
+    }),
+    defineField({
+      name: 'totalTimeCooked',
+      title: 'Total Time To Cooked',
+      type: 'string',
+    }),
+    defineField({
+      name: 'totalPersonFed',
+      title: 'Total Person Feed',
+      type: 'string',
+    }),
+    defineField({
+      name: 'totalVideo',
+      title: 'Total Video Shout',
+      type: 'string',
+    }),
+    defineField({
         name: 'Ingredients',
         type: 'array',
         of: [
