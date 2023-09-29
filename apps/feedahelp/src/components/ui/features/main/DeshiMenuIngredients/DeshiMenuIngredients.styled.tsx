@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 const Splitter = styled.div`
   width: 100%;
-  height: 34.375rem;
+  height: 100%;
   display: flex;
   z-index: 9999;
   padding: 1.6rem;
