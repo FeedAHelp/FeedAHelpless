@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { BoxShadow } from "../DeshiMenus.styled";
 import { baseTheme } from "~/ui/components/foundations/theming/theming";
+import Image from "next/image";
 
 const Logo = styled.img`
   width: 3.4375rem;
@@ -56,7 +57,6 @@ const Header = styled.div`
   border-radius: 0.625rem;
   background-color: ${baseTheme.colors.primary.green};
   cursor: pointer;
-  padding-top: 0.0625rem;
   ${BoxShadow}
 `;
 
@@ -78,10 +78,19 @@ const MenuRating = styled.div`
   }
 `;
 
+const BackgroundImage = styled(Image)`
+  position: absolute;
+  top: 50%;
+  transform: translate(30%, -50%);
+  filter: blur(0.8px);
+  z-index: -1;
+`;
+
 export const Styled = {
   Header,
   Heading,
   Logo,
   Title,
   MenuRating,
+  BackgroundImage
 };

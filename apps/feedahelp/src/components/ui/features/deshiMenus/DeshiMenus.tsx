@@ -2,19 +2,31 @@ import React, { useState, useEffect } from "react";
 import { Styled } from "./DeshiMenus.styled";
 import StickyBox from "react-sticky-box";
 import IngredientSearchInput from "~/ui/components/elements/IngredientSearchInput/IngredientSearchInput";
-import { items } from "./data";
 import TopHeaderContent from "./TopHeaderContent/TopHeaderContent";
 import ExtraInformation from "./ExtraInformation/ExtraInformation";
 import MainContent from "./MainContent/MainContent";
 import CTA from "./Cta/Cta";
 import { fetchDeshiMenus } from "~/utils/cms/fetchDeshiMenus";
 
+type DeshiMenuProps = {
+  englishName: string;
+  image: {
+    asset: {
+      _ref: string;
+    };
+  };
+  Ingredients: {
+    name: string;
+  }[];
+  isPublished: boolean;
+};
+
 const DeshiMenus = () => {
-  const [DeshiMenus, setDeshiMenus] = useState([]);
+  const [DeshiMenus, setDeshiMenus] = useState<DeshiMenuProps[]>([]);
 
   const getDeshiMenus = async () => {
     try {
-      const DeshiMenus = await fetchDeshiMenus();
+      const DeshiMenus: DeshiMenuProps[] = await fetchDeshiMenus();
       setDeshiMenus(DeshiMenus);
     } catch (error) {
       console.error(error);
@@ -45,8 +57,10 @@ const DeshiMenus = () => {
                   if(_deshiMenu.isPublished) {
                     return (
                       <Styled.Container key={index}>
-                        {/* TOP HEADER CONTENT */}
-                        <TopHeaderContent menuName={_deshiMenu.englishName} images={_deshiMenu.image} />
+                        <TopHeaderContent 
+                          menuName={_deshiMenu.englishName} 
+                          images={_deshiMenu.image} 
+                          ingredients={_deshiMenu.Ingredients}/>
                         <Styled.Body>
                           {/* EXTRA CONTENT */}
                           <ExtraInformation />
