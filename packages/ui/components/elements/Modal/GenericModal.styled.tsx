@@ -49,7 +49,7 @@ export const ModalContainer = styled.div`
   top: 0;
   left: 0;
   transform: scale(0);
-  z-index: 5;
+  z-index: 9999;
 
   &.one {
     transform: scaleY(0.01) scaleX(0);
