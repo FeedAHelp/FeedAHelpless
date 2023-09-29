@@ -8,6 +8,12 @@ export default defineType({
   icon: MenuIcon,
   fields: [
     defineField({
+      name: 'isPublished',
+      title: 'Published?',
+      type: 'boolean',
+      initialValue: false
+    }),
+    defineField({
       name: 'englishName',
       title: 'English Name',
       type: 'string',
@@ -35,44 +41,16 @@ export default defineType({
         validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'pricePerPerson',
-      title: 'Price Per Person',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
+      name: 'imageIngredient',
+      title: 'Image Ingredeints',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
     }),
     defineField({
       name: 'rating',
       title: 'Rating',
-      type: 'string',
-    }),
-    defineField({
-      name: 'totalTimePrepare',
-      title: 'Total Time to Prepare',
-      type: 'string',
-    }),
-    defineField({
-      name: 'totalDonated',
-      title: 'Total Donated',
-      type: 'string',
-    }),
-    defineField({
-      name: 'totalChefCooked',
-      title: 'Total Chef Cooked',
-      type: 'string',
-    }),
-    defineField({
-      name: 'totalTimeCooked',
-      title: 'Total Time To Cooked',
-      type: 'string',
-    }),
-    defineField({
-      name: 'totalPersonFed',
-      title: 'Total Person Feed',
-      type: 'string',
-    }),
-    defineField({
-      name: 'totalVideo',
-      title: 'Total Video Shout',
       type: 'string',
     }),
     defineField({
@@ -88,10 +66,16 @@ export default defineType({
         ]
     }),
     defineField({
-      name: 'isPublished',
-      title: 'Published?',
-      type: 'boolean',
-      initialValue: false
+      name: 'mainContents',
+      type: 'array',
+      of: [
+          {
+              name: 'deshiMenuMainContent',
+              type: 'reference',
+              to: [{type: 'deshiMenuMainContent'}],
+              title: 'Make reference to Deshi Menus Main Content',
+          },
+      ]
     }),
   ],
 })

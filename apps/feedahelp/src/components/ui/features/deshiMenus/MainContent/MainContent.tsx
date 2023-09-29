@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Styled } from "./MainContent.styled";
-import { DeshiMenuInforamtion } from "../data";
+import { fetchDeshiMenusMainContent } from "~/utils/cms/fetchDeshiMenusMainContent";
 
-const MainContent = () => {
+const MainContent = ({ mainContents }: any) => {
+  const [DeshiMenusMainContents, setDeshiMenusMainContent] = useState([]);
+
+  const getDeshiMenusMainContent = async () => {
+    try {
+      const DeshiMenusMainContents = await fetchDeshiMenusMainContent();
+      setDeshiMenusMainContent(DeshiMenusMainContents);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getDeshiMenusMainContent();
+  }, []);
+
+  console.log(mainContents, DeshiMenusMainContents);
+
   return (
     <Styled.MainContent>
       <Styled.ListWithIconsUL>
-        {DeshiMenuInforamtion.map((item, index) => {
+        {/*  {DeshiMenusMainContents.map((item, index) => {
           return (
             <Styled.ListWithIconsLI key={index}>
               <Styled.DeshiShareIcon
@@ -19,7 +36,7 @@ const MainContent = () => {
               <Styled.TextInformation>{item.value}</Styled.TextInformation>
             </Styled.ListWithIconsLI>
           );
-        })}
+        })}  */}
       </Styled.ListWithIconsUL>
     </Styled.MainContent>
   );

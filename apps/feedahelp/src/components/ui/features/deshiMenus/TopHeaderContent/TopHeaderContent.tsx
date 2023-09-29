@@ -12,35 +12,41 @@ type TopHeaderprops = {
       _ref: string;
     };
   };
+  imageIngredient: {
+    asset: {
+      _ref: string;
+    };
+  };
   ingredients: {
     name: string;
   }[];
-}
+  rating: string;
+};
 
-const TopHeaderContent = ({ menuName, images, ingredients }: TopHeaderprops) => {
+const TopHeaderContent = ({
+  menuName,
+  images,
+  imageIngredient,
+  ingredients,
+  rating,
+}: TopHeaderprops) => {
   const StarIcon = withBaseIcon({ size: 25 });
-  const [rate] = useState(4.5);
 
   return (
     <Styled.Header>
       <Styled.Heading>
-        <Styled.Logo
-          src={urlForThumbnail(images.asset._ref)}
-          alt={menuName}
-        />
-        <Styled.Title>
-          {menuName}
-        </Styled.Title>
-        <Styled.BackgroundImage 
-          src="/static/images/ingredients/food-ingredients.png" 
-          alt="bg" 
-          width={150} 
-          height={150} 
+        <Styled.Logo src={urlForThumbnail(images.asset._ref)} alt={menuName} />
+        <Styled.Title>{menuName}</Styled.Title>
+        <Styled.BackgroundImage
+          src={urlForThumbnail(imageIngredient.asset._ref)}
+          alt="bg"
+          width={150}
+          height={150}
         />
       </Styled.Heading>
       <Styled.MenuRating>
-        <h2>{rate}</h2>
-        <StarIcon icon={star} style={{ color: "#fff" }} />
+        <h2>{rating}</h2>
+        <StarIcon icon={star} />
       </Styled.MenuRating>
       <DeshiSocial />
     </Styled.Header>

@@ -37,8 +37,6 @@ const DeshiMenus = () => {
     getDeshiMenus();
   }, []);
 
-  console.log("=>DeshiMenu", DeshiMenus);
-
   return (
     <div className="customScrollBar mb-2 h-[34rem] w-full overflow-auto">
       <div className="relitive container">
@@ -52,28 +50,29 @@ const DeshiMenus = () => {
           </StickyBox>
           <>
             <Styled.DeshiGrid>
-              {
-                DeshiMenus.map((_deshiMenu, index) => {
-                  if(_deshiMenu.isPublished) {
-                    return (
-                      <Styled.Container key={index}>
-                        <TopHeaderContent 
-                          menuName={_deshiMenu.englishName} 
-                          images={_deshiMenu.image} 
-                          ingredients={_deshiMenu.Ingredients}/>
-                        <Styled.Body>
-                          {/* EXTRA CONTENT */}
-                          <ExtraInformation />
-                          {/* MAIN CONTENT */}
-                          <MainContent />
-                          {/* CTA */}
-                          <CTA />
-                        </Styled.Body>
-                      </Styled.Container>
-                    );
-                  }
-                })
-              }
+              {DeshiMenus.map((_deshiMenu, index) => {
+                if (_deshiMenu.isPublished) {
+                  return (
+                    <Styled.Container key={index}>
+                      <TopHeaderContent
+                        menuName={_deshiMenu.englishName}
+                        images={_deshiMenu.image}
+                        imageIngredient={_deshiMenu.imageIngredient}
+                        ingredients={_deshiMenu.Ingredients}
+                        rating={_deshiMenu.rating}
+                      />
+                      <Styled.Body>
+                        {/* EXTRA CONTENT */}
+                        <ExtraInformation />
+                        {/* MAIN CONTENT */}
+                        <MainContent mainContents={_deshiMenu.mainContents} />
+                        {/* CTA */}
+                        <CTA />
+                      </Styled.Body>
+                    </Styled.Container>
+                  );
+                }
+              })}
             </Styled.DeshiGrid>
           </>
         </div>

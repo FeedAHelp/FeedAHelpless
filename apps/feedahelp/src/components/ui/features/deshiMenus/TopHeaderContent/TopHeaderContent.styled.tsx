@@ -10,13 +10,60 @@ const Logo = styled.img`
 `;
 
 const Title = styled.div`
-  font-size: 0.625rem;
-  color: ${baseTheme.colors.primary.blue};
-  transition: transform 0.5s;
-  transform: scale(1);
-  font-weight: 500;
-  font-size: 1.1875rem;
-  padding-top: 1.25rem;
+  background: #08b;
+  background-image: radial-gradient(transparent 30%, rgba(0, 0, 0, 0.5));
+  border: 0 solid rgba(0, 0, 0, 0.2);
+  border-radius: 40px;
+  color: ${baseTheme.colors.neutrals.gray_white};
+  font-size: 18px;
+  font-weight: bold;
+  position: relative;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.2);
+  padding: 0.2rem;
+  padding-left: 10px;
+  padding-right: 10px;
+  ${BoxShadow}
+
+  h2 {
+    border-width: 1px 1px 2px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    padding: 4px 40px;
+    position: absolute;
+    right: -14px;
+    top: 12px;
+
+    &:after {
+      border-width: 7px;
+      border-style: solid;
+      border-color: #134 transparent transparent #134;
+      bottom: -15px;
+      content: "";
+      position: absolute;
+      right: -1px;
+    }
+  }
+
+  &:before,
+  &:after {
+    bottom: 26px;
+    box-shadow: 0 28px 8px rgba(0, 0, 0, 0.5);
+    content: "";
+    height: 28px;
+    position: absolute;
+    width: 48%;
+    z-index: -1;
+  }
+
+  &:before {
+    left: 2%;
+    transform: rotate(-3deg);
+  }
+
+  &:after {
+    right: 2%;
+    transform: rotate(3deg);
+  }
 `;
 
 const Caption = styled.div`
@@ -73,7 +120,7 @@ const MenuRating = styled.div`
     display: flex;
     vertical-align: middle;
     font-size: 1em;
-    color: ${baseTheme.colors.neutrals.full_white};
+    color: ${baseTheme.colors.neutrals.full_black};
     padding: 0px 4px;
   }
 `;
@@ -92,5 +139,5 @@ export const Styled = {
   Logo,
   Title,
   MenuRating,
-  BackgroundImage
+  BackgroundImage,
 };
