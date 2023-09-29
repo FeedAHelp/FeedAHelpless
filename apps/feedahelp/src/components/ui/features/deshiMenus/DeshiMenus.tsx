@@ -1,14 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Styled } from "./DeshiMenus.styled";
 import StickyBox from "react-sticky-box";
 import IngredientSearchInput from "~/ui/components/elements/IngredientSearchInput/IngredientSearchInput";
-import { items } from "./data";
 import TopHeaderContent from "./TopHeaderContent/TopHeaderContent";
 import ExtraInformation from "./ExtraInformation/ExtraInformation";
 import MainContent from "./MainContent/MainContent";
 import CTA from "./Cta/Cta";
+import { fetchDeshiMenus } from "~/utils/cms/fetchDeshiMenus";
+
+type DeshiMenuProps = {
+  englishName: string;
+  image: {
+    asset: {
+      _ref: string;
+    };
+  };
+  Ingredients: {
+    name: string;
+  }[];
+  isPublished: boolean;
+};
 
 const DeshiMenus = () => {
+  const [DeshiMenus, setDeshiMenus] = useState<DeshiMenuProps[]>([]);
+
+  const getDeshiMenus = async () => {
+    try {
+      const DeshiMenus: DeshiMenuProps[] = await fetchDeshiMenus();
+      setDeshiMenus(DeshiMenus);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getDeshiMenus();
+  }, []);
+
   return (
     <div className="customScrollBar mb-2 h-[34rem] w-full overflow-auto">
       <div className="relitive container">
@@ -22,21 +50,28 @@ const DeshiMenus = () => {
           </StickyBox>
           <>
             <Styled.DeshiGrid>
-              {items.map((item, index) => {
-                return (
-                  <Styled.Container key={index}>
-                    {/* TOP HEADER CONTENT */}
-                    <TopHeaderContent />
-                    <Styled.Body>
-                      {/* EXTRA CONTENT */}
-                      <ExtraInformation />
-                      {/* MAIN CONTENT */}
-                      <MainContent />
-                      {/* CTA */}
-                      <CTA />
-                    </Styled.Body>
-                  </Styled.Container>
-                );
+              {DeshiMenus.map((_deshiMenu, index) => {
+                if (_deshiMenu.isPublished) {
+                  return (
+                    <Styled.Container key={index}>
+                      <TopHeaderContent
+                        menuName={_deshiMenu.englishName}
+                        images={_deshiMenu.image}
+                        imageIngredient={_deshiMenu.imageIngredient}
+                        ingredients={_deshiMenu.Ingredients}
+                        rating={_deshiMenu.rating}
+                      />
+                      <Styled.Body>
+                        {/* EXTRA CONTENT */}
+                        <ExtraInformation />
+                        {/* MAIN CONTENT */}
+                        <MainContent mainContents={_deshiMenu.mainContents} />
+                        {/* CTA */}
+                        <CTA />
+                      </Styled.Body>
+                    </Styled.Container>
+                  );
+                }
               })}
             </Styled.DeshiGrid>
           </>

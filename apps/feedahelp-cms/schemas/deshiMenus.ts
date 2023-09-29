@@ -8,6 +8,12 @@ export default defineType({
   icon: MenuIcon,
   fields: [
     defineField({
+      name: 'isPublished',
+      title: 'Published?',
+      type: 'boolean',
+      initialValue: false
+    }),
+    defineField({
       name: 'englishName',
       title: 'English Name',
       type: 'string',
@@ -35,6 +41,19 @@ export default defineType({
         validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'imageIngredient',
+      title: 'Image Ingredeints',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
+      name: 'rating',
+      title: 'Rating',
+      type: 'string',
+    }),
+    defineField({
         name: 'Ingredients',
         type: 'array',
         of: [
@@ -44,8 +63,19 @@ export default defineType({
                 to: [{type: 'deshiMenuIngredients'}],
                 title: 'Make reference to Ingredient',
             },
-        ],
-        validation: (Rule) => Rule.required(),
+        ]
+    }),
+    defineField({
+      name: 'mainContents',
+      type: 'array',
+      of: [
+          {
+              name: 'deshiMenuMainContent',
+              type: 'reference',
+              to: [{type: 'deshiMenuMainContent'}],
+              title: 'Make reference to Deshi Menus Main Content',
+          },
+      ]
     }),
   ],
 })
