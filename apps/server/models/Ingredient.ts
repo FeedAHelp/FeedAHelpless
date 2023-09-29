@@ -1,9 +1,9 @@
 class Ingredient {
-  id: number
+  id: string
   name: string
   imageName: string
 
-  constructor(id: number, name: string, imageName: string) {
+  constructor(id: string, name: string, imageName: string) {
     this.id = id
     this.name = name
     this.imageName = imageName
