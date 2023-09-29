@@ -3,7 +3,9 @@ import Ingredient from './Ingredient'
 const prisma = new PrismaClient()
 
 class IngredientModel {
-  private ingredients: Ingredient[] = []
+  async allIngredients() {
+    return await prisma.ingredient.findMany({})
+  }
 
   async exists(id: string): Promise<boolean> {
     const numberOfIngredients: number = await prisma.ingredient.count({
