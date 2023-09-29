@@ -5,6 +5,7 @@ const Splitter = styled.div`
   height: 34.375rem;
   display: flex;
   z-index: 9999;
+  padding: 1.6rem;
   /*   ['xs', 'sm', 'md', 'lg', 'xl'] */
 
   ${({ theme }) => theme.breakpoints.down("lg")} {
