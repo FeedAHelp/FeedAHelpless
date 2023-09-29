@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
 class IngredientModel {
   private ingredients: Ingredient[] = []
 
-  async exists(id: number): Promise<boolean> {
+  async exists(id: string): Promise<boolean> {
     const numberOfIngredients: number = await prisma.ingredient.count({
       where: { id }
     })
@@ -13,7 +13,7 @@ class IngredientModel {
     return false
   }
 
-  async create(data: { name: string; imageName: string }): Promise<Ingredient> {
+  async create(data: { id: string; name: string; imageName: string }): Promise<Ingredient> {
     const createdIngredient = await prisma.ingredient.create({
       data: {
         name: data.name,
@@ -23,7 +23,7 @@ class IngredientModel {
     return new Ingredient(createdIngredient.id, createdIngredient.name, createdIngredient.imageName)
   }
 
-  async read(id: number): Promise<Ingredient | null> {
+  async read(id: string): Promise<Ingredient | null> {
     const ingredient = await prisma.ingredient.findUnique({
       where: { id }
     })
@@ -31,7 +31,7 @@ class IngredientModel {
     return new Ingredient(ingredient.id, ingredient.name, ingredient.imageName)
   }
 
-  async update(id: number, data: { name: string; imageName: string }): Promise<Ingredient | null> {
+  async update(id: string, data: { name: string; imageName: string }): Promise<Ingredient | null> {
     const updatedIngredient = await prisma.ingredient.update({
       where: { id },
       data: {
@@ -43,7 +43,7 @@ class IngredientModel {
     return new Ingredient(updatedIngredient.id, updatedIngredient.name, updatedIngredient.imageName)
   }
 
-  async delete(id: number): Promise<boolean> {
+  async delete(id: string): Promise<boolean> {
     const deleteResult = await prisma.ingredient.delete({
       where: { id }
     })
