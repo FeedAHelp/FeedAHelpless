@@ -6,6 +6,7 @@ function isValidEmail(email: string) {
   return validator.isEmail(email);
 }
 
+
 export const verifyController = async (req: Request, res: Response) => {
   try {
     const email = req.query?.email as string;

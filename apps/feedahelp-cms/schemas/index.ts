@@ -5,6 +5,7 @@ import deshiMenuIngredients from './deshiMenuIngredients'
 import fahCounter from './fahCounter'
 import fahSocialMedia from './fahSocialMedia'
 import HeroImages from './HeroImages'
+import fahSponsers from './fahSponsers'
 
 export const schemaTypes = [
     ingredients, 
@@ -13,5 +14,6 @@ export const schemaTypes = [
     measuringUnits,
     fahCounter,
     fahSocialMedia,
-    HeroImages
+    HeroImages,
+    fahSponsers
 ]
