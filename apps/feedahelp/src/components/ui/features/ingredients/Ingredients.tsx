@@ -4,6 +4,7 @@ import { fetchIngredients } from "~/utils/cms/fetchIngredients";
 import { urlForThumbnail } from "~/utils/cms/imageProcess";
 import IngredientCheckbox from "~/ui/components/elements/IngredientCheckbox/IngredientCheckbox";
 import IngredientSearchInput from "~/ui/components/elements/IngredientSearchInput/IngredientSearchInput";
+import { Styled } from "./Ingredients.styled";
 
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([]);
@@ -33,9 +34,9 @@ const Ingredients = () => {
             </div>
           </StickyBox>
           <div className="pt-10">
-            <div className="grid grid-cols-3 gap-5">
+            <Styled.IngGrid>
               {ingredients.map((ingredient, index) => (
-                <div
+                <Styled.IngGridItem
                   key={index}
                   className="relative flex cursor-pointer justify-center rounded-full"
                 >
@@ -44,9 +45,9 @@ const Ingredients = () => {
                     imgSrc={urlForThumbnail(ingredient.image)}
                     imgAlt={ingredient.englishName}
                   />
-                </div>
+                </Styled.IngGridItem>
               ))}
-            </div>
+            </Styled.IngGrid>
           </div>
         </div>
       </div>
