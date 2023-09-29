@@ -42,20 +42,22 @@ const DeshiMenus = () => {
             <Styled.DeshiGrid>
               {
                 DeshiMenus.map((_deshiMenu, index) => {
-                  return (
-                    <Styled.Container key={index}>
-                      {/* TOP HEADER CONTENT */}
-                      <TopHeaderContent menuName={_deshiMenu.englishName} images={_deshiMenu.image} />
-                      <Styled.Body>
-                        {/* EXTRA CONTENT */}
-                        <ExtraInformation />
-                        {/* MAIN CONTENT */}
-                        <MainContent />
-                        {/* CTA */}
-                        <CTA />
-                      </Styled.Body>
-                    </Styled.Container>
-                  );
+                  if(_deshiMenu.isPublished) {
+                    return (
+                      <Styled.Container key={index}>
+                        {/* TOP HEADER CONTENT */}
+                        <TopHeaderContent menuName={_deshiMenu.englishName} images={_deshiMenu.image} />
+                        <Styled.Body>
+                          {/* EXTRA CONTENT */}
+                          <ExtraInformation />
+                          {/* MAIN CONTENT */}
+                          <MainContent />
+                          {/* CTA */}
+                          <CTA />
+                        </Styled.Body>
+                      </Styled.Container>
+                    );
+                  }
                 })
               }
             </Styled.DeshiGrid>

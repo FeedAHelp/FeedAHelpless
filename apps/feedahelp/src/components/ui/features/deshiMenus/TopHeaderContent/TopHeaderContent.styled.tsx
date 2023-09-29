@@ -30,8 +30,9 @@ const Caption = styled.div`
 const Heading = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
   &:hover > ${Logo} {
     transform: scale(6) translate(1.5625rem, 0.625rem);

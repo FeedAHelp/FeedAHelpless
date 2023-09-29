@@ -8,7 +8,6 @@ import { urlForThumbnail } from "~/utils/cms/imageProcess";
 const TopHeaderContent = ({ menuName, images }) => {
   const StarIcon = withBaseIcon({ size: 25 });
   const [rate] = useState(4.5);
-  console.log(menuName, images);
 
   return (
     <Styled.Header>

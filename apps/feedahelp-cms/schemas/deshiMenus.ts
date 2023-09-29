@@ -87,5 +87,11 @@ export default defineType({
             },
         ]
     }),
+    defineField({
+      name: 'isPublished',
+      title: 'Published?',
+      type: 'boolean',
+      initialValue: false
+    }),
   ],
 })
