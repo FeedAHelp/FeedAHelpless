@@ -11,7 +11,7 @@ async function main() {
   await seed({ file: "prisma/user.json", schema: 'user' }).catch((error) => {
     console.error(`Error seeding data: ${error}`)
   })
-  await seed({ file: "prisma/ingredients.json", schema: 'ingredients' }).catch((error) => {
+  await seed({ file: "prisma/ingredients.json", schema: 'ingredient' }).catch((error) => {
     console.error(`Error seeding data: ${error}`)
   })
   await seed({ file: "prisma/contributions.json", schema: 'contributions' }).catch((error) => {
