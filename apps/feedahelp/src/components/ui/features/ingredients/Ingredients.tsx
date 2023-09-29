@@ -5,18 +5,31 @@ import { urlForThumbnail } from "~/utils/cms/imageProcess";
 import IngredientCheckbox from "~/ui/components/elements/IngredientCheckbox/IngredientCheckbox";
 import IngredientSearchInput from "~/ui/components/elements/IngredientSearchInput/IngredientSearchInput";
 import { getMethod } from "~/utils/api/getMethod";
+import FuzzySearch from "fuzzy-search";
 
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState<any[]>([]);
+  const [searchedIngredients, setSearchedIngredients] = useState<any[]>([]);
 
   const getIngredients = async () => {
     try {
       const { data } = await getMethod("ingredient/all", "");
       setIngredients(data);
+      setSearchedIngredients(data);
     } catch (error) {
       console.error(error);
     }
   };
+
+  function handleIngredientSearchInputChange(searchTerm: string) {
+    const searcher = new FuzzySearch(ingredients, ["name"], {
+      caseSensitive: false,
+    });
+
+    const searchResult = searcher.search(searchTerm);
+
+    setSearchedIngredients(searchResult);
+  }
 
   useEffect(() => {
     getIngredients();
@@ -29,13 +42,18 @@ const Ingredients = () => {
           <StickyBox offsetTop={0} offsetBottom={20} style={{ zIndex: 99 }}>
             <div>
               <div>
-                <IngredientSearchInput id="ingredientSearchInput" />
+                <IngredientSearchInput
+                  id="ingredientSearchInput"
+                  onIngredientSearchInputChange={
+                    handleIngredientSearchInputChange
+                  }
+                />
               </div>
             </div>
           </StickyBox>
           <div className="pt-10">
             <div className="grid grid-cols-3 gap-5">
-              {ingredients.map((ingredient) => (
+              {searchedIngredients.map((ingredient) => (
                 <div
                   key={ingredient.id}
                   className="relative flex cursor-pointer justify-center rounded-full"
