@@ -3,8 +3,8 @@ import { BoxShadow } from "../DeshiMenus.styled";
 import { baseTheme } from "~/ui/components/foundations/theming/theming";
 import Image from "next/image";
 
-const Logo = styled.img`
-  width: 3.4375rem;
+const deshiMenuImage = styled.img`
+  width: 3.2375rem;
   margin-top: 1.5625rem;
   transition: transform 0.9s;
 `;
@@ -82,7 +82,7 @@ const Heading = styled.div`
   padding-left: 1rem;
   padding-right: 1rem;
 
-  &:hover > ${Logo} {
+  &:hover > ${deshiMenuImage} {
     transform: scale(6) translate(1.5625rem, 0.625rem);
   }
 
@@ -136,7 +136,7 @@ const BackgroundImage = styled(Image)`
 export const Styled = {
   Header,
   Heading,
-  Logo,
+  deshiMenuImage,
   Title,
   MenuRating,
   BackgroundImage,

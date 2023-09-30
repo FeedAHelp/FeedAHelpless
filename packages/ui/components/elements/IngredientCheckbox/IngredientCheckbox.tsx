@@ -13,8 +13,8 @@ const IngredientCheckbox = ({ id, imgSrc, imgAlt }: IngredientCheckboxProps) => 
     <div>
       <Styled.CheckboxInput type='checkbox' id={id} />
       <Styled.CheckboxLabel htmlFor={id}>
-        <div style={{ width: '5rem', height: '5rem' , position:'relative'}} >
-          <Image  src={imgSrc} alt={imgAlt} className='h-36 w-36 rounded-full object-cover' fill={true} sizes='0.1rem'/>
+        <div style={{ width: '3rem', height: '3rem', position: 'relative' }}>
+          <Image src={imgSrc} alt={imgAlt} fill={true} />
         </div>
       </Styled.CheckboxLabel>
     </div>

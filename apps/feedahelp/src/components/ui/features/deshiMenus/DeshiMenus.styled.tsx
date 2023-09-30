@@ -57,7 +57,7 @@ const DeshiLi = styled.li`
 const DeshiGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15.625rem, 21.875rem));
-  grid-gap: 0.9375rem 0.9375rem;
+  grid-gap: 0.9375rem;
   justify-content: center;
   align-items: baseline;
 `;
