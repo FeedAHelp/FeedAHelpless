@@ -35,7 +35,7 @@ const Separator = styled.div`
     inset 0.3125rem 0.3125rem 1.25rem rgba(255, 255, 255, 0.2),
     inset -0.3125rem -0.3125rem 0.9375rem rgba(0, 0, 0, 0.75);
   border-radius: 1.875rem;
-  width: 3.125rem;
+  width: 4.125rem;
   height: 100%;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -57,9 +57,30 @@ const Second = styled.div`
   }
 `;
 
+const IngredientSelected = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  font-weight: bold;
+  padding-top: 30px;
+  color: #fff;
+`;
+
+const IngredientCount = styled.h2`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+`;
+
 export const Styled = {
   Splitter,
   First,
   Separator,
   Second,
+  IngredientSelected,
+  IngredientCount,
 };
