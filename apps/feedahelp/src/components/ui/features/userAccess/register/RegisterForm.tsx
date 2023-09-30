@@ -133,7 +133,6 @@ const RegisterFrom = ({ loginRegisterToggle }: Props) => {
             <div className="flex flex-col space-y-1">
               <PasswordInput
                 placeholder="Password?"
-                strengthCheck={true}
                 password={password}
                 setPassword={setPassword}
               />
