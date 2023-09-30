@@ -26,12 +26,27 @@ const Payment = () => {
             <TabList onChange={handleChange} aria-label="feedahelp-tab">
               <Tab label="Credit Card" value="1" />
               <Tab label="Paypal" value="2" />
+              <Tab label="Stripe" value="3" />
             </TabList>
           </Box>
           <TabPanel value="1" sx={{ padding: 1 }}>
             <CreditCard />
           </TabPanel>
           <TabPanel value="2">
+            <PayPalScriptProvider
+              options={{
+                clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID as string,
+                currency: "USD",
+              }}
+            >
+              <Paypal
+                email={session?.user?.email ?? undefined}
+                value="10.00"
+                currency="USD"
+              />
+            </PayPalScriptProvider>
+          </TabPanel>
+          <TabPanel value="3">
             <PayPalScriptProvider
               options={{
                 clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID as string,
