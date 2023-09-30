@@ -3,7 +3,6 @@ import { Styled } from './PasswordInput.styled'
 import { Icon } from 'react-icons-kit'
 import { eyeOff } from 'react-icons-kit/feather/eyeOff'
 import { eye } from 'react-icons-kit/feather/eye'
-import PasswordStrengthBar from 'react-password-strength-bar'
 
 type PasswordInputProps = {
   placeholder: string;
@@ -12,7 +11,7 @@ type PasswordInputProps = {
   setPassword: (newPassword: string) => void;
 };
 
-export function PasswordInput({ placeholder, strengthCheck, password, setPassword }) {
+export function PasswordInput({ placeholder, password, setPassword }) {
 
   const [type, setType] = useState('password')
   const [icon, setIcon] = useState(eyeOff)
@@ -26,6 +25,11 @@ export function PasswordInput({ placeholder, strengthCheck, password, setPasswor
       setType('password')
     }
   }
+
+  const isStrongPassword = (pass) => {
+    const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    return regex.test(pass);
+  };
 
   return (
     <>
@@ -41,14 +45,21 @@ export function PasswordInput({ placeholder, strengthCheck, password, setPasswor
         <span onClick={handleToggle}>
           <Icon icon={icon} size={30} />
         </span>
-        {strengthCheck && (
-          <PasswordStrengthBar
-            password={password}
-            shortScoreWord='No Password'
-            scoreWords={['ok', 'fine', 'cool', 'enough', 'hard enough']}
-          />
-        )}
       </Styled.Field>
+      {password && (
+        <Styled.StrengthIndicator>
+          <div
+            className="strength-bar"
+            style={{
+              width: isStrongPassword(password) ? '100%' : '50%',
+              backgroundColor: isStrongPassword(password) ? '#50C878' : '#F3AF9A'
+            }}
+          ></div>
+          <div className={`strength-text ${isStrongPassword(password) ? 'strong' : 'weak'}`}>
+            Password Strength: {isStrongPassword(password) ? 'Strong' : 'Weak'}
+          </div>
+        </Styled.StrengthIndicator>
+      )}
     </>
   )
 }

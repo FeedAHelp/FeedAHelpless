@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { BoxShadow } from "../DeshiMenus.styled";
 import { baseTheme } from "~/ui/components/foundations/theming/theming";
+import Image from "next/image";
 
 const Logo = styled.img`
   width: 3.4375rem;
@@ -9,13 +10,60 @@ const Logo = styled.img`
 `;
 
 const Title = styled.div`
-  font-size: 0.625rem;
-  color: ${baseTheme.colors.primary.blue};
-  transition: transform 0.5s;
-  transform: scale(1);
-  font-weight: 500;
-  font-size: 1.1875rem;
-  padding-top: 1.25rem;
+  background: #08b;
+  background-image: radial-gradient(transparent 30%, rgba(0, 0, 0, 0.5));
+  border: 0 solid rgba(0, 0, 0, 0.2);
+  border-radius: 40px;
+  color: ${baseTheme.colors.neutrals.gray_white};
+  font-size: 18px;
+  font-weight: bold;
+  position: relative;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.2);
+  padding: 0.2rem;
+  padding-left: 10px;
+  padding-right: 10px;
+  ${BoxShadow}
+
+  h2 {
+    border-width: 1px 1px 2px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    padding: 4px 40px;
+    position: absolute;
+    right: -14px;
+    top: 12px;
+
+    &:after {
+      border-width: 7px;
+      border-style: solid;
+      border-color: #134 transparent transparent #134;
+      bottom: -15px;
+      content: "";
+      position: absolute;
+      right: -1px;
+    }
+  }
+
+  &:before,
+  &:after {
+    bottom: 26px;
+    box-shadow: 0 28px 8px rgba(0, 0, 0, 0.5);
+    content: "";
+    height: 28px;
+    position: absolute;
+    width: 48%;
+    z-index: -1;
+  }
+
+  &:before {
+    left: 2%;
+    transform: rotate(-3deg);
+  }
+
+  &:after {
+    right: 2%;
+    transform: rotate(3deg);
+  }
 `;
 
 const Caption = styled.div`
@@ -30,8 +78,9 @@ const Caption = styled.div`
 const Heading = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
   &:hover > ${Logo} {
     transform: scale(6) translate(1.5625rem, 0.625rem);
@@ -55,7 +104,6 @@ const Header = styled.div`
   border-radius: 0.625rem;
   background-color: ${baseTheme.colors.primary.green};
   cursor: pointer;
-  padding-top: 0.0625rem;
   ${BoxShadow}
 `;
 
@@ -72,9 +120,17 @@ const MenuRating = styled.div`
     display: flex;
     vertical-align: middle;
     font-size: 1em;
-    color: ${baseTheme.colors.neutrals.full_white};
+    color: ${baseTheme.colors.neutrals.full_black};
     padding: 0px 4px;
   }
+`;
+
+const BackgroundImage = styled(Image)`
+  position: absolute;
+  top: 50%;
+  transform: translate(30%, -50%);
+  filter: blur(0.8px);
+  z-index: -1;
 `;
 
 export const Styled = {
@@ -83,4 +139,5 @@ export const Styled = {
   Logo,
   Title,
   MenuRating,
+  BackgroundImage,
 };

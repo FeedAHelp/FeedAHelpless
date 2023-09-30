@@ -15,7 +15,9 @@ export const MainPage = () => {
         <Grid item xs={12} md={12}>
           <FeedAHelpCounter />
         </Grid>
-        <DeshiMenuIngredients />
+        <Grid item xs={12} md={12}>
+          <DeshiMenuIngredients />
+        </Grid>
         <Grid item xs={12} md={12}>
           <Sponsors />
         </Grid>

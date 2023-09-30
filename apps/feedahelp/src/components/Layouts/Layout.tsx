@@ -17,9 +17,9 @@ type LayoutProps = {
 
 export function Layout({ header, child, footer }: LayoutProps) {
   return (
-    <ThemeProvider>
+    <ThemeProvider >
       <header>{header}</header>
-      <main>{child}</main>
+      <main className="mx-10">{child}</main>
       <footer>{footer}</footer>
     </ThemeProvider>
   );
