@@ -21,7 +21,7 @@ const Ingredients = () => {
     }
   };
 
-  function handleIngredientSearchInputChange(searchTerm: string) {
+  function searchIngredient(searchTerm: string): void {
     const searcher = new FuzzySearch(ingredients, ["name"], {
       caseSensitive: false,
     });
@@ -44,9 +44,7 @@ const Ingredients = () => {
               <div>
                 <IngredientSearchInput
                   id="ingredientSearchInput"
-                  onIngredientSearchInputChange={
-                    handleIngredientSearchInputChange
-                  }
+                  searchIngredient={searchIngredient}
                 />
               </div>
             </div>
