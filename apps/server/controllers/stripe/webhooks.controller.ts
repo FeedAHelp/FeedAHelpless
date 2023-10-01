@@ -1,87 +1,63 @@
-// import Stripe from "stripe";
-// import { PrismaClient } from '@prisma/client'
-// import { Request, Response, response } from 'express'
+import { Request, Response } from 'express';
+import type { Stripe } from 'stripe';
+import stripe from './stripeInstance';
+import { prisma } from '../../utils/prismaInstance';
 
+export default async function handler(req: Request, res: Response) {
+  let event: Stripe.Event;
 
-// const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-//     apiVersion: '2023-08-16',
-//   });
+  try {
+    event = stripe.webhooks.constructEvent(
+      await (await req.blob()).text(),
+      req.headers.get('stripe-signature') as string,
+      process.env.STRIPE_WEBHOOK_SECRET as string
+    );
+  } catch (err) {
+    const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+    if (err instanceof Error) console.log(err);
+    console.log(`❌ Error message: ${errorMessage}`);
+    return res.status(400).json({ message: `Webhook Error: ${errorMessage}` });
+  }
 
-// const prisma = new PrismaClient()
+  console.log('✅ Success:', event.id);
 
-// const webhookSecret: string = process.env.STRIPE_WEBHOOK_SECRET!;
+  const permittedEvents: string[] = [
+    'checkout.session.completed',
+    'payment_intent.succeeded',
+    'payment_intent.payment_failed',
+  ];
 
-// export default async function webhookHandler (req: Request) {
-//   try {
-//     const buf = await req.text();
-//     const sig = req.headers.get("stripe-signature")!;
+  if (permittedEvents.includes(event.type)) {
+    let data;
 
-//     let event: Stripe.Event;
+    try {
+      switch (event.type) {
+        case 'checkout.session.completed':
+          data = event.data.object as Stripe.Checkout.Session;
+          console.log(`💰 CheckoutSession status: ${data.payment_status}`);
+          break;
+        case 'payment_intent.payment_failed':
+          data = event.data.object as Stripe.PaymentIntent;
+          console.log(`❌ Payment failed: ${data.last_payment_error?.message}`);
+          break;
+        case 'payment_intent.succeeded':
+          data = event.data.object as Stripe.PaymentIntent;
+          console.log(`💰 PaymentIntent status: ${data.status}`);
 
-//     try {
-//       event = stripe.webhooks.constructEvent(buf, sig, webhookSecret);
-//     } catch (err) {
-//       const errorMessage = err instanceof Error ? err.message : "Unknown error";
+          if (data.status === 'succeeded') {
 
-//       if (err! instanceof Error) console.log(err);
-//       console.log(`❌ Error message: ${errorMessage}`);
-
-//       return Response.json(
-//         {
-//           error: {
-//             message: `Webhook Error: ${errorMessage}`,
-//           },
-//         },
-//         { status: 400 }
-//       );
-//     }
-
-//     // Successfully constructed event.
-//     console.log("✅ Success:", event.id);
-
-//     // getting to the data we want from the event
-//     const subscription = event.data.object as Stripe.Subscription;
-
-//     switch (event.type) {
-//       case "customer.subscription.created":
-//         await prisma.user.update({
-//           // Find the customer in our database with the Stripe customer ID linked to this purchase
-//           where: {
-//             stripeCustomerId: subscription.customer as string,
-//           },
-//           // Update that customer so their status is now active
-//           data: {
-//             isActive: true,
-//           },
-//         });
-//         break;
-//       case "customer.subscription.deleted":
-//         await prisma.user.update({
-//           // Find the customer in our database with the Stripe customer ID linked to this purchase
-//           where: {
-//             stripeCustomerId: subscription.customer as string,
-//           },
-//           // Update that customer so their status is now active
-//           data: {
-//             isActive: false,
-//           },
-//         });
-//         break;
-//       default:
-//         console.warn(`🤷‍♀️ Unhandled event type: ${event.type}`);
-//         break;
-//     }
-
-//     // Return a response to acknowledge receipt of the event.
-//     return Response.json({ received: true });
-//   } catch {
-//     return Response.json(
-//       {
-//         error: {
-//           message: `Method Not Allowed`,
-//         },
-//       },
-//       { status: 405 }
-//     ).headers.set("Allow", "POST");
-//   }
-// };
+            // DB is to be updated
+            console.log(data);
+            res.status(200).json({ message: 'Webhook handler done!!' });
+          }
+          break;
+        default:
+          throw new Error(`Unhandled event: ${event.type}`);
+      }
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: 'Webhook handler failed' });
+    }
+  }
+  return res.status(200).json({ message: 'Received' });
+}

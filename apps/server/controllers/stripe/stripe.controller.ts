@@ -3,14 +3,12 @@ import { Request, Response } from 'express'
 import { paypalCreateSchema, paypalCreateType } from '../../schema/paypal.schema'
 import { prisma } from '../../utils/prismaInstance'
 import client from '../lib/prisma'
-
-const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY, {
-  apiVersion: '2023-08-16'
-})
+import stripe from './stripeInstance'
 
 export default async function handler(req: Request<{}, {}, paypalCreateType>, res: Response) {
   const { value, currency, email = 'No Email' } = req.body
   paypalCreateSchema.parse(req.body)
+
 
   if (req.method === 'POST') {
     try {
@@ -25,9 +23,9 @@ export default async function handler(req: Request<{}, {}, paypalCreateType>, re
             price_data: {
               currency: currency,
               product_data: {
-                name: 'One Time Donation'
+                name: 'One Time Donation. Thanks for Your Big Hand.'
               },
-              unit_amount: value * 100
+              unit_amount: +value * 100
             },
             quantity: 1
           }
@@ -43,7 +41,8 @@ export default async function handler(req: Request<{}, {}, paypalCreateType>, re
           data: {
             orderID: session.id,
             status: 'PENDING',
-            email: email
+            email: email,
+            channel: "stripe"
           }
         })
         res.status(200).json(session)
