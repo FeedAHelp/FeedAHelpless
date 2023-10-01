@@ -77,6 +77,10 @@ const activeItemBorder = styled.div`
 `;
 
 const LogoImage = styled(Image)`
+  background-color: rgba(255, 255, 255, 0.2); 
+  backdrop-filter: blur(1rem); 
+  padding: 1rem; 
+  border-radius: 1rem; 
   @media (max-width: 568px) {
     width: 30%;
   }
@@ -107,7 +111,7 @@ const ImageContentMobile = styled.p`
   font-size: 1vw;
   margin: 0;
   color: transparent;
-  text-shadow: 0 0 10px #d94c2b;
+  text-shadow: 0 0 10px #A9A9A9;
   letter-spacing: 2px;
   padding: 10px;
   border-radius: 20px;
@@ -116,11 +120,8 @@ const ImageContentMobile = styled.p`
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: linear;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0.8) 100%
-  );
+  background-color: rgba(black, 0.5); 
+  backdrop-filter: blur(1rem);
 
   @media (max-width: 568px) {
     padding: 10px;
