@@ -9,6 +9,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import Paypal from "../payments/Paypal/PaypalProvider";
 import { useSession } from "next-auth/react";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import Page from "./Stripe/CheckoutForm"
 
 const Payment = () => {
   const [value, setValue] = useState("1");
@@ -47,18 +48,8 @@ const Payment = () => {
             </PayPalScriptProvider>
           </TabPanel>
           <TabPanel value="3">
-            <PayPalScriptProvider
-              options={{
-                clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID as string,
-                currency: "USD",
-              }}
-            >
-              <Paypal
-                email={session?.user?.email ?? undefined}
-                value="10.00"
-                currency="USD"
-              />
-            </PayPalScriptProvider>
+            <Page/>
+
           </TabPanel>
         </TabContext>
       </Box>

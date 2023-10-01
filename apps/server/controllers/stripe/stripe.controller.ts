@@ -11,14 +11,12 @@ export default async function handler(
 ) {
     if (req.method === 'POST') {
         try {
-      const params = {
+        const params: Stripe.Checkout.SessionCreateParams = {
         submit_type: 'pay',
         mode: 'payment',
         payment_method_types: ['card'],
         billing_address_collection: 'auto',
-        shipping_options: [
-          { },
-        ],
+        shipping_options: [{}],
         line_items: [{
           price_data: {
             currency: 'usd',
@@ -29,8 +27,16 @@ export default async function handler(
           },
           quantity: 1
         }],
-        success_url: `${req.headers.origin}/success`,
-        cancel_url: `${req.headers.origin}/canceled`,
+        // success_url: `${req.headers.origin}/success`,
+        // cancel_url: `${req.headers.origin}/canceled`,
+        success_url: `https://abcn.com/success`,
+        cancel_url: `https://abcn.com/canceled`,
+        // subscription_data: {
+        //   metadata: {
+        //     // so that we can manually check in Stripe for whether a customer has an active subscription later, or if our webhook integration breaks.
+        //     payingUserId: session.user.id,
+        //   },
+        // },
       }
 
       // Create Checkout Sessions from body params.
