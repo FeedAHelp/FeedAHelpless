@@ -77,6 +77,10 @@ const activeItemBorder = styled.div`
 `;
 
 const LogoImage = styled(Image)`
+  background-color: rgba(255, 255, 255, 0.2); 
+  backdrop-filter: blur(1rem); 
+  padding: .5rem; 
+  border-radius: .5rem; 
   @media (max-width: 568px) {
     width: 30%;
   }
