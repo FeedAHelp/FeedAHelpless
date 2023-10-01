@@ -3,32 +3,25 @@ import { DeshiShareIcon, BoxShadow } from "../DeshiMenus.styled";
 import { baseTheme } from "~/ui/components/foundations/theming/theming";
 
 const DonateHover = () => `
-  &:hover ${SliderRange} {
-    width: 80%;
-    transition: transform 0.5s;
-  }
-
-  &:hover ${SliderOutput} {
+  &:hover ${RangeBox} {
     opacity: 1;
     transition: transform 0.5s;
+    transition-delay: 0.5ms;
   }
 
   &:hover ${DonateAmount} {
-    left: 8.75rem;
+    left: 0;
+    padding-bottom: 25px;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
 
   &:hover ${DonateButton} {
     right: 0;
     transform: scale(1);
-  }
-
-  &:hover ${QtyInput} {
-    margin: 0;
   }
 `;
 
@@ -73,12 +66,12 @@ const DonateAmount = styled.div`
   display: block;
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 110%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  font-size: 1rem;
+  font-size: 2rem;
   color: ${baseTheme.colors.primary.blue};
 `;
 
@@ -96,31 +89,6 @@ const DonateButton = styled.span`
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   transform: scale(0);
-`;
-
-const QtyInput = styled.div`
-  position: relative;
-  color: ${baseTheme.colors.primary.blue};
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  margin: 3.125rem;
-`;
-
-const Slider = styled.div``;
-const SliderOutput = styled.div`
-  font-size: 0.625rem;
-  opacity: 0;
-`;
-
-const SliderRange = styled.input`
-  -webkit-appearance: none;
-  appearance: none;
-  width: 0%;
-  background: ${baseTheme.colors.primary.blue};
-  outline: none;
-  border-radius: 1.25rem;
-  cursor: pointer;
 `;
 
 const ElWrapper = styled.div`
@@ -141,6 +109,61 @@ const DonateButtonIcon = styled.div`
   ${BoxShadow}
 `;
 
+const RangeBox = styled.div`
+  top: 80%;
+  height: 20px;
+  width: 200px;
+  margin-top: -13px;
+  -webkit-box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  position: absolute;
+  background: #27ae60;
+  display: flex;
+  opacity: 0;
+`;
+
+const RangeInput = styled.input`
+  position: relative;
+  outline: none;
+  margin: 7px 0px;
+  width: 50%;
+  color: #fff;
+  left: 50%;
+  margin-left: -47.5%;
+  background: #e74c3c;
+  text-align: center;
+  background: #2ecc71;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-appearance: none;
+  border-radius: 25px;
+
+  &:before {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-item: center;
+    font-size: 20px;
+    position: absolute;
+    left: 120%;
+    top: -200%;
+    content: attr(value);
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    background: #ecf0f1;
+    position: relative;
+    z-index: 3;
+    cursor: pointer;
+  }
+`;
+
 export const Styled = {
   DeshiShareIcon,
   DeshiGrid,
@@ -149,9 +172,7 @@ export const Styled = {
   Cart,
   DonateAmount,
   DonateButton,
-  QtyInput,
   DonateButtonIcon,
-  Slider,
-  SliderOutput,
-  SliderRange,
+  RangeBox,
+  RangeInput,
 };
