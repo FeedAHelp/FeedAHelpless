@@ -9,7 +9,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import Paypal from "../payments/Paypal/PaypalProvider";
 import { useSession } from "next-auth/react";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-import Page from "./Stripe/CheckoutForm"
+import StripScriptProvider from "./Stripe/CheckoutForm";
 
 const Payment = () => {
   const [value, setValue] = useState("1");
@@ -48,8 +48,7 @@ const Payment = () => {
             </PayPalScriptProvider>
           </TabPanel>
           <TabPanel value="3">
-            <Page/>
-
+            <StripScriptProvider />
           </TabPanel>
         </TabContext>
       </Box>

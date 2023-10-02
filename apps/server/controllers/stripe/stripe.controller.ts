@@ -2,13 +2,11 @@ import Stripe from 'stripe'
 import { Request, Response } from 'express'
 import { paypalCreateSchema, paypalCreateType } from '../../schema/paypal.schema'
 import { prisma } from '../../utils/prismaInstance'
-import client from '../lib/prisma'
 import stripe from './stripeInstance'
 
 export default async function handler(req: Request<{}, {}, paypalCreateType>, res: Response) {
   const { value, currency, email = 'No Email' } = req.body
   paypalCreateSchema.parse(req.body)
-
 
   if (req.method === 'POST') {
     try {
@@ -30,8 +28,8 @@ export default async function handler(req: Request<{}, {}, paypalCreateType>, re
             quantity: 1
           }
         ],
-        success_url: `http://localhost:3010/`,
-        cancel_url: `http://localhost:3010/canceled`
+        success_url: process.env.FRONT_END_URL,
+        cancel_url: `${process.env.FRONT_END_URL}/canceled`
       }
 
       const session = await stripe.checkout.sessions.create(params)
@@ -42,7 +40,7 @@ export default async function handler(req: Request<{}, {}, paypalCreateType>, re
             orderID: session.id,
             status: 'PENDING',
             email: email,
-            channel: "stripe"
+            channel: 'stripe'
           }
         })
         res.status(200).json(session)
