@@ -35,6 +35,7 @@ export default async function create(
       orderID: response.result.id,
       status: 'PENDING',
       email: email,
+      channel: "paypal"
     },
   })
   res.json({ orderID: response.result.id })

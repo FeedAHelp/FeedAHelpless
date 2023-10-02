@@ -5,4 +5,7 @@ export const endPoints = {
     sendEmail: "/auth/sendEmail",
     resetPassword: "/auth/resetPassword",
   },
+  stripe: {
+    create: '/stripe/create'
+  },
 };

@@ -157,4 +157,5 @@ model Payment {
         email   String
         orderID String
         status  String
+        channel String
 }
