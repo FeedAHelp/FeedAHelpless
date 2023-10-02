@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import getStripe from "./GetStripe";
-import axios from "axios";
+import { apiSetup } from "~/utils/api/api";
 import { useSession } from "next-auth/react";
 import { endPoints } from "~/utils/api/route";
 
@@ -11,10 +11,10 @@ export default function StripScriptProvider() {
   const email= session?.user?.email ?? undefined
   const handleCreateCheckoutSession = async () => {
     try {
-      const response = await axios.post(
+      const api = await apiSetup();
+      const response = await api.post(
         endPoints.stripe.create, {value, email, currency: 'usd'}
       );
-      console.log(response.data);
       const checkoutSession = response.data;
       const stripe = await getStripe();
 
