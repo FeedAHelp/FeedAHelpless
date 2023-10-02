@@ -7,9 +7,14 @@ export default async function handler(req: Request, res: Response) {
   let event: Stripe.Event;
 
   try {
+    const requestBody = req.body;
+    const stripeSignatureHeader = req.headers['stripe-signature'];
+    if (typeof stripeSignatureHeader !== 'string') {
+      throw new Error('Stripe signature header is missing or not a string');
+    }
     event = stripe.webhooks.constructEvent(
-      await (await req.blob()).text(),
-      req.headers.get('stripe-signature') as string,
+      JSON.stringify(requestBody),
+      stripeSignatureHeader,
       process.env.STRIPE_WEBHOOK_SECRET as string
     );
   } catch (err) {
