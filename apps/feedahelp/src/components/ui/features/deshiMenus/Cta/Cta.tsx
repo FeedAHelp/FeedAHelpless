@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Styled } from "./Cta.styled";
-import { PatternFormat } from "react-number-format";
 import CurrencyFormat from "react-currency-format";
 
 type CtaProps = {
