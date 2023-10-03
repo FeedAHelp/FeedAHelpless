@@ -67,7 +67,10 @@ const DeshiMenus = () => {
                         {/* MAIN CONTENT */}
                         <MainContent mainContents={_deshiMenu.mainContents} />
                         {/* CTA */}
-                        <CTA />
+                        <CTA
+                          menuNameId={_deshiMenu._id}
+                          menuPrice={_deshiMenu.pricePerPerson}
+                        />
                       </Styled.Body>
                     </Styled.Container>
                   );
