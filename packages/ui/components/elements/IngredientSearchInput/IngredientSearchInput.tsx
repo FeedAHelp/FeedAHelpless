@@ -21,8 +21,7 @@ const IngredientSearchInput = ({ id, imgSrc, imgAlt, searchIngredient }: Ingredi
   const [searchTerm, setSearchTerm] = useState<string>('')
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    let value = event?.target?.value
-    if (!value) value = ''
+    let value = event?.target?.value || ''
     setSearchTerm(value)
   }
   useEffect(() => {
