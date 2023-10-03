@@ -9,7 +9,8 @@ interface Ingredient {
 
 class IngredientModel {
   async allIngredients(): Promise<Ingredient[]> {
-    return await prisma.ingredient.findMany()
+    const ingredients = await prisma.ingredient.findMany()
+    return ingredients.map(({ id, name, imageName }) => ({ id, name, imageName }))
   }
 
   async exists(id: string): Promise<boolean> {
@@ -28,10 +29,12 @@ class IngredientModel {
         }
       })
 
+      const { id, name, imageName } = createdIngredient
+
       return {
-        id: createdIngredient.id,
-        name: createdIngredient.name,
-        imageName: createdIngredient.imageName
+        id,
+        name,
+        imageName
       }
     } catch (error) {
       console.error(error)
@@ -46,10 +49,12 @@ class IngredientModel {
 
     if (!ingredient) return null
 
+    const { name, imageName } = ingredient
+
     return {
       id: ingredient.id,
-      name: ingredient.name,
-      imageName: ingredient.imageName
+      name,
+      imageName
     }
   }
 
@@ -65,10 +70,12 @@ class IngredientModel {
 
       if (!updatedIngredient) return null
 
+      const { name, imageName } = updatedIngredient
+
       return {
         id: updatedIngredient.id,
-        name: updatedIngredient.name,
-        imageName: updatedIngredient.imageName
+        name,
+        imageName
       }
     } catch (error) {
       console.error(error)
