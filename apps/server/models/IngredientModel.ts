@@ -88,16 +88,6 @@ class IngredientModel {
       return false
     }
   }
-
-  async getAll(): Promise<Ingredient[]> {
-    const ingredients = await prisma.ingredient.findMany()
-
-    return ingredients.map((ingredient) => ({
-      id: ingredient.id,
-      name: ingredient.name,
-      imageName: ingredient.imageName
-    }))
-  }
 }
 
 export default IngredientModel
