@@ -191,7 +191,7 @@ const Hero = () => {
                     src={urlForThumbnail(item.image)}
                     alt="hero-image"
                   />
-                  <div className="absolute top-1 z-12">
+                  <div className="absolute top-0 z-12">
                     <Styled.LogoImage
                       src={"/static/images/feedahelp/logo.png"}
                       alt="logo"
