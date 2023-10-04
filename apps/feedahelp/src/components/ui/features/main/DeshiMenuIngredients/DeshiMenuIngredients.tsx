@@ -4,7 +4,7 @@ import DeshiMenu from "../../deshiMenus/DeshiMenus";
 import { Styled } from "./DeshiMenuIngredients.styled";
 
 const DeshiMenuIngredients = () => {
-    const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
 
     const separator = e.currentTarget;
@@ -21,8 +21,8 @@ const DeshiMenuIngredients = () => {
     const onMouseMove = (e: MouseEvent) => {
       const delta = e.clientX - md.e.clientX;
       const newFirstWidth = Math.min(
-        Math.max(md.firstWidth + delta, 10),
-        md.firstWidth + md.secondWidth - 10
+        Math.max(md.firstWidth + delta, 300),
+        md.firstWidth + md.secondWidth - 400
       );
 
       separator.style.left = md.offsetLeft + delta + "px";
@@ -45,7 +45,10 @@ const DeshiMenuIngredients = () => {
       <Styled.First>
         <Ingredients />
       </Styled.First>
-      <Styled.Separator onMouseDown={onMouseDown}></Styled.Separator>
+      <Styled.Separator onMouseDown={onMouseDown}>
+        <Styled.IngredientSelected>Selected?</Styled.IngredientSelected>
+        <Styled.IngredientCount>0</Styled.IngredientCount>
+      </Styled.Separator>
       <Styled.Second>
         <DeshiMenu />
       </Styled.Second>

@@ -9,6 +9,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import Paypal from "../payments/Paypal/PaypalProvider";
 import { useSession } from "next-auth/react";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import StripScriptProvider from "./Stripe/CheckoutForm";
 
 const Payment = () => {
   const [value, setValue] = useState("1");
@@ -26,6 +27,7 @@ const Payment = () => {
             <TabList onChange={handleChange} aria-label="feedahelp-tab">
               <Tab label="Credit Card" value="1" />
               <Tab label="Paypal" value="2" />
+              <Tab label="Stripe" value="3" />
             </TabList>
           </Box>
           <TabPanel value="1" sx={{ padding: 1 }}>
@@ -44,6 +46,9 @@ const Payment = () => {
                 currency="USD"
               />
             </PayPalScriptProvider>
+          </TabPanel>
+          <TabPanel value="3">
+            <StripScriptProvider />
           </TabPanel>
         </TabContext>
       </Box>

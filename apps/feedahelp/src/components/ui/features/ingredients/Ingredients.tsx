@@ -6,6 +6,7 @@ import IngredientCheckbox from "~/ui/components/elements/IngredientCheckbox/Ingr
 import IngredientSearchInput from "~/ui/components/elements/IngredientSearchInput/IngredientSearchInput";
 import { getMethod } from "~/utils/api/getMethod";
 import FuzzySearch from "fuzzy-search";
+import { Styled } from "./Ingredients.styled";
 
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState<any[]>([]);
@@ -50,9 +51,9 @@ const Ingredients = () => {
             </div>
           </StickyBox>
           <div className="pt-10">
-            <div className="grid grid-cols-3 gap-5">
+            <Styled.IngGrid>
               {searchedIngredients.map((ingredient) => (
-                <div
+                <Styled.IngGridItem
                   key={ingredient.id}
                   className="relative flex cursor-pointer justify-center rounded-full"
                 >
@@ -63,9 +64,9 @@ const Ingredients = () => {
                     imgSrc=""
                     imgAlt={ingredient.name}
                   />
-                </div>
+                </Styled.IngGridItem>
               ))}
-            </div>
+            </Styled.IngGrid>
           </div>
         </div>
       </div>

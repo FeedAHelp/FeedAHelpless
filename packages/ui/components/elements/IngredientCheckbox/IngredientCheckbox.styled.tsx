@@ -18,7 +18,7 @@ const CheckboxInput = styled.input`
     left: 0;
     right: 0;
     bottom: 0;
-    font-size: 3.125rem;
+    font-size: 1.125rem;
     color: ${({ theme }) => theme.colors.primary.green};
     content: '\\2714';
     line-height: 1;

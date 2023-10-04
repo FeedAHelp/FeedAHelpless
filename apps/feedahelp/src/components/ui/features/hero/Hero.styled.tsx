@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { css, keyframes } from "@emotion/react";
+import { keyframes } from "@emotion/react";
 import Image from "next/image";
 
 interface liListsType {
@@ -77,9 +77,11 @@ const activeItemBorder = styled.div`
 `;
 
 const LogoImage = styled(Image)`
-  @media (max-width: 568px) {
-    width: 30%;
-  }
+  position: absolute;
+  backdrop-filter: blur(0.8rem); 
+  border-radius: .3rem; 
+  padding: .3rem;
+  z-index: 12;
 `;
 
 const texcol = "#fff";
@@ -107,7 +109,7 @@ const ImageContentMobile = styled.p`
   font-size: 1vw;
   margin: 0;
   color: transparent;
-  text-shadow: 0 0 10px #d94c2b;
+  text-shadow: 0 0 10px #A9A9A9;
   letter-spacing: 2px;
   padding: 10px;
   border-radius: 20px;
@@ -116,11 +118,8 @@ const ImageContentMobile = styled.p`
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: linear;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0.8) 100%
-  );
+  background-color: rgba(black, 0.5); 
+  backdrop-filter: blur(1rem);
 
   @media (max-width: 568px) {
     padding: 10px;

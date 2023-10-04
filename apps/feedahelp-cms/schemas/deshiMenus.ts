@@ -49,6 +49,12 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'pricePerPerson',
+      title: 'Price Per Person ($)',
+      type: 'number',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'rating',
       title: 'Rating',
       type: 'string',

@@ -21,12 +21,12 @@
 
 .customScrollBar::-webkit-scrollbar-thumb {
   border-radius: 0.625rem;
- background-color:rgba(250, 121, 46, 0.686); 
+ background-color:rgba(250, 121, 46, 0.686);
 }
 
 .customScrollBar::-webkit-scrollbar-thumb:hover {
   border-radius: 0.625rem;
- background-color:rgb(250, 121, 46); 
+ background-color:rgb(250, 121, 46);
 }
 
 

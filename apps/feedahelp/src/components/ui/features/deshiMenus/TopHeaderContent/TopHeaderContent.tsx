@@ -35,7 +35,10 @@ const TopHeaderContent = ({
   return (
     <Styled.Header>
       <Styled.Heading>
-        <Styled.Logo src={urlForThumbnail(images.asset._ref)} alt={menuName} />
+        <Styled.deshiMenuImage
+          src={urlForThumbnail(images.asset._ref)}
+          alt={menuName}
+        />
         <Styled.Title>{menuName}</Styled.Title>
         <Styled.BackgroundImage
           src={urlForThumbnail(imageIngredient.asset._ref)}
