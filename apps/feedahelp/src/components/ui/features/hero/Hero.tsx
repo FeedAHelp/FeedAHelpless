@@ -191,14 +191,13 @@ const Hero = () => {
                     src={urlForThumbnail(item.image)}
                     alt="hero-image"
                   />
-                  <div className="absolute top-0 z-12">
+                  <div className="absolute top-0">
                     <Styled.LogoImage
-                      src={"/static/images/feedahelp/FeedAhelp1.png"}
+                      src={"/static/images/feedahelp/logo.png"}
                       alt="logo"
-                      width={200}
-                      height={100}
+                      width={150}
+                      height={50}
                       priority={true}
-                      className="w-auto h-auto"
                     />
                     <Styled.ImageContentMobile>
                       {t(item.title)}

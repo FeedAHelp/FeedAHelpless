@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { css, keyframes } from "@emotion/react";
+import { keyframes } from "@emotion/react";
 import Image from "next/image";
 
 interface liListsType {
@@ -77,13 +77,11 @@ const activeItemBorder = styled.div`
 `;
 
 const LogoImage = styled(Image)`
-  background-color: rgba(255, 255, 255, 0.2); 
-  backdrop-filter: blur(1rem); 
+  position: absolute;
+  backdrop-filter: blur(0.8rem); 
   border-radius: .3rem; 
-  padding: .5rem;
-  @media (max-width: 568px) {
-    width: 30%;
-  }
+  padding: .3rem;
+  z-index: 12;
 `;
 
 const texcol = "#fff";
