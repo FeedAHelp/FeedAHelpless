@@ -43,18 +43,23 @@ class IngredientModel {
   }
 
   async read(id: string): Promise<Ingredient | null> {
-    const ingredient = await prisma.ingredient.findUnique({
-      where: { id }
-    })
+    try {
+      const ingredient = await prisma.ingredient.findUnique({
+        where: { id }
+      })
 
-    if (!ingredient) return null
+      if (!ingredient) return null
 
-    const { name, imageName } = ingredient
+      const { name, imageName } = ingredient
 
-    return {
-      id: ingredient.id,
-      name,
-      imageName
+      return {
+        id: ingredient.id,
+        name,
+        imageName
+      }
+    } catch (error) {
+      console.error(error)
+      return null
     }
   }
 
