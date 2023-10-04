@@ -80,8 +80,7 @@ const LogoImage = styled(Image)`
   background-color: rgba(255, 255, 255, 0.2); 
   backdrop-filter: blur(1rem); 
   border-radius: .3rem; 
-  padding-left: .5rem;
-  padding-right: .5rem;
+  padding: .5rem;
   @media (max-width: 568px) {
     width: 30%;
   }

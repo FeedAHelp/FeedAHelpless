@@ -193,7 +193,7 @@ const Hero = () => {
                   />
                   <div className="absolute top-0 z-12">
                     <Styled.LogoImage
-                      src={"/static/images/feedahelp/FeedAhelp.png"}
+                      src={"/static/images/feedahelp/FeedAhelp1.png"}
                       alt="logo"
                       width={200}
                       height={100}
