@@ -10,11 +10,12 @@ import { Grid } from "@mui/material";
 import FooterDown from "./footerDown";
 import Data from "./footerData";
 import GenericLink from "~/ui/components/elements/GenericLink/GenericLink";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "~/ui/components/elements/Modal/GenericModal";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import Payment from "../payments/Payment";
+import CustomLoader from './../../../../../../../packages/ui/components/elements/GenericLoader/CustomLoader'
 
 interface FromData {
   email: string;
@@ -26,6 +27,7 @@ const schema: ZodType<FromData> = z.object({
 
 export const Footer = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { t } = useTranslation("footer");
   const closeModal = (): void => {
     setModalOpen(false);
@@ -70,12 +72,19 @@ export const Footer = () => {
             <Styled.FooterButton
               onClick={() => {
                 setModalOpen(true);
-              }}
+                setIsLoading(true);
+                setTimeout(() => {
+                    setIsLoading(false);
+                  }, 5000);
+                  }}
               type="button"
             >
               <Modal isOpen={modalOpen} closeModal={closeModal}>
                 <div className="payment-modal-dimention">
-                  <Payment />
+                  <CustomLoader isLoading={isLoading}>
+                      <Payment />
+                  </CustomLoader>
+
                 </div>
               </Modal>
             </Styled.FooterButton>
