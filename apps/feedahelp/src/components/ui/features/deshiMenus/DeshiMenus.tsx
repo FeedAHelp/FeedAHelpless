@@ -7,6 +7,8 @@ import ExtraInformation from "./ExtraInformation/ExtraInformation";
 import MainContent from "./MainContent/MainContent";
 import CTA from "./Cta/Cta";
 import { fetchDeshiMenus } from "~/utils/cms/fetchDeshiMenus";
+import Modal from "~/ui/components/elements/Modal/GenericModal";
+import Payment from "../payments/Payment";
 
 type DeshiMenuProps = {
   englishName: string;
@@ -23,6 +25,15 @@ type DeshiMenuProps = {
 
 const DeshiMenus = () => {
   const [DeshiMenus, setDeshiMenus] = useState<DeshiMenuProps[]>([]);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const closeModal = (): void => {
+    setModalOpen(false);
+  };
+
+  const openModal = (): void => {
+    setModalOpen(true);
+  };
 
   const getDeshiMenus = async () => {
     try {
@@ -69,7 +80,9 @@ const DeshiMenus = () => {
                         {/* CTA */}
                         <CTA
                           menuNameId={_deshiMenu._id}
-                          menuPrice={_deshiMenu.pricePerPerson}
+                                  menuPrice={_deshiMenu.pricePerPerson}
+                                  openModal={openModal}
+                                  closeModal={closeModal}
                         />
                       </Styled.Body>
                     </Styled.Container>
@@ -77,6 +90,11 @@ const DeshiMenus = () => {
                 }
               })}
             </Styled.DeshiGrid>
+            <Modal isOpen={modalOpen} closeModal={closeModal}>
+              <div className="payment-modal-dimention">
+                <Payment />
+              </div>
+            </Modal>
           </>
         </div>
       </div>

@@ -59,7 +59,7 @@ const DeshiGrid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(15.625rem, 21.875rem));
   grid-gap: 0.9375rem;
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
 `;
 
 export const Styled = {

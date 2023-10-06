@@ -7,13 +7,14 @@ import Payment from "../../payments/Payment";
 type CtaProps = {
   menuNameId: string;
   menuPrice: number;
+  openModal: void;
+  closeModal: void;
 };
 
-const Cta = ({ menuNameId, menuPrice }: CtaProps) => {
+const Cta = ({ menuNameId, menuPrice, openModal, closeModal }: CtaProps) => {
   const [rangeQty, setRangeQty] = useState<number>(0);
   const [donateAmount, setDonateAmount] = useState<number>(0);
   const rangeInputRef = useRef<HTMLInputElement | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     const rangeInput = rangeInputRef.current;
@@ -31,10 +32,6 @@ const Cta = ({ menuNameId, menuPrice }: CtaProps) => {
       rangeInput?.removeEventListener("input", rangeChange);
     };
   }, []);
-
-  const closeModal = (): void => {
-    setModalOpen(false);
-  };
 
   return (
     <Styled.ElWrapper>
@@ -60,11 +57,7 @@ const Cta = ({ menuNameId, menuPrice }: CtaProps) => {
         </Styled.Cart>
       </Styled.BoxDown>
       <Styled.DonateButton>
-        <Styled.DonateButtonIcon
-          onClick={() => {
-            setModalOpen(true);
-          }}
-        >
+        <Styled.DonateButtonIcon onClick={openModal}>
           <Styled.DeshiShareIcon
             src="https://cdn.sanity.io/images/s98tqz9i/production/caf473f4c94fbb175ba834421beb4ef363bc142d-3144x3026.png"
             width={30}
@@ -74,11 +67,6 @@ const Cta = ({ menuNameId, menuPrice }: CtaProps) => {
           />
         </Styled.DonateButtonIcon>
       </Styled.DonateButton>
-      <Modal isOpen={modalOpen} closeModal={closeModal}>
-        <div className="payment-modal-dimention">
-          <Payment />
-        </div>
-      </Modal>
     </Styled.ElWrapper>
   );
 };
