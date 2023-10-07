@@ -8,6 +8,11 @@ export default defineType({
   icon: LemonIcon,
   fields: [
     defineField({
+      name: 'imgName',
+      title: 'Image Name',
+      type: 'string',
+    }),
+    defineField({
       name: 'contentName',
       title: 'Centent Name',
       type: 'string',

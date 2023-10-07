@@ -21,8 +21,8 @@ const DeshiMenuIngredients = () => {
     const onMouseMove = (e: MouseEvent) => {
       const delta = e.clientX - md.e.clientX;
       const newFirstWidth = Math.min(
-        Math.max(md.firstWidth + delta, 300),
-        md.firstWidth + md.secondWidth - 400
+        Math.max(md.firstWidth + delta, 400),
+        md.firstWidth + md.secondWidth - 500
       );
 
       separator.style.left = md.offsetLeft + delta + "px";
