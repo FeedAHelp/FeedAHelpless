@@ -29,7 +29,6 @@
  background-color:rgb(250, 121, 46);
 }
 
-
 @import url("imageCarousal.css");
 
 @layer components{
@@ -43,7 +42,7 @@
         @apply md:mt-16 inline md:py-10 font-semibold text-neutral-400 md:w-96 md:ps-14 text-base md:text-left sm:text-2xl md:text-4xl lg:text-5xl
     }
     .carousal-with-logo{
-        @apply gap-8 bg-[#F3AF9A] text-black md:flex md:w-80 md:flex-shrink-0 md:flex-col md:items-center md:justify-center rounded-e-full md:rounded-none
+        @apply gap-2 md:flex md:w-80 md:flex-shrink-0 md:flex-col md:items-center md:justify-center
     }
     .donate-btn{
         @apply h-10 mt-5 rounded-md transition-colors duration-300 bg-gradient-to-r from-[#ec0404] to-[#ed6002] hover:from-green-700 hover:to-green-600 px-4 text-white

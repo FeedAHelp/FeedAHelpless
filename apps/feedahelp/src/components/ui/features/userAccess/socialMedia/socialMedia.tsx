@@ -13,10 +13,9 @@ const SocialMedia = () => {
   };
 
   return (
-    <div className="grid grid-cols-3 gap-2">
+    <Styled.AutoGridUl>
       {SocialMedias.map((item, index) => (
-        <div
-          className="flex cursor-pointer items-center justify-center"
+        <Styled.AutoGridLi
           key={index}
           onClick={(e) =>
             !item.disabled ? handleSignIn(e, item.provider) : null
@@ -24,15 +23,15 @@ const SocialMedia = () => {
         >
           <Styled.SocialIcon
             src={item.imgSrc}
-            width={40}
-            height={40}
+            width={100}
+            height={100}
             alt={item.alt}
             className="h-full object-cover"
             disbaleImage={item.disabled}
           />
-        </div>
+        </Styled.AutoGridLi>
       ))}
-    </div>
+    </Styled.AutoGridUl>
   );
 };
 
