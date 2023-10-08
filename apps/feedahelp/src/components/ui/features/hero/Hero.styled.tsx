@@ -18,21 +18,11 @@ const ulLists = styled.ul`
 const liLists = styled.li<liListsType>`
   position: relative;
   display: flex;
-  place-content: center;
   overflow: hidden;
-  font-size: 2vmin;
-  color: rgba(0, 0, 0, 0);
   transition: color 0.25 ease, text-shadow 0.25 ease;
   transition-delay: 0.25s;
   cursor: pointer;
-  padding: 0.1rem;
-
-  color: ${(props) => (props.isActive ? "white" : "")};
   border-radius: 0.625rem;
-  text-shadow: ${(props) =>
-    props.isActive
-      ? "0.063rem 0.063rem 0.313rem black, 0rem 0rem 0.125rem black"
-      : ""};
 `;
 
 const SideImages = styled(Image)`
@@ -40,7 +30,6 @@ const SideImages = styled(Image)`
   left: 0;
   top: 0;
   width: 100%;
-  object-fit: cover;
   z-index: -1;
   filter: grayscale(1) blur(0.125rem) brightness(0.3);
   -webkit-transition: -webkit-filter 500ms ease;
@@ -50,7 +39,8 @@ const SideImages = styled(Image)`
 
 const displayContainer = styled.div`
   position: relative;
-  height: 70vh;
+  height: 50vh;
+  width: 100%;
   grid-row: 2/-2 !important;
   grid-column: 2/-2 !important;
   overflow: hidden;
@@ -68,6 +58,10 @@ const converImage = styled.img`
   object-fit: cover;
   position: relative;
   animation: fadeIn 0.7s ease-in-out;
+
+  @media (min-width: 768px) {
+    top: -200px;
+  }
 `;
 
 const activeItemBorder = styled.div`
@@ -78,10 +72,14 @@ const activeItemBorder = styled.div`
 
 const LogoImage = styled(Image)`
   position: absolute;
-  backdrop-filter: blur(0.8rem); 
-  border-radius: .3rem; 
-  padding: .3rem;
+  backdrop-filter: blur(0.8rem);
+  border-radius: 0.3rem;
+  padding: 0.3rem;
   z-index: 12;
+
+  @media (max-width: 568px) {
+    width: 40%;
+  }
 `;
 
 const texcol = "#fff";
@@ -104,22 +102,23 @@ const focus = keyframes`
 const ImageContentMobile = styled.p`
   position: relative;
   display: flex;
-  bottom: -400px;
+  bottom: -350px;
   font-family: "Raleway", sans-serif;
   font-size: 1vw;
   margin: 0;
   color: transparent;
-  text-shadow: 0 0 10px #A9A9A9;
+  text-shadow: 0 0 10px #a9a9a9;
   letter-spacing: 2px;
-  padding: 10px;
   border-radius: 20px;
   animation-name: ${focus};
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: linear;
-  background-color: rgba(black, 0.5); 
+  background-color: rgba(black, 0.5);
   backdrop-filter: blur(1rem);
+  padding: 10px;
+  margin: 20px;
 
   @media (max-width: 568px) {
     padding: 10px;
