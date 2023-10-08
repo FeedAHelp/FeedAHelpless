@@ -33,7 +33,6 @@ const CreditCard = () => {
     setCvvNumber(
       e.target.value.replace(/[^0-9.]/g, "").replace(/(\..*)\./g, "$1")
     );
-    console.log(cvvNumber);
   };
 
   const changeExpMonth = (e: any) => {
