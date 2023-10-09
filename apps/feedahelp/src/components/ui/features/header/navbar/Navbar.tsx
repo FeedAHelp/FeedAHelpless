@@ -10,10 +10,19 @@ import LoginRegister from "../../userAccess/LoginRegister";
 import { motion, AnimatePresence } from "framer-motion";
 import CurrencyDropDownMobile from "../CurrencyDropDown/CurrencyDropDownMobile";
 import LanguageSelectionsMobile from "../languageDropdown/languageSectionMobile";
+import Payment from "../../payments/Payment";
+import CustomLoader from "~/ui/components/elements/GenericLoader/CustomLoader"
+import { useTranslation } from "react-i18next";
 
 const NewNav = () => {
   const { data: session } = useSession();
   const [isSideBar, setIsSideBar] = useState(false);
+  const [modalOpen1, setModalOpen1] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const { t } = useTranslation("footer");
+  const closeModal1 = (): void => {
+    setModalOpen1(false);
+  };
 
   const ref = useRef(null);
 
@@ -38,7 +47,49 @@ const NewNav = () => {
 
   return (
     <Styled.Navbar>
-      <div className="nav-end">
+      <div className="nav-end pr-1 ">
+          <div>
+            {session?.user ? (
+            <Styled.DonateButton
+              onClick={() => {
+                setModalOpen1(true);
+                setIsLoading(true);
+                setTimeout(() => {
+                  setIsLoading(false);
+                }, 5000);
+              }}
+              type="button"
+            >
+              <Modal isOpen={modalOpen1} closeModal={closeModal1}>
+                <div className="payment-modal-dimention">
+                  <CustomLoader isLoading={isLoading}>
+                    <Payment />
+                  </CustomLoader>
+                </div>
+              </Modal>
+            </Styled.DonateButton>
+          ) : <Styled.DonateButton  className="hidden"/> }
+          </div>
+      <div className="hidden ms-5 md:block">
+        <LanguageSelections />
+      </div>
+      <div className="hidden mx-3 md:block">
+        <CurrencyDropDown />
+      </div>
+      <AnimatePresence>
+        {isSideBar && (
+          <motion.div
+            initial={{ x: -1000 }}
+            animate={{ x: 0 }}
+            exit={{ x: -1000 }}
+            transition={{ duration: 0.2, ease: "easeIn" }}
+            className="absolute left-0 top-[5rem] block h-screen w-full bg-[rgba(60,60,60,0.86)] md:hidden"
+          >
+            <LanguageSelectionsMobile />
+            <CurrencyDropDownMobile />
+          </motion.div>
+        )}
+      </AnimatePresence>
         <div className="right-container">
           {session?.user.image ? (
             <>
@@ -94,27 +145,6 @@ const NewNav = () => {
           </div>
         </Modal>
       </div>
-      <div className="hidden md:block">
-        <LanguageSelections />
-      </div>
-      <div className="hidden md:block">
-        <CurrencyDropDown />
-      </div>
-
-      <AnimatePresence>
-        {isSideBar && (
-          <motion.div
-            initial={{ x: -1000 }}
-            animate={{ x: 0 }}
-            exit={{ x: -1000 }}
-            transition={{ duration: 0.2, ease: "easeIn" }}
-            className="absolute left-0 top-[5rem] block h-screen w-full bg-[rgba(60,60,60,0.86)] md:hidden"
-          >
-            <LanguageSelectionsMobile />
-            <CurrencyDropDownMobile />
-          </motion.div>
-        )}
-      </AnimatePresence>
     </Styled.Navbar>
   );
 };
