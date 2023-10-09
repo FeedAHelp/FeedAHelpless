@@ -1,8 +1,5 @@
 import React from 'react'
 import { Styled } from './IngredientSearchInput.styled'
-import { search } from 'react-icons-kit/fa/search'
-import { Icon } from 'react-icons-kit'
-import { uuidv4 } from '../../utils/uuid'
 
 type IngredientSearchInputProps = {
   id: string
@@ -10,18 +7,24 @@ type IngredientSearchInputProps = {
   imgAlt?: string
 }
 
-const SearchIcon = () => (
-  <div className=''>
-    <Icon icon={search} size={24} />
-  </div>
-)
 const IngredientSearchInput = ({ id, imgSrc, imgAlt }: IngredientSearchInputProps) => {
-  // const id = `input-search-field-${uuidv4()}`
   return (
     <Styled.SearchBoxContainer>
       <Styled.SearchBox>
-        <label htmlFor={id}><Styled.SearchIcons /></label>
+        <label htmlFor={id}>
+          <Styled.SearchIcons />
+        </label>
         <Styled.SearchInput id={id} type='text' className='input-search' placeholder='Type to Search...' />
+        <Styled.SearchFilters>
+          <Styled.FilterContainer>
+            <Styled.Cboxtags>
+              <li>
+                <input type='checkbox' id='checkboxOne' value='Rainbow Dash' />
+                <label htmlFor='checkboxOne'>Rainbow Dash</label>
+              </li>
+            </Styled.Cboxtags>
+          </Styled.FilterContainer>
+        </Styled.SearchFilters>
       </Styled.SearchBox>
     </Styled.SearchBoxContainer>
   )
