@@ -361,7 +361,71 @@ const Navbar = styled.div`
   }
 `;
 
+const DonateButton = styled.button`
+  display:block;
+  height: 2.5rem;
+  width: 7.5rem;
+  border: none;
+  border-radius: 0.625rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  margin: 0rem auto;
+  padding: 0;
+
+  &:hover {
+    box-shadow: 0.0313rem 0.0313rem 9.375rem
+      ${({ theme }) => theme.colors.tertiary.lightBrown};
+  }
+
+  &::after {
+    content: "Donate Now";
+    height: 2.5rem;
+    width: 7.5rem;
+    background-color: ${({ theme }) => theme.colors.primary.green};
+    color: ${({ theme }) => theme.colors.tertiary.lightBrown};
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translateY(3.125rem);
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    border-radius: 0.625rem;
+  }
+
+  &::before {
+    content: "Donate";
+    height: 2.5rem;
+    width: 7.5rem;
+    background: ${({ theme }) => theme.colors.primary.blue};
+    color: ${({ theme }) => theme.colors.neutrals.full_white};
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translateY(0) scale(1.2);
+    font-size: 17px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-in-out;
+    border-radius: 0.625rem;
+  }
+
+  &:hover::after {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
+
 export const Styled = {
   Navbar,
   Avatar,
+  DonateButton,
 };
