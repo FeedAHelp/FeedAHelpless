@@ -9,47 +9,44 @@ import FuzzySearch from "fuzzy-search";
 import { Styled } from "./Ingredients.styled";
 
 const Ingredients = () => {
-  const [ingredientsCMS, setIngredientsCMS] = useState([]);
-
-
-  useEffect(() => {
-  const getIngredients = async () => {
-    try {
-      const socialData = await fetchIngredients();
-      console.log(socialData)
-      setIngredientsCMS(socialData);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-
-    getIngredients();
-  }, []);
-
+  const [ingredientsCMS, setIngredientsCMS] = useState<any[]>([]);
   const [ingredients, setIngredients] = useState<any[]>([]);
   const [searchedIngredients, setSearchedIngredients] = useState<any[]>([]);
-
-  const IN = searchedIngredients.length >0?searchedIngredients:ingredients
+  const IterableIngredients =
+    searchedIngredients.length > 0 ? searchedIngredients : ingredients;
 
   useEffect(() => {
-  const getIngredients = async () => {
-    try {
-      const { data } = await getMethod("ingredient/all", "");
-      setIngredients(data);
-      setSearchedIngredients(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-    getIngredients();
+    const getIngredientsCMS = async () => {
+      try {
+        const ingredientsData = await fetchIngredients();
+        setIngredientsCMS(ingredientsData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getIngredientsCMS();
   }, []);
 
+  useEffect(() => {
+    const getIngredientsDB = async () => {
+      try {
+        const { data } = await getMethod("ingredient/all", "");
+        setIngredients(data);
+        setSearchedIngredients(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getIngredientsDB();
+  }, []);
 
-  function name2Image(name) {
+  function name2Image(name: string) {
     const foundIngredient = ingredientsCMS.find((i) => i.englishName === name);
-    foundIngredient && console.log('Its the Ingredients:', urlForThumbnail(foundIngredient.image) )
+    foundIngredient &&
+      console.log(
+        "Its the Ingredients:",
+        urlForThumbnail(foundIngredient.image)
+      );
     return foundIngredient ? urlForThumbnail(foundIngredient.image) : "";
   }
 
@@ -57,9 +54,7 @@ const Ingredients = () => {
     const searcher = new FuzzySearch(ingredients, ["name"], {
       caseSensitive: false,
     });
-
     const searchResult = searcher.search(searchTerm);
-
     setSearchedIngredients(searchResult);
   }
 
@@ -79,16 +74,14 @@ const Ingredients = () => {
           </StickyBox>
           <div className="pt-10">
             <Styled.IngGrid>
-              {IN.map((ingredient) => (
+              {IterableIngredients.map((ingredient) => (
                 <Styled.IngGridItem
                   key={ingredient.id}
                   className="relative flex cursor-pointer justify-center rounded-full"
                 >
                   <IngredientCheckbox
                     id={ingredient.id}
-                    //todo: need to decide how to resolve this
-                    //imgSrc={urlForThumbnail(ingredient.imageName)}
-                    imgSrc= {name2Image(ingredient.name)}
+                    imgSrc={name2Image(ingredient.name)}
                     imgAlt={ingredient.name}
                   />
                 </Styled.IngGridItem>
