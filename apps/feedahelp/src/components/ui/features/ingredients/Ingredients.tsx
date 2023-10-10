@@ -47,9 +47,10 @@ const Ingredients = () => {
   }, []);
 
 
-  function name2Image({ name }) {
+  function name2Image(name) {
     const foundIngredient = ingredientsCMS.find((i) => i.englishName === name);
-    return foundIngredient ? foundIngredient.image : undefined;
+    foundIngredient && console.log('Its the Ingredients:', urlForThumbnail(foundIngredient.image) )
+    return foundIngredient ? urlForThumbnail(foundIngredient.image) : "";
   }
 
   function searchIngredient(searchTerm: string): void {
@@ -87,7 +88,7 @@ const Ingredients = () => {
                     id={ingredient.id}
                     //todo: need to decide how to resolve this
                     //imgSrc={urlForThumbnail(ingredient.imageName)}
-                    imgSrc= {name2Image(ingredient.name)?urlForThumbnail(name2Image(ingredient.name).image):""}
+                    imgSrc= {name2Image(ingredient.name)}
                     imgAlt={ingredient.name}
                   />
                 </Styled.IngGridItem>
