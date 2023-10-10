@@ -23,7 +23,7 @@ const SearchBox = styled.div`
 
 const SearchInput = styled.input`
   height: 3.125rem;
-  width: 3.125rem;
+  width: 18.125rem;
   border-style: none;
   padding: 0.625rem;
   font-size: 1.125rem;
@@ -68,14 +68,55 @@ const SearchIcons = styled(SearchIcon)`
 `
 
 const FilterContainer = styled.div`
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 13px;
-  background: white;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 8px 0px #999;
 `
 
-const Cboxtags = styled.ul`
-  list-style: none;
-  padding: 20px;
+const CustomCheckLabel = styled.label`
+  background-color: #ccc;
+  color: #fff;
+  padding: 5px 10px;
+  font-family: sans-serif;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 4px;
+  display: inline-block;
+  margin: 0 10px 10px 0;
+  backface-visibility: hidden;
+  transition: all 0.6s ease;
+`
+
+const CustomCheckInput = styled.input`
+  display: none;
+`
+
+CustomCheckInput.displayName = 'CustomCheckInput'
+
+const CustomCheckWrapper = styled.div`
+  position: relative;
+
+  & ${CustomCheckLabel} {
+    background-color: #ccc;
+    color: #fff;
+    padding: 5px 10px;
+    font-family: sans-serif;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    backface-visibility: hidden;
+    transition: all 0.6s ease;
+  }
+
+  & ${CustomCheckInput}:checked + ${CustomCheckLabel} {
+    background-color: #0a0;
+    backface-visibility: hidden;
+    transform: rotateY(360deg);
+  }
 `
 
 export const Styled = {
@@ -85,5 +126,7 @@ export const Styled = {
   SearchIcons,
   SearchFilters,
   FilterContainer,
-  Cboxtags
+  CustomCheckWrapper,
+  CustomCheckInput,
+  CustomCheckLabel
 }
