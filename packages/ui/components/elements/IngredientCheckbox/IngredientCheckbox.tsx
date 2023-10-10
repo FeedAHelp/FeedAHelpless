@@ -4,8 +4,8 @@ import Image from 'next/image'
 
 type IngredientCheckboxProps = {
   id: string
-  imgSrc: string
-  imgAlt: string
+  imgSrc?: string
+  imgAlt?: string
 }
 
 const IngredientCheckbox = ({ id, imgSrc, imgAlt }: IngredientCheckboxProps) => {
@@ -14,7 +14,7 @@ const IngredientCheckbox = ({ id, imgSrc, imgAlt }: IngredientCheckboxProps) => 
       <Styled.CheckboxInput type='checkbox' id={id} />
       <Styled.CheckboxLabel htmlFor={id}>
         <div style={{ width: '3rem', height: '3rem', position: 'relative' }}>
-          <Image src={imgSrc} alt={imgAlt} fill={true} />
+          <Image src={""} alt={imgAlt} fill={true} />
         </div>
       </Styled.CheckboxLabel>
     </div>

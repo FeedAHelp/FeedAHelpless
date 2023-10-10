@@ -9,9 +9,33 @@ import FuzzySearch from "fuzzy-search";
 import { Styled } from "./Ingredients.styled";
 
 const Ingredients = () => {
+  const [ingredientsCMS, setIngredientsCMS] = useState([]);
+
+
+  useEffect(() => {
+  const getIngredients = async () => {
+    try {
+      const socialData = await fetchIngredients();
+      console.log(socialData)
+      setIngredientsCMS(socialData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+    getIngredients();
+  }, []);
+
+
+
+
   const [ingredients, setIngredients] = useState<any[]>([]);
   const [searchedIngredients, setSearchedIngredients] = useState<any[]>([]);
 
+  const IN = searchedIngredients.length >0?searchedIngredients:ingredients
+
+  useEffect(() => {
   const getIngredients = async () => {
     try {
       const { data } = await getMethod("ingredient/all", "");
@@ -22,6 +46,9 @@ const Ingredients = () => {
     }
   };
 
+    getIngredients();
+  }, []);
+
   function searchIngredient(searchTerm: string): void {
     const searcher = new FuzzySearch(ingredients, ["name"], {
       caseSensitive: false,
@@ -31,10 +58,6 @@ const Ingredients = () => {
 
     setSearchedIngredients(searchResult);
   }
-
-  useEffect(() => {
-    getIngredients();
-  }, []);
 
   return (
     <div className="customScrollBar mb-2 h-[34rem] w-full overflow-auto">
@@ -52,7 +75,7 @@ const Ingredients = () => {
           </StickyBox>
           <div className="pt-10">
             <Styled.IngGrid>
-              {searchedIngredients.map((ingredient) => (
+              {IN.map((ingredient) => (
                 <Styled.IngGridItem
                   key={ingredient.id}
                   className="relative flex cursor-pointer justify-center rounded-full"

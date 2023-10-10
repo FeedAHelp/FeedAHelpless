@@ -95,6 +95,7 @@
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/eslint": "^8.37.0",
+    "@types/fuzzy-search": "^2.1.2",
     "@types/jest": "^29.5.2",
     "@types/node": "^18.16.0",
     "@types/prettier": "^2.7.2",
