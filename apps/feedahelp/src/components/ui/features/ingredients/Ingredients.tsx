@@ -27,9 +27,6 @@ const Ingredients = () => {
     getIngredients();
   }, []);
 
-
-
-
   const [ingredients, setIngredients] = useState<any[]>([]);
   const [searchedIngredients, setSearchedIngredients] = useState<any[]>([]);
 
@@ -48,6 +45,12 @@ const Ingredients = () => {
 
     getIngredients();
   }, []);
+
+
+  function name2Image({ name }) {
+    const foundIngredient = ingredientsCMS.find((i) => i.englishName === name);
+    return foundIngredient ? foundIngredient.image : undefined;
+  }
 
   function searchIngredient(searchTerm: string): void {
     const searcher = new FuzzySearch(ingredients, ["name"], {
@@ -84,7 +87,7 @@ const Ingredients = () => {
                     id={ingredient.id}
                     //todo: need to decide how to resolve this
                     //imgSrc={urlForThumbnail(ingredient.imageName)}
-                    imgSrc=""
+                    imgSrc= {name2Image(ingredient.name)?urlForThumbnail(name2Image(ingredient.name).image):""}
                     imgAlt={ingredient.name}
                   />
                 </Styled.IngGridItem>
