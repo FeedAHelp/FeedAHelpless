@@ -86,7 +86,7 @@ const Navbar = styled.div`
   justify-content: space-between;
   column-gap: 2rem;
   height: 5.625rem;
-  padding: 1.2rem 3rem;
+  padding: 1.2rem 1.4rem;
   width: 100%;
   @media (max-width: 68.75rem) {
     padding: 1.2rem;

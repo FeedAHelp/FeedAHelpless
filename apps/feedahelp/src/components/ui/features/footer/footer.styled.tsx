@@ -23,7 +23,7 @@ const FooterButton = styled.button`
   position: relative;
   overflow: hidden;
   transition: all 0.5s ease-in-out;
-  margin: 0rem auto;
+  margin-top: 1rem;
 
   &:hover {
     box-shadow: 0.0313rem 0.0313rem 9.375rem
