@@ -10,23 +10,24 @@ const SearchBoxContainer = styled.div`
   border-radius: 1.5625rem;
 `
 
-const SearchFilters = styled.div<{ isSearchOpen?: boolean; }>`
+const SearchFilters = styled.div<{ isSearchOpen?: boolean }>`
   position: absolute;
   opacity: 0;
   width: 100%;
   border-radius: 20px;
 
-  ${({ isSearchOpen }) => isSearchOpen && `
+  ${({ isSearchOpen }) =>
+    isSearchOpen &&
+    `
     opacity: 1;
   `}
-  
 `
 
 const SearchBox = styled.div`
   position: relative;
 `
 
-const SearchInput = styled.input<{ isSearchOpen?: boolean; }>`
+const SearchInput = styled.input<{ isSearchOpen?: boolean }>`
   height: 3.125rem;
   width: 3.125rem;
   border-style: none;
@@ -47,7 +48,9 @@ const SearchInput = styled.input<{ isSearchOpen?: boolean; }>`
     font-weight: 100;
   }
 
-  ${({ isSearchOpen }) => isSearchOpen && `
+  ${({ isSearchOpen }) =>
+    isSearchOpen &&
+    `
     width: 18.75rem;
     border-radius: 1rem;
     background-color: #ed6c37;
@@ -71,51 +74,54 @@ const SearchIcons = styled(SearchIcon)`
 const FilterContainer = styled.div`
   border: 1px solid #ccc;
   background-color: #fff;
-  padding: 5px;
-  border-radius: 4px;
+  padding: 10px;
+  border-radius: 20px;
   box-shadow: 2px 2px 8px 0px #999;
 `
 
 const CustomCheckLabel = styled.label`
-  background-color: #ccc;
-  color: #fff;
-  padding: 5px 10px;
-  font-family: sans-serif;
-  cursor: pointer;
-  user-select: none;
-  border-radius: 4px;
-  display: inline-block;
-  margin: 0 10px 10px 0;
-  backface-visibility: hidden;
-  transition: all 0.6s ease;
+  font-size: 0.8rem;
 `
-
 const CustomCheckInput = styled.input`
-  display: none;
+  appearance: none;
+  overflow: hidden;
+  min-width: 30px;
+  aspect-ratio: 1/1;
+  border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
+  border: 2px solid rgb(255, 102, 0);
+  position: relative;
+  transition: all 0.2s ease-in-out;
+
+  &::before {
+    position: absolute;
+    inset: 0;
+    content: '';
+    font-size: 35px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  &:checked {
+    border: 2px solid rgb(255, 212, 59);
+    background: linear-gradient(135deg, rgb(255, 212, 59) 0%, rgb(255, 102, 0) 100%);
+    box-shadow: -5px -5px 30px rgba(255, 212, 59, 1), 5px 5px 30px rgba(255, 102, 0, 1);
+  }
+
+  &:checked::before {
+    background: linear-gradient(135deg, rgb(255, 212, 59) 0%, rgb(255, 102, 0) 100%);
+  }
 `
 
 const CustomCheckWrapper = styled.div`
-  position: relative;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  padding: 15px;
+`
 
-  & ${CustomCheckLabel} {
-    background-color: #ccc;
-    color: #fff;
-    padding: 5px 10px;
-    font-family: sans-serif;
-    cursor: pointer;
-    user-select: none;
-    border-radius: 4px;
-    display: inline-block;
-    margin: 0 10px 10px 0;
-    backface-visibility: hidden;
-    transition: all 0.6s ease;
-  }
-
-  & ${CustomCheckInput}:checked + ${CustomCheckLabel} {
-    background-color: #0a0;
-    backface-visibility: hidden;
-    transform: rotateY(360deg);
-  }
+const CustomCheck = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
 `
 
 export const Styled = {
@@ -127,5 +133,6 @@ export const Styled = {
   FilterContainer,
   CustomCheckWrapper,
   CustomCheckInput,
-  CustomCheckLabel
+  CustomCheckLabel,
+  CustomCheck
 }
