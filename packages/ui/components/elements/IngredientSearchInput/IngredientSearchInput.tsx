@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Styled } from './IngredientSearchInput.styled'
 
 type IngredientSearchInputProps = {
@@ -8,49 +8,28 @@ type IngredientSearchInputProps = {
 }
 
 const IngredientSearchInput = ({ id, imgSrc, imgAlt }: IngredientSearchInputProps) => {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  console.log(isSearchOpen)
   return (
     <Styled.SearchBoxContainer>
       <Styled.SearchBox>
         <label htmlFor={id}>
           <Styled.SearchIcons />
         </label>
-        <Styled.SearchInput id={id} type='text' className='input-search' placeholder='Type to Search...' />
-        <Styled.SearchFilters>
+        <Styled.SearchInput 
+          isSearchOpen={isSearchOpen}
+          id={id} 
+          type='text' 
+          className='input-search' 
+          placeholder='Type to Search...' 
+          onClick={() => setIsSearchOpen(!isSearchOpen)} 
+        />
+        <Styled.SearchFilters isSearchOpen={isSearchOpen}>
           <Styled.FilterContainer>
-            {/* <Styled.Cboxtags>
-              <li>
-                <input type='checkbox' id='checkboxOne' value='Rainbow Dash' />
-                <label htmlFor='checkboxOne'>Rainbow Dash</label>
-              </li>
-            </Styled.Cboxtags> */}
             <Styled.CustomCheckWrapper>
-              <Styled.CustomCheckInput type='checkbox' className='cl-custom-check' />
-              <Styled.CustomCheckLabel htmlFor='cl-custom-check' className='cl-custom-check-label'>
-                Check me
-              </Styled.CustomCheckLabel>
-              <Styled.CustomCheckInput type='checkbox' className='cl-custom-check' />
-              <Styled.CustomCheckLabel htmlFor='cl-custom-check' className='cl-custom-check-label'>
-                Check me
-              </Styled.CustomCheckLabel>
-              <Styled.CustomCheckInput type='checkbox' className='cl-custom-check' />
-              <Styled.CustomCheckLabel htmlFor='cl-custom-check' className='cl-custom-check-label'>
-                Check me
-              </Styled.CustomCheckLabel>
-              <Styled.CustomCheckInput type='checkbox' className='cl-custom-check' />
-              <Styled.CustomCheckLabel htmlFor='cl-custom-check' className='cl-custom-check-label'>
-                Check me
-              </Styled.CustomCheckLabel>
-              <Styled.CustomCheckInput type='checkbox' className='cl-custom-check' />
-              <Styled.CustomCheckLabel htmlFor='cl-custom-check' className='cl-custom-check-label'>
-                Check me
-              </Styled.CustomCheckLabel>
-              <Styled.CustomCheckInput type='checkbox' className='cl-custom-check' />
-              <Styled.CustomCheckLabel htmlFor='cl-custom-check' className='cl-custom-check-label'>
-                Check me
-              </Styled.CustomCheckLabel>
-              <Styled.CustomCheckInput type='checkbox' className='cl-custom-check' />
-              <Styled.CustomCheckLabel htmlFor='cl-custom-check' className='cl-custom-check-label'>
-                Check me
+              <Styled.CustomCheckInput id="check_01" type='checkbox' />
+              <Styled.CustomCheckLabel htmlFor='check_01'>
+                Check
               </Styled.CustomCheckLabel>
             </Styled.CustomCheckWrapper>
           </Styled.FilterContainer>

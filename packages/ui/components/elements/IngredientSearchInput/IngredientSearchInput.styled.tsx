@@ -10,20 +10,25 @@ const SearchBoxContainer = styled.div`
   border-radius: 1.5625rem;
 `
 
-const SearchFilters = styled.div`
+const SearchFilters = styled.div<{ isSearchOpen?: boolean; }>`
   position: absolute;
   opacity: 0;
   width: 100%;
   border-radius: 20px;
+
+  ${({ isSearchOpen }) => isSearchOpen && `
+    opacity: 1;
+  `}
+  
 `
 
 const SearchBox = styled.div`
   position: relative;
 `
 
-const SearchInput = styled.input`
+const SearchInput = styled.input<{ isSearchOpen?: boolean; }>`
   height: 3.125rem;
-  width: 18.125rem;
+  width: 3.125rem;
   border-style: none;
   padding: 0.625rem;
   font-size: 1.125rem;
@@ -42,17 +47,13 @@ const SearchInput = styled.input`
     font-weight: 100;
   }
 
-  &:focus {
+  ${({ isSearchOpen }) => isSearchOpen && `
     width: 18.75rem;
     border-radius: 1rem;
     background-color: #ed6c37;
     border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.5);
     transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
-  }
-
-  &:focus ~ ${SearchFilters} {
-    opacity: 1;
-  }
+  `}
 
   &:focus-within {
     background: #444;
@@ -92,8 +93,6 @@ const CustomCheckLabel = styled.label`
 const CustomCheckInput = styled.input`
   display: none;
 `
-
-CustomCheckInput.displayName = 'CustomCheckInput'
 
 const CustomCheckWrapper = styled.div`
   position: relative;
