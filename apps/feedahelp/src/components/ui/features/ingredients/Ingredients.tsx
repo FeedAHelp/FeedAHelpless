@@ -7,11 +7,13 @@ import IngredientSearchInput from "~/ui/components/elements/IngredientSearchInpu
 import { getMethod } from "~/utils/api/getMethod";
 import FuzzySearch from "fuzzy-search";
 import { Styled } from "./Ingredients.styled";
+import CustomSpinner from "~/ui/components/elements/GenericSpinner/CustomSpinner";
 
 const Ingredients = () => {
   const [ingredientsCMS, setIngredientsCMS] = useState<any[]>([]);
   const [ingredients, setIngredients] = useState<any[]>([]);
   const [searchedIngredients, setSearchedIngredients] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const IterableIngredients =
     searchedIngredients.length > 0 ? searchedIngredients : ingredients;
 
@@ -20,6 +22,7 @@ const Ingredients = () => {
       try {
         const ingredientsData = await fetchIngredients();
         setIngredientsCMS(ingredientsData);
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -42,11 +45,6 @@ const Ingredients = () => {
 
   function name2Image(name: string) {
     const foundIngredient = ingredientsCMS.find((i) => i.englishName === name);
-    foundIngredient &&
-      console.log(
-        "Its the Ingredients:",
-        urlForThumbnail(foundIngredient.image)
-      );
     return foundIngredient ? urlForThumbnail(foundIngredient.image) : "";
   }
 
@@ -79,11 +77,16 @@ const Ingredients = () => {
                   key={ingredient.id}
                   className="relative flex cursor-pointer justify-center rounded-full"
                 >
-                  <IngredientCheckbox
-                    id={ingredient.id}
-                    imgSrc={name2Image(ingredient.name)}
-                    imgAlt={ingredient.name}
-                  />
+                  <CustomSpinner
+                    isLoading={isLoading}
+                    children={
+                      <IngredientCheckbox
+                        id={ingredient.id}
+                        imgSrc={name2Image(ingredient.name)}
+                        imgAlt={ingredient.name}
+                      />
+                    }
+                  ></CustomSpinner>
                 </Styled.IngGridItem>
               ))}
             </Styled.IngGrid>
