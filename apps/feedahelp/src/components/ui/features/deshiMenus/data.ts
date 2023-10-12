@@ -39,7 +39,7 @@ export const items = [
 
 export const DeshiMenuInforamtion = [
   {
-    image: "/static/images/misc/prep.png",
+    image: "/static/images/misc/prepare.png",
     title: "Total Time to Prepare",
     value: "2hr, 5min"
   },

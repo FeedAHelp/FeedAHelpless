@@ -13,7 +13,7 @@ const Header = styled.section<HeaderProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1rem;
+  padding: 0 2.7rem;
   height: 5rem;
   backdrop-filter: ${(props) =>
     props.scrollBlur ? "blur(0.475rem)" : "blur(0rem)"};

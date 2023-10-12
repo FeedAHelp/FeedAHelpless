@@ -12,6 +12,7 @@ const ExtraInformation = () => {
         <SideIconContainer icon={ic_info_outline} />
       </Styled.InfoIcon>
       <Styled.InfoContent>
+        sdfsdsdfdf
         <Styled.ButtonIngredient>
           <Styled.DeshiShareIcon
             src="/static/images/misc/ingred.png"

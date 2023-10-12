@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Styled } from './IngredientSearchInput.styled'
-import { search } from 'react-icons-kit/fa/search'
-import { Icon } from 'react-icons-kit'
-import { uuidv4 } from '../../utils/uuid'
+import searchFilter from './searchFilter'
 
 interface IngredientSearchInputProps {
   id: string
@@ -11,14 +9,9 @@ interface IngredientSearchInputProps {
   searchIngredient: (searchTerm: string) => void
 }
 
-const SearchIcon = () => (
-  <div className=''>
-    <Icon icon={search} size={24} />
-  </div>
-)
 const IngredientSearchInput = ({ id, imgSrc, imgAlt, searchIngredient }: IngredientSearchInputProps) => {
-  // const id = `input-search-field-${uuidv4()}`
   const [searchTerm, setSearchTerm] = useState<string>('')
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     let value = event?.target?.value || ''
@@ -38,12 +31,29 @@ const IngredientSearchInput = ({ id, imgSrc, imgAlt, searchIngredient }: Ingredi
           <Styled.SearchIcons />
         </label>
         <Styled.SearchInput
+          isSearchOpen={isSearchOpen}
           id={id}
           type='text'
           className='input-search'
           placeholder='Type to Search...'
           onChange={handleChange}
+          onClick={() => setIsSearchOpen(!isSearchOpen)}
         />
+
+        <Styled.SearchFilters isSearchOpen={isSearchOpen}>
+          <Styled.FilterContainer>
+            <Styled.CustomCheckWrapper>
+              {searchFilter.map((sf, index) => {
+                return (
+                  <Styled.CustomCheck key={sf.id}>
+                    <Styled.CustomCheckInput id={sf.id} type='checkbox' />
+                    <Styled.CustomCheckLabel htmlFor={sf.id}>{sf.label}</Styled.CustomCheckLabel>
+                  </Styled.CustomCheck>
+                )
+              })}
+            </Styled.CustomCheckWrapper>
+          </Styled.FilterContainer>
+        </Styled.SearchFilters>
       </Styled.SearchBox>
     </Styled.SearchBoxContainer>
   )

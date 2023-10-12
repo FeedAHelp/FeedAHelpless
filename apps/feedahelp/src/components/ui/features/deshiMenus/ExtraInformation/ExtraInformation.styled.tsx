@@ -17,7 +17,6 @@ const InfoContent = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  padding-top: 3.125rem;
   opacity: 0;
   transform: scale(0.5) translateY(-200%);
   transition: opacity 0.2s, transform 0.8s;
@@ -26,7 +25,7 @@ const InfoContent = styled.div`
 
 const InsideContainer = styled.div`
   z-index: 9;
-  background: ${({ theme }) => theme.colors.primary.green};
+  background: ${({ theme }) => theme.colors.primary.blue};
   width: 5rem;
   height: 5rem;
   position: absolute;
@@ -49,7 +48,7 @@ const InsideContainer = styled.div`
 
 const ButtonIngredient = styled.button`
   display: flex;
-  background: #e3edf7;
+  background: ${({ theme }) => theme.colors.primary.red};
   padding: 1.4em;
   border-radius: 0.625rem;
   box-shadow: 0.375rem 0.375rem 0.625rem -0.0625rem rgba(0, 0, 0, 0.15),
@@ -97,8 +96,4 @@ export const Styled = {
   InfoIcon,
   ButtonIngredient,
   ButtonDirections,
-  /*   ,
-  ,
-  ,
-  InfoIcon, */
 };

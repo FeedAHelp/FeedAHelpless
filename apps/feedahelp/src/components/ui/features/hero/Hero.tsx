@@ -18,8 +18,6 @@ const Hero = () => {
   const [heroImages, setHeroImages] = useState<HeroImagesType[]>([]);
   const { t } = useTranslation("common");
 
-  console.log(t("Shared Meal"));
-
   const getHeroImages = async () => {
     try {
       const data = await fetchHeroImages();

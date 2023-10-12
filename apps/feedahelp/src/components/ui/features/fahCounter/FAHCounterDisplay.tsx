@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { urlForThumbnail } from "~/utils/cms/imageProcess";
 import { Styled } from "./FAHCounterDisplay.styled";
+import { useTranslation } from "next-i18next";
 
 type CounterDisplayProp = {
   title: string;
@@ -18,27 +19,25 @@ const CounterDisplay = ({
   value,
   monthlyIncrease,
 }: CounterDisplayProp) => {
+  const { t } = useTranslation("sponsor");
   return (
-    <Styled.CardWrapper>
-      <Styled.CardContain>
-        <div>
-          <Styled.CardHeadingH6>{title}</Styled.CardHeadingH6>
+    <Styled.CardFAH>
+      <div className="card">
+        <div className="img relative">
+          <Image
+            className="object-contain"
+            fill
+            src={urlForThumbnail(imageIcon)}
+            alt=""
+          />
+        </div>
+        <h2>{t(title)}</h2>
+        <div className="cont">
           <Styled.CardCounter end={value} />
-          <Styled.CardMonthlyInc>{monthlyIncrease}</Styled.CardMonthlyInc>
+          <p>{monthlyIncrease}</p>
         </div>
-        <div>
-          <span>
-            <Image
-              src={urlForThumbnail(imageIcon)}
-              alt={'imageAlt'}
-              width={50}
-              height={50}
-              className="h-auto w-auto"
-            />
-          </span>
-        </div>
-      </Styled.CardContain>
-    </Styled.CardWrapper>
+      </div>
+    </Styled.CardFAH>
   );
 };
 
