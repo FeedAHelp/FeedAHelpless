@@ -58,11 +58,10 @@ model FahCounter {
   monthlyIncrease    String
 }
 
-model Ingredients {
-  id          String     @id @default(uuid())
-  name        String     @unique
-  imageName   String
-  subMenuIngredients  subMenuIngredients[]
+model Ingredient {
+  id                 String               @id @default(uuid())
+  name               String               @unique
+  subMenuIngredients subMenuIngredients[]
 }
 
 model EmailVerify {
@@ -90,39 +89,39 @@ enum ContributionTypes {
 }
 
 model menues {
-  id     String      @id @default(uuid())
-  name   String      @unique
+  id        String      @id @default(uuid())
+  name      String      @unique
   subMenues subMenues[]
 }
 
 model subMenues {
-  id          String        @id @default(uuid())
-  menu        String
-  name        String        @unique
-  mainMenues  menues        @relation(fields: [menu], references: [name])
-  menuWishLikes menuWishLikes[]
-  subMenuIngredients  subMenuIngredients[]
+  id                 String               @id @default(uuid())
+  menu               String
+  name               String               @unique
+  mainMenues         menues               @relation(fields: [menu], references: [name])
+  menuWishLikes      menuWishLikes[]
+  subMenuIngredients subMenuIngredients[]
 }
 
 model subMenuIngredients {
-  id          String        @id @default(uuid())
+  id          String     @id @default(uuid())
   subMenu     String
   ingredient  String
   amount      Float
-  subMenues  subMenues    @relation(fields: [subMenu], references: [name])
-  ingredients  Ingredients    @relation(fields: [ingredient], references: [name])
+  subMenues   subMenues  @relation(fields: [subMenu], references: [name])
+  ingredients Ingredient @relation(fields: [ingredient], references: [name])
 }
 
 model menuWishLikes {
-  id     String   @id @default(uuid())
-  menuId String   @unique
-  likes  Int
-  wishs  Int
-  shares Int
-  Wishs   Wishs[]
-  Likes   Likes[]
-  Shares  Shares[]
-  subMenues  subMenues    @relation(fields: [menuId], references: [name])
+  id        String    @id @default(uuid())
+  menuId    String    @unique
+  likes     Int
+  wishs     Int
+  shares    Int
+  Wishs     Wishs[]
+  Likes     Likes[]
+  Shares    Shares[]
+  subMenues subMenues @relation(fields: [menuId], references: [name])
 }
 
 model Wishs {
@@ -153,9 +152,9 @@ model Shares {
 }
 
 model Payment {
-        id      Int    @id @default(autoincrement())
-        email   String
-        orderID String
-        status  String
-        channel String
+  id      Int    @id @default(autoincrement())
+  email   String
+  orderID String
+  status  String
+  channel String
 }

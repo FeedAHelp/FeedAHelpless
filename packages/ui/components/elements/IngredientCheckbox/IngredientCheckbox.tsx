@@ -4,8 +4,8 @@ import Image from 'next/image'
 
 type IngredientCheckboxProps = {
   id: string
-  imgSrc: string
-  imgAlt: string
+  imgSrc?: string
+  imgAlt?: string
 }
 
 const IngredientCheckbox = ({ id, imgSrc, imgAlt }: IngredientCheckboxProps) => {

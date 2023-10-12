@@ -34,7 +34,7 @@ export const loaderAnimation = keyframes`
     left: 25%;
     transform: rotate(360deg);
   }
-`;
+`
 
 export const panAnimation = keyframes`
   0% {
@@ -51,7 +51,7 @@ export const panAnimation = keyframes`
   100% {
     transform: rotate(0deg);
   }
-`;
+`
 
 export const shadowAnimation = keyframes`
   0% {
@@ -64,18 +64,17 @@ export const shadowAnimation = keyframes`
   100% {
     width: 30%;
   }
-`; 
+`
 
 export const PanLoaderContainer = styled.div`
-  position: fixed;
   top: calc(50% - 5.625rem); /* Corrected top value */
   left: calc(50% - 5.625rem); /* Corrected left value */
-  width: 180px;
-  height: 180px;
-`;
-
+  width: 100px;
+  height: 100px;
+`
 
 export const Loader = styled.div`
+  content: 'XXX';
   position: relative;
   top: 10%;
   left: 0;
@@ -83,42 +82,42 @@ export const Loader = styled.div`
   width: 60%;
   height: 45%;
   border: 0.625rem solid transparent;
-  border-bottom: 0.625rem solid #FDD835;
+  border-bottom: 0.625rem solid #fdd835;
   border-radius: 50%;
   animation: ${loaderAnimation} 2s infinite linear;
-`;
+`
 
 export const PanContainer = styled.div`
   display: flex;
   width: 100%;
   animation: ${panAnimation} 2s infinite;
-`;
+`
 
 export const Pan = styled.div`
   width: 60%;
-  height: 1.25rem;
-  background: linear-gradient(#3949AB, #5C6BC0);
+  height: 1rem;
+  background: linear-gradient(#3949ab, #5c6bc0);
   border-bottom-right-radius: 1.25rem;
   border-bottom-left-radius: 1.25rem;
-`;
+`
 
 export const Handle = styled.div`
-  width: 40%;
-  height: 0.625em;
-  background: linear-gradient(#3949AB, #5C6BC0);
+  width: 20%;
+  height: 0.225em;
+  background: linear-gradient(#3949ab, #5c6bc0);
   border-top-right-radius: 0.625em;
   border-top-left-radius: 0.625em;
   border-bottom-right-radius: 0.625em;
   border-bottom-left-radius: 0.625em;
-`;
+`
 
 export const Shadow = styled.div`
   position: relative;
-  top: 15%;
+  top: %;
   left: 15%;
   width: 30%;
-  height: 0.5rem;
+  height: 0.2rem;
   background: lightgray;
   border-radius: 1.25rem;
   animation: ${shadowAnimation} 2s infinite;
-`;
+`

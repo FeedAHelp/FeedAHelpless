@@ -4,23 +4,57 @@ import { fetchIngredients } from "~/utils/cms/fetchIngredients";
 import { urlForThumbnail } from "~/utils/cms/imageProcess";
 import IngredientCheckbox from "~/ui/components/elements/IngredientCheckbox/IngredientCheckbox";
 import IngredientSearchInput from "~/ui/components/elements/IngredientSearchInput/IngredientSearchInput";
+import { getMethod } from "~/utils/api/getMethod";
+import FuzzySearch from "fuzzy-search";
 import { Styled } from "./Ingredients.styled";
+import CustomSpinner from "~/ui/components/elements/GenericSpinner/CustomSpinner";
 
 const Ingredients = () => {
-  const [ingredients, setIngredients] = useState([]);
-
-  const getIngredients = async () => {
-    try {
-      const socialData = await fetchIngredients();
-      setIngredients(socialData);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const [ingredientsCMS, setIngredientsCMS] = useState<any[]>([]);
+  const [ingredients, setIngredients] = useState<any[]>([]);
+  const [searchedIngredients, setSearchedIngredients] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const IterableIngredients =
+    searchedIngredients.length > 0 ? searchedIngredients : ingredients;
 
   useEffect(() => {
-    getIngredients();
+    const getIngredientsCMS = async () => {
+      try {
+        const ingredientsData = await fetchIngredients();
+        setIngredientsCMS(ingredientsData);
+        setIsLoading(false);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getIngredientsCMS();
   }, []);
+
+  useEffect(() => {
+    const getIngredientsDB = async () => {
+      try {
+        const { data } = await getMethod("ingredient/all", "");
+        setIngredients(data);
+        setSearchedIngredients(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getIngredientsDB();
+  }, []);
+
+  function name2Image(name: string) {
+    const foundIngredient = ingredientsCMS.find((i) => i.englishName === name);
+    return foundIngredient ? urlForThumbnail(foundIngredient.image) : "";
+  }
+
+  function searchIngredient(searchTerm: string): void {
+    const searcher = new FuzzySearch(ingredients, ["name"], {
+      caseSensitive: false,
+    });
+    const searchResult = searcher.search(searchTerm);
+    setSearchedIngredients(searchResult);
+  }
 
   return (
     <div className="customScrollBar mb-2 h-[34rem] w-full overflow-auto">
@@ -28,23 +62,31 @@ const Ingredients = () => {
         <div className="row">
           <StickyBox offsetTop={0} offsetBottom={20} style={{ zIndex: 99 }}>
             <div>
-              <form>
-                <IngredientSearchInput id="ingredient_srearch" />
-              </form>
+              <div>
+                <IngredientSearchInput
+                  id="ingredientSearchInput"
+                  searchIngredient={searchIngredient}
+                />
+              </div>
             </div>
           </StickyBox>
           <div className="pt-10">
             <Styled.IngGrid>
-              {ingredients.map((ingredient, index) => (
+              {IterableIngredients.map((ingredient) => (
                 <Styled.IngGridItem
-                  key={index}
+                  key={ingredient.id}
                   className="relative flex cursor-pointer justify-center rounded-full"
                 >
-                  <IngredientCheckbox
-                    id={ingredient.englishName}
-                    imgSrc={urlForThumbnail(ingredient.image)}
-                    imgAlt={ingredient.englishName}
-                  />
+                  <CustomSpinner
+                    isLoading={isLoading}
+                    children={
+                      <IngredientCheckbox
+                        id={ingredient.id}
+                        imgSrc={name2Image(ingredient.name)}
+                        imgAlt={ingredient.name}
+                      />
+                    }
+                  ></CustomSpinner>
                 </Styled.IngGridItem>
               ))}
             </Styled.IngGrid>

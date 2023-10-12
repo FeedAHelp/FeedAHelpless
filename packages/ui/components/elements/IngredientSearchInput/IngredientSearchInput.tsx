@@ -1,16 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Styled } from './IngredientSearchInput.styled'
 import searchFilter from './searchFilter'
 
-type IngredientSearchInputProps = {
+interface IngredientSearchInputProps {
   id: string
   imgSrc?: string
   imgAlt?: string
+  searchIngredient: (searchTerm: string) => void
 }
 
-const IngredientSearchInput = ({ id, imgSrc, imgAlt }: IngredientSearchInputProps) => {
+const IngredientSearchInput = ({ id, imgSrc, imgAlt, searchIngredient }: IngredientSearchInputProps) => {
+  const [searchTerm, setSearchTerm] = useState<string>('')
   const [isSearchOpen, setIsSearchOpen] = useState(false)
-  console.log(isSearchOpen)
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    let value = event?.target?.value || ''
+    setSearchTerm(value)
+  }
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      searchIngredient && searchIngredient(searchTerm)
+    }, 1000)
+    return () => clearTimeout(timeoutId)
+  }, [searchTerm])
+
   return (
     <Styled.SearchBoxContainer>
       <Styled.SearchBox>
@@ -23,8 +36,10 @@ const IngredientSearchInput = ({ id, imgSrc, imgAlt }: IngredientSearchInputProp
           type='text'
           className='input-search'
           placeholder='Type to Search...'
+          onChange={handleChange}
           onClick={() => setIsSearchOpen(!isSearchOpen)}
         />
+
         <Styled.SearchFilters isSearchOpen={isSearchOpen}>
           <Styled.FilterContainer>
             <Styled.CustomCheckWrapper>

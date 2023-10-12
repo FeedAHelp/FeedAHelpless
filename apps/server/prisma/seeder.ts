@@ -1,45 +1,56 @@
-import { PrismaClient } from '@prisma/client';
-import fsPromises from 'fs/promises';
-import path from 'path';
-import ProgressBar from 'progress';
+import { PrismaClient } from '@prisma/client'
+import fsPromises from 'fs/promises'
+import path from 'path'
+import { fetchIngredients } from "./fetchIngredients";
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
-export async function seed({file, schema}: {file: string; schema: string}) {
-    const filePath = path.join(process.cwd(), file);
-    const jsonData = await fsPromises.readFile(filePath);
-    const rawData = JSON.parse(jsonData.toString());
-    const data = rawData[schema];
-    const totalData = data.length;
-    const prismaTable = (prisma as any)[schema];
+async function insertAll(schemaName: string, entries: Object[]): Promise<any> {
+  const model = (prisma as any)[schemaName]
+  if (!model) return false
 
+  if (schemaName !== 'ingredient') {
+    const createdEntries = await model.createMany({
+      data: entries,
+      skipDuplicates: true
+    })
+    return createdEntries.length > 0
+  } else {
+    fetchAndInsertIngredientsIDFromCMS(schemaName, entries)
+  }
+}
 
-    await prismaTable.deleteMany();
+export async function seed({ file, schema }: { file: string; schema: string }) {
+  const filePath = path.join(process.cwd(), file)
+  const fileData = await fsPromises.readFile(filePath)
 
-    const bar = new ProgressBar('  inserting [:bar] :rate/bps :percent :etas', {
-        complete: '=',
-        incomplete: ' ',
-        width: 20,
-        total: totalData,
-    });
+  const jsonData = JSON.parse(fileData.toString())
+  const data = jsonData[schema]
+  const model = (prisma as any)[schema]
 
-    const createEntry = async (i : any) => {
-        try {
-            await prismaTable.create({
-                data: i,
-            });
-            bar.tick();
-        } catch (error) {
-            console.error(`Error inserting ${schema}: ${error.message}`);
-        }
-    };
+  if (await insertAll(schema, data)) {
+    console.log(`All ${schema} inserted successfully.`)
+  }
+}
 
-    const insertAll = async () => {
-        const promises = data.map((i : any) => createEntry(i));
-        await Promise.all(promises);
-        console.log(`All ${schema} inserted successfully.`);
-    };
-    await insertAll();
+async function fetchAndInsertIngredientsIDFromCMS(schemaName: string, entries: Object[]): Promise<any> {
+  const model = (prisma as any)[schemaName]
+  if (!model) return false
 
-    await prisma.$disconnect();
+    try {
+      const ingredientsData = await fetchIngredients();
+      ingredientsData.map(async (ingredients: any) => {
+        const createdEntries = await model.createMany({
+          data: {
+            id: ingredients._id,
+            name: ingredients.englishName
+          },
+          skipDuplicates: true
+        })
+        return createdEntries.length > 0
+      })
+    } catch (error) {
+      console.error(error);
+    }
+  
 }

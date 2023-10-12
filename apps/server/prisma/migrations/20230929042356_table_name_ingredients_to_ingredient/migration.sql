@@ -57,12 +57,11 @@ CREATE TABLE "FahCounter" (
 );
 
 -- CreateTable
-CREATE TABLE "Ingredients" (
+CREATE TABLE "Ingredient" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
-    "imageName" TEXT NOT NULL,
 
-    CONSTRAINT "Ingredients_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Ingredient_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -156,6 +155,16 @@ CREATE TABLE "Shares" (
     CONSTRAINT "Shares_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "Payment" (
+    "id" SERIAL NOT NULL,
+    "email" TEXT NOT NULL,
+    "orderID" TEXT NOT NULL,
+    "status" TEXT NOT NULL,
+
+    CONSTRAINT "Payment_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "User_registerId_key" ON "User"("registerId");
 
@@ -169,7 +178,7 @@ CREATE UNIQUE INDEX "Register_phone_key" ON "Register"("phone");
 CREATE UNIQUE INDEX "Newsletter_email_key" ON "Newsletter"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Ingredients_name_key" ON "Ingredients"("name");
+CREATE UNIQUE INDEX "Ingredient_name_key" ON "Ingredient"("name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "menues_name_key" ON "menues"("name");
@@ -199,7 +208,7 @@ ALTER TABLE "subMenues" ADD CONSTRAINT "subMenues_menu_fkey" FOREIGN KEY ("menu"
 ALTER TABLE "subMenuIngredients" ADD CONSTRAINT "subMenuIngredients_subMenu_fkey" FOREIGN KEY ("subMenu") REFERENCES "subMenues"("name") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "subMenuIngredients" ADD CONSTRAINT "subMenuIngredients_ingredient_fkey" FOREIGN KEY ("ingredient") REFERENCES "Ingredients"("name") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "subMenuIngredients" ADD CONSTRAINT "subMenuIngredients_ingredient_fkey" FOREIGN KEY ("ingredient") REFERENCES "Ingredient"("name") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "menuWishLikes" ADD CONSTRAINT "menuWishLikes_menuId_fkey" FOREIGN KEY ("menuId") REFERENCES "subMenues"("name") ON DELETE RESTRICT ON UPDATE CASCADE;

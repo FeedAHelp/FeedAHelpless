@@ -10,10 +10,11 @@ const IngGrid = styled.div`
 
 const IngGridItem = styled.div`
   border-radius: 5px;
-  overflow: hidden;
   position: relative;
   background-position: center;
   background-size: cover;
+
+  /* overflow: hidden; */
 `;
 
 export const Styled = {
