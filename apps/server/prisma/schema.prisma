@@ -61,7 +61,6 @@ model FahCounter {
 model Ingredient {
   id                 String               @id @default(uuid())
   name               String               @unique
-  imageName          String
   subMenuIngredients subMenuIngredients[]
 }
 
@@ -105,11 +104,11 @@ model subMenues {
 }
 
 model subMenuIngredients {
-  id          String      @id @default(uuid())
+  id          String     @id @default(uuid())
   subMenu     String
   ingredient  String
   amount      Float
-  subMenues   subMenues   @relation(fields: [subMenu], references: [name])
+  subMenues   subMenues  @relation(fields: [subMenu], references: [name])
   ingredients Ingredient @relation(fields: [ingredient], references: [name])
 }
 
@@ -153,9 +152,9 @@ model Shares {
 }
 
 model Payment {
-        id      Int    @id @default(autoincrement())
-        email   String
-        orderID String
-        status  String
-        channel String
+  id      Int    @id @default(autoincrement())
+  email   String
+  orderID String
+  status  String
+  channel String
 }

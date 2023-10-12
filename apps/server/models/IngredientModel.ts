@@ -4,13 +4,12 @@ const prisma = new PrismaClient()
 interface Ingredient {
   id: string
   name: string
-  imageName: string
 }
 
 class IngredientModel {
   async allIngredients(): Promise<Ingredient[]> {
     const ingredients = await prisma.ingredient.findMany()
-    return ingredients.map(({ id, name, imageName }) => ({ id, name, imageName }))
+    return ingredients.map(({ id, name }) => ({ id, name }))
   }
 
   async exists(id: string): Promise<boolean> {
@@ -20,21 +19,19 @@ class IngredientModel {
     return numberOfIngredients > 0
   }
 
-  async create(data: { name: string; imageName: string }): Promise<Ingredient | null> {
+  async create(data: { name: string }): Promise<Ingredient | null> {
     try {
       const createdIngredient = await prisma.ingredient.create({
         data: {
           name: data.name,
-          imageName: data.imageName
         }
       })
 
-      const { id, name, imageName } = createdIngredient
+      const { id, name } = createdIngredient
 
       return {
         id,
         name,
-        imageName
       }
     } catch (error) {
       console.error(error)
@@ -50,12 +47,11 @@ class IngredientModel {
 
       if (!ingredient) return null
 
-      const { name, imageName } = ingredient
+      const { name } = ingredient
 
       return {
         id: ingredient.id,
-        name,
-        imageName
+        name
       }
     } catch (error) {
       console.error(error)
@@ -63,24 +59,22 @@ class IngredientModel {
     }
   }
 
-  async update(id: string, data: { name: string; imageName: string }): Promise<Ingredient | null> {
+  async update(id: string, data: { name: string }): Promise<Ingredient | null> {
     try {
       const updatedIngredient = await prisma.ingredient.update({
         where: { id },
         data: {
-          name: data.name,
-          imageName: data.imageName
+          name: data.name
         }
       })
 
       if (!updatedIngredient) return null
 
-      const { name, imageName } = updatedIngredient
+      const { name } = updatedIngredient
 
       return {
         id: updatedIngredient.id,
-        name,
-        imageName
+        name
       }
     } catch (error) {
       console.error(error)

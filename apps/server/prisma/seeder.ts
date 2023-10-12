@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import fsPromises from 'fs/promises'
 import path from 'path'
+import { fetchIngredients } from "./fetchIngredients";
 
 const prisma = new PrismaClient()
 
@@ -8,11 +9,15 @@ async function insertAll(schemaName: string, entries: Object[]): Promise<any> {
   const model = (prisma as any)[schemaName]
   if (!model) return false
 
-  const createdEntries = await model.createMany({
-    data: entries,
-    skipDuplicates: true
-  })
-  return createdEntries.length > 0
+  if (schemaName !== 'ingredient') {
+    const createdEntries = await model.createMany({
+      data: entries,
+      skipDuplicates: true
+    })
+    return createdEntries.length > 0
+  } else {
+    fetchAndInsertIngredientsIDFromCMS(schemaName, entries)
+  }
 }
 
 export async function seed({ file, schema }: { file: string; schema: string }) {
@@ -26,4 +31,26 @@ export async function seed({ file, schema }: { file: string; schema: string }) {
   if (await insertAll(schema, data)) {
     console.log(`All ${schema} inserted successfully.`)
   }
+}
+
+async function fetchAndInsertIngredientsIDFromCMS(schemaName: string, entries: Object[]): Promise<any> {
+  const model = (prisma as any)[schemaName]
+  if (!model) return false
+
+    try {
+      const ingredientsData = await fetchIngredients();
+      ingredientsData.map(async (ingredients: any) => {
+        const createdEntries = await model.createMany({
+          data: {
+            id: ingredients._id,
+            name: ingredients.englishName
+          },
+          skipDuplicates: true
+        })
+        return createdEntries.length > 0
+      })
+    } catch (error) {
+      console.error(error);
+    }
+  
 }

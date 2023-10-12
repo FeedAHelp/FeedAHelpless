@@ -14,7 +14,7 @@ const Ingredients = () => {
   const [searchedIngredients, setSearchedIngredients] = useState<any[]>([]);
   const IterableIngredients =
     searchedIngredients.length > 0 ? searchedIngredients : ingredients;
-
+  console.log(ingredientsCMS);
   useEffect(() => {
     const getIngredientsCMS = async () => {
       try {
@@ -79,11 +79,11 @@ const Ingredients = () => {
                   key={ingredient.id}
                   className="relative flex cursor-pointer justify-center rounded-full"
                 >
-                  <IngredientCheckbox
+                  {/* <IngredientCheckbox
                     id={ingredient.id}
                     imgSrc={name2Image(ingredient.name)}
                     imgAlt={ingredient.name}
-                  />
+                  /> */}
                 </Styled.IngGridItem>
               ))}
             </Styled.IngGrid>

@@ -31,6 +31,7 @@
     "faker": "^6.6.6",
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^6.0.0",
+    "next-sanity": "^5.4.4",
     "nodemailer": "^6.9.5",
     "progress": "^2.0.3",
     "stripe": "^13.7.0",
