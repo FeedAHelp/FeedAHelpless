@@ -10,15 +10,14 @@ datasource db {
 }
 
 model User {
-  id            String          @id @default(uuid())
-  name          String
-  image         String?
-  register      Register        @relation(fields: [registerId], references: [id])
-  registerId    String          @unique
-  contributions contributions[]
-  wishs         Wishs[]
-  likes         Likes[]
-  shares        Shares[]
+  id         String   @id @default(uuid())
+  name       String
+  image      String?
+  register   Register @relation(fields: [registerId], references: [id])
+  registerId String   @unique
+  wishs      Wishs[]
+  likes      Likes[]
+  shares     Shares[]
 }
 
 model LoginHistory {
@@ -80,7 +79,6 @@ model contributions {
   dateTime    DateTime
   value       Float
   createdAt   DateTime          @default(now())
-  user        User              @relation(fields: [contributor], references: [id])
 }
 
 enum ContributionTypes {

@@ -82,7 +82,7 @@ export const authOptions: NextAuthOptions = {
           email: user.email,
           password: user.id || user.id,
           image: user.image || "Not found",
-          role: "Donar",
+          role: user.roles,
           verified: true,
         })
           .then((res) => {
@@ -96,7 +96,7 @@ export const authOptions: NextAuthOptions = {
             token.verified = data.verified
           })
           .catch(async (error) => {
-            await postMethod(endPoints.auth.login, {
+           /*  await postMethod(endPoints.auth.login, {
               email: user.email,
               password: user.id,
             })
@@ -113,7 +113,7 @@ export const authOptions: NextAuthOptions = {
               .catch((error) => {
                 token.error = error.response.data.message;
               });
-            token.error = error.response.data.message;
+            token.error = error.response.data.message; */
           });
       }
       return token;
@@ -131,6 +131,7 @@ export const authOptions: NextAuthOptions = {
         session.user.accessToken = token.accessToken;
         session.user.error = token.error;
         session.user.verified = token.verified as boolean;
+        session.user.roles = token.roles;
       }
       return session;
     },
