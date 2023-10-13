@@ -1,9 +1,25 @@
 import SocialMedia from "../socialMedia/socialMedia";
+import { Styled } from "./Login.styled";
 
 const Login = () => {
   return (
-    <div className="max flex flex-col overflow-hidden rounded-md bg-white p-10 shadow-lg md:flex-1 md:flex-row lg:max-w-screen-md">
-      <div className="bg-white md:flex-1">
+    <div className="p-10">
+      <Styled.CustomCheckBoxHolder>
+        <Styled.CustomCheckBoxInput id="cCB1" type="checkbox" />
+        <Styled.CustomCheckBoxWrapper htmlFor="cCB1">
+          <Styled.CustomCheckBox>
+            <Styled.CustomCheckBoxInner>DONORS</Styled.CustomCheckBoxInner>
+          </Styled.CustomCheckBox>
+        </Styled.CustomCheckBoxWrapper>
+
+        <Styled.CustomCheckBoxInput id="cCB2" type="checkbox" />
+        <Styled.CustomCheckBoxWrapper htmlFor="cCB2">
+          <Styled.CustomCheckBox>
+            <Styled.CustomCheckBoxInner>CHEF</Styled.CustomCheckBoxInner>
+          </Styled.CustomCheckBox>
+        </Styled.CustomCheckBoxWrapper>
+      </Styled.CustomCheckBoxHolder>
+      <div className="flex-1 flex-col items-center justify-center">
         <SocialMedia />
       </div>
     </div>
