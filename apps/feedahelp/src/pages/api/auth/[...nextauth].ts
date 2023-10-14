@@ -75,14 +75,15 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, session }) {
+      console.log("SERXXX", session);
       if (user && (user.id || user.name)) {
         await postMethod(endPoints.auth.register, {
           name: user.name || "Not found",
           email: user.email,
           password: user.id || user.id,
           image: user.image || "Not found",
-          role: user.roles,
+          role: "sdfsdfsd",
           verified: true,
         })
           .then((res) => {
@@ -93,10 +94,11 @@ export const authOptions: NextAuthOptions = {
             token.userType = data.registerId;
             token.image = data.image;
             token.accessToken = data.accessToken;
-            token.verified = data.verified
+            token.verified = data.verified;
+            token.role = data.role;
           })
           .catch(async (error) => {
-           /*  await postMethod(endPoints.auth.login, {
+            await postMethod(endPoints.auth.login, {
               email: user.email,
               password: user.id,
             })
@@ -108,12 +110,13 @@ export const authOptions: NextAuthOptions = {
                 token.userType = data.registerId;
                 token.image = data.image;
                 token.accessToken = data.accessToken;
+                token.role = data.role;
                 token.verified = data.verified
               })
               .catch((error) => {
                 token.error = error.response.data.message;
               });
-            token.error = error.response.data.message; */
+            token.error = error.response.data.message; 
           });
       }
       return token;
@@ -131,7 +134,7 @@ export const authOptions: NextAuthOptions = {
         session.user.accessToken = token.accessToken;
         session.user.error = token.error;
         session.user.verified = token.verified as boolean;
-        session.user.roles = token.roles;
+        session.user.role = token.role;
       }
       return session;
     },

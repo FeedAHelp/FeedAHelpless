@@ -3,12 +3,12 @@ import SocialMedia from "../socialMedia/socialMedia";
 import { Styled } from "./Login.styled";
 
 const Login = () => {
-  const [selectedOption, setSelectedOption] = useState("donor");
+  const [selectedRole, setSelectedRole] = useState("donor");
 
-  const handleOptionChange = (event: {
+  const handleRoleChange = (event: {
     target: { value: React.SetStateAction<string> };
   }) => {
-    setSelectedOption(event.target.value);
+    setSelectedRole(event.target.value);
   };
 
   return (
@@ -18,8 +18,8 @@ const Login = () => {
           id="cCB1"
           type="checkbox"
           value="donor"
-          checked={selectedOption === "donor"}
-          onChange={handleOptionChange}
+          checked={selectedRole === "donor"}
+          onChange={handleRoleChange}
         />
         <Styled.CustomCheckBoxWrapper htmlFor="cCB1">
           <Styled.CustomCheckBox>
@@ -31,8 +31,8 @@ const Login = () => {
           id="cCB2"
           type="checkbox"
           value="chef"
-          checked={selectedOption === "chef"}
-          onChange={handleOptionChange}
+          checked={selectedRole === "chef"}
+          onChange={handleRoleChange}
         />
         <Styled.CustomCheckBoxWrapper htmlFor="cCB2">
           <Styled.CustomCheckBox>
@@ -41,7 +41,7 @@ const Login = () => {
         </Styled.CustomCheckBoxWrapper>
       </Styled.CustomCheckBoxHolder>
       <div className="flex-1 flex-col items-center justify-center">
-        <SocialMedia />
+        <SocialMedia role={selectedRole} />
       </div>
     </div>
   );

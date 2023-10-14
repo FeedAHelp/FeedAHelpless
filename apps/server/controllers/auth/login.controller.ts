@@ -40,7 +40,7 @@ export const loginController = async (req: Request, res: Response) => {
       where: { id: existingUser.id },
       data: { accessToken: token }
     })
-
+    
     return res.status(200).json({ message: 'Login successful', ...existingUser, ...user, accessToken: token })
   } catch (error) {
     console.error(error)
