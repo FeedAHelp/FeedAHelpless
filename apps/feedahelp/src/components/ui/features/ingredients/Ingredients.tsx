@@ -79,7 +79,7 @@ const Ingredients = () => {
                 >
                   <CustomSpinner
                     isLoading={isLoading}
-                    children={
+                    Children={
                       <IngredientCheckbox
                         id={ingredient.id}
                         imgSrc={name2Image(ingredient.name)}
