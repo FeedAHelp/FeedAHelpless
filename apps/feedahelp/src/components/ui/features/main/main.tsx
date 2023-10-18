@@ -4,6 +4,7 @@ import Hero from "../hero/Hero";
 import FeedAHelpCounter from "../fahCounter/FAHCounter";
 import Sponsors from "../sponsors/Sponsors";
 import DeshiMenuIngredients from "./DeshiMenuIngredients/DeshiMenuIngredients";
+import ScrollToTop from "../scrollToTop/ScrollToTop";
 
 export const MainPage = () => {
   return (
@@ -22,6 +23,7 @@ export const MainPage = () => {
           <Sponsors />
         </Grid>
       </Grid>
+      <ScrollToTop />
     </div>
   );
 };

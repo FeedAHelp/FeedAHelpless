@@ -3,10 +3,10 @@ import * as Styled from './CustomSpinner.styled'
 
 interface CustomSpinnerProps {
   isLoading: boolean
-  children?: React.ReactNode
+  Children?: React.ReactNode
 }
 
-const CustomSpinner: React.FC<CustomSpinnerProps> = ({ isLoading, children }) => {
+const CustomSpinner: React.FC<CustomSpinnerProps> = ({ isLoading, Children }) => {
   return isLoading ? (
     <Styled.PanLoaderContainer>
       <Styled.Loader />
@@ -17,7 +17,7 @@ const CustomSpinner: React.FC<CustomSpinnerProps> = ({ isLoading, children }) =>
       <Styled.Shadow />
     </Styled.PanLoaderContainer>
   ) : (
-    <>{children}</>
+    <>{Children}</>
   )
 }
 
