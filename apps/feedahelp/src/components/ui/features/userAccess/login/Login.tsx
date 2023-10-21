@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SocialMedia from "../socialMedia/socialMedia";
 import { Styled } from "./Login.styled";
+import { getServerSession } from "next-auth/next";
 
 const Login = () => {
   const [selectedRole, setSelectedRole] = useState("donor");
