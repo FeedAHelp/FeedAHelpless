@@ -7,7 +7,7 @@ import { createUser, createAccessToken, generateRandomCode } from '../../utils/a
 export const registerController = async (req: Request, res: Response) => {
   try {
     const { name, email, password, image, role } = req.body
-    
+
     if (!email || !password || !name || !image || !role) {
       return res.status(400).json({ message: 'Required data not found' })
     }
@@ -34,15 +34,6 @@ export const registerController = async (req: Request, res: Response) => {
 
       const user = await createUser({ name, image, registerId: register.id })
       const accessToken = await createAccessToken(register)
-      const verifyCode = generateRandomCode()
-
-      const expirationTime = new Date()
-      expirationTime.setMinutes(expirationTime.getMinutes() + 5)
-      sendVerificationEmail(email, verifyCode, 'Account Verify Code')
-
-      await prisma.emailVerify.create({
-        data: { email, createAt: new Date(), expireAt: expirationTime, code: +verifyCode }
-      })
 
       return res.status(201).json({
         message: 'Registration successful',

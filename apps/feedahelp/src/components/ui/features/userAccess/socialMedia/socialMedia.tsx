@@ -3,7 +3,11 @@ import { signIn } from "next-auth/react";
 import { SocialMedias } from "./socialMediaData";
 import { Styled } from "./socialMedia.styled";
 
-const SocialMedia = () => {
+type SocialMediaRoleProps = {
+  role: string;
+};
+
+const SocialMedia = ({ role }: SocialMediaRoleProps) => {
   const handleSignIn = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
     provider: string
