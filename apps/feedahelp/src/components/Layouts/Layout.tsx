@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import type { ThemeName } from "~/ui/components/foundations/theming";
 import { ThemeProvider } from "~/ui/components/contexts/ThemeContext";
+import { Provider } from "react-redux";
+import { store } from "../../services/store";
 
 type LayoutProps = {
   theme?: ThemeName;
@@ -17,10 +19,12 @@ type LayoutProps = {
 
 export function Layout({ header, child, footer }: LayoutProps) {
   return (
-    <ThemeProvider >
-      <header>{header}</header>
-      <main className="mx-10">{child}</main>
-      <footer>{footer}</footer>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider>
+        <header>{header}</header>
+        <main className="mx-10">{child}</main>
+        <footer>{footer}</footer>
+      </ThemeProvider>
+    </Provider>
   );
 }
