@@ -7,78 +7,68 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id            String          @id @default(uuid())
-  name          String
-  image         String?
-  register      Register        @relation(fields: [registerId], references: [id])
-  registerId    String          @unique
-  contributions contributions[]
-  wishs         Wishs[]
-  likes         Likes[]
-  shares        Shares[]
-}
-
-model LoginHistory {
-  id        Int      @id @default(autoincrement())
-  loginTime DateTime @default(now())
-  userId    String
-  user      Register @relation(fields: [userId], references: [id])
-}
 
 model Register {
-  id          String         @id @default(uuid())
-  email       String         @unique
-  phone       String         @unique
-  password    String
-  role        String
-  accessToken String
-  verified    Boolean
-  user        User?
-  emailVerify EmailVerify[]
-  logins      LoginHistory[]
+  id                  String                @id @default(uuid())
+  email               String                @unique
+  phone               String                @unique
+  password            String
+  role                String
+  accessToken         String
+  verified            Boolean
+  createdAt           DateTime              @default(now())
+
+  user                User?
+  emailVerify         EmailVerify[]
+  logins              LoginHistory[]
 }
 
-model Newsletter {
-  id        String   @id @default(uuid())
-  userId    String?
-  email     String   @unique
-  createdAt DateTime @default(now())
-}
+model User {
+  id                  String                @id @default(uuid())
+  name                String
+  image               String?
+  registerId          String                @unique
 
-model FahCounter {
-  id                 String @id @default(uuid())
-  sectionName        String
-  sectionDescription String
-  imageIconUrl       String
-  imageAlt           String
-  value              String
-  monthlyIncrease    String
-}
+  contributions       contributions[]
+  wishs               Wishs[]
+  likes               Likes[]
+  shares              Shares[]
 
-model Ingredient {
-  id                 String               @id @default(uuid())
-  name               String               @unique
-  subMenuIngredients subMenuIngredients[]
+  register            Register              @relation(fields: [registerId], references: [id])
+
+  @@index([registerId])
 }
 
 model EmailVerify {
-  id       Int      @id @default(autoincrement())
-  email    String
-  code     Int
-  expireAt DateTime
-  createAt DateTime @default(now())
-  register Register @relation(fields: [email], references: [email])
+  id                  Int                   @id @default(autoincrement())
+  email               String
+  code                Int
+  expireAt            DateTime
+  createAt            DateTime              @default(now())
+
+  register            Register              @relation(fields: [email], references: [email])
+
+  @@index([email])
 }
 
-model contributions {
-  id          String            @id @default(uuid())
-  contributor String
-  type        ContributionTypes
-  dateTime    DateTime
-  value       Float
-  createdAt   DateTime          @default(now())
-  user        User              @relation(fields: [contributor], references: [id])
+model LoginHistory {
+  id                  Int                   @id @default(autoincrement())
+  loginTime           DateTime              @default(now())
+  userId              String
+
+  user                Register              @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model FahCounter {
+  id                  String                @id @default(uuid())
+  sectionName         String
+  sectionDescription  String
+  imageIconUrl        String
+  imageAlt            String
+  value               String
+  monthlyIncrease     String
 }
 
 enum ContributionTypes {
@@ -86,81 +76,127 @@ enum ContributionTypes {
   volunteer
 }
 
+model contributions {
+  id                  String                @id @default(uuid())
+  contributor         String
+  type                ContributionTypes
+  dateTime            DateTime
+  value               Float
+  createdAt           DateTime              @default(now())
+  
+  user                User                  @relation(fields: [contributor], references: [id])
+
+  @@index([contributor])
+}
+
+model Ingredient {
+  id                  String                @id @default(uuid())
+  name                String                @unique
+
+  subMenuIngredients subMenuIngredients[]
+}
+
 model menues {
-  id        String      @id @default(uuid())
-  name      String      @unique
+  id                  String                @id @default(uuid())
+  name                String                @unique
+
   subMenues subMenues[]
 }
 
 model subMenues {
-  id                 String               @id @default(uuid())
-  menu               String
-  name               String               @unique
-  mainMenues         menues               @relation(fields: [menu], references: [name])
-  menuWishLikes      menuWishLikes[]
-  subMenuIngredients subMenuIngredients[]
+  id                  String                @id @default(uuid())
+  menu                String
+  name                String                @unique
+
+  menuWishLikes       menuWishLikes[]
+  subMenuIngredients  subMenuIngredients[]
+
+  mainMenues          menues                @relation(fields: [menu], references: [name])
+
+  @@index([menu])
 }
 
 model subMenuIngredients {
-  id          String     @id @default(uuid())
-  subMenu     String
-  ingredient  String
-  amount      Float
-  subMenues   subMenues  @relation(fields: [subMenu], references: [name])
-  ingredients Ingredient @relation(fields: [ingredient], references: [name])
+  id                  String                @id @default(uuid())
+  subMenu             String
+  ingredient          String
+  amount              Float
+
+  subMenues           subMenues             @relation(fields: [subMenu], references: [name])
+  ingredients         Ingredient            @relation(fields: [ingredient], references: [name])
+
+  @@index([subMenu])
+  @@index([ingredient])
 }
 
 model menuWishLikes {
-  id        String    @id @default(uuid())
-  menuId    String    @unique
-  likes     Int
-  wishs     Int
-  shares    Int
-  Wishs     Wishs[]
-  Likes     Likes[]
-  Shares    Shares[]
-  subMenues subMenues @relation(fields: [menuId], references: [name])
+  id                  String                @id @default(uuid())
+  menuId              String                @unique
+  likes               Int
+  wishs               Int
+  shares              Int
+
+  Wishs               Wishs[]
+  Likes               Likes[]
+  Shares              Shares[]
+
+  subMenues           subMenues             @relation(fields: [menuId], references: [name])
+
+  @@index([menuId])
 }
 
 model Wishs {
-  id            String        @id @default(uuid())
-  menuId        String
-  wisher        String
-  createdAt     DateTime      @default(now())
-  menuWishLikes menuWishLikes @relation(fields: [menuId], references: [menuId])
-  user          User          @relation(fields: [wisher], references: [id])
+  id                  String                @id @default(uuid())
+  menuId              String
+  wisher              String
+  createdAt           DateTime              @default(now())
+
+  menuWishLikes       menuWishLikes         @relation(fields: [menuId], references: [menuId])
+  user                User                  @relation(fields: [wisher], references: [id])
+
+  @@index([menuId])
+  @@index([wisher])
 }
 
 model Likes {
-  id            String        @id @default(uuid())
-  menuId        String
-  liker         String
-  createdAt     DateTime      @default(now())
-  menuWishLikes menuWishLikes @relation(fields: [menuId], references: [menuId])
-  user          User          @relation(fields: [liker], references: [id])
+  id                  String                @id @default(uuid())
+  menuId              String
+  liker               String
+  createdAt           DateTime              @default(now())
+
+  menuWishLikes       menuWishLikes         @relation(fields: [menuId], references: [menuId])
+  user                User                  @relation(fields: [liker], references: [id])
+
+  @@index([menuId])
+  @@index([liker])
 }
 
 model Shares {
-  id            String        @id @default(uuid())
-  menuId        String
-  sharer        String
-  createdAt     DateTime      @default(now())
-  menuWishLikes menuWishLikes @relation(fields: [menuId], references: [menuId])
-  user          User          @relation(fields: [sharer], references: [id])
+  id                  String                @id @default(uuid())
+  menuId              String
+  sharer              String
+  createdAt           DateTime              @default(now())
+
+  menuWishLikes       menuWishLikes         @relation(fields: [menuId], references: [menuId])
+  user                User                  @relation(fields: [sharer], references: [id])
+
+  @@index([menuId])
+  @@index([sharer])
 }
 
 model Payment {
-  id      Int    @id @default(autoincrement())
-  email   String
-  orderID String
-  status  String
-  channel String
+  id                  Int                   @id @default(autoincrement())
+  email               String
+  orderID             String
+  status              String
+  channel             String
+  createdAt           DateTime              @default(now())
 }
 
 model Subscription {
-  id            String        @id @default(uuid())
-  email         String
-  ipAdress      String
-  isActive      Boolean
-  createdAt     DateTime      @default(now())
+  id                  String                @id @default(uuid())
+  email               String
+  ipAdress            String
+  isActive            Boolean
+  createdAt           DateTime              @default(now())
 }
