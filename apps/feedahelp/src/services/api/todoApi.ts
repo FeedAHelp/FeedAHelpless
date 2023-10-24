@@ -12,7 +12,7 @@ export const todoAPi = createApi({
         url: "/todo",
         method: "GET",
         headers: {
-          authorization: `Bearer token`,
+          //   authorization: `Bearer token`,
         },
       }),
       providesTags: ["todo"],
@@ -23,7 +23,7 @@ export const todoAPi = createApi({
         method: "POST",
         body: data,
         headers: {
-          authorization: `Bearer token`,
+          //   authorization: `Bearer token`,
         },
       }),
       invalidatesTags: ["todo"],
