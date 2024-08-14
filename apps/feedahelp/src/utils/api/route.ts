@@ -8,4 +8,7 @@ export const endPoints = {
   stripe: {
     create: '/stripe/create'
   },
+  subscription: {
+    create: '/subscription/create'
+  },
 };

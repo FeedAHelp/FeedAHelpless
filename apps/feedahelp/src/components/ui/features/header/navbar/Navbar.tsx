@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Styled } from "./Navbar.styled";
 import MenuIcon from "@mui/icons-material/Menu";
 import Modal from "~/ui/components/elements/Modal/GenericModal";
@@ -11,10 +11,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import CurrencyDropDownMobile from "../CurrencyDropDown/CurrencyDropDownMobile";
 import LanguageSelectionsMobile from "../languageDropdown/languageSectionMobile";
 import Payment from "../../payments/Payment";
-import CustomLoader from "~/ui/components/elements/GenericLoader/CustomLoader"
+import CustomLoader from "~/ui/components/elements/GenericLoader/CustomLoader";
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/router";
 
 const NewNav = () => {
+  const router = useRouter();
   const { data: session } = useSession();
   const [isSideBar, setIsSideBar] = useState(false);
   const [modalOpen1, setModalOpen1] = useState(false);
@@ -28,6 +30,9 @@ const NewNav = () => {
 
   const [modalOpen, setModalOpen] = useState(false);
   const closeModal = (): void => {
+    router.push({
+      pathname: router.pathname,
+    });
     setModalOpen(false);
   };
 
@@ -45,11 +50,26 @@ const NewNav = () => {
       : session?.user.image;
   };
 
+  const handleAvatar = () => {
+    router.push({
+      pathname: router.pathname,
+      query: { login: true },
+    });
+  };
+
+  useEffect(() => {
+    if (router.query.login === "true") {
+      setModalOpen(true);
+    } else {
+      setModalOpen(false);
+    }
+  }, [router.query]);
+
   return (
     <Styled.Navbar>
       <div className="nav-end pr-1 ">
-          <div>
-            {session?.user ? (
+        <div>
+          {session?.user ? (
             <Styled.DonateButton
               onClick={() => {
                 setModalOpen1(true);
@@ -68,28 +88,30 @@ const NewNav = () => {
                 </div>
               </Modal>
             </Styled.DonateButton>
-          ) : <Styled.DonateButton  className="hidden"/> }
-          </div>
-      <div className="hidden ms-5 md:block">
-        <LanguageSelections />
-      </div>
-      <div className="hidden mx-3 md:block">
-        <CurrencyDropDown />
-      </div>
-      <AnimatePresence>
-        {isSideBar && (
-          <motion.div
-            initial={{ x: -1000 }}
-            animate={{ x: 0 }}
-            exit={{ x: -1000 }}
-            transition={{ duration: 0.2, ease: "easeIn" }}
-            className="absolute left-0 top-[5rem] block h-screen w-full bg-[rgba(60,60,60,0.86)] md:hidden"
-          >
-            <LanguageSelectionsMobile />
-            <CurrencyDropDownMobile />
-          </motion.div>
-        )}
-      </AnimatePresence>
+          ) : (
+            <Styled.DonateButton className="hidden" />
+          )}
+        </div>
+        <div className="ms-5 hidden md:block">
+          <LanguageSelections />
+        </div>
+        <div className="mx-3 hidden md:block">
+          <CurrencyDropDown />
+        </div>
+        <AnimatePresence>
+          {isSideBar && (
+            <motion.div
+              initial={{ x: -1000 }}
+              animate={{ x: 0 }}
+              exit={{ x: -1000 }}
+              transition={{ duration: 0.2, ease: "easeIn" }}
+              className="absolute left-0 top-[5rem] block h-screen w-full bg-[rgba(60,60,60,0.86)] md:hidden"
+            >
+              <LanguageSelectionsMobile />
+              <CurrencyDropDownMobile />
+            </motion.div>
+          )}
+        </AnimatePresence>
         <div className="right-container">
           {session?.user.image ? (
             <>
@@ -121,7 +143,7 @@ const NewNav = () => {
               avatar={"/assets/avatar.png"}
               ref={ref}
               className="img-rotate-button"
-              onClick={() => setModalOpen(true)}
+              onClick={handleAvatar}
             >
               <div className="img outer ring" />
               <div className="img center ring" />
