@@ -19,6 +19,13 @@ model User {
   contributions contributions[]
 }
 
+model LoginHistory {
+  id        Int      @id @default(autoincrement())
+  loginTime DateTime @default(now())
+  userId    String
+  user      Register @relation(fields: [userId], references: [id])
+}
+
 model Register {
   id          String   @id @default(uuid())
   email       String   @unique
@@ -31,23 +38,7 @@ model Register {
 
   user        User?
   emailVerify EmailVerify[]
-  Users       Users?
-}
-
-model Users {
-  id         String  @id @default(uuid())
-  name       String
-  image      String?
-  registerId String  @unique
-
-  contributions contributions[]
-  wishs         Wishs[]
-  likes         Likes[]
-  shares        Shares[]
-
-  register Register @relation(fields: [registerId], references: [id])
-
-  @@index([registerId])
+  logins      LoginHistory[]
 }
 
 model EmailVerify {
@@ -85,9 +76,7 @@ model contributions {
   value       Float
   createdAt   DateTime          @default(now())
 
-  user    User    @relation(fields: [contributor], references: [id])
-  Users   Users?  @relation(fields: [usersId], references: [id])
-  usersId String?
+  user User @relation(fields: [contributor], references: [id])
 
   @@index([contributor])
 }
@@ -156,8 +145,6 @@ model Wishs {
 
   menuWishLikes menuWishLikes @relation(fields: [menuId], references: [menuId])
   user          User          @relation(fields: [wisher], references: [id])
-  Users         Users?        @relation(fields: [usersId], references: [id])
-  usersId       String?
 
   @@index([menuId])
   @@index([wisher])
@@ -171,8 +158,6 @@ model Likes {
 
   menuWishLikes menuWishLikes @relation(fields: [menuId], references: [menuId])
   user          User          @relation(fields: [liker], references: [id])
-  Users         Users?        @relation(fields: [usersId], references: [id])
-  usersId       String?
 
   @@index([menuId])
   @@index([liker])
@@ -186,8 +171,6 @@ model Shares {
 
   menuWishLikes menuWishLikes @relation(fields: [menuId], references: [menuId])
   user          User          @relation(fields: [sharer], references: [id])
-  Users         Users?        @relation(fields: [usersId], references: [id])
-  usersId       String?
 
   @@index([menuId])
   @@index([sharer])
