@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import fsPromises from 'fs/promises'
 import path from 'path'
-import { fetchIngredients } from "./fetchIngredients";
+import { fetchIngredients } from "../sanity/fetchIngredients";
 
 const prisma = new PrismaClient()
 
@@ -38,6 +38,7 @@ async function fetchAndInsertIngredientsIDFromCMS(schemaName: string, entries: O
   if (!model) return false
 
     try {
+      model.deleteMany();
       const ingredientsData = await fetchIngredients();
       ingredientsData.map(async (ingredients: any) => {
         const createdEntries = await model.createMany({

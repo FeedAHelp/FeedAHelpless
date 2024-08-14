@@ -11,6 +11,7 @@ export type User = {
   registerId: string;
   password: string;
   error: string;
+  role: string;
   verified: boolean;
 };
 
@@ -24,7 +25,6 @@ export type RegisterFormData = {
 export type SessionCallbackParams = {
   session: {
     user: User;
-    // Add any other properties present in your session object
   };
   token: JWT & {
     id: string;
@@ -32,14 +32,13 @@ export type SessionCallbackParams = {
     name: string;
     userType: string;
     image: string;
+    role: string;
     accessToken: string;
     error: string;
   };
 };
 export type JWTCallbackParams = {
-  token: JWT & {
-    // Add any additional properties present in your token object
-  };
+  token: JWT & {};
   user: User;
   profile?: object; // Adjust the type of the profile object if necessary
   trigger?: "signIn" | "signUp" | "update" | undefined;
