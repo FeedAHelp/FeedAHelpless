@@ -20,7 +20,7 @@ model User {
 }
 
 model LoginHistory {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(uuid())
   loginTime DateTime @default(now())
   userId    String
   user      Register @relation(fields: [userId], references: [id])
@@ -42,7 +42,7 @@ model Register {
 }
 
 model EmailVerify {
-  id       Int      @id @default(autoincrement())
+  id       String   @id @default(uuid())
   email    String
   code     Int
   expireAt DateTime
