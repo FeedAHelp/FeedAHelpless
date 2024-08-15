@@ -38,7 +38,7 @@ export type SessionCallbackParams = {
   };
 };
 export type JWTCallbackParams = {
-  token: JWT & {};
+  token: JWT;
   user: User;
   profile?: object; // Adjust the type of the profile object if necessary
   trigger?: "signIn" | "signUp" | "update" | undefined;
