@@ -7,24 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id         String   @id @default(uuid())
-  name       String
-  image      String?
-  register   Register @relation(fields: [registerId], references: [id])
-  registerId String   @unique
-  wishs      Wishs[]
-  likes      Likes[]
-  shares     Shares[]
-}
-
-model LoginHistory {
-  id        Int      @id @default(autoincrement())
-  loginTime DateTime @default(now())
-  userId    String
-  user      Register @relation(fields: [userId], references: [id])
-}
-
 model Register {
   id                  String                @id @default(uuid())
   email               String                @unique
@@ -67,14 +49,6 @@ model EmailVerify {
 
   @@index([email])
 }
-
-model contributions {
-  id          String            @id @default(uuid())
-  contributor String
-  type        ContributionTypes
-  dateTime    DateTime
-  value       Float
-  createdAt   DateTime          @default(now())
 
 model LoginHistory {
   id                  Int                   @id @default(autoincrement())
