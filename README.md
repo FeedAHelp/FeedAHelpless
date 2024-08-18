@@ -108,3 +108,5 @@ Learn more about the power of Turborepo:
 To seed the database we need to run `pnpm prisma db seed` command going to the `apps/server/` directory
 We can also sync our database before seeding with command `pnpm prisma db seed`
 To do it at the first time we have to run `pnpm prisma reset`. This will remove everything from our database and run the migrations and seed the db. 
+
+Farjana Akter Laila
