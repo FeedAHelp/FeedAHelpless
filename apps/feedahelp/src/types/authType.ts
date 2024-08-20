@@ -7,6 +7,7 @@ export type User = {
   name: string;
   userType: string;
   accessToken: string;
+  refreshToken: string;
   image: string;
   registerId: string;
   password: string;
@@ -34,6 +35,7 @@ export type SessionCallbackParams = {
     image: string;
     role: string;
     accessToken: string;
+    refreshToken: string;
     error: string;
   };
 };

@@ -32,13 +32,13 @@ model Register {
   phone       String   @unique
   password    String
   role        String
-  accessToken String
   verified    Boolean
   createdAt   DateTime @default(now())
 
   user        User?
   emailVerify EmailVerify[]
   logins      LoginHistory[]
+  sessions    Session[]
 }
 
 model EmailVerify {
@@ -191,4 +191,16 @@ model Subscription {
   ipAdress  String
   isActive  Boolean
   createdAt DateTime @default(now())
+}
+
+model Session {
+  id            String   @id @default(uuid())
+  userId        String   
+  accessToken   String   @unique
+  refreshToken  String   @unique
+  createdAt     DateTime @default(now())
+  expiresAt     DateTime
+  user          Register @relation(fields: [userId], references: [id])
+
+  @@index([userId])
 }

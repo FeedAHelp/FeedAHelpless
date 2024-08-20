@@ -1,8 +1,8 @@
 import { Request, Response } from 'express'
 import bcrypt from 'bcrypt'
 import { prisma } from '../../utils/prismaInstance'
-import sendVerificationEmail from './email.controller'
-import { createUser, createAccessToken, generateRandomCode } from '../../utils/auth/register'
+import { createUser } from '../../utils/auth/register'
+import { createSession } from '../../utils/auth/auth'
 
 export const registerController = async (req: Request, res: Response) => {
   try {
@@ -21,27 +21,26 @@ export const registerController = async (req: Request, res: Response) => {
       })
       return res.status(400).json({ message: 'User Exists!!' })
     } else {
-      const register = await prisma.register.create({
-        data: {
-          email,
+    const register = await prisma.register.create({
+      data: {
+        email,
           phone: hashedPassword,
-          password: hashedPassword,
-          role,
-          accessToken: '',
-          verified: false
-        }
-      })
+        password: hashedPassword,
+        role,
+        verified: false
+      }
+    })
 
-      const user = await createUser({ name, image, registerId: register.id })
-      const accessToken = await createAccessToken(register)
+    const user = await createUser({ name, image, registerId: register.id })
+    const session = await createSession(register.id);
 
-      return res.status(201).json({
-        message: 'Registration successful',
-        ...register,
-        ...user,
-        accessToken
-      })
-    }
+    console.log("test")
+    return res.status(200).json({
+      message: 'Login successful',
+      accessToken: session.accessToken,
+      refreshToken: session.refreshToken,
+    })
+  }
   } catch (error) {
     return res.status(500).json({ message: 'Registration failed' })
   }

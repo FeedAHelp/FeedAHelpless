@@ -10,28 +10,26 @@ export const authenticateJWT = async (req: express.Request, res: express.Respons
 
   if (token) {
     // Fetch user data from Prisma based on the decoded user ID or any other information you stored in the token
-    try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRETE) as CustomJwtPayload
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRETE) as CustomJwtPayload
 
-      if (!decoded) {
-        return res.status(403).json({ message: 'Invalid token' })
-      }
-
-      const user = await prisma.user.findUnique({
-        where: {
-          id: decoded.userId
-        }
-      })
-
-      if (!user) {
-        return res.status(403).json({ message: 'User not found' })
-      }
-      next()
-    } catch (error) {
-      console.error(error)
-      return res.status(500).json({ message: 'Internal server error' })
+    if (!decoded) {
+      return res.status(403).json({ message: 'Invalid token' })
     }
-  } else {
-    return res.status(401).json({ message: 'No token provided' })
+
+    const session = await prisma.session.findFirst({
+      where: { accessToken: token, userId: decoded.userId },
+    })
+
+    if (!session) {
+      return res.status(403).json({ message: 'Session not found or token is invalid' })
+    }
+    next()
+  } catch (error) {
+    console.error(error)
+    return res.status(500).json({ message: 'Internal server error' })
   }
+} else {
+  return res.status(401).json({ message: 'No token provided' })
+}
 }

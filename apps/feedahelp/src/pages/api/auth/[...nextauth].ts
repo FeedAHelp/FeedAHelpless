@@ -13,8 +13,50 @@ import { type NextAuthOptions } from "next-auth";
 import { postMethod } from "../../../utils/api/postMethod";
 import { endPoints } from "../../../utils/api/route";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { jwtDecode } from "jwt-decode";
+import { JWT } from "next-auth/jwt";
 
 const scopes = ['identify'].join(' ')
+
+async function refreshAccessToken(token: JWT) {
+  console.log("Refreshing access token", token);
+  try {    
+      console.log("Bearer token", `Bearer ${token.refreshToken}`);
+
+      const response = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_BACKEND_BASE_URL}auth/refresh`, {
+          method: 'POST',  
+          headers: {
+              "Authorization": `Bearer ${token.refreshToken}`,
+          },
+          body: JSON.stringify({ token: token.refreshToken })  // Sending the refresh token in the body
+      });
+
+      console.log(response);
+
+      // Check if the response is ok before attempting to parse it as JSON
+      if (!response.ok) {
+          const errorText = await response.text();
+          console.log("Error response", errorText);
+          throw new Error(`Failed to refresh token: ${response.statusText}`);
+      }
+
+      const tokens = await response.json();
+      console.log(tokens);
+
+      return {
+          ...token,
+          accessToken: tokens.accessToken,
+          refreshToken: tokens.refreshToken ?? token.refreshToken,
+      };
+  } catch (error) {
+      console.error("Error refreshing access token:", error);
+
+      return {
+          ...token,
+          error: "RefreshAccessTokenError",
+      };
+  }
+}
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -76,6 +118,12 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async jwt({ token, user, session }) {
+
+      if (token.accessToken) {
+        const decodedToken = jwtDecode(token.accessToken);
+        token.accessTokenExpires = decodedToken?.exp * 1000;
+    }
+
       console.log("SERXXX", session);
       if (user && (user.id || user.name)) {
         await postMethod(endPoints.auth.register, {
@@ -94,6 +142,7 @@ export const authOptions: NextAuthOptions = {
             token.userType = data.registerId;
             token.image = data.image;
             token.accessToken = data.accessToken;
+            token.refreshToken = data.refreshToken;
             token.verified = data.verified;
             token.role = data.role;
           })
@@ -110,6 +159,7 @@ export const authOptions: NextAuthOptions = {
                 token.userType = data.registerId;
                 token.image = data.image;
                 token.accessToken = data.accessToken;
+                token.refreshToken = data.refreshToken;
                 token.role = data.role;
                 token.verified = data.verified
               })
@@ -119,7 +169,10 @@ export const authOptions: NextAuthOptions = {
             token.error = error.response.data.message; 
           });
       }
-      return token;
+      if (Date.now() < token.accessTokenExpires) {
+        return token;
+      }
+      return refreshAccessToken(token);
     },
 
     async session({ session, token }: SessionCallbackParams) {
@@ -132,6 +185,7 @@ export const authOptions: NextAuthOptions = {
           ? token.picture
           : (token.image as string);
         session.user.accessToken = token.accessToken;
+        session.user.refreshToken = token.refreshToken;
         session.user.error = token.error;
         session.user.verified = token.verified as boolean;
         session.user.role = token.role;
