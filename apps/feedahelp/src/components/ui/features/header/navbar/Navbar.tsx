@@ -14,6 +14,7 @@ import Payment from "../../payments/Payment";
 import CustomLoader from "~/ui/components/elements/GenericLoader/CustomLoader";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
+import { logout } from "~/services/api/authApi";
 
 const NewNav = () => {
   const router = useRouter();
@@ -38,9 +39,18 @@ const NewNav = () => {
 
   const handleLogout = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    await signOut({
-      callbackUrl: "/",
-    });
+
+    if (session && session.user) {
+      const token = {
+        refreshToken: session.user.refreshToken,
+      };
+
+      await logout(token);
+
+      await signOut({
+        callbackUrl: "/",
+      });
+    }
   };
 
   const getAvater = () => {

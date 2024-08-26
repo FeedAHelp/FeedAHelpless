@@ -11,17 +11,26 @@ export const logoutController = async (req: Request, res: Response) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRETE) as CustomJwtPayload;
+    console.log('Token received:', token);
+
+    const decoded = jwt.verify(token, process.env.JWT_REFRESH_SECRET) as CustomJwtPayload;
+    console.log('Decoded token:', decoded);
 
     if (!decoded) {
       return res.status(403).json({ message: 'Invalid token' });
     }
 
     const session = await prisma.session.findFirst({
-      where: { accessToken: token, userId: decoded.userId },
+      where: {
+        refreshToken: token,
+        userId: decoded.userId,
+      },
     });
 
+    console.log(session)
+
     if (!session) {
+      console.log('Session not found for token:', token);
       return res.status(403).json({ message: 'Session not found' });
     }
 
@@ -29,9 +38,10 @@ export const logoutController = async (req: Request, res: Response) => {
       where: { id: session.id },
     });
 
+    console.log('Session deleted successfully for token:', token);
     return res.status(200).json({ message: 'Logged out successfully' });
   } catch (error) {
-    console.error(error);
+    console.error('Error during logout:', error);
     return res.status(500).json({ message: 'Logout failed' });
   }
 };

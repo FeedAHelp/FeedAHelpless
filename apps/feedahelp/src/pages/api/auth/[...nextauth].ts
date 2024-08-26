@@ -14,49 +14,10 @@ import { postMethod } from "../../../utils/api/postMethod";
 import { endPoints } from "../../../utils/api/route";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { jwtDecode } from "jwt-decode";
-import { JWT } from "next-auth/jwt";
+import { refreshAccessToken } from "~/services/api/authApi";
 
 const scopes = ['identify'].join(' ')
 
-async function refreshAccessToken(token: JWT) {
-  console.log("Refreshing access token", token);
-  try {    
-      console.log("Bearer token", `Bearer ${token.refreshToken}`);
-
-      const response = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_BACKEND_BASE_URL}auth/refresh`, {
-          method: 'POST',  
-          headers: {
-              "Authorization": `Bearer ${token.refreshToken}`,
-          },
-          body: JSON.stringify({ token: token.refreshToken })  // Sending the refresh token in the body
-      });
-
-      console.log(response);
-
-      // Check if the response is ok before attempting to parse it as JSON
-      if (!response.ok) {
-          const errorText = await response.text();
-          console.log("Error response", errorText);
-          throw new Error(`Failed to refresh token: ${response.statusText}`);
-      }
-
-      const tokens = await response.json();
-      console.log(tokens);
-
-      return {
-          ...token,
-          accessToken: tokens.accessToken,
-          refreshToken: tokens.refreshToken ?? token.refreshToken,
-      };
-  } catch (error) {
-      console.error("Error refreshing access token:", error);
-
-      return {
-          ...token,
-          error: "RefreshAccessTokenError",
-      };
-  }
-}
 
 export const authOptions: NextAuthOptions = {
   session: {
