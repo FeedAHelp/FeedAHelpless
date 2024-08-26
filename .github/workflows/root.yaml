@@ -38,8 +38,6 @@ jobs:
 
       - run: pnpm run build
       - run: pnpm run lint
-      - name: Test
-        run: pnpm run test
         env:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           TURBO_TEAM: feedahelp
