@@ -2,10 +2,13 @@ import { Request, Response } from 'express'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { PrismaClient } from '@prisma/client'
+import { authLimiter } from '../../middleware/rateLimiter.middleware'
 
 const prisma = new PrismaClient()
 
-export const loginController = async (req: Request, res: Response) => {
+export const loginController = [
+  authLimiter,
+  async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body
 
@@ -17,13 +20,13 @@ export const loginController = async (req: Request, res: Response) => {
     const existingUser = await prisma.register.findUnique({ where: { email } })
     if (!existingUser) {
       console.log("OK")
-      return res.status(401).json({ message: 'User is not found' })
+      return res.status(401).json({ message: 'Incorrect email or password. Please try again.' })
     }
 
     const passwordMatch = await bcrypt.compare(password, existingUser.password)
     if (!passwordMatch) {
       console.log("IN")
-      return res.status(401).json({ message: 'Password is not match' })
+      return res.status(401).json({ message: 'Incorrect email or password. Please try again.' })
     }
 
     const user = await prisma.user.findUnique({
@@ -47,5 +50,5 @@ export const loginController = async (req: Request, res: Response) => {
     return res.status(500).json({ message: 'Login failed' })
   }
 }
-
+]
 export default loginController
