@@ -3,7 +3,7 @@
 [![GitHub Workflows badge](https://gist.github.com/EnricoMi/612cb538c14731f1a8fefe504f519395/raw/workflows.svg)](https://github.com/search?q=publish-unit-test-result-action+path%3A.github%2Fworkflows%2F+language%3AYAML+language%3AYAML&type=Code&l=YAML)
 # FeedAHelp
 
-FeedAHelp is a web application that allows users to find and donate food to those in need. It is built in a turboreop environment using pnpm, React, Nextjs, tailwindcss and styled-component. Sanity is used as the CMS and MongoDB is used for storing data. The application is deployed using Vercel.
+FeedAHelp is a web application that allows users to find and donate food to those in need. It is built in a turboreop environment using pnpm, React, Nextjs, tailwindcss and styled-component. The application is deployed using Vercel.
 
 ## Features
 
@@ -19,7 +19,6 @@ FeedAHelp is a web application that allows users to find and donate food to thos
 * Nextjs
 * Tailwindcss
 * Styled-component
-* Sanity
 * MongoDB
 * Vercel
 
