@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SocialMedia from "../socialMedia/socialMedia";
 import { Styled } from "./Login.styled";
+import LoginForm from "./LoginForm"
 import { getServerSession } from "next-auth/next";
 
 const Login = () => {
@@ -42,6 +43,7 @@ const Login = () => {
         </Styled.CustomCheckBoxWrapper>
       </Styled.CustomCheckBoxHolder>
       <div className="flex-1 flex-col items-center justify-center">
+        <LoginForm />
         <SocialMedia role={selectedRole} />
       </div>
     </div>

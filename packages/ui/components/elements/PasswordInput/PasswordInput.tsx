@@ -11,7 +11,7 @@ type PasswordInputProps = {
   setPassword: (newPassword: string) => void;
 };
 
-export function PasswordInput({ placeholder, password, setPassword }) {
+export function PasswordInput({ placeholder, password, setPassword, strengthCheck = true }) {
 
   const [type, setType] = useState('password')
   const [icon, setIcon] = useState(eyeOff)
@@ -26,7 +26,7 @@ export function PasswordInput({ placeholder, password, setPassword }) {
     }
   }
 
-  const isStrongPassword = (pass) => {
+  const isStrongPassword = (pass: string) => {
     const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
     return regex.test(pass);
   };
@@ -46,7 +46,7 @@ export function PasswordInput({ placeholder, password, setPassword }) {
           <Icon icon={icon} size={30} />
         </span>
       </Styled.Field>
-      {password && (
+      {strengthCheck && password && (
         <Styled.StrengthIndicator>
           <div
             className="strength-bar"
