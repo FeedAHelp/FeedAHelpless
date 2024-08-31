@@ -1,0 +1,20 @@
+[
+    {
+        "language": "Bangla",
+        "localLang": "bn",
+        "country":"BD",
+        "altFlagImg":"BD-Flag"
+    },
+    {
+        "language": "English",
+        "localLang": "en",
+        "country":"US",
+        "altFlagImg":"US-Flag"
+    },
+    {
+        "language": "Danish",
+        "localLang": "dk",
+        "country":"DK",
+        "altFlagImg":"DK-Flag"
+    }
+]
