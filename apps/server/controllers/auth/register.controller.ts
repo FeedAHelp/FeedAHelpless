@@ -3,9 +3,12 @@ import bcrypt from 'bcrypt'
 import { prisma } from '../../utils/prismaInstance'
 import sendVerificationEmail from './email.controller'
 import { createUser, createAccessToken, generateRandomCode } from '../../utils/auth/register'
+import { authLimiter } from '../../middleware/rateLimiter.middleware'
 
-export const registerController = async (req: Request, res: Response) => {
-  try {
+export const registerController = [
+  authLimiter,
+  async (req: Request, res: Response) => {
+    try {
     const { name, email, password, image, role } = req.body
 
     if (!email || !password || !name || !image || !role) {
@@ -46,5 +49,6 @@ export const registerController = async (req: Request, res: Response) => {
     return res.status(500).json({ message: 'Registration failed' })
   }
 }
+]
 
 export default registerController
