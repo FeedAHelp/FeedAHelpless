@@ -4,7 +4,9 @@ import { View, Text } from 'react-native';
 export default function Avatar() {
   return (
     <View>
-      <Text>Avatar</Text>
+      <Text>
+        Add new line
+      </Text>
     </View>
   );
 }

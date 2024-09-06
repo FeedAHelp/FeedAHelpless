@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <View>
       <Text>
-        Footer
+        Add new line
       </Text>
     </View>
   );
