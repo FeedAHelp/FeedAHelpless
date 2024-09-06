@@ -8,15 +8,18 @@ datasource db {
 }
 
 model User {
-  id            String          @id @default(uuid())
-  name          String
-  image         String?
-  registerId    String          @unique
-  likes         Likes[]
-  shares        Shares[]
-  register      Register        @relation(fields: [registerId], references: [id])
-  wishs         Wishs[]
-  contributions contributions[]
+  id                 String               @id @default(uuid())
+  name               String
+  image              String?
+  registerId         String               @unique
+  Likes              Likes[]
+  Shares             Shares[]
+  Register           Register             @relation(fields: [registerId], references: [id])
+  Wishs              Wishs[]
+  contributions      contributions[]
+  passwordresettoken PasswordResetToken[]
+  socialaccount      SocialAccount[]
+  userSession        UserSession[]
 }
 
 model LoginHistory {
@@ -37,7 +40,7 @@ model Register {
   createdAt   DateTime       @default(now())
   emailVerify EmailVerify[]
   logins      LoginHistory[]
-  user        User?
+  User        User?
 }
 
 model EmailVerify {
@@ -175,55 +178,42 @@ model Subscription {
   createdAt DateTime @default(now())
 }
 
-model password_reset_tokens {
-  id          Int       @id @default(autoincrement())
-  user_id     Int?
-  reset_token String
-  expires_at  DateTime  @db.Timestamp(6)
-  used        Boolean?  @default(false)
-  created_at  DateTime? @default(now()) @db.Timestamp(6)
-  users       users?    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+model PasswordResetToken {
+  id         Int       @id @default(autoincrement())
+  userId     String?   @db.VarChar(100)
+  resetToken String
+  expiresAt  DateTime  @db.Timestamp(6)
+  used       Boolean?  @default(false)
+  createdAt  DateTime? @default(now()) @db.Timestamp(6)
+  user       User?     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
-model social_accounts {
-  id               Int       @id @default(autoincrement())
-  user_id          Int?
-  provider         String    @db.VarChar(100)
-  provider_user_id String    @db.VarChar(255)
-  access_token     String?
-  refresh_token    String?
-  token_expires_at DateTime? @db.Timestamp(6)
-  created_at       DateTime? @default(now()) @db.Timestamp(6)
-  updated_at       DateTime? @default(now()) @db.Timestamp(6)
-  users            users?    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+model SocialAccount {
+  id             Int       @id @default(autoincrement())
+  userId         String?   @db.VarChar(100)
+  provider       String    @db.VarChar(100)
+  providerUserId String    @db.VarChar(255)
+  accessToken    String?
+  refreshToken   String?
+  tokenExpiresAt DateTime? @db.Timestamp(6)
+  createdAt      DateTime? @default(now()) @db.Timestamp(6)
+  updatedAt      DateTime? @default(now()) @db.Timestamp(6)
+  user           User?     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
-  @@unique([provider, provider_user_id])
+  @@unique([provider, providerUserId])
 }
 
-model user_sessions {
-  id            Int       @id @default(autoincrement())
-  user_id       Int?
-  session_token String
-  created_at    DateTime? @default(now()) @db.Timestamp(6)
-  expires_at    DateTime? @db.Timestamp(6)
-  last_active   DateTime? @default(now()) @db.Timestamp(6)
-  users         users?    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-}
-
-model users {
-  id                    Int                     @id @default(autoincrement())
-  email                 String                  @unique @db.VarChar(255)
-  password_hash         String?
-  first_name            String?                 @db.VarChar(100)
-  last_name             String?                 @db.VarChar(100)
-  created_at            DateTime?               @default(now()) @db.Timestamp(6)
-  updated_at            DateTime?               @default(now()) @db.Timestamp(6)
-  password_reset_tokens password_reset_tokens[]
-  social_accounts       social_accounts[]
-  user_sessions         user_sessions[]
+model UserSession {
+  id           Int       @id @default(autoincrement())
+  userId       String?   @db.VarChar(100)
+  sessionToken String
+  createdAt    DateTime? @default(now()) @db.Timestamp(6)
+  expiresAt    DateTime? @db.Timestamp(6)
+  lastActive   DateTime? @default(now()) @db.Timestamp(6)
+  user         User?     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 enum ContributionTypes {
-  financial
-  volunteer
+  FINANCIAL
+  VOLUNTEER
 }
