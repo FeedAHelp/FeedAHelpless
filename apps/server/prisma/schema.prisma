@@ -8,15 +8,18 @@ datasource db {
 }
 
 model User {
-  id            String          @id @default(uuid())
-  name          String
-  image         String?
-  register      Register        @relation(fields: [registerId], references: [id])
-  registerId    String          @unique
-  wishs         Wishs[]
-  likes         Likes[]
-  shares        Shares[]
-  contributions contributions[]
+  id                 String               @id @default(uuid())
+  name               String
+  image              String?
+  registerId         String               @unique
+  Likes              Likes[]
+  Shares             Shares[]
+  Register           Register             @relation(fields: [registerId], references: [id])
+  Wishs              Wishs[]
+  contributions      contributions[]
+  passwordresettoken PasswordResetToken[]
+  socialaccount      SocialAccount[]
+  userSession        UserSession[]
 }
 
 model LoginHistory {
@@ -27,18 +30,17 @@ model LoginHistory {
 }
 
 model Register {
-  id          String   @id @default(uuid())
-  email       String   @unique
-  phone       String   @unique
+  id          String         @id @default(uuid())
+  email       String         @unique
+  phone       String         @unique
   password    String
   role        String
   accessToken String
   verified    Boolean
-  createdAt   DateTime @default(now())
-
-  user        User?
+  createdAt   DateTime       @default(now())
   emailVerify EmailVerify[]
   logins      LoginHistory[]
+  User        User?
 }
 
 model EmailVerify {
@@ -47,7 +49,6 @@ model EmailVerify {
   code     Int
   expireAt DateTime
   createAt DateTime @default(now())
-
   register Register @relation(fields: [email], references: [email])
 
   @@index([email])
@@ -63,11 +64,6 @@ model FahCounter {
   monthlyIncrease    String
 }
 
-enum ContributionTypes {
-  financial
-  volunteer
-}
-
 model contributions {
   id          String            @id @default(uuid())
   contributor String
@@ -75,74 +71,65 @@ model contributions {
   dateTime    DateTime
   value       Float
   createdAt   DateTime          @default(now())
-
-  user User @relation(fields: [contributor], references: [id])
+  user        User              @relation(fields: [contributor], references: [id])
 
   @@index([contributor])
 }
 
 model Ingredient {
-  id   String @id @default(uuid())
-  name String @unique
-
+  id                 String               @id @default(uuid())
+  name               String               @unique
   subMenuIngredients subMenuIngredients[]
 }
 
 model menues {
-  id   String @id @default(uuid())
-  name String @unique
-
+  id        String      @id @default(uuid())
+  name      String      @unique
   subMenues subMenues[]
 }
 
 model subMenues {
-  id   String @id @default(uuid())
-  menu String
-  name String @unique
-
-  menuWishLikes      menuWishLikes[]
+  id                 String               @id @default(uuid())
+  menu               String
+  name               String               @unique
+  menuWishLikes      menuWishLikes?
   subMenuIngredients subMenuIngredients[]
-
-  mainMenues menues @relation(fields: [menu], references: [name])
+  mainMenues         menues               @relation(fields: [menu], references: [name])
 
   @@index([menu])
 }
 
 model subMenuIngredients {
-  id         String @id @default(uuid())
-  subMenu    String
-  ingredient String
-  amount     Float
-
-  subMenues   subMenues  @relation(fields: [subMenu], references: [name])
+  id          String     @id @default(uuid())
+  subMenu     String
+  ingredient  String
+  amount      Float
   ingredients Ingredient @relation(fields: [ingredient], references: [name])
+  subMenues   subMenues  @relation(fields: [subMenu], references: [name])
 
   @@index([subMenu])
   @@index([ingredient])
 }
 
 model menuWishLikes {
-  id     String @id @default(uuid())
-  menuId String @unique
-  likes  Int
-  wishs  Int
-  shares Int
-
-  Wishs  Wishs[]
-  Likes  Likes[]
-  Shares Shares[]
-
+  id        String    @id @default(uuid())
+  menuId    String    @unique
+  likes     Int
+  wishs     Int
+  shares    Int
+  Likes     Likes[]
+  Shares    Shares[]
+  Wishs     Wishs[]
   subMenues subMenues @relation(fields: [menuId], references: [name])
 
   @@index([menuId])
 }
 
 model Wishs {
-  id        String   @id @default(uuid())
-  menuId    String
-  wisher    String
-  createdAt DateTime @default(now())
-
+  id            String        @id @default(uuid())
+  menuId        String
+  wisher        String
+  createdAt     DateTime      @default(now())
   menuWishLikes menuWishLikes @relation(fields: [menuId], references: [menuId])
   user          User          @relation(fields: [wisher], references: [id])
 
@@ -151,24 +138,22 @@ model Wishs {
 }
 
 model Likes {
-  id        String   @id @default(uuid())
-  menuId    String
-  liker     String
-  createdAt DateTime @default(now())
-
-  menuWishLikes menuWishLikes @relation(fields: [menuId], references: [menuId])
+  id            String        @id @default(uuid())
+  menuId        String
+  liker         String
+  createdAt     DateTime      @default(now())
   user          User          @relation(fields: [liker], references: [id])
+  menuWishLikes menuWishLikes @relation(fields: [menuId], references: [menuId])
 
   @@index([menuId])
   @@index([liker])
 }
 
 model Shares {
-  id        String   @id @default(uuid())
-  menuId    String
-  sharer    String
-  createdAt DateTime @default(now())
-
+  id            String        @id @default(uuid())
+  menuId        String
+  sharer        String
+  createdAt     DateTime      @default(now())
   menuWishLikes menuWishLikes @relation(fields: [menuId], references: [menuId])
   user          User          @relation(fields: [sharer], references: [id])
 
@@ -191,4 +176,44 @@ model Subscription {
   ipAdress  String
   isActive  Boolean
   createdAt DateTime @default(now())
+}
+
+model PasswordResetToken {
+  id         Int       @id @default(autoincrement())
+  userId     String?   @db.VarChar(100)
+  resetToken String
+  expiresAt  DateTime  @db.Timestamp(6)
+  used       Boolean?  @default(false)
+  createdAt  DateTime? @default(now()) @db.Timestamp(6)
+  user       User?     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model SocialAccount {
+  id             Int       @id @default(autoincrement())
+  userId         String?   @db.VarChar(100)
+  provider       String    @db.VarChar(100)
+  providerUserId String    @db.VarChar(255)
+  accessToken    String?
+  refreshToken   String?
+  tokenExpiresAt DateTime? @db.Timestamp(6)
+  createdAt      DateTime? @default(now()) @db.Timestamp(6)
+  updatedAt      DateTime? @default(now()) @db.Timestamp(6)
+  user           User?     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([provider, providerUserId])
+}
+
+model UserSession {
+  id           Int       @id @default(autoincrement())
+  userId       String?   @db.VarChar(100)
+  sessionToken String
+  createdAt    DateTime? @default(now()) @db.Timestamp(6)
+  expiresAt    DateTime? @db.Timestamp(6)
+  lastActive   DateTime? @default(now()) @db.Timestamp(6)
+  user         User?     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+enum ContributionTypes {
+  FINANCIAL
+  VOLUNTEER
 }
