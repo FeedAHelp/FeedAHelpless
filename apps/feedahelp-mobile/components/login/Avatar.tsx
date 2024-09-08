@@ -5,7 +5,7 @@ export default function Avatar() {
   return (
     <View>
       <Text>
-        Add new line
+        Avatar
       </Text>
     </View>
   );

@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-export default function Header() {
+export default function Form() {
   return (
     <View>
       <Text>
-        Add new line
+        Form
       </Text>
     </View>
   );

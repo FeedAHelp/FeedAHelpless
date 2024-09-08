@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <View>
       <Text>
-        Add new line
+        Header
       </Text>
     </View>
   );
