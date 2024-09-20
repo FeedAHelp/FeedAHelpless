@@ -31,6 +31,9 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "facebookClientId": "process.env.EXPO_PUBLIC_FACEBOOK_ID"
     }
   }
 }
