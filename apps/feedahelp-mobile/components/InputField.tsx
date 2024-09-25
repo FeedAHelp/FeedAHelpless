@@ -10,7 +10,7 @@ const InputField = ({ icon, placeholder, value, onChangeText, secureTextEntry = 
       <TextInput
         style={styles.input}
         placeholder={placeholder}
-        placeholderTextColor={Colors.grey}
+        placeholderTextColor={Colors.primary}
         keyboardType={keyboardType}
         autoCapitalize="none"
         secureTextEntry={secureTextEntry}
@@ -25,6 +25,7 @@ const InputField = ({ icon, placeholder, value, onChangeText, secureTextEntry = 
     inputWrapper: {
       flexDirection: 'row',
       alignItems: 'center',
+      backgroundColor: Colors.light_grey,
       paddingVertical: 12,
       paddingHorizontal: 15,
       marginBottom: 20,
