@@ -2,6 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { View, TextInput } from "react-native";
 import React from "react";
 import { StyleSheet } from 'react-native';
+import { Colors } from '../styles/global';
 
 const InputField = ({ icon, placeholder, value, onChangeText, secureTextEntry = false, keyboardType = 'default' }) => (
     <View style={styles.inputWrapper}>
@@ -9,7 +10,7 @@ const InputField = ({ icon, placeholder, value, onChangeText, secureTextEntry = 
       <TextInput
         style={styles.input}
         placeholder={placeholder}
-        placeholderTextColor="#ef8d77"
+        placeholderTextColor={Colors.grey}
         keyboardType={keyboardType}
         autoCapitalize="none"
         secureTextEntry={secureTextEntry}
@@ -24,20 +25,19 @@ const InputField = ({ icon, placeholder, value, onChangeText, secureTextEntry = 
     inputWrapper: {
       flexDirection: 'row',
       alignItems: 'center',
-      backgroundColor: '#fff',
       paddingVertical: 12,
       paddingHorizontal: 15,
       marginBottom: 20,
     },
     icon: {
       marginRight: 10,
-      color: 'grey',
+      color: Colors.grey,
     },
     input: {
       flex: 1,
       height: 25,
       fontSize: 16,
-      color: '#e06464',
+      color: Colors.primary,
     },
   });
 

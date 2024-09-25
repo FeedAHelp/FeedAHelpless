@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { Colors } from '../../../styles/global';
 
 const styles = StyleSheet.create({
   formContainer: {
@@ -9,19 +10,19 @@ const styles = StyleSheet.create({
     maxWidth: 500,
   },
   button: {
-    backgroundColor: '#e06464',
+    backgroundColor: Colors.primary,
     paddingVertical: 15,
     borderRadius: 25,
     alignItems: 'center',
     marginBottom: 10,
   },
   buttonText: {
-    color: '#fff',
+    color: Colors.white,
     fontSize: 17,
     fontWeight: 'bold',
   },
   linkText: {
-    color: '#e06464',
+    color: Colors.primary,
     fontSize: 15,
     textAlign: 'center',
     fontWeight: 'bold',
