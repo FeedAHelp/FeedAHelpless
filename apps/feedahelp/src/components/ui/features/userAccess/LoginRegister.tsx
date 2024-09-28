@@ -27,3 +27,4 @@ const CarousalWithLogo = () => {
 };
 
 export default LoginRegister;
+

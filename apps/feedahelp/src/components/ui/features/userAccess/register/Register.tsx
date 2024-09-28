@@ -15,7 +15,7 @@ const Register = ({ loginRegisterToggle }: Props) => {
           <button onClick={loginRegisterToggle}>{"Sign In!"}</button>
         </GenericLink>
       </div>
-      <SocialMedia />
+      
     </div>
   );
 };
